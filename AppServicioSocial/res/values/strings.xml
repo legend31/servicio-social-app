@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">AppServicioSocial</string>
+    <string name="acceso">Servicio Social</string>
+    <string name="boton1">Alumno</string>
+    <string name="boton2">AsignacionProyecto</string>
     <string name="action_settings">Settings</string>
     <string name="bienvenido">Bienvenido! Ingrese sus datos</string>
     <string name="usuario">Usuario</string>
     <string name="password">Password</string>
     <string name="ingresar">Ingresar</string>
+    <string name="title_activity_menu_tablas">Menú Principal</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_menu_alumno">Alumno</string>
+    <string name="title_activity_alumno_insertar">AlumnoInsertarActivity</string>
+    <string name="title_activity_alumno_consultar">AlumnoConsultarActivity</string>
+    <string name="title_activity_alumno_actualizar">AlumnoActualizarActivity</string>
+    <string name="title_activity_alumno_eliminar">AlumnoEliminarActivity</string>
+    <string name="title_activity_asignacion_proyecto_menu">Asignación de Proyecto</string>
+    <string name="title_activity_asignacion_proyecto_insertar">AsignacionProyectoInsertarActivity</string>
+    <string name="title_activity_asignacion_proyecto_consultar">AsignacionProyectoConsultarActivity</string>
+    <string name="title_activity_asignacion_proyecto_eliminar">AsignacionProyectoEliminarActivity</string>
+    <string name="title_activity_asignacion_proyecto_actualizar">AsignacionProyectoActualizarActivity</string>
 
 </resources>
