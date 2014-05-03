@@ -67,7 +67,24 @@ public class ControlBD {
 	// Inserciones
 
 	public String insertar(Alumno alumno) {
-		return null;
+		String mensaje="";
+		long contador=0;
+		ContentValues valoresAlumno = new ContentValues();
+		valoresAlumno.put("carnet", alumno.getCarnet());
+		valoresAlumno.put("nombre", alumno.getNombre());
+		valoresAlumno.put("telefono", alumno.getTelefono());
+		valoresAlumno.put("dui", alumno.getDui());
+		valoresAlumno.put("nit", alumno.getNit());
+		valoresAlumno.put("email", alumno.getEmail());
+		contador=database.insert("alumno", null, valoresAlumno);
+		if(contador==-1 || contador==0)
+		{
+			mensaje= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+		}
+		else {
+			mensaje="Registro ingresado";
+		}
+		return mensaje;
 	}
 
 	public String insertar(AsignacionProyecto asignacion) {
@@ -149,7 +166,11 @@ public class ControlBD {
 
 	// Eliminaciones
 	public String eliminar(Alumno alumno) {
-		return null;
+		String regAfectados="";
+		int contador=0;
+		contador+=database.delete("alumno", "carnet='"+alumno.getCarnet()+"'", null);
+		regAfectados+=contador;
+		return regAfectados;
 	}
 
 	public String eliminar(AsignacionProyecto asignacion) {
@@ -190,7 +211,20 @@ public class ControlBD {
 
 	// Consultas
 	public Alumno consultarAlumno(String carnet) {
-		return null;
+		String[] id = {carnet};
+		Cursor cursor = database.query("alumno", camposAlumno, "carnet = ?", id,null, null, null);
+		if(cursor.moveToFirst()){
+			Alumno alumno = new Alumno();
+			alumno.setCarnet(cursor.getString(0));
+			alumno.setNombre(cursor.getString(1));
+			alumno.setTelefono(cursor.getString(2));
+			alumno.setDui(cursor.getString(3));
+			alumno.setNit(cursor.getString(4));
+			alumno.setEmail(cursor.getString(5));
+			return alumno;
+		}else{
+			return null;
+		}
 	}
 
 	public AsignacionProyecto consultarAsignacionProyecto()// No sé que

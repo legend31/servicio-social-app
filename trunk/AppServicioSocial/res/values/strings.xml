@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="carnet">Carnet</string>
+    <string name="nombre">Nombre</string>
+    <string name="telefono">Teléfono</string>
+    <string name="dui">DUI</string>
+    <string name="nit">NIT</string>
+    <string name="email">E-mail</string>
+    <string name="guardar">Guardar</string>
+    <string name="datos">Datos</string>
+    <string name="buscar">Buscar</string>
+    <string name="eliminar">Eliminar</string>
     <string name="acceso">Servicio Social</string>
     <string name="boton1">Alumno</string>
     <string name="boton2">AsignacionProyecto</string>
