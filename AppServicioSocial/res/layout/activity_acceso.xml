@@ -10,7 +10,7 @@
     tools:context=".AccesoActivity" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/lblDatos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/bienvenido" />
@@ -19,7 +19,7 @@
         android:id="@+id/txfUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/lblDatos"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="42dp"
         android:ems="10"
