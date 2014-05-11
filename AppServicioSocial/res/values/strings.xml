@@ -31,5 +31,28 @@
     <string name="title_activity_asignacion_proyecto_consultar">AsignacionProyectoConsultarActivity</string>
     <string name="title_activity_asignacion_proyecto_eliminar">AsignacionProyectoEliminarActivity</string>
     <string name="title_activity_asignacion_proyecto_actualizar">AsignacionProyectoActualizarActivity</string>
+    <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
+    <string name="name">PDM</string>
+    <string name="button3">Proyecto</string>
+
+    <string-array name="tablas">
+        <item>Alumno</item>
+        <item>Bitacora</item>
+        <item>Encargado Social</item>
+        <item>Proyecto</item>
+        <item>Tipo Proyecto</item>
+        <item>Asignacion De Proyecto</item>
+        <item>Tipo Trabajo</item>
+        <item>Solicitante</item>
+        <item>Institucion</item>
+        <item>Escuela</item>
+    </string-array>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="action_websearch">Web search</string>
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
+    <string name="title_activity_proyecto_insertar">ProyectoInsertarActivity</string>
+    <string name="title_activity_proyecto_menu">ProyectoMenuActivity</string>
 
 </resources>
