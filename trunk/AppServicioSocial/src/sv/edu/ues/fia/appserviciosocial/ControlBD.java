@@ -5,28 +5,57 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class ControlBD {
 
-	private static final String[] camposAlumno = new String[] { "carnet","nombre", "telefono", "dui", "nit", "email" };
+	private static final String[] camposAlumno = new String[] { "carnet","idEncargado","nombre", "telefono", "dui", "nit", "email" };
 	private static final String[] camposAsignacionProyecto = new String[] {"idProyecto", "fecha", "carnet" };
-	private static final String[] camposBitacora = new String[] { "fecha","descripcion" };
-	private static final String[] camposEncargadoServicioSocial = new String[] {"idEncargado", "nombre", "email", "telefono" };
-	private static final String[] camposEscuela = new String[] { "idEscuela","nombre", "facultad" };
-	private static final String[] camposInstitucion = new String[] {"idInstitucion", "nombre", "nit" };
-	private static final String[] camposProyecto = new String[] { "idProyecto","nombre" };
-	private static final String[] camposSolicitante = new String[] {"idSolicitante", "nombre", "cargo" };
-	private static final String[] camposTipoProyecto = new String[] {"idTipoProyecto", "nombre" };
-	private static final String[] camposTipoTrabajo = new String[] {"idTipoTrabajo", "nombre", "valor" };
+	private static final String[] camposBitacora = new String[] { "idBitacora","carnet","idProyecto","idTipoTrabajo","fecha","descripcion" };
+	private static final String[] camposEncargadoServicioSocial = new String[] { "idEncargado","idEscuela","nombre", "email", "telefono" };
+	private static final String[] camposEscuela = new String[] { "idEscuela","idEncargado","nombre", "facultad" };
+	private static final String[] camposInstitucion = new String[] { "idInstitucion", "nombre", "nit" };
+	private static final String[] camposProyecto = new String[] { "idProyecto","idTipoProyecto","idSolicitante","idEncargado","nombre" };
+	private static final String[] camposSolicitante = new String[] { "idSolicitante","idInstitucion","nombre","cargo" };
+	private static final String[] camposTipoProyecto = new String[] { "idTipoProyecto", "nombre" };
+	private static final String[] camposTipoTrabajo = new String[] { "idTipoTrabajo", "nombre", "valor" };
+	
+	private final Context context;
 	private DatabaseHelper DBHelper;
-	private SQLiteDatabase database;
+	private SQLiteDatabase db;
 
-	public ControlBD(Context contexto) {
-		DBHelper = new DatabaseHelper(contexto);
+	public ControlBD(Context ctx){
+		this.context = ctx;
+		DBHelper = new DatabaseHelper(ctx);
+	}
+	
+	private static class DatabaseHelper extends SQLiteOpenHelper
+	{
+		private static final String Base_Datos="BaseDeDatos.s3db";
+		private static final int VERSION=1;
+
+		public DatabaseHelper(Context context){
+			super(context, Base_Datos,null,VERSION);
+		}
+
+		@Override
+		public void onCreate(SQLiteDatabase db) {
+			// TODO Auto-generated method stub
+			db.execSQL("CREATE TABLE)
+			
+		}
+
+		@Override
+		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		
 	}
 
-	private static class DatabaseHelper extends SQLiteOpenHelper {
+	/*private static class DatabaseHelper extends SQLiteOpenHelper {
 
 		private static final String BASE_DATOS = "servicioSocial.s3db";
 		private static final int VERSION = 1;
@@ -271,5 +300,5 @@ public class ControlBD {
 	public String llenarBDCarnet() {
 		return null;
 	}
-
+*/
 }
