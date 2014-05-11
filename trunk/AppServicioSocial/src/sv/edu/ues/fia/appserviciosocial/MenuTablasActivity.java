@@ -35,8 +35,10 @@ public class MenuTablasActivity extends Activity implements OnClickListener{
 			case R.id.button2:
 				startActivity(new Intent(this, AsignacionProyectoMenuActivity.class));
 			break;
-			default:
+			case R.id.button3:
+				startActivity(new Intent(this, ProyectoMenuActivity.class));
 			break;
+			default:
 		}
 		overridePendingTransition(R.anim.left_in, R.anim.left_out);
 	}
