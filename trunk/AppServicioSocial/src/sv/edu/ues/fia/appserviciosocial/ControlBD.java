@@ -79,6 +79,7 @@ public class ControlBD {
 
 	public void abrir() throws SQLException {
 		db = DBHelper.getWritableDatabase();
+		return;
 	}
 
 	public void cerrar() {
@@ -221,6 +222,6 @@ public class ControlBD {
 	  null; }
 	  
 	  //Llenado de base de datos para datos iniciales en caso los necesite
-	  public String llenarBDCarnet() { return null; }
+	  public String llenarBD() { return null; }
 	 
 }// fin ControlDB
