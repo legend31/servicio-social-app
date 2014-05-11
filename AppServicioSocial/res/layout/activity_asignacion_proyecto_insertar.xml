@@ -8,9 +8,40 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".AsignacionProyectoInsertarActivity" >
 
-    <TextView
+    <EditText
+        android:id="@+id/txtCarnet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:hint="@string/carnet"
+        android:inputType="textPersonName"
+        android:maxLength="7" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/txtProyecto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtCarnet"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp"
+        android:ems="10"
+        android:hint="@string/proyecto"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/btnAsignar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtProyecto"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="59dp"
+        android:text="@string/asignar"
+        android:onClick="insertarAsignacionProyecto" />
 
 </RelativeLayout>

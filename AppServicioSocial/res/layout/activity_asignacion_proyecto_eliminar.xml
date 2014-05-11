@@ -6,11 +6,60 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".AsignacionProyectoEliminarActivity" >
+    tools:context=".AsignacionProyectoConsultarActivity" >
 
-    <TextView
+    <Button
+        android:id="@+id/btnBuscar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignBaseline="@+id/txtBusqueda"
+        android:layout_alignBottom="@+id/txtBusqueda"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:text="@string/eliminar" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/rbtProyecto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="seleccion"
+            android:text="@string/proyecto" />
+
+        <RadioButton
+            android:id="@+id/rbtAlumno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:onClick="seleccion"
+            android:text="@string/alumno" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtBusqueda"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="39dp"
+        android:layout_marginTop="14dp"
+        android:text="@string/eliminarpor" />
+
+    <EditText
+        android:id="@+id/txtBusqueda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radioGroup1"
+        android:layout_toLeftOf="@+id/btnBuscar"
+        android:ems="10"
+        android:hint="@string/alumno"
+        android:inputType="textPersonName" />
 
 </RelativeLayout>

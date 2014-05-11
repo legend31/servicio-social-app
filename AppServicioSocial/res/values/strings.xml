@@ -8,6 +8,7 @@
     <string name="nit">NIT</string>
     <string name="email">E-mail</string>
     <string name="guardar">Guardar</string>
+    <string name="actualizar">Actualizar</string>
     <string name="datos">Datos</string>
     <string name="buscar">Buscar</string>
     <string name="eliminar">Eliminar</string>
@@ -18,6 +19,11 @@
     <string name="bienvenido">Bienvenido! Ingrese sus datos</string>
     <string name="usuario">Usuario</string>
     <string name="password">Password</string>
+    <string name="alumno">Alumno</string>
+    <string name="proyecto">Proyecto</string>
+    <string name="asignar">Asignar</string>
+    <string name="buscarpor">Buscar por:</string>
+    <string name="eliminarpor">Eliminar por:</string>
     <string name="ingresar">Ingresar</string>
     <string name="title_activity_menu_tablas">Menú Principal</string>
     <string name="hello_world">Hello world!</string>
@@ -35,7 +41,8 @@
     <string name="name">PDM</string>
     <string name="button3">Proyecto</string>
 
-    <string-array name="tablas">
+    <!-- Lista de titulos de navegacion-->   
+    <string-array name="nav_options">
         <item>Alumno</item>
         <item>Bitacora</item>
         <item>Encargado Social</item>
@@ -47,6 +54,19 @@
         <item>Institucion</item>
         <item>Escuela</item>
     </string-array>
+    <!-- Lista de iconos de navegacion-->
+    <array name="navigation_iconos">
+        <item>@drawable/ic_action_home</item>
+        <item>@drawable/ic_action_user</item>
+        <item>@drawable/ic_action_star</item>
+        <item>@drawable/ic_action_event</item>
+        <item>@drawable/ic_action_place</item>
+        <item>@drawable/ic_action_labels</item>
+        <item>@drawable/ic_action_settings</item>
+        <item>@drawable/ic_action_share</item>  
+        <item>@drawable/ic_action_settings</item>
+        <item>@drawable/ic_action_share</item>        
+    </array>    
 
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
