@@ -38,7 +38,6 @@
     <string name="title_activity_asignacion_proyecto_eliminar">AsignacionProyectoEliminarActivity</string>
     <string name="title_activity_asignacion_proyecto_actualizar">AsignacionProyectoActualizarActivity</string>
     <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
-    <string name="name">PDM</string>
     <string name="button3">Proyecto</string>
 
     <!-- Lista de titulos de navegacion-->   
@@ -68,11 +67,18 @@
         <item>@drawable/ic_action_share</item>        
     </array>    
 
-    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_open">Menu de Tablas</string>
     <string name="drawer_close">Close navigation drawer</string>
-    <string name="action_websearch">Web search</string>
-    <string name="app_not_available">Sorry, there\'s no web browser available</string>
     <string name="title_activity_proyecto_insertar">ProyectoInsertarActivity</string>
     <string name="title_activity_proyecto_menu">ProyectoMenuActivity</string>
+    <string name="title_activity_navigation_drawer_menu">NavigationDrawerMenuActivity</string>
 
+    <string name="idProyecto">Codigo Proyecto</string>
+    <string name="nombreProyecto">Nombre Proyecto</string>
+    <string name="CodigoSolicitante">Codigo Solicitante</string>
+    <string name="CodigoTipoProyecto">Codigo Tipo de Proyecto</string>
+    <string name="CodigoEncargadoProyecto">Codigo Encargado Proyecto</string>
+    <string name="opciones">Opciones</string>
+    <string name="insertar">Insertar</string>
+    <string name="limpiar">Limpiar</string>
 </resources>

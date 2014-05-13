@@ -117,7 +117,25 @@ public class ControlBD {
           
           public String insertar(Institucion institucion) { return null; }
           
-          public String insertar(Proyecto proyecto) { return null; }
+          public String insertar(Proyecto proyecto) {
+        	  String mensaje=""; 
+              long contador=0; 
+              
+              ContentValues values = new ContentValues();
+              values.put("codigoProyecto", proyecto.getIdProyecto());
+              values.put("codigoSolicitante", proyecto.getIdSolicitante());
+              values.put("codigoTipoProyecto", proyecto.getIdTipoProyecto());
+              values.put("codigoEncargado", proyecto.getIdEncargado());
+              values.put("nombre", proyecto.getNombre());
+              
+              contador=db.insert("proyecto", null, values); 
+              if(contador==-1|| contador==0) 
+              { 
+                      mensaje="Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+                      } 
+              else { mensaje="Registro ingresado"; } 
+              return mensaje; 
+          }
           
           public String insertar(Solicitante solicitante) { return null; }
           
