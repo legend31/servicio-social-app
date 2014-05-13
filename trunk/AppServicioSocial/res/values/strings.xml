@@ -23,6 +23,7 @@
     <string name="proyecto">Proyecto</string>
     <string name="asignar">Asignar</string>
     <string name="buscarpor">Buscar por:</string>
+    <string name="actualizarpor">Actualizar por:</string>
     <string name="eliminarpor">Eliminar por:</string>
     <string name="ingresar">Ingresar</string>
     <string name="title_activity_menu_tablas">Menú Principal</string>

@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="14"
         android:targetSdkVersion="18" />
 
     <application
@@ -27,13 +27,7 @@
         </activity>
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.AlumnoMenuActivity"
-            android:label="@string/title_activity_menu_alumno"
-            android:parentActivityName="sv.edu.ues.fia.appserviciosocial.MenuTablasActivity" >
-
-            <!-- Parent activity meta-data to support API level 7+ -->
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="sv.edu.ues.fia.appserviciosocial.MenuTablasActivity" />
+            android:label="@string/title_activity_menu_alumno">
         </activity>
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.AlumnoInsertarActivity"

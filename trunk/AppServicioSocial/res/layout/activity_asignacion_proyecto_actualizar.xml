@@ -7,10 +7,66 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".AsignacionProyectoActualizarActivity" >
-
-    <TextView
+    
+     <RadioGroup
+        android:id="@+id/radioGroup1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal" >
+
+         <RadioButton
+             android:id="@+id/rbtAlumno"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:checked="true"
+             android:onClick="seleccion"
+             android:text="@string/alumno" />
+
+        <RadioButton
+            android:id="@+id/rbtProyecto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="seleccion"
+            android:text="@string/proyecto" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/actualizarpor" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp" >
+
+        <EditText
+            android:id="@+id/txtBusqueda"
+             android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/alumno"
+            android:inputType="textPersonName" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/btnBuscar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/buscar" />
+    </LinearLayout>
+    
 
 </RelativeLayout>
