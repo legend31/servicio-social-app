@@ -48,8 +48,7 @@ public class ProyectoMenuActivity extends TabActivity {
 
 		spec = pestañas.newTabSpec("Consultar");
 		spec.setIndicator("", res.getDrawable(R.drawable.consultar));
-		Intent consultarIntent = new Intent(this,
-				AsignacionProyectoConsultarActivity.class);
+		Intent consultarIntent = new Intent(this,ProyectoConsultarActivity.class);
 		spec.setContent(consultarIntent);
 		pestañas.addTab(spec);
 

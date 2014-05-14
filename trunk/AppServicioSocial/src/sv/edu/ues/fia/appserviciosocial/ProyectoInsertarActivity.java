@@ -73,7 +73,6 @@ public class ProyectoInsertarActivity extends Activity {
 		//idProyecto.setText("");
 		idEncargado.setText("");
 		idTipoProyecto.setText("");
-		idEncargado.setText("");
 		nombre.setText("");
 		idSolicitante.setText("");
 	}
