@@ -42,7 +42,19 @@ public class ProyectoInsertarActivity extends Activity {
 		int codeTipoProyecto = Integer.parseInt(idTipoProyecto.getText().toString());
 		int codeEncargado = Integer.parseInt(idEncargado.getText().toString());
 		String name = nombre.getText().toString();
+		String info="";
 		
+		
+		if(name == null || name.trim() == "")
+		{
+			info = "Nombre del Proyecto inválido";
+		}
+		
+		if(info != "")
+		{
+			Toast.makeText(this, info, Toast.LENGTH_SHORT).show();
+			return;
+		}
 		
 		Proyecto proyecto = new Proyecto();
 		//proyecto.setIdProyecto(codeProyecto);
@@ -63,6 +75,7 @@ public class ProyectoInsertarActivity extends Activity {
 		idTipoProyecto.setText("");
 		idEncargado.setText("");
 		nombre.setText("");
+		idSolicitante.setText("");
 	}
 
 }

@@ -42,7 +42,7 @@ public class ProyectoMenuActivity extends TabActivity {
 
 		spec = pestañas.newTabSpec("Insertar");
 		spec.setIndicator("", res.getDrawable(R.drawable.nuevo));
-		Intent insertarIntent = new Intent(this, AsignacionProyectoInsertarActivity.class);
+		Intent insertarIntent = new Intent(this,ProyectoInsertarActivity.class);
 		spec.setContent(insertarIntent);
 		pestañas.addTab(spec);
 
