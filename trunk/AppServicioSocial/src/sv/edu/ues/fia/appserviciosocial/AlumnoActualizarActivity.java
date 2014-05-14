@@ -48,15 +48,15 @@ public class AlumnoActualizarActivity extends Activity {
 	
 	public void consultarAlumno(View v)
 	{
-		tablaDeDatos.setVisibility(View.VISIBLE);
+		/*tablaDeDatos.setVisibility(View.VISIBLE);
 		btnActualizar.setVisibility(View.VISIBLE);
 		txtNombre.setText("Rodrigo Valle");
 		txtTelefono.setText("22785645");
 		txtDui.setText("033205671");
 		txtNit.setText("06142906938547");
-		txtEmail.setText("rodrigoahv@yahoo.es");
+		txtEmail.setText("rodrigoahv@yahoo.es");*/
 		
-		/*String carnet = txtCarnet.getText().toString();
+		String carnet = txtCarnet.getText().toString();
 		String info;
 		//Validando
 		if(carnet == null || carnet.trim() == "")
@@ -82,7 +82,7 @@ public class AlumnoActualizarActivity extends Activity {
 			txtDui.setText(alumno.getDui());
 			txtNit.setText(alumno.getNit());
 			txtEmail.setText(alumno.getEmail());
-		}*/
+		}
 	}
 	
 	public void insertarAlumno(View v)

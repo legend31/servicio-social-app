@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class AlumnoConsultarActivity extends Activity {
 
@@ -35,27 +36,8 @@ public class AlumnoConsultarActivity extends Activity {
 	
 	public void consultarAlumno(View v) {
 		
-		Object [] datos = new Object[10];
-		datos[0] = "Nombre:";
-		datos[1] = "Rodrigo Valle";
-		datos[2] = "Teléfono:";
-		datos[3] = "22724569";
-		datos[4] = "DUI:";
-		datos[5] = "032568402";
-		datos[6] = "NIT:";
-		datos[7] = "06142906937897";
-		datos[8] = "E-mail:";
-		datos[9] = "rodrigoahv@yahoo.es";
-		
-		//Llenando tabla
-		lblDatos.setVisibility(View.VISIBLE);
-		ArrayAdapter<Object> adaptador =
-		        new ArrayAdapter<Object>(this, android.R.layout.simple_list_item_1, datos);
-		gdvTabla.setAdapter(adaptador);
-		
-		
-		/*
 		String carnet = txtCarnet.getText().toString();
+		String info;
 		//Validando
 		if(carnet == null || carnet.trim() == "")
 		{
@@ -90,8 +72,8 @@ public class AlumnoConsultarActivity extends Activity {
 			ArrayAdapter<String> adaptador =
 			        new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, datos);
 			gdvTabla.setAdapter(adaptador);
-		}*/
-		
 		}
+		
+	}
 
 }
