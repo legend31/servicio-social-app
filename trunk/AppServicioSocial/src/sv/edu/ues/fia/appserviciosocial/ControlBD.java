@@ -53,16 +53,46 @@ public class ControlBD {
                 public void onCreate(SQLiteDatabase db) {
                         // TODO Auto-generated method stub
                         try {
-                                db.execSQL("CREATE TABLE alumno( carnet VARCHAR(27) NOT NULL PRIMARY KEY, nombre VARCHAR(100),telefono VARCHAR(8),dui VARCHAR(10)");
-                                db.execSQL("CREATE TABLE bitacora( id INTEGER NOT NULL PRIMARY KEY, carnet VARCHAR(7) NOT NULL,idTipoTrabajo INTEGER NOT NULL,carnet VARCHAR(7) NOT NULL,fecha DATE,descripcion VARCHAR(500)");
-                                db.execSQL("CREATE TABLE cargo( idCargo INTEGER NOT NULL PRIMARY KEY,nombre VARCHAR(100),descripcion VARCHAR(250)");
-                                db.execSQL("CREATE TABLE encargadoserviciosocial( idEncargado INTEGER NOT NULL PRIMARY KEY,nombre VARCHAR(100) NOT NULL,email VARCHAR(50),telefono VARCHAR(8),facultad VARCHAR(100), escuela VARCHAR(50)");
-                                db.execSQL("CREATE TABLE institucion( idinstitucion INTEGER NOT NULL PRIMARY KEY,nombre VARCHAR(100),nit VARCHAR(17)");
-                                db.execSQL("CREATE TABLE proyecto( idproyecto INTEGER NOT NULL PRIMARY KEY, idsolicitante INTEGER NOT NULL, idtipoproyecto INTEGER NOT NULL, idencargado INTEGER NOT NULL, nombre VARCHAR(100)");
-                                db.execSQL("CREATE TABLE solicitante( idsolicitante INTEGER NOT NULL PRIMARY KEY, idinstitucion INTEGER NOT NULL, idcargo INTEGER NOT NULL, nombre VARCHAR(100), telefono VARCHAR(8),correo_electronico VARCHAR(100)");
-                                db.execSQL("CREATE TABLE tipoproyecto( idtipoproyecto INTEGER NOT NULL PRIMARY KEY, nombre VARCHAR(100)");
-                                db.execSQL("CREATE TABLE tipotrabajo( idtipotrabajo INTEGER NOT NULL PRIMARY KEY, nombre VARCHAR(100) NOT NULL,valor REAL NOT NULL");
-                                db.execSQL("CREATE TABLE asignacionproyecto( carnet VARCHAR(7) NOT NULL, idproyecto INTEGER NOT NULL, fecha DATE, PRIMARY KEY(carnet,idproyecto)");
+                        		//lo de light xD
+                               /* db.execSQL("CREATE TABLE alumno( carnet VARCHAR(27) NOT NULL PRIMARY KEY, nombre VARCHAR(100),telefono VARCHAR(8),dui VARCHAR(10));");
+                                db.execSQL("CREATE TABLE bitacora( id INTEGER NOT NULL PRIMARY KEY, carnet VARCHAR(7) NOT NULL,idTipoTrabajo INTEGER NOT NULL,carnet VARCHAR(7) NOT NULL,fecha DATE,descripcion VARCHAR(500);");
+                                db.execSQL("CREATE TABLE cargo( idCargo INTEGER NOT NULL PRIMARY KEY,nombre VARCHAR(100),descripcion VARCHAR(250);");
+                                db.execSQL("CREATE TABLE encargadoserviciosocial( idEncargado INTEGER NOT NULL PRIMARY KEY,nombre VARCHAR(100) NOT NULL,email VARCHAR(50),telefono VARCHAR(8),facultad VARCHAR(100), escuela VARCHAR(50);");
+                                db.execSQL("CREATE TABLE institucion( idinstitucion INTEGER NOT NULL PRIMARY KEY,nombre VARCHAR(100),nit VARCHAR(17);");
+                                db.execSQL("CREATE TABLE proyecto( idproyecto INTEGER NOT NULL PRIMARY KEY, idsolicitante INTEGER NOT NULL, idtipoproyecto INTEGER NOT NULL, idencargado INTEGER NOT NULL, nombre VARCHAR(100);");
+                                db.execSQL("CREATE TABLE solicitante( idsolicitante INTEGER NOT NULL PRIMARY KEY, idinstitucion INTEGER NOT NULL, idcargo INTEGER NOT NULL, nombre VARCHAR(100), telefono VARCHAR(8),correo_electronico VARCHAR(100);");
+                                db.execSQL("CREATE TABLE tipoproyecto( idtipoproyecto INTEGER NOT NULL PRIMARY KEY, nombre VARCHAR(100);");
+                                db.execSQL("CREATE TABLE tipotrabajo( idtipotrabajo INTEGER NOT NULL PRIMARY KEY, nombre VARCHAR(100) NOT NULL,valor REAL NOT NULL;");
+                                db.execSQL("CREATE TABLE asignacionproyecto( carnet VARCHAR(7) NOT NULL, idproyecto INTEGER NOT NULL, fecha DATE, PRIMARY KEY(carnet,idproyecto);");
+                                */
+                        	
+                        		//lo del script de powerdesigner
+                        	db.execSQL("create table ALUMNO (CARNET VARCHAR(7) not null primary key, NOMBRE VARCHAR(100) not null, " +
+                        			"TELEFONO VARCHAR(8) not null, DUI VARCHAR(10) not null, NIT VARCHAR(17) not null, EMAIL VARCHAR(50));");
+                        	db.execSQL("create table BITACORA ( ID INTEGER not null primary key, IDTIPOTRABAJO INTEGER not null, CARNET VARCHAR(7) " +
+                        			"not null, IDPROYECTO INTEGER not null, FECHA DATE not null, DESCRIPCION VARCHAR(250) not null, " +
+                        			"constraint FK_BITACORA_COMPONE_PROYECTO foreign key (IDPROYECTO) references PROYECTO (IDPROYECTO),constraint " +
+                        			"FK_BITACORA_SE_CLASIF_TIPOTRAB foreign key (IDTIPOTRABAJO)references TIPOTRABAJO (IDTIPOTRABAJO),constraint " +
+                        			"FK_BITACORA_TIENE_ALUMNO foreign key (CARNET)references ALUMNO (CARNET));");
+                        	db.execSQL("create table CARGO ( IDCARGO INTEGER not null primary key,NOMBRE VARCHAR(100),DESCRIPCION VARCHAR(250) );");
+                        	db.execSQL("create table ENCARGADOSERVICIOSOCIAL ( IDENCARGADO INTEGER not null primary key, NOMBRE VARCHAR(100) not null," +
+                        			" EMAIL VARCHAR(50),TELEFONO VARCHAR(8) not null, FACULTAD VARCHAR(100),ESCUELA CHAR(100));");
+                        	db.execSQL("create table INSTITUCION ( IDINSTITUCION INTEGER not null primary key, NOMBRE VARCHAR(100) not null, NIT VARCHAR(17) not null);");
+                        	db.execSQL("create table PROYECTO ( IDPROYECTO INTEGER not null primary key, IDSOLICITANTE INTEGER not null, IDTIPOPROYECTO INTEGER " +
+                        			"not null, IDENCARGADO INTEGER not null, NOMBRE VARCHAR(100) not null, constraint FK_PROYECTO_ADMINISTR_ENCARGAD foreign key " +
+                        			"(IDENCARGADO) references ENCARGADOSERVICIOSOCIAL (IDENCARGADO), constraint FK_PROYECTO_SUPERVISA_SOLICITA foreign key " +
+                        			"(IDSOLICITANTE) references SOLICITANTE (IDSOLICITANTE), constraint FK_PROYECTO_TIENE_UN_TIPOPROY foreign key (IDTIPOPROYECTO) " +
+                        			"references TIPOPROYECTO (IDTIPOPROYECTO) );");
+                        	db.execSQL("create table SOLICITANTE ( IDSOLICITANTE INTEGER not null primary key, IDINSTITUCION INTEGER not null, IDCARGO INTEGER not" +
+                        			" null, NOMBRE VARCHAR(100), TELEFONO VARCHAR(8), CORREO_ELECTRONICO   CHAR(100), constraint FK_SOLICITA_CARGO_SOL_CARGO foreign " +
+                        			"key (IDCARGO) references CARGO (IDCARGO), constraint FK_SOLICITA_PERTENECE_INSTITUC foreign key (IDINSTITUCION) references " +
+                        			"INSTITUCION (IDINSTITUCION));");
+                        	db.execSQL("create table TIPOPROYECTO ( IDTIPOPROYECTO INTEGER not null primary key, NOMBRE VARCHAR(100) not null );");
+                        	db.execSQL("create table TIPOTRABAJO ( IDTIPOTRABAJO INTEGER not null primary key, NOMBRE VARCHAR(100) not null, VALOR FLOAT not null );");
+                        	db.execSQL("create table ASIGNACIONPROYECTO ( CARNET VARCHAR(7) not null, IDPROYECTO INTEGER not null, FECHA DATE, PRIMARY KEY(carnet,idproyecto)" +
+                        			" CONSTRAINT fk_asignacionproyecto_proyecto FOREIGN KEY (idproyecto) REFERENCES proyecto(idproyecto) ON DELETE RESTRICT, CONSTRAINT " +
+                        			"fk_asignacionproyecto_alumno FOREIGN KEY (carnet) REFERENCES alumno(carnet) ON DELETE RESTRICT );");
+                        		
                         } catch (SQLException e) {
                                 e.printStackTrace();
                         }

@@ -62,27 +62,12 @@ public class AlumnoInsertarActivity extends Activity {
 		{
 			info = "Teléfono inválido";
 		}
-		try{
-			Integer.parseInt(telefono);
-		}catch(NumberFormatException ex){
-			info = "Teléfono inválido";
-		}
 		if(dui == null || dui.trim() == "" || dui.length() != 9)
 		{
 			info = "DUI inválido";
 		}
-		try{
-			Integer.parseInt(dui);
-		}catch(NumberFormatException ex){
-			info = "DUI inválido";
-		}
 		if(nit == null || nit.trim() == "" || nit.length() != 14)
 		{
-			info = "NIT inválido";
-		}
-		try{
-			Integer.parseInt(nit);
-		}catch(NumberFormatException ex){
 			info = "NIT inválido";
 		}
 		if(email == null || email.trim() == "" || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches())
