@@ -35,18 +35,27 @@ public class AlumnoMenuActivity extends TabActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_menu_alumno);
 
-		//Crea las cuatro pestañas de menu y monta adentro las activities
+
+
+		// Obtiene el actionbar y habilita el boton de navegacion hacia arriba
+		ActionBar actionBar = getActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(false);
+		
+
+		// Crea las cuatro pestañas de menu y monta adentro las activities
 		TabHost pestañas = getTabHost();
 		TabSpec crear = pestañas.newTabSpec("Crear");
 		crear.setIndicator("", getResources().getDrawable(R.drawable.nuevo));
 		Intent primerIntent = new Intent(this, AlumnoInsertarActivity.class);
 		crear.setContent(primerIntent);
 		TabSpec consultar = pestañas.newTabSpec("Consultar");
-		consultar.setIndicator("", getResources().getDrawable(R.drawable.consultar));
+		consultar.setIndicator("",
+				getResources().getDrawable(R.drawable.consultar));
 		Intent sIntent = new Intent(this, AlumnoConsultarActivity.class);
 		consultar.setContent(sIntent);
 		TabSpec actualizar = pestañas.newTabSpec("Actualizar");
-		actualizar.setIndicator("", getResources().getDrawable(R.drawable.actualizar));
+		actualizar.setIndicator("",
+				getResources().getDrawable(R.drawable.actualizar));
 		Intent tIntent = new Intent(this, AlumnoActualizarActivity.class);
 		actualizar.setContent(tIntent);
 		TabSpec eliminar = pestañas.newTabSpec("Eliminar");
@@ -57,7 +66,7 @@ public class AlumnoMenuActivity extends TabActivity {
 		pestañas.addTab(consultar);
 		pestañas.addTab(actualizar);
 		pestañas.addTab(eliminar);
-		
+
 		//Drawer Layout
 		this.NavDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		//Lista
@@ -127,8 +136,9 @@ public class AlumnoMenuActivity extends TabActivity {
             }
         });
         
+
 	}
-	
+
 	
 	private void abrirActivity(int posicion){
 		switch (posicion) {
@@ -153,6 +163,7 @@ public class AlumnoMenuActivity extends TabActivity {
 		default:
 			break;
 		}
+
 	}
 	
 	@Override
