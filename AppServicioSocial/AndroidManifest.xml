@@ -27,7 +27,7 @@
         </activity>
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.AlumnoMenuActivity"
-            android:label="@string/title_activity_menu_alumno">
+            android:label="@string/title_activity_menu_alumno" >
         </activity>
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.AlumnoInsertarActivity"
@@ -76,6 +76,10 @@
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.ProyectoMenuActivity"
             android:label="@string/title_activity_proyecto_menu" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.ProyectoConsultarActivity"
+            android:label="@string/title_activity_proyecto_consultar" >
         </activity>
     </application>
 

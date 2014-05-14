@@ -41,7 +41,7 @@
     <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
     <string name="button3">Proyecto</string>
 
-    <!-- Lista de titulos de navegacion-->   
+    <!-- Lista de titulos de navegacion -->
     <string-array name="nav_options">
         <item>Alumno</item>
         <item>Bitacora</item>
@@ -54,7 +54,7 @@
         <item>Institucion</item>
         <item>Escuela</item>
     </string-array>
-    <!-- Lista de iconos de navegacion-->
+    <!-- Lista de iconos de navegacion -->
     <array name="navigation_iconos">
         <item>@drawable/ic_action_home</item>
         <item>@drawable/ic_action_user</item>
@@ -63,17 +63,16 @@
         <item>@drawable/ic_action_place</item>
         <item>@drawable/ic_action_labels</item>
         <item>@drawable/ic_action_settings</item>
-        <item>@drawable/ic_action_share</item>  
+        <item>@drawable/ic_action_share</item>
         <item>@drawable/ic_action_settings</item>
-        <item>@drawable/ic_action_share</item>        
-    </array>    
+        <item>@drawable/ic_action_share</item>
+    </array>
 
     <string name="drawer_open">Menu de Tablas</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="title_activity_proyecto_insertar">ProyectoInsertarActivity</string>
     <string name="title_activity_proyecto_menu">ProyectoMenuActivity</string>
     <string name="title_activity_navigation_drawer_menu">NavigationDrawerMenuActivity</string>
-
     <string name="idProyecto">Codigo Proyecto</string>
     <string name="nombreProyecto">Nombre Proyecto</string>
     <string name="CodigoSolicitante">Codigo Solicitante</string>
@@ -82,4 +81,7 @@
     <string name="opciones">Opciones</string>
     <string name="insertar">Insertar</string>
     <string name="limpiar">Limpiar</string>
+    <string name="title_activity_proyecto_consultar">ProyectoConsultarActivity</string>
+    <string name="consultar">Consultar</string>
+
 </resources>
