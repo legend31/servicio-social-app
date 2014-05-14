@@ -1,0 +1,97 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".ProyectoInsertarActivity" >
+
+    <!--
+    <EditText
+        android:id="@+id/editCodigoProyecto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:ems="12"
+        android:hint="@string/idProyecto"
+        android:inputType="number" >
+
+        <requestFocus />
+    </EditText>
+    -->
+
+    <EditText
+        android:id="@+id/editTipoProyecto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:ems="12"
+        android:hint="@string/CodigoTipoProyecto"
+        android:inputType="number" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/editNombreProyecto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTipoProyecto"
+        android:layout_below="@+id/editTipoProyecto"
+        android:layout_marginTop="17dp"
+        android:ems="12"
+        android:hint="@string/nombreProyecto"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/editCodeEncargadoProyecto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editNombreProyecto"
+        android:layout_below="@+id/editNombreProyecto"
+        android:layout_marginTop="17dp"
+        android:ems="12"
+        android:hint="@string/CodigoEncargadoProyecto"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/editCodeSolicitante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editCodeEncargadoProyecto"
+        android:layout_below="@+id/editCodeEncargadoProyecto"
+        android:layout_marginTop="17dp"
+        android:ems="12"
+        android:hint="@string/CodigoSolicitante"
+        android:inputType="number" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/editCodeSolicitante"
+        android:orientation="vertical"
+        android:paddingTop="45dip" 
+        android:layout_centerInParent="true"
+        >
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="insertarProyecto"
+            android:text="@string/insertar"
+             />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="limpiar"
+            android:text="@string/limpiar"
+            />
+    </LinearLayout>
+
+</RelativeLayout>
