@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.TabActivity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -42,13 +43,14 @@ public class ProyectoMenuActivity extends TabActivity {
 
 		spec = pestañas.newTabSpec("Insertar");
 		spec.setIndicator("", res.getDrawable(R.drawable.nuevo));
-		Intent insertarIntent = new Intent(this,ProyectoInsertarActivity.class);
+		Intent insertarIntent = new Intent(this, ProyectoInsertarActivity.class);
 		spec.setContent(insertarIntent);
 		pestañas.addTab(spec);
 
 		spec = pestañas.newTabSpec("Consultar");
 		spec.setIndicator("", res.getDrawable(R.drawable.consultar));
-		Intent consultarIntent = new Intent(this,ProyectoConsultarActivity.class);
+		Intent consultarIntent = new Intent(this,
+				ProyectoConsultarActivity.class);
 		spec.setContent(consultarIntent);
 		pestañas.addTab(spec);
 
@@ -144,15 +146,28 @@ public class ProyectoMenuActivity extends TabActivity {
 	}
 
 	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		mDrawerToggle.syncState();
+	}
+
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		// Called by the system when the device configuration changes while your
+		// activity is running
+		super.onConfigurationChanged(newConfig);
+		mDrawerToggle.onConfigurationChanged(newConfig);
+	}
+
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Regresa con efecto de movimiento al activity con boton de navegacion
-		// de actionbar
-		if (item.getItemId() == android.R.id.home) {
-			finish();
-			overridePendingTransition(R.anim.right_in, R.anim.right_out);
+		// Pass the event to ActionBarDrawerToggle, if it returns
+		// true, then it has handled the app icon touch event
+		if (mDrawerToggle.onOptionsItemSelected(item)) {
 			return true;
 		}
-		return true;
+		// Handle your other action bar items...
+		return super.onOptionsItemSelected(item);
 	}
 
 	private void abrirActivity(int posicion) {

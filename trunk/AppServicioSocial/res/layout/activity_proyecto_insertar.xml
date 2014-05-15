@@ -68,6 +68,7 @@
         <TableRow
             android:layout_marginStart="50dip">
             <Button
+                android:id="@+id/btnIngresarProyecto"
                 android:onClick="insertarProyecto"
                 android:text="@string/insertar" />
 

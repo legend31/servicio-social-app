@@ -152,7 +152,7 @@ public class AlumnoMenuActivity extends TabActivity {
 			startActivity(new Intent(this, AlumnoMenuActivity.class));
 		break;
 		case 4:
-			startActivity(new Intent(this, AlumnoMenuActivity.class));
+			startActivity(new Intent(this, ProyectoMenuActivity.class));
 		break;
 		case 5:
 			startActivity(new Intent(this, AlumnoMenuActivity.class));
