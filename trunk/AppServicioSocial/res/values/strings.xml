@@ -86,10 +86,12 @@
     <string name="title_activity_solicitante_insertar">SolicitanteInsertarActivity</string>
     <string name="solicitante">Solicitante</string>
     <string name="institucion">Institución</string>
-    <string name="title_activity_solicitanten_eliminar">SolicitantenEliminarActivity</string>
+    <string name="title_activity_solicitante_eliminar">SolicitantenEliminarActivity</string>
     <string name="idSolicitante">ID Solicitante</string>
     <string name="title_activity_solicitante_consultar">SolicitanteConsultarActivity</string>
-    <string name="title_activity_solicitante_menu">SolicitanteMenuActivity</string>
+    <string name="title_activity_solicitante_actualizar">SolicitanteActualizarActivity</string>
+    <string name="title_activity_solicitante_menu">SolicitanteMenu</string>
+    
     <string name="title_activity_institucion_menua">InstitucionMenuaActivity</string>
     <string name="title_activity_institucion_insertar">InstitucionInsertarActivity</string>
     <string name="title_activity_institucion_consultar">InstitucionConsultarActivity</string>
