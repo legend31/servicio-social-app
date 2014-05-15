@@ -19,7 +19,8 @@
         android:layout_marginTop="17dp"
         android:ems="10"
         android:hint="@string/carnet"
-        android:maxLength="7" >
+        android:maxLength="7"
+        android:inputType="textPersonName" >
 
         <requestFocus />
         </EditText>
