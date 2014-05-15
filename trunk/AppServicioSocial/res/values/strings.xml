@@ -83,5 +83,7 @@
     <string name="limpiar">Limpiar</string>
     <string name="title_activity_proyecto_consultar">ProyectoConsultarActivity</string>
     <string name="consultar">Consultar</string>
+    <string name="title_activity_actualizar_proyecto">ActualizarProyectoActivity</string>
+    <string name="mensaje">Ingrese el nombre del Proyecto</string>
 
 </resources>

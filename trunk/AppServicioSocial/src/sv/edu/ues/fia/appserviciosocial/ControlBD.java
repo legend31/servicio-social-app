@@ -274,7 +274,15 @@ public class ControlBD {
 	}
 
 	public String actualizar(Proyecto proyecto) {
-		return null;
+		String[] id = { String.valueOf(proyecto.getIdProyecto()) };
+		ContentValues cv = new ContentValues();
+		cv.put("idproyecto",proyecto.getIdProyecto());
+		cv.put("idsolicitante", proyecto.getIdSolicitante());
+		cv.put("idtipoproyecto", proyecto.getIdTipoProyecto());
+		cv.put("idencargado", proyecto.getIdEncargado());
+		cv.put("nombre", proyecto.getNombre());		
+		db.update("proyecto", cv, "idproyecto = ?", id);
+		return "Registro Actualizado Correctamente";
 	}
 
 	public String actualizar(Solicitante solicitante) {
