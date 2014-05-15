@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="sv.edu.ues.fia.appserviciosocial"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="18" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.AccesoActivity"
+            android:label="@string/acceso" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.MenuTablasActivity"
+            android:label="@string/title_activity_menu_tablas" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.AlumnoMenuActivity"
+            android:label="@string/title_activity_menu_alumno" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.AlumnoInsertarActivity"
+            android:label="@string/title_activity_alumno_insertar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.AlumnoConsultarActivity"
+            android:label="@string/title_activity_alumno_consultar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.AlumnoActualizarActivity"
+            android:label="@string/title_activity_alumno_actualizar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.AlumnoEliminarActivity"
+            android:label="@string/title_activity_alumno_eliminar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.AsignacionProyectoMenuActivity"
+            android:label="@string/title_activity_asignacion_proyecto_menu" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.AsignacionProyectoInsertarActivity"
+            android:label="@string/title_activity_asignacion_proyecto_insertar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.AsignacionProyectoConsultarActivity"
+            android:label="@string/title_activity_asignacion_proyecto_consultar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.AsignacionProyectoEliminarActivity"
+            android:label="@string/title_activity_asignacion_proyecto_eliminar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.AsignacionProyectoActualizarActivity"
+            android:label="@string/title_activity_asignacion_proyecto_actualizar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.NavigationDrawerActivity"
+            android:label="@string/title_activity_navigation_drawer" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.ProyectoInsertarActivity"
+            android:label="@string/title_activity_proyecto_insertar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.ProyectoMenuActivity"
+            android:label="@string/title_activity_proyecto_menu" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.ProyectoConsultarActivity"
+            android:label="@string/title_activity_proyecto_consultar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.InstitucionActualizarActivity"
+            android:label="@string/title_activity_institucion_actualizar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.InstitucionConsultarActivity"
+            android:label="@string/title_activity_institucion_consultar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.InstitucionEliminarActivity"
+            android:label="@string/title_activity_institucion_eliminar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.InstitucionInsertarActivity"
+            android:label="@string/title_activity_institucion_insertar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.SolicitanteActualizarActivity"
+            android:label="@string/title_activity_solicitante_actualizar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.SolicitanteConsultarActivity"
+            android:label="@string/title_activity_solicitante_consultar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.SolicitanteEliminarActivity"
+            android:label="@string/title_activity_solicitante_eliminar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.SolicitanteInsertarActivity"
+            android:label="@string/title_activity_solicitante_insertar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.InstitucionMenuActivity"
+            android:label="@string/title_activity_institucion_menu" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.SolicitanteMenuActivity"
+            android:label="@string/title_activity_solicitante_menu" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.ProyectoEliminarActivity"
+            android:label="@string/title_activity_proyecto_elimini" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.EncargadoMenuActivity"
+            android:label="@string/title_activity_encargado_menu" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.EncargadoInsertarActivity"
+            android:label="@string/title_activity_encargado_insertar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.EncargadoConsultarActivity"
+            android:label="@string/title_activity_encargado_consultar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.EncargadoActualizarActivity"
+            android:label="@string/title_activity_encargado_actualizar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.EncargadoEliminarActivity"
+            android:label="@string/title_activity_encargado_eliminar" >
+        </activity>
+         <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.ProyectoActualizarActivity"
+            android:label="@string/title_activity_actualizar_proyecto" >
+        </activity>
+    </application>
+
+</manifest>
