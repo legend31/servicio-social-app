@@ -18,6 +18,7 @@ public class MenuTablasActivity extends Activity implements OnClickListener{
 		findViewById(R.id.button3).setOnClickListener(this);
 		findViewById(R.id.btnSolicitante).setOnClickListener(this);
 		findViewById(R.id.btnInstitucion).setOnClickListener(this);
+		findViewById(R.id.btnEncargado).setOnClickListener(this);
 		
 	}
 	
@@ -46,6 +47,9 @@ public class MenuTablasActivity extends Activity implements OnClickListener{
 				break;
 			case R.id.btnInstitucion:
 				startActivity(new Intent(this, InstitucionMenuActivity.class));
+				break;
+			case R.id.btnEncargado:
+				startActivity(new Intent(this, EncargadoMenuActivity.class));
 				break;
 			
 			default:

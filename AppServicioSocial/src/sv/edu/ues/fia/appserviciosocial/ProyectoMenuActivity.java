@@ -56,7 +56,7 @@ public class ProyectoMenuActivity extends TabActivity {
 
 		spec = pestañas.newTabSpec("Actualizar");
 		spec.setIndicator("", res.getDrawable(R.drawable.actualizar));
-		Intent actualizarIntent = new Intent(this,ActualizarProyectoActivity.class);
+		Intent actualizarIntent = new Intent(this, AsignacionProyectoActualizarActivity.class);
 		spec.setContent(actualizarIntent);
 		pestañas.addTab(spec);
 

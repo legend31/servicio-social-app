@@ -49,4 +49,13 @@
         android:layout_below="@+id/btnSolicitante"
         android:text="@string/institucion" />
 
+    <Button
+        android:id="@+id/btnEncargado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnActualizar"
+        android:layout_below="@+id/btnInstitucion"
+        android:layout_marginTop="14dp"
+        android:text="@string/Encargado" />
+
 </RelativeLayout>
