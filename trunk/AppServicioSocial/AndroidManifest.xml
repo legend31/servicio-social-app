@@ -82,10 +82,6 @@
             android:label="@string/title_activity_proyecto_consultar" >
         </activity>
         <activity
-            android:name="sv.edu.ues.fia.appserviciosocial.ActualizarProyectoActivity"
-            android:label="@string/title_activity_actualizar_proyecto" >
-        </activity>
-        <activity
             android:name="sv.edu.ues.fia.appserviciosocial.InstitucionActualizarActivity"
             android:label="@string/title_activity_institucion_actualizar" >
         </activity>
@@ -126,6 +122,10 @@
             android:label="@string/title_activity_solicitante_menu" >
         </activity>
         <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.ProyectoEliminarActivity"
+            android:label="@string/title_activity_proyecto_elimini" >
+        </activity>
+        <activity
             android:name="sv.edu.ues.fia.appserviciosocial.EncargadoMenuActivity"
             android:label="@string/title_activity_encargado_menu" >
         </activity>
@@ -144,6 +144,10 @@
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.EncargadoEliminarActivity"
             android:label="@string/title_activity_encargado_eliminar" >
+        </activity>
+         <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.ProyectoActualizarActivity"
+            android:label="@string/title_activity_actualizar_proyecto" >
         </activity>
     </application>
 

@@ -73,11 +73,11 @@
     <string name="title_activity_proyecto_insertar">ProyectoInsertarActivity</string>
     <string name="title_activity_proyecto_menu">ProyectoMenuActivity</string>
     <string name="title_activity_navigation_drawer_menu">NavigationDrawerMenuActivity</string>
-    <string name="idProyecto">Codigo Proyecto</string>
+    <string name="idProyecto">ID Proyecto</string>
     <string name="nombreProyecto">Nombre Proyecto</string>
-    <string name="CodigoSolicitante">Codigo Solicitante</string>
-    <string name="CodigoTipoProyecto">Codigo Tipo de Proyecto</string>
-    <string name="CodigoEncargadoProyecto">Codigo Encargado Proyecto</string>
+    <string name="CodigoSolicitante">ID Solicitante</string>
+    <string name="CodigoTipoProyecto">ID Tipo Proyecto</string>
+    <string name="CodigoEncargadoProyecto">ID Encargado Proyecto</string>
     <string name="Encargado">Encargado del Proyecto</string>
     <string name="opciones">Opciones</string>
     <string name="insertar">Insertar</string>
@@ -100,7 +100,8 @@
     <string name="title_activity_institucion_menu">InstitucionMenuActivity</string>
     <string name="institucionNombre">Nombre Institución</string>
     <string name="title_activity_actualizar_proyecto">ActualizarProyectoActivity</string>
-    <string name="mensaje">Ingrese el nombre del Proyecto</string>
+    <string name="mensaje">Ingrese el ID del Proyecto</string>
+    <string name="title_activity_proyecto_elimini">ProyectoEliminiActivity</string>
     <string name="title_activity_encargado_menu">EncargadoMenuActivity</string>
     <string name="title_activity_encargado_insertar">EncargadoInsertarActivity</string>
     <string name="title_activity_encargado_consultar">EncargadoConsultarActivity</string>

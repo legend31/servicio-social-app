@@ -276,11 +276,13 @@ public class ControlBD {
 	public String actualizar(Proyecto proyecto) {
 		String[] id = { String.valueOf(proyecto.getIdProyecto()) };
 		ContentValues cv = new ContentValues();
+		
+		
 		cv.put("idproyecto",proyecto.getIdProyecto());
 		cv.put("idsolicitante", proyecto.getIdSolicitante());
 		cv.put("idtipoproyecto", proyecto.getIdTipoProyecto());
-		cv.put("idencargado", proyecto.getIdEncargado());
-		cv.put("nombre", proyecto.getNombre());		
+		cv.put("idencargado", proyecto.getIdEncargado());	
+		cv.put("nombre", proyecto.getNombre());
 		db.update("proyecto", cv, "idproyecto = ?", id);
 		return "Registro Actualizado Correctamente";
 	}
@@ -387,12 +389,12 @@ public class ControlBD {
 		return null;
 	}
 
-	public Proyecto consultarProyecto(String nombreProyecto) {
+	public Proyecto consultarProyecto(String codigoProyecto) {
 
-		//String[] id = { nombreProyecto };
-		String nombre="nombre";
-		Cursor cursor = db.query("proyecto",camposProyecto,nombre+" LIKE '%"+nombreProyecto+"%'",null,null,null,null,null);			
-//		Cursor cursor = db.query("proyecto", camposProyecto,"nombre like "+"'%?%'",id,null,null, null, null);
+		String[] id = { codigoProyecto };
+		//String id="nombreProyecto";
+		Cursor cursor = db.query("proyecto",camposProyecto,"idproyecto = ?",id,null,null,null);
+		//Cursor cursor = db.query("proyecto",camposProyecto,id+" LIKE '%"+nombreProyecto+"%'",null,null,null,null,null);			
 		if (cursor.moveToFirst()) {
 			Proyecto proyecto = new Proyecto();
 			proyecto.setIdProyecto(cursor.getInt(0));

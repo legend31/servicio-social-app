@@ -24,7 +24,6 @@ public class ProyectoInsertarActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		helper = new ControlBD(this);
 		setContentView(R.layout.activity_proyecto_insertar);
-		// idProyecto = (EditText) findViewById(R.id.editCodigoProyecto);
 		idSolicitante = (EditText) findViewById(R.id.editCodeSolicitante);
 		idTipoProyecto = (EditText) findViewById(R.id.editTipoProyecto);
 		idEncargado = (EditText) findViewById(R.id.editCodeEncargadoProyecto);
@@ -58,7 +57,6 @@ public class ProyectoInsertarActivity extends Activity {
 			return;
 		}
 
-		//btnIngresar.setEnabled(true);
 		Proyecto proyecto = new Proyecto();
 
 		proyecto.setIdSolicitante(codeSolicitante);
