@@ -397,11 +397,11 @@ public class ControlBD {
 		//Cursor cursor = db.query("proyecto",camposProyecto,id+" LIKE '%"+nombreProyecto+"%'",null,null,null,null,null);			
 		if (cursor.moveToFirst()) {
 			Proyecto proyecto = new Proyecto();
-			proyecto.setIdProyecto(cursor.getInt(0));
-			proyecto.setIdSolicitante(cursor.getInt(1));
-			proyecto.setIdTipoProyecto(cursor.getInt(2));
-			proyecto.setIdEncargado(cursor.getInt(3));
-			proyecto.setNombre(cursor.getString(4));
+			proyecto.setIdProyecto(cursor.getInt(cursor.getColumnIndex("idproyecto")));
+			proyecto.setIdSolicitante(cursor.getInt(cursor.getColumnIndex("idsolicitante")));
+			proyecto.setIdTipoProyecto(cursor.getInt(cursor.getColumnIndex("idtipoproyecto")));
+			proyecto.setIdEncargado(cursor.getInt(cursor.getColumnIndex("idencargado")));
+			proyecto.setNombre(cursor.getString(cursor.getColumnIndex("nombre")));
 
 			return proyecto;
 		} else {
