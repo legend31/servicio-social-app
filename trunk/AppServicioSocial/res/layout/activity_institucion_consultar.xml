@@ -1,0 +1,52 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="sv.edu.ues.fia.appserviciosocial.InstitucionConsultarActivity"
+    tools:ignore="MergeRootFrame" >
+
+    <EditText
+        android:id="@+id/editNitInstitucion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="31dp"
+        android:ems="10"
+        android:hint="@string/nit" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btnBuscarInstitucion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editNitInstitucion"
+        android:layout_alignBottom="@+id/editNitInstitucion"
+        android:layout_toRightOf="@+id/editNitInstitucion"
+        android:text="Button" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editNitInstitucion"
+        android:layout_below="@+id/btnBuscarInstitucion"
+        android:layout_marginTop="40dp"
+        android:text="@string/nombre"
+        android:textSize="@dimen/size20sp" />
+
+    <EditText
+        android:id="@+id/editVNombreInstitucion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignRight="@+id/btnBuscarInstitucion"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="15dp"
+        android:ems="10" />
+
+</RelativeLayout>

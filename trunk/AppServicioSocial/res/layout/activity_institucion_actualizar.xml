@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="sv.edu.ues.fia.appserviciosocial.InstitucionActualizarActivity"
+    tools:ignore="MergeRootFrame" >
+
+    <EditText
+        android:id="@+id/editActNitInstitucion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:hint="@string/nit" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btnActBuscarInstitucion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editActNitInstitucion"
+        android:layout_centerHorizontal="true"
+        android:text="@string/buscar" />
+
+    <EditText
+        android:id="@+id/editActNombreInstitucion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnActBuscarInstitucion"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp"
+        android:ems="10"
+        android:hint="@string/nombre" />
+
+    <Button
+        android:id="@+id/btnActualizarInstitucion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnActBuscarInstitucion"
+        android:layout_below="@+id/editActNombreInstitucion"
+        android:layout_marginTop="17dp"
+        android:text="@string/actualizar" />
+
+</RelativeLayout>
