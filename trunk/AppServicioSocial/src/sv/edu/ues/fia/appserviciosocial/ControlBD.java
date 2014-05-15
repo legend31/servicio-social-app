@@ -209,10 +209,11 @@ public class ControlBD {
 		long contador = 0;
 
 		ContentValues values = new ContentValues();
-		values.put("codigoProyecto", proyecto.getIdProyecto());
-		values.put("codigoSolicitante", proyecto.getIdSolicitante());
-		values.put("codigoTipoProyecto", proyecto.getIdTipoProyecto());
-		values.put("codigoEncargado", proyecto.getIdEncargado());
+		values.putNull("idproyecto");//coloca un null en el valor autoincremental
+		//vendría siendo igual a insert into proyect(codigoProyecto,...) values(null, ...);
+		values.put("idsolicitante", proyecto.getIdSolicitante());
+		values.put("idtipoproyecto", proyecto.getIdTipoProyecto());
+		values.put("idencargado", proyecto.getIdEncargado());
 		values.put("nombre", proyecto.getNombre());
 
 		contador = db.insert("proyecto", null, values);
