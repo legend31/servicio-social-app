@@ -81,6 +81,10 @@
             android:name="sv.edu.ues.fia.appserviciosocial.ProyectoConsultarActivity"
             android:label="@string/title_activity_proyecto_consultar" >
         </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.ActualizarProyectoActivity"
+            android:label="@string/title_activity_actualizar_proyecto" >
+        </activity>
     </application>
 
 </manifest>
