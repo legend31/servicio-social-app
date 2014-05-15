@@ -209,8 +209,10 @@ public class ControlBD {
 		long contador = 0;
 
 		ContentValues values = new ContentValues();
-		values.putNull("idproyecto");//coloca un null en el valor autoincremental
-		//vendría siendo igual a insert into proyect(codigoProyecto,...) values(null, ...);
+		values.putNull("idproyecto");// coloca un null en el valor
+										// autoincremental
+		// vendría siendo igual a insert into proyect(codigoProyecto,...)
+		// values(null, ...);
 		values.put("idsolicitante", proyecto.getIdSolicitante());
 		values.put("idtipoproyecto", proyecto.getIdTipoProyecto());
 		values.put("idencargado", proyecto.getIdEncargado());
@@ -240,7 +242,7 @@ public class ControlBD {
 	// Actualizaciones
 
 	public String actualizar(Alumno alumno) {
-		String[] id = {alumno.getCarnet()};
+		String[] id = { alumno.getCarnet() };
 		ContentValues cv = new ContentValues();
 		cv.put("nombre", alumno.getNombre());
 		cv.put("telefono", alumno.getTelefono());
@@ -379,9 +381,10 @@ public class ControlBD {
 
 	public Proyecto consultarProyecto(String nombreProyecto) {
 
-		String[] id = { nombreProyecto };
-		Cursor cursor = db.query("proyecto", camposProyecto, "nombre LIKE %?%",
-				id, null, null, null);
+		//String[] id = { nombreProyecto };
+		String nombre="nombre";
+		Cursor cursor = db.query("proyecto",camposProyecto,nombre+" LIKE '%"+nombreProyecto+"%'",null,null,null,null,null);			
+//		Cursor cursor = db.query("proyecto", camposProyecto,"nombre like "+"'%?%'",id,null,null, null, null);
 		if (cursor.moveToFirst()) {
 			Proyecto proyecto = new Proyecto();
 			proyecto.setIdProyecto(cursor.getInt(0));
