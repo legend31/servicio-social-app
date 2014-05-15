@@ -9,26 +9,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ProyectoInsertarActivity" >
 
-    <!--
-    <EditText
-        android:id="@+id/editCodigoProyecto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="17dp"
-        android:ems="12"
-        android:hint="@string/idProyecto"
-        android:inputType="number" >
-
-        <requestFocus />
-    </EditText>
-    -->
-
     <EditText
         android:id="@+id/editTipoProyecto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp"
         android:ems="12"
         android:hint="@string/CodigoTipoProyecto"
@@ -70,28 +56,26 @@
         android:hint="@string/CodigoSolicitante"
         android:inputType="number" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/editCodeSolicitante"
-        android:orientation="vertical"
-        android:paddingTop="45dip" 
-        android:layout_centerInParent="true"
-        >
+    <TableLayout
+        android:id="@+id/tabla"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editCodeSolicitante"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dip"
+         >
 
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:onClick="insertarProyecto"
-            android:text="@string/insertar"
-             />
+        <TableRow
+            android:layout_marginStart="50dip">
+            <Button
+                android:onClick="insertarProyecto"
+                android:text="@string/insertar" />
 
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:onClick="limpiar"
-            android:text="@string/limpiar"
-            />
-    </LinearLayout>
+            <Button
+                android:onClick="limpiar"
+                android:text="@string/limpiar" />
+
+        </TableRow>
+    </TableLayout>
 
 </RelativeLayout>
