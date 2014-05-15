@@ -107,5 +107,6 @@
     <string name="title_activity_encargado_consultar">EncargadoConsultarActivity</string>
     <string name="title_activity_encargado_actualizar">EncargadoActualizarActivity</string>
     <string name="title_activity_encargado_eliminar">EncargadoEliminarActivity</string>
+    <string name="bitacora">Bitacora</string>
 
 </resources>
