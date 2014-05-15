@@ -16,6 +16,8 @@ public class MenuTablasActivity extends Activity implements OnClickListener{
 		findViewById(R.id.btnActualizar).setOnClickListener(this);
 		findViewById(R.id.button2).setOnClickListener(this);
 		findViewById(R.id.button3).setOnClickListener(this);
+		findViewById(R.id.btnSolicitante).setOnClickListener(this);
+		findViewById(R.id.btnInstitucion).setOnClickListener(this);
 		
 	}
 	
@@ -35,10 +37,17 @@ public class MenuTablasActivity extends Activity implements OnClickListener{
 				break;
 			case R.id.button2:
 				startActivity(new Intent(this, AsignacionProyectoMenuActivity.class));
-			break;
+				break;
 			case R.id.button3:
 				startActivity(new Intent(this, ProyectoMenuActivity.class));
-			break;
+				break;
+			case R.id.btnSolicitante:
+				startActivity(new Intent(this, SolicitanteMenuActivity.class));
+				break;
+			case R.id.btnInstitucion:
+				startActivity(new Intent(this, InstitucionMenuActivity.class));
+				break;
+			
 			default:
 		}
 		overridePendingTransition(R.anim.left_in, R.anim.left_out);
