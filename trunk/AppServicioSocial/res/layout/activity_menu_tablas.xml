@@ -12,14 +12,16 @@
         android:id="@+id/btnActualizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/botonBitacora"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        android:layout_alignRight="@+id/button2"
         android:text="@string/alumno" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button3"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/btnActualizar"
         android:layout_marginRight="51dp"
@@ -29,23 +31,26 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnSolicitante"
+        android:layout_alignRight="@+id/btnSolicitante"
         android:layout_below="@+id/button2"
-        android:layout_centerHorizontal="true"
         android:text="@string/button3" />
 
     <Button
         android:id="@+id/btnSolicitante"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnInstitucion"
+        android:layout_alignRight="@+id/btnInstitucion"
         android:layout_below="@+id/button3"
-        android:layout_centerHorizontal="true"
         android:text="@string/solicitante" />
 
     <Button
         android:id="@+id/btnInstitucion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button3"
+        android:layout_alignLeft="@+id/btnEncargado"
+        android:layout_alignRight="@+id/btnEncargado"
         android:layout_below="@+id/btnSolicitante"
         android:text="@string/institucion" />
 
@@ -53,9 +58,16 @@
         android:id="@+id/btnEncargado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btnActualizar"
         android:layout_below="@+id/btnInstitucion"
-        android:layout_marginTop="14dp"
         android:text="@string/Encargado" />
+
+    <Button
+        android:id="@+id/botonBitacora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnEncargado"
+        android:layout_alignRight="@+id/button2"
+        android:layout_below="@+id/btnEncargado"
+        android:text="@string/bitacora" />
 
 </RelativeLayout>
