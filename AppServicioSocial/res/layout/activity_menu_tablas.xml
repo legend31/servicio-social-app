@@ -33,4 +33,20 @@
         android:layout_centerHorizontal="true"
         android:text="@string/button3" />
 
+    <Button
+        android:id="@+id/btnSolicitante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button3"
+        android:layout_centerHorizontal="true"
+        android:text="@string/solicitante" />
+
+    <Button
+        android:id="@+id/btnInstitucion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button3"
+        android:layout_below="@+id/btnSolicitante"
+        android:text="@string/institucion" />
+
 </RelativeLayout>

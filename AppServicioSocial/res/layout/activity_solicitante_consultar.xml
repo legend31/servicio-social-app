@@ -1,0 +1,108 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="sv.edu.ues.fia.appserviciosocial.SolicitanteConsultarActivity"
+    tools:ignore="MergeRootFrame" >
+
+    <EditText
+        android:id="@+id/edit_Nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:editable="false"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="89dp"
+        android:text="@string/nombre"
+        android:textSize="@dimen/size20sp" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/edit_Nombre"
+        android:layout_marginTop="20dp"
+        android:text="@string/telefono"
+        android:textSize="@dimen/size20sp" />
+
+    <EditText
+        android:id="@+id/edit_Telefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edit_Nombre"
+        android:layout_below="@+id/TextView01"
+        android:editable="false"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView01"
+        android:layout_below="@+id/edit_Telefono"
+        android:layout_marginTop="19dp"
+        android:text="@string/email"
+        android:textSize="@dimen/size20sp" />
+
+    <EditText
+        android:id="@+id/edit_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edit_Telefono"
+        android:layout_below="@+id/TextView02"
+        android:editable="false"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/TextView03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_email"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:text="@string/institucion"
+        android:textSize="@dimen/size20sp" />
+
+    <EditText
+        android:id="@+id/edit_institucion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edit_email"
+        android:layout_below="@+id/TextView03"
+        android:editable="false"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/editIdSolicitante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/TextView01"
+        android:layout_marginLeft="34dp"
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:hint="@string/idSolicitante" />
+
+    <Button
+        android:id="@+id/btnBuscarSolicitante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/editIdSolicitante"
+        android:text="@string/buscar" />
+
+</RelativeLayout>

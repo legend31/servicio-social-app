@@ -1,0 +1,77 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="sv.edu.ues.fia.appserviciosocial.SolicitanteActualizarActivity"
+    tools:ignore="MergeRootFrame" >
+
+    <EditText
+        android:id="@+id/editIdSolicitanteActualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="@string/idSolicitante" />
+
+    <Button
+        android:id="@+id/btnActualizarSolicitante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/editIdSolicitanteActualizar"
+        android:layout_toRightOf="@+id/editIdSolicitanteActualizar"
+        android:text="@string/buscar" />
+
+    <EditText
+        android:id="@+id/editCorreoSolicitante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTelefonoSolicitante"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:hint="@string/email" />
+
+    <EditText
+        android:id="@+id/editInstitucionSolicitante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editCorreoSolicitante"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="@string/institucion" />
+
+    <EditText
+        android:id="@+id/editTelefonoSolicitante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editCorreoSolicitante"
+        android:layout_alignLeft="@+id/editInstitucionSolicitante"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:hint="@string/telefono" />
+
+    <EditText
+        android:id="@+id/editNombreSolicitante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editTelefonoSolicitante"
+        android:layout_alignLeft="@+id/editTelefonoSolicitante"
+        android:ems="10"
+        android:hint="@string/nombre" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btnActualizarSolicitante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editInstitucionSolicitante"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:text="@string/actualizar" />
+
+</RelativeLayout>
