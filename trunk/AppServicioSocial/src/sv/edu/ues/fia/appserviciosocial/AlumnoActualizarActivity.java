@@ -1,12 +1,11 @@
 package sv.edu.ues.fia.appserviciosocial;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.Toast;
 
@@ -48,29 +47,20 @@ public class AlumnoActualizarActivity extends Activity {
 	
 	public void consultarAlumno(View v)
 	{
-		/*tablaDeDatos.setVisibility(View.VISIBLE);
-		btnActualizar.setVisibility(View.VISIBLE);
-		txtNombre.setText("Rodrigo Valle");
-		txtTelefono.setText("22785645");
-		txtDui.setText("033205671");
-		txtNit.setText("06142906938547");
-		txtEmail.setText("rodrigoahv@yahoo.es");*/
-		
 		String carnet = txtCarnet.getText().toString();
-		String info;
 		//Validando
-		if(carnet == null || carnet.trim() == "")
+		if(carnet == null || carnet.trim() == "" || carnet.length() != 7)
 		{
-			info = "Carnet inválido";
-			Toast.makeText(this, info, Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "Carnet inválido", Toast.LENGTH_LONG).show();
 			return;
-			
 		}
 		auxiliar.abrir();
 		Alumno alumno = auxiliar.consultarAlumno(carnet);
 		auxiliar.cerrar();
 		if(alumno == null)
 		{
+			tablaDeDatos.setVisibility(View.INVISIBLE);
+			btnActualizar.setVisibility(View.INVISIBLE);
 			Toast.makeText(this, "Alumno con carnet " +carnet +" no encontrado", Toast.LENGTH_LONG).show();
 			return;
 		}
@@ -85,7 +75,7 @@ public class AlumnoActualizarActivity extends Activity {
 		}
 	}
 	
-	public void insertarAlumno(View v)
+	public void actualizarAlumno(View v)
 	{
 		String carnet=txtCarnet.getText().toString();
 		String nombre=txtNombre.getText().toString();
@@ -95,7 +85,7 @@ public class AlumnoActualizarActivity extends Activity {
 		String email = txtEmail.getText().toString();
 		String info = "";
 		//Validando
-		if(carnet == null || carnet.trim() == "")
+		if(carnet == null || carnet.trim() == "" || carnet.length() != 7)
 		{
 			info = "Carnet inválido";
 		}
@@ -107,27 +97,12 @@ public class AlumnoActualizarActivity extends Activity {
 		{
 			info = "Teléfono inválido";
 		}
-		try{
-			Integer.parseInt(telefono);
-		}catch(NumberFormatException ex){
-			info = "Teléfono inválido";
-		}
 		if(dui == null || dui.trim() == "" || dui.length() != 9)
 		{
 			info = "DUI inválido";
 		}
-		try{
-			Integer.parseInt(dui);
-		}catch(NumberFormatException ex){
-			info = "DUI inválido";
-		}
 		if(nit == null || nit.trim() == "" || nit.length() != 14)
 		{
-			info = "NIT inválido";
-		}
-		try{
-			Integer.parseInt(nit);
-		}catch(NumberFormatException ex){
 			info = "NIT inválido";
 		}
 		if(email == null || email.trim() == "" || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches())

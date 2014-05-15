@@ -37,12 +37,10 @@ public class AlumnoConsultarActivity extends Activity {
 	public void consultarAlumno(View v) {
 		
 		String carnet = txtCarnet.getText().toString();
-		String info;
 		//Validando
-		if(carnet == null || carnet.trim() == "")
+		if(carnet == null || carnet.trim() == "" | carnet.length() != 7)
 		{
-			info = "Carnet inválido";
-			Toast.makeText(this, info, Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "Carnet inválido", Toast.LENGTH_LONG).show();
 			return;
 			
 		}
@@ -51,6 +49,8 @@ public class AlumnoConsultarActivity extends Activity {
 		auxiliar.cerrar();
 		if(alumno == null)
 		{
+			lblDatos.setVisibility(View.INVISIBLE);
+			gdvTabla.setVisibility(View.INVISIBLE);
 			Toast.makeText(this, "Alumno con carnet " +carnet +" no encontrado", Toast.LENGTH_LONG).show();
 			return;
 		}

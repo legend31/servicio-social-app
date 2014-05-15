@@ -30,11 +30,9 @@ public class AlumnoEliminarActivity extends Activity {
 	public void eliminarAlumno(View v)
 	{
 		String carnet = txtCarnet.getText().toString();
-		String info="";
-		if(carnet == null || carnet.trim() == "")
+		if(carnet == null || carnet.trim() == "" || carnet.length() != 7)
 		{
-			info = "Carnet inválido";
-			Toast.makeText(this, info, Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "Carnet inválido", Toast.LENGTH_LONG).show();
 			return;
 		}
 		Alumno alumno=new Alumno();
@@ -42,8 +40,7 @@ public class AlumnoEliminarActivity extends Activity {
 		auxiliar.abrir();
 		auxiliar.eliminar(alumno);
 		auxiliar.cerrar();
-		info = "Eliminación correcta";
-		Toast.makeText(this, info, Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, "Eliminación correcta", Toast.LENGTH_SHORT).show();
 	}
 
 }

@@ -50,7 +50,7 @@ public class AlumnoInsertarActivity extends Activity {
 		String email = txtEmail.getText().toString();
 		String info = "";
 		//Validando
-		if(carnet == null || carnet.trim() == "")
+		if(carnet == null || carnet.trim() == "" || carnet.length() != 7)
 		{
 			info = "Carnet inválido";
 		}

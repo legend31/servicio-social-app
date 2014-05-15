@@ -15,9 +15,9 @@ public class AccesoActivity extends Activity {
 	
 	public void ingresar(View v)
 	{
-		finish();
 		startActivity(new Intent(this, MenuTablasActivity.class));
         overridePendingTransition(R.anim.left_in, R.anim.left_out);
+        finish();
 	}
 
 
