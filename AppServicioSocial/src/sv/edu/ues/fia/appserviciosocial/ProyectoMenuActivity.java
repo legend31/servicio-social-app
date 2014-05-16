@@ -62,8 +62,7 @@ public class ProyectoMenuActivity extends TabActivity {
 
 		spec = pestañas.newTabSpec("Eliminar");
 		spec.setIndicator("", res.getDrawable(R.drawable.delete));
-		Intent eliminarIntent = new Intent(this,
-				AsignacionProyectoEliminarActivity.class);
+		Intent eliminarIntent = new Intent(this,ProyectoEliminarActivity.class);
 		spec.setContent(eliminarIntent);
 		pestañas.addTab(spec);
 
