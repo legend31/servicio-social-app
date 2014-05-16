@@ -105,11 +105,11 @@
     <string name="title_activity_actualizar_proyecto">ActualizarProyectoActivity</string>
     <string name="mensaje">Ingrese el ID del Proyecto</string>
     <string name="title_activity_proyecto_elimini">ProyectoEliminiActivity</string>
-    <string name="title_activity_encargado_menu">EncargadoMenuActivity</string>
-    <string name="title_activity_encargado_insertar">EncargadoInsertarActivity</string>
-    <string name="title_activity_encargado_consultar">EncargadoConsultarActivity</string>
-    <string name="title_activity_encargado_actualizar">EncargadoActualizarActivity</string>
-    <string name="title_activity_encargado_eliminar">EncargadoEliminarActivity</string>
+    <string name="title_activity_encargado_menu">Encargado de Servicio Social</string>
+    <string name="title_activity_encargado_insertar">Insertar Encargado</string>
+    <string name="title_activity_encargado_consultar">Consultar Encargado</string>
+    <string name="title_activity_encargado_actualizar">Actualizar Encargado</string>
+    <string name="title_activity_encargado_eliminar">Eliminar Encargado</string>
     <string name="bitacora">Bitacora</string>
     
     <string name="title_activity_bitacora_menu">Bitacora</string>
@@ -122,6 +122,16 @@
     <string name="title_activity_tipo_proyecto_actualizar">TipoProyectoActualizarActivity</string>
     <string name="title_activity_tipo_proyecto_consultar">TipoProyectoConsultarActivity</string>
     <string name="title_activity_tipo_proyecto_eliminar">TipoProyectoEliminarActivity</string>
+    <string name="title_activity_cargo_menu">Cargo</string>
+    <string name="title_activity_cargo_insertar">Insertar Cargo</string>
+    <string name="title_activity_cargo_actualizar">Actualizar Cargo</string>
+    <string name="title_activity_cargo_consultar">Consultar Cargo</string>
+    <string name="title_activity_cargo_eliminar">Eliminar Cargo</string>
     
+
+  <string name="facultad">Facultad</string>
+    <string name="cargo">Cargo del solicitante</string>
+    <string name="idEncargado">ID de Encargado</string>
+    <string name="escuela">Escuela</string>
 
 </resources>

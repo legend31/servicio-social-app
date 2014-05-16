@@ -21,6 +21,8 @@ public class MenuTablasActivity extends Activity implements OnClickListener{
 		findViewById(R.id.botonBitacora).setOnClickListener(this);
 		findViewById(R.id.btnEncargado).setOnClickListener(this);
 		findViewById(R.id.btnTipoProyecto).setOnClickListener(this);
+		findViewById(R.id.btnCargo).setOnClickListener(this);
+		
 		
 	}
 	
@@ -51,8 +53,13 @@ public class MenuTablasActivity extends Activity implements OnClickListener{
 				startActivity(new Intent(this, InstitucionMenuActivity.class));
 				break;
 			case R.id.btnEncargado:
-				//startActivity(new Intent(this, EncargadoMenuActivity.class));
+				startActivity(new Intent(this, EncargadoMenuActivity.class));
 				break;
+				
+			case R.id.btnCargo:
+				startActivity(new Intent(this, CargoMenuActivity.class));
+				break;
+
 			case R.id.botonBitacora:
 				startActivity(new Intent(this, BitacoraMenuActivity.class));
 				break;
