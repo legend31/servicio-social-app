@@ -11,92 +11,86 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".EncargadoInsertarActivity" >
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText6"
-        android:layout_below="@+id/editText6"
-        android:layout_marginTop="27dp"
-        android:text="@string/guardar" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_alignRight="@+id/editText6"
-        android:text="@string/limpiar" />
-
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText1"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="28dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:gravity="center"
-        android:text="@string/title_activity_encargado_insertar" 
-        android:textSize="20sp"/>
+        android:text="@string/title_activity_encargado_insertar"
+        android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/txtNombreEncargado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/titulo"
         android:layout_marginTop="35dp"
         android:ems="10"
         android:hint="@string/nombre"
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/txtEmailEncargado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText2"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:hint="@string/idEncargado" />
-
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText1"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/txtNombreEncargado"
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/txtTelefonoEncargado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText3"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/txtEmailEncargado"
         android:ems="10"
         android:hint="@string/telefono"
         android:inputType="phone" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/txtFacultadEncargado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText4"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/txtTelefonoEncargado"
         android:ems="10"
-        android:hint="@string/facultad" />
+        android:hint="@string/facultad"
+        android:inputType="text" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/txtEscuelaEncargado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText5"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/txtFacultadEncargado"
         android:ems="10"
-        android:hint="@string/escuela" />
+        android:hint="@string/escuela"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/btnLimpiarEncargado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/txtEscuelaEncargado"
+        android:layout_below="@+id/txtEscuelaEncargado"
+        android:layout_marginTop="23dp"
+        android:text="@string/limpiar"
+        android:onClick="limpiarEncargado" />
+
+    <Button
+        android:id="@+id/btnGuardarEncargado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtEscuelaEncargado"
+        android:layout_alignTop="@+id/btnLimpiarEncargado"
+        android:text="@string/guardar"
+        android:onClick="insertarEncargado" />
 
 </RelativeLayout>
