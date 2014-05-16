@@ -145,9 +145,13 @@
             android:name="sv.edu.ues.fia.appserviciosocial.EncargadoEliminarActivity"
             android:label="@string/title_activity_encargado_eliminar" >
         </activity>
-         <activity
+        <activity
             android:name="sv.edu.ues.fia.appserviciosocial.ProyectoActualizarActivity"
             android:label="@string/title_activity_actualizar_proyecto" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.BitacoraMenuActivity"
+            android:label="@string/title_activity_bitacora_menu" >
         </activity>
     </application>
 
