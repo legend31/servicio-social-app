@@ -16,6 +16,7 @@ public class AsignacionProyectoConsultarActivity extends Activity {
 	EditText txtBusqueda;
 	GridView gdvTabla;
 	RadioGroup radioGrupo;
+	ControlBD auxiliar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class AsignacionProyectoConsultarActivity extends Activity {
 		txtBusqueda = (EditText) findViewById(R.id.txtBusqueda);
 		gdvTabla = (GridView) findViewById(R.id.gdvTabla);
 		radioGrupo = (RadioGroup) findViewById(R.id.radioGroup1);
+		auxiliar = new ControlBD(this);
 	}
 
 	@Override
@@ -47,7 +49,7 @@ public class AsignacionProyectoConsultarActivity extends Activity {
 	}
 	
 		public void consultarAsignacionProyecto(View v) {
-		
+		/*
 		Object [] datos = new Object[10];
 		datos[0] = "Nombre:";
 		datos[1] = "Rodrigo Valle";
@@ -59,55 +61,49 @@ public class AsignacionProyectoConsultarActivity extends Activity {
 		datos[7] = "06142906937897";
 		datos[8] = "E-mail:";
 		datos[9] = "rodrigoahv@yahoo.es";
-		String info;
+		String info="";
 		//Llenando tabla
 		ArrayAdapter<Object> adaptador =
 		        new ArrayAdapter<Object>(this, android.R.layout.simple_list_item_1, datos);
 		gdvTabla.setAdapter(adaptador);
-		
+		*/
+		String info="";
+		String texto = txtBusqueda.getText().toString();
+		if(texto == null || texto == "")
+		{
+			switch(radioGrupo.getCheckedRadioButtonId())
+			{
+			case R.id.rbtAlumno:
+				info = "Carnet inválido";
+			break;
+			case R.id.rbtProyecto:
+				info = "Proyecto inválido";
+			break;
+			}
+			Toast.makeText(this, info, Toast.LENGTH_LONG).show();
+			return;
+		}
+		auxiliar.abrir();
+		int tipo = 0;
 		switch(radioGrupo.getCheckedRadioButtonId())
 		{
 		case R.id.rbtAlumno:
-			String carnet = txtBusqueda.getText().toString();
-			if(carnet == null || carnet.trim() == "")
-			{
-				info = "Carnet inválido";
-				Toast.makeText(this, info, Toast.LENGTH_LONG).show();
-				return;
-			}
-			
-			break;
+			tipo = 1;
+		break;
 		case R.id.rbtProyecto:
-			String proyecto = txtBusqueda.getText().toString();
-			if(proyecto == null || proyecto.trim() == "")
-			{
-				info = "Proyecto inválido";
-				Toast.makeText(this, info, Toast.LENGTH_LONG).show();
-				return;
-			}
-			
+			tipo = 2;
 		break;
 		}
-		/*
-		String carnet = txtCarnet.getText().toString();
-		//Validando
-		if(carnet == null || carnet.trim() == "")
-		{
-			info = "Carnet inválido";
-			Toast.makeText(this, info, Toast.LENGTH_LONG).show();
-			return;
-			
-		}
-		auxiliar.abrir();
-		Alumno alumno = auxiliar.consultarAlumno(carnet);
+		AsignacionProyecto asignacion = auxiliar.consultarAsignacionProyecto(texto, tipo);
 		auxiliar.cerrar();
-		if(alumno == null)
+		if(asignacion == null)
 		{
-			Toast.makeText(this, "Alumno con carnet " +carnet +" no encontrado", Toast.LENGTH_LONG).show();
+			gdvTabla.setVisibility(View.INVISIBLE);
+			Toast.makeText(this, "Asignación de proyecto no encontrado", Toast.LENGTH_LONG).show();
 			return;
 		}
 		else{
-			String [] datos = new String[10];
+			/*String [] datos = new String[10];
 			datos[0] = "Nombre:";
 			datos[1] = alumno.getNombre();
 			datos[2] = "Teléfono:";
@@ -123,9 +119,9 @@ public class AsignacionProyectoConsultarActivity extends Activity {
 			lblDatos.setVisibility(View.VISIBLE);
 			ArrayAdapter<String> adaptador =
 			        new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, datos);
-			gdvTabla.setAdapter(adaptador);
-		}*/
-		
+			gdvTabla.setAdapter(adaptador);*/
 		}
+		
+	}
 
 }

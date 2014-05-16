@@ -18,8 +18,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="99dp"
-        android:text="@string/datos"
-        android:visibility="invisible" />
+        android:text="@string/datos" />
 
     <GridView
         android:id="@+id/gdvTabla"
