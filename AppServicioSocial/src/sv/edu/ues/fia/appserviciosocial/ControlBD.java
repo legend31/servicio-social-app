@@ -456,10 +456,68 @@ public class ControlBD {
 		return null;
 	}
 
-	public EncargadoServicioSocial consultarEncargadoServicioSocial(
-			String idEncargado) {
-		return null;
-	}
+	
+	
+	public EncargadoServicioSocial consultarEncargadoServicioSocial(String busqueda, int seleccion) {
+		String[] id = { busqueda };
+		int opcion=seleccion;
+		Cursor cursor;
+		switch (opcion) {
+		
+		//Se eligio id
+		case 0:
+	cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "idencargado = ?",
+					id, null, null, null);
+	break;
+	//se eligio nombre
+		case 1:
+			
+			cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "idencargado = ?",
+					id, null, null, null);
+			break;
+			//Se eligio email
+		case 2:
+			cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "idencargado = ?",
+					id, null, null, null);
+			break;
+		//se eligio telefono
+		case 3:
+			cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "idencargado = ?",
+					id, null, null, null);
+			break;
+			//se eligio facultad
+		case 4:
+			cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "idencargado = ?",
+					id, null, null, null);
+			break;
+			//se eligio escuela
+		case 5:
+			cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "idencargado = ?",
+					id, null, null, null);
+		default:
+			cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "idencargado = ?",
+					id, null, null, null);
+		}
+			// Cursor cursor =
+			// db.query("proyecto",camposProyecto,id+" LIKE '%"+nombreProyecto+"%'",null,null,null,null,null);
+			//if(cursor!=null){
+		if (cursor.moveToFirst()) {
+				EncargadoServicioSocial encargado= new EncargadoServicioSocial();
+				
+				encargado.setIdEncargado(cursor.getInt(0));
+				encargado.setNombre(cursor.getString(1));
+				encargado.setEmail(cursor.getString(2));
+				encargado.setTelefono(cursor.getString(3));
+				encargado.setFacultad(cursor.getString(4));
+				encargado.setEscuela(cursor.getString(5));
+				
+				return encargado;
+			} else {
+				return null;
+			}
+			
+		}
+			
 
 	public Escuela consultarEscuela(String idEscuela) {
 		return null;
