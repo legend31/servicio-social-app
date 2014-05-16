@@ -27,6 +27,7 @@
     <string name="actualizarpor">Actualizar por:</string>
     <string name="eliminarpor">Eliminar por:</string>
     <string name="ingresar">Ingresar</string>
+    <string name="tipoProyecto">Tipo Proyecto</string>
     <string name="title_activity_menu_tablas">Menú Principal</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_menu_alumno">Alumno</string>
@@ -76,6 +77,7 @@
     <string name="title_activity_navigation_drawer_menu">NavigationDrawerMenuActivity</string>
     <string name="idProyecto">ID Proyecto</string>
     <string name="nombreProyecto">Nombre Proyecto</string>
+    <string name="nombreTipoProyecto">Nombre Tipo Proyecto</string>
     <string name="CodigoSolicitante">ID Solicitante</string>
     <string name="CodigoTipoProyecto">ID Tipo Proyecto</string>
     <string name="CodigoEncargadoProyecto">ID Encargado Proyecto</string>
@@ -114,5 +116,11 @@
     <string name="title_activity_bitacora_consultar">BitacoraConsultarActivity</string>
     <string name="title_activity_bitacora_actualizar">BitacoraActualizarActivity</string>
     <string name="title_activity_bitacora_eliminar">BitacoraEliminarActivity</string>
+    <string name="title_activity_tipo_proyecto_menu">TipoProyectoMenuActivity</string>
+    <string name="title_activity_tipo_proyecto_insertar">TipoProyectoInsertarActivity</string>
+    <string name="title_activity_tipo_proyecto_actualizar">TipoProyectoActualizarActivity</string>
+    <string name="title_activity_tipo_proyecto_consultar">TipoProyectoConsultarActivity</string>
+    <string name="title_activity_tipo_proyecto_eliminar">TipoProyectoEliminarActivity</string>
+    
 
 </resources>

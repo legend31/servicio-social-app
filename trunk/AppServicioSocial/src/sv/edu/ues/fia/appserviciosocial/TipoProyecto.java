@@ -9,6 +9,8 @@ public class TipoProyecto {
 		this.idTipoProyecto = idTipoProyecto;
 		this.nombre = nombre;
 	}
+	
+	public TipoProyecto(){}
 
 	public int getIdTipoProyecto() {
 		return idTipoProyecto;
