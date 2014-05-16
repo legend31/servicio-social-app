@@ -18,6 +18,7 @@ public class MenuTablasActivity extends Activity implements OnClickListener{
 		findViewById(R.id.button3).setOnClickListener(this);
 		findViewById(R.id.btnSolicitante).setOnClickListener(this);
 		findViewById(R.id.btnInstitucion).setOnClickListener(this);
+		findViewById(R.id.botonBitacora).setOnClickListener(this);
 		//findViewById(R.id.btnEncargado).setOnClickListener(this);
 		
 	}
