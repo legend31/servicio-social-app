@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.os.Bundle;
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -11,14 +12,15 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TabHost;
 
-public class ProyectoMenuActivity extends TabActivity {
-
+public class TipoProyectoMenuActivity extends TabActivity {
+	
 	private String[] titulos;
 	private DrawerLayout NavDrawerLayout;
 	private ListView NavList;
@@ -32,7 +34,7 @@ public class ProyectoMenuActivity extends TabActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_proyecto_menu);
+		setContentView(R.layout.activity_tipo_proyecto_menu);
 
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
@@ -43,26 +45,26 @@ public class ProyectoMenuActivity extends TabActivity {
 
 		spec = pestañas.newTabSpec("Insertar");
 		spec.setIndicator("", res.getDrawable(R.drawable.nuevo));
-		Intent insertarIntent = new Intent(this, ProyectoInsertarActivity.class);
+		Intent insertarIntent = new Intent(this, TipoProyectoInsertarActivity.class);
 		spec.setContent(insertarIntent);
 		pestañas.addTab(spec);
 
 		spec = pestañas.newTabSpec("Consultar");
 		spec.setIndicator("", res.getDrawable(R.drawable.consultar));
 		Intent consultarIntent = new Intent(this,
-				ProyectoConsultarActivity.class);
+				TipoProyectoConsultarActivity.class);
 		spec.setContent(consultarIntent);
 		pestañas.addTab(spec);
 
 		spec = pestañas.newTabSpec("Actualizar");
 		spec.setIndicator("", res.getDrawable(R.drawable.actualizar));
-		Intent actualizarIntent = new Intent(this,ProyectoActualizarActivity.class);
+		Intent actualizarIntent = new Intent(this,TipoProyectoActualizarActivity.class);
 		spec.setContent(actualizarIntent);
 		pestañas.addTab(spec);
 
 		spec = pestañas.newTabSpec("Eliminar");
 		spec.setIndicator("", res.getDrawable(R.drawable.delete));
-		Intent eliminarIntent = new Intent(this,ProyectoEliminarActivity.class);
+		Intent eliminarIntent = new Intent(this,TipoProyectoEliminarActivity.class);
 		spec.setContent(eliminarIntent);
 		pestañas.addTab(spec);
 
@@ -193,5 +195,6 @@ public class ProyectoMenuActivity extends TabActivity {
 		}
 
 	}
+
 
 }

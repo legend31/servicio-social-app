@@ -247,7 +247,26 @@ public class ControlBD {
 	}
 
 	public String insertar(TipoProyecto tipoProyecto) {
-		return null;
+		String mensaje="";
+		long contador = 0;
+		//String values[]={tipoProyecto.getNombre()};
+		Cursor cursor = db.query("tipoproyecto", camposTipoProyecto,"nombre='"+tipoProyecto.getNombre()+"'",null,null,null,null,null);
+		if(cursor.moveToFirst())
+		{
+			return mensaje="Registro ya almacenado en la Base de Datos";
+			
+		}		
+		ContentValues content = new ContentValues();
+		content.putNull("idtipoproyecto");
+		content.put("nombre",tipoProyecto.getNombre());
+		contador=db.insert("tipoproyecto", null, content);
+		
+		if (contador == -1 || contador == 0) {
+			mensaje = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+		} else {
+			mensaje = "Registro ingresado "+contador;
+		}
+		return mensaje;
 	}
 
 	public String insertar(TipoTrabajo tipoTrabajo) {

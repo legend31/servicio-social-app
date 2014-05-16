@@ -69,5 +69,14 @@
         android:layout_alignRight="@+id/button2"
         android:layout_below="@+id/btnEncargado"
         android:text="@string/bitacora" />
+    
+    <Button
+        android:id="@+id/btnTipoProyecto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnActualizar"
+        android:layout_alignRight="@+id/btnEncargado"
+        android:layout_below="@+id/botonBitacora"
+        android:text="@string/tipoProyecto" />
 
 </RelativeLayout>
