@@ -52,6 +52,9 @@ public class MenuTablasActivity extends Activity implements OnClickListener{
 			/*case R.id.btnEncargado:
 				startActivity(new Intent(this, EncargadoMenuActivity.class));
 				break;*/
+			case R.id.botonBitacora:
+				startActivity(new Intent(this, BitacoraMenuActivity.class));
+				break;
 			
 			default:
 		}
