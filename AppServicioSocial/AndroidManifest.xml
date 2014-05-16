@@ -169,6 +169,26 @@
             android:name="sv.edu.ues.fia.appserviciosocial.BitacoraEliminarActivity"
             android:label="@string/title_activity_bitacora_eliminar" >
         </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.TipoProyectoMenuActivity"
+            android:label="@string/title_activity_tipo_proyecto_menu" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.TipoProyectoInsertarActivity"
+            android:label="@string/title_activity_tipo_proyecto_insertar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.TipoProyectoConsultarActivity"
+            android:label="@string/title_activity_tipo_proyecto_consultar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.TipoProyectoActualizarActivity"
+            android:label="@string/title_activity_tipo_proyecto_actualizar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.TipoProyectoEliminarActivity"
+            android:label="@string/title_activity_tipo_proyecto_eliminar" >
+        </activity>
     </application>
 
 </manifest>
