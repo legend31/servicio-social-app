@@ -111,6 +111,7 @@
     <string name="title_activity_encargado_actualizar">EncargadoActualizarActivity</string>
     <string name="title_activity_encargado_eliminar">EncargadoEliminarActivity</string>
     <string name="bitacora">Bitacora</string>
+    
     <string name="title_activity_bitacora_menu">Bitacora</string>
     <string name="title_activity_bitacora_insertar">BitacoraInsertarActivity</string>
     <string name="title_activity_bitacora_consultar">BitacoraConsultarActivity</string>

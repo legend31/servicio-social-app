@@ -3,6 +3,7 @@ package sv.edu.ues.fia.appserviciosocial;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.view.View;
 
 public class TipoProyectoActualizarActivity extends Activity {
 
@@ -17,6 +18,14 @@ public class TipoProyectoActualizarActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.tipo_proyecto_actualizar, menu);
 		return true;
+	}
+	
+	public void consultarTipoProyecto(View v){
+		
+	}
+	
+	public void actualizarTipoProyecto(View v){
+		
 	}
 
 }
