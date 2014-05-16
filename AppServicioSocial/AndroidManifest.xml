@@ -189,6 +189,32 @@
             android:name="sv.edu.ues.fia.appserviciosocial.TipoProyectoEliminarActivity"
             android:label="@string/title_activity_tipo_proyecto_eliminar" >
         </activity>
+        
+        
+        
+         <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.CargoMenuActivity"
+            android:label="@string/title_activity_cargo_menu" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.CargoInsertarActivity"
+            android:label="@string/title_activity_cargo_insertar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.CargoActualizarActivity"
+            android:label="@string/title_activity_cargo_actualizar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.CargoConsultarActivity"
+            android:label="@string/title_activity_cargo_consultar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.CargoEliminarActivity"
+            android:label="@string/title_activity_cargo_eliminar" >
+        </activity>
+        
+        
+        
     </application>
 
 </manifest>
