@@ -51,7 +51,6 @@ public class ProyectoActualizarActivity extends Activity {
 	public void consultarProyecto(View v)
 	{
 		
-
 		helper.abrir();
 		Proyecto proyecto = helper.consultarProyecto(txtProyecto.getText().toString());
 		helper.cerrar();
