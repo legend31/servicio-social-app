@@ -64,7 +64,8 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="@string/alumno"
-            android:inputType="textPersonName" >
+            android:inputType="textPersonName"
+            android:maxLength="7" >
 
             <requestFocus />
         </EditText>

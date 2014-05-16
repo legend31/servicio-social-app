@@ -27,21 +27,46 @@
         android:id="@+id/txtProyecto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtCarnet"
         android:layout_below="@+id/txtCarnet"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="@string/proyecto"
-        android:inputType="textPersonName" />
+        android:inputType="number" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtProyecto"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp" >
+
+        <EditText
+            android:id="@+id/txtFecha"
+            android:layout_width="165dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="@string/fecha"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/btnFecha"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_action_event" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnAsignar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtProyecto"
+        android:layout_below="@+id/linearLayout1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="59dp"
-        android:text="@string/asignar"
-        android:onClick="insertarAsignacionProyecto" />
+        android:layout_marginTop="68dp"
+        android:onClick="insertarAsignacionProyecto"
+        android:text="@string/asignar" />
 
 </RelativeLayout>

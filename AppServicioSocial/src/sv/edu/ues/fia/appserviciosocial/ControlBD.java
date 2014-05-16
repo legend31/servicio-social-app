@@ -12,7 +12,7 @@ public class ControlBD {
 	private static final String[] camposAlumno = new String[] { "carnet",
 			"nombre", "telefono", "dui", "nit", "email" };
 	private static final String[] camposAsignacionProyecto = new String[] {
-			"idProyecto", "fecha", "carnet" };
+		"carnet", "idProyecto", "fecha" };
 	private static final String[] camposBitacora = new String[] { "idBitacora",
 			"carnet", "idProyecto", "idTipoTrabajo", "fecha", "descripcion" };
 	private static final String[] camposEncargadoServicioSocial = new String[] {
@@ -185,7 +185,19 @@ public class ControlBD {
 	}
 
 	public String insertar(AsignacionProyecto asignacion) {
-		return null;
+		String mensaje = "";
+		long contador = 0;
+		ContentValues valoresAsignacion = new ContentValues();
+		valoresAsignacion.put("carnet", asignacion.getCarnet());
+		valoresAsignacion.put("idproyecto", asignacion.getIdProyecto());
+		valoresAsignacion.put("fecha", asignacion.getFecha());
+		contador = db.insert("asignacionproyecto", null, valoresAsignacion);
+		if (contador == -1 || contador == 0) {
+			mensaje = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+		} else {
+			mensaje = "Registro ingresado";
+		}
+		return mensaje;
 	}
 
 	public String insertar(Bitacora bitacora) {
@@ -379,11 +391,29 @@ public class ControlBD {
 		}
 	}
 
-	public AsignacionProyecto consultarAsignacionProyecto() {
-		return null;
-	}// No sé que //
-
-	// parametros // llevaria { return null; }
+	public AsignacionProyecto consultarAsignacionProyecto(String parametro, int tipo) {
+		String[] id = { parametro };
+		Cursor cursor = null;
+		switch (tipo) {
+		case 1:
+			cursor = db.query("asignacionproyecto", camposAsignacionProyecto, "carnet = ?",
+					id, null, null, null);
+		break;
+		case 2:
+			cursor = db.query("asignacionproyecto", camposAsignacionProyecto, "idproyecto = ?",
+					id, null, null, null);
+		break;
+		}
+		if (cursor.moveToFirst()) {
+			AsignacionProyecto asignacion = new AsignacionProyecto();
+			asignacion.setCarnet(cursor.getString(0));
+			asignacion.setIdProyecto(cursor.getString(1));
+			asignacion.setFecha(cursor.getString(2));
+			return asignacion;
+		} else {
+			return null;
+		}
+	}
 
 	public Bitacora consultarBitacora(String fecha) {
 		return null;

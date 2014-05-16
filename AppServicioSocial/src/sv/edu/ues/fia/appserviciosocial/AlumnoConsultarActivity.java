@@ -25,6 +25,8 @@ public class AlumnoConsultarActivity extends Activity {
 		txtCarnet = (EditText) findViewById(R.id.txtCarnet);
 		gdvTabla = (GridView) findViewById(R.id.gdvTabla);
 		lblDatos = (TextView) findViewById(R.id.lblDatos);
+		gdvTabla.setVisibility(View.INVISIBLE);
+		lblDatos.setVisibility(View.INVISIBLE);
 	}
 
 	@Override
@@ -68,10 +70,11 @@ public class AlumnoConsultarActivity extends Activity {
 			datos[9] = alumno.getEmail();
 			
 			//Llenando tabla
-			lblDatos.setVisibility(View.VISIBLE);
 			ArrayAdapter<String> adaptador =
 			        new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, datos);
 			gdvTabla.setAdapter(adaptador);
+			lblDatos.setVisibility(View.VISIBLE);
+			gdvTabla.setVisibility(View.VISIBLE);
 		}
 		
 	}
