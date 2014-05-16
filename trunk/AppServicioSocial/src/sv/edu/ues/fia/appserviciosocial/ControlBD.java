@@ -1,12 +1,12 @@
 package sv.edu.ues.fia.appserviciosocial;
 
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
 public class ControlBD {
 
 	private static final String[] camposAlumno = new String[] { "carnet",
@@ -176,6 +176,7 @@ public class ControlBD {
 		valoresAlumno.put("nit", alumno.getNit());
 		valoresAlumno.put("email", alumno.getEmail());
 		contador = db.insert("alumno", null, valoresAlumno);
+	
 		if (contador == -1 || contador == 0) {
 			mensaje = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
 		} else {
@@ -205,7 +206,24 @@ public class ControlBD {
 	}
 
 	public String insertar(EncargadoServicioSocial encargado) {
-		return null;
+		String mensaje = "";
+		long contador = 0;
+		ContentValues valoresEncargado = new ContentValues();
+		valoresEncargado.putNull("idencargado");
+		valoresEncargado.put("nombre", encargado.getNombre());
+		valoresEncargado.put("email", encargado.getEmail());
+		valoresEncargado.put("telefono", encargado.getTelefono());
+		valoresEncargado.put("facultad", encargado.getFacultad());
+		valoresEncargado.put("escuela", encargado.getEscuela());
+		
+		
+		contador = db.insert("encargadoserviciosocial", null, valoresEncargado);
+		if (contador == -1 || contador == 0) {
+			mensaje = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+		} else {
+			mensaje = "Registro ingresado";
+		}
+		return mensaje;
 	}
 
 	public String insertar(Escuela escuela) {
