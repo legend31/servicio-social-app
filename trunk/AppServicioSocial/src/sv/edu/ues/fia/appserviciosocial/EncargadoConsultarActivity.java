@@ -1,15 +1,20 @@
 package sv.edu.ues.fia.appserviciosocial;
 
 
+import java.util.ArrayList;
+
+
+
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.app.Activity;
 
 
 public class EncargadoConsultarActivity extends Activity implements OnItemSelectedListener {
@@ -17,6 +22,8 @@ public class EncargadoConsultarActivity extends Activity implements OnItemSelect
 	 EditText txtBusqueda;
 	 int seleccion;
 	 int largoCadena;
+	 ArrayList<EncargadoServicioSocial> datos;
+	 ListView li;
 	 
 
 	@Override
@@ -27,6 +34,7 @@ public class EncargadoConsultarActivity extends Activity implements OnItemSelect
 		base = new ControlBD(this);
         txtBusqueda= (EditText) findViewById(R.id.edtBuscarEncargado);
        
+        
 		
 		//spinner
 		Spinner spinner=(Spinner) findViewById(R.id.spinnerEncargado);
@@ -47,6 +55,7 @@ public class EncargadoConsultarActivity extends Activity implements OnItemSelect
 	
 	
 	 public void consultarEncargado(View v) {
+		 
          
          String  busqueda = txtBusqueda.getText().toString();
          //Validando
@@ -56,10 +65,11 @@ public class EncargadoConsultarActivity extends Activity implements OnItemSelect
                  return;
                  
          }
+         
          base.abrir();
-         EncargadoServicioSocial encargado = base.consultarEncargadoServicioSocial(busqueda, seleccion);
+         //datos= base.consultarEncargadoServicioSocial(busqueda, seleccion);
        base.cerrar();
-         if(encargado == null)
+         if(datos == null)
          {
                  Toast.makeText(this, "Registro " +busqueda +" no encontrado", Toast.LENGTH_LONG).show();
                  return;
@@ -67,29 +77,16 @@ public class EncargadoConsultarActivity extends Activity implements OnItemSelect
          
          else{
         	 Toast.makeText(this, "Registro " +busqueda +"encontrado", Toast.LENGTH_LONG).show();
+        	 
+        	 li=(ListView)findViewById(R.id.listView1);
+        	 ArrayAdapter<EncargadoServicioSocial> adaptador=new ArrayAdapter<EncargadoServicioSocial> (this,android.R.layout.simple_list_item_1, datos);
+        				
+        	li.setAdapter(adaptador);
         	 //llenado de lista con una concatenacion de dos datos significantes de la tabla, puede ser el id junto con el nombre
         	 //al pulsar abre un activity
-        	 /*
-                 String [] datos = new String[10];
-                 datos[0] = "Nombre:";
-                 datos[1] = alumno.getNombre();
-                 datos[2] = "Teléfono:";
-                 datos[3] = alumno.getTelefono();
-                 datos[4] = "DUI:";
-                 datos[5] = alumno.getDui();
-                 datos[6] = "NIT:";
-                 datos[7] = alumno.getNit();
-                 datos[8] = "E-mail:";
-                 datos[9] = alumno.getEmail();
+        	
                  
-                 //Llenando tabla
-                 ArrayAdapter<String> adaptador =
-                         new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, datos);
-                 gdvTabla.setAdapter(adaptador);
-                 lblDatos.setVisibility(View.VISIBLE);
-                 gdvTabla.setVisibility(View.VISIBLE);
-                 */
-         }
+         } 
          
  }
 	
