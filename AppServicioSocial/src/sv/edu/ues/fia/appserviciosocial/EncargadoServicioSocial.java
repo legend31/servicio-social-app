@@ -60,6 +60,12 @@ public class EncargadoServicioSocial {
 	public void setEscuela(String escuela) {
 		this.escuela = escuela;
 	}
+
+	@Override
+	public String toString() {
+		return "EncargadoServicioSocial [idEncargado=" + idEncargado
+				+ ", nombre=" + nombre + "]";
+	}
 	
 	
      

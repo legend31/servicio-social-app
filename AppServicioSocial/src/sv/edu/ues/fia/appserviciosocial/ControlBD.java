@@ -1,6 +1,9 @@
 package sv.edu.ues.fia.appserviciosocial;
 
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -475,50 +478,52 @@ public class ControlBD {
 
 	
 	
-	public EncargadoServicioSocial consultarEncargadoServicioSocial(String busqueda, int seleccion) {
+	public ArrayList<EncargadoServicioSocial> consultarEncargadoServicioSocial(String busqueda, int seleccion) {
 		String[] id = { busqueda };
 		int opcion=seleccion;
 		Cursor cursor;
+		ArrayList<EncargadoServicioSocial> lista=new ArrayList<EncargadoServicioSocial>();
 		switch (opcion) {
 		
 		//Se eligio id
 		case 0:
-	cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "idencargado = ?",
+	cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "idEncargado = ?",
 					id, null, null, null);
 	break;
 	//se eligio nombre
 		case 1:
 			
-			cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "idencargado = ?",
+			cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "nombre= ?",
 					id, null, null, null);
 			break;
 			//Se eligio email
 		case 2:
-			cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "idencargado = ?",
+			cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "email= ?",
 					id, null, null, null);
 			break;
 		//se eligio telefono
 		case 3:
-			cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "idencargado = ?",
+			cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "telefono= ?",
 					id, null, null, null);
 			break;
 			//se eligio facultad
 		case 4:
-			cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "idencargado = ?",
+			cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "facultad= ?",
 					id, null, null, null);
 			break;
 			//se eligio escuela
 		case 5:
-			cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "idencargado = ?",
+			cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "escuela = ?",
 					id, null, null, null);
 		default:
-			cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "idencargado = ?",
+			cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "idEncargado = ?",
 					id, null, null, null);
 		}
 			// Cursor cursor =
 			// db.query("proyecto",camposProyecto,id+" LIKE '%"+nombreProyecto+"%'",null,null,null,null,null);
 			//if(cursor!=null){
 		if (cursor.moveToFirst()) {
+			do{
 				EncargadoServicioSocial encargado= new EncargadoServicioSocial();
 				
 				encargado.setIdEncargado(cursor.getInt(0));
@@ -527,8 +532,10 @@ public class ControlBD {
 				encargado.setTelefono(cursor.getString(3));
 				encargado.setFacultad(cursor.getString(4));
 				encargado.setEscuela(cursor.getString(5));
-				
-				return encargado;
+				lista.add(encargado);
+			}while(cursor.moveToNext());
+				return lista;
+			
 			} else {
 				return null;
 			}
