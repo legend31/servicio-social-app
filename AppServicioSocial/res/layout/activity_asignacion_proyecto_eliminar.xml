@@ -58,6 +58,7 @@
         android:layout_below="@+id/txtBusqueda"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:text="@string/eliminar" />
+        android:text="@string/eliminar"
+        android:onClick="eliminarAsignacionProyecto" />
 
 </RelativeLayout>
