@@ -366,8 +366,25 @@ public class ControlBD {
 		return regAfectados;
 	}
 
-	public String eliminar(AsignacionProyecto asignacion) {
-		return null;
+	public String eliminar(AsignacionProyecto asignacion, int tipo) {
+		String regAfectados = "filas afectadas= ";
+		int contador = 0;
+		String id[]= null;
+		switch(tipo)
+		{
+		//Se envio en carnet
+		case 1:
+			id[0]=String.valueOf(asignacion.getCarnet());
+			contador += db.delete("asignacionproyecto", "carnet=?",id);
+		break;
+		//Se envio el idProyecto
+		case 2:
+			id[0]=String.valueOf(asignacion.getIdProyecto());
+			contador += db.delete("asignacionproyecto", "idproyecto=?",id);
+		break;
+		}
+		regAfectados += contador;
+		return regAfectados;
 	}
 
 	public String eliminar(Bitacora bitacora) {

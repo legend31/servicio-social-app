@@ -5,16 +5,22 @@ import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class AsignacionProyectoEliminarActivity extends Activity {
 	
 	EditText txtBusqueda;
+	RadioGroup radioGrupo;
+	ControlBD auxiliar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_asignacion_proyecto_eliminar);
 		txtBusqueda = (EditText) findViewById(R.id.txtBusqueda);
+		radioGrupo = (RadioGroup) findViewById(R.id.radioGroup1);
+		auxiliar = new ControlBD(this);
 	}
 
 	@Override
@@ -35,5 +41,39 @@ public class AsignacionProyectoEliminarActivity extends Activity {
 			txtBusqueda.setHint("Proyecto");
 		break;
 		}
+	}
+	
+	public void eliminarAsignacionProyecto(View v)
+	{
+		String info="";
+		String texto = txtBusqueda.getText().toString();
+		if(texto == null || texto == "")
+		{
+			switch(radioGrupo.getCheckedRadioButtonId())
+			{
+			case R.id.rbtAlumno:
+				info = "Carnet inválido";
+			break;
+			case R.id.rbtProyecto:
+				info = "Proyecto inválido";
+			break;
+			}
+			Toast.makeText(this, info, Toast.LENGTH_LONG).show();
+			return;
+		}
+		AsignacionProyecto asignacion = new AsignacionProyecto();
+		auxiliar.abrir();
+		switch(radioGrupo.getCheckedRadioButtonId())
+		{
+		case R.id.rbtAlumno:
+			asignacion.setCarnet(texto);
+			auxiliar.eliminar(asignacion, 1);
+		case R.id.rbtProyecto:
+			asignacion.setIdProyecto(texto);
+			auxiliar.eliminar(asignacion, 2);
+		break;
+		}
+		auxiliar.cerrar();
+		Toast.makeText(this, "Eliminación correcta", Toast.LENGTH_SHORT).show();
 	}
 }
