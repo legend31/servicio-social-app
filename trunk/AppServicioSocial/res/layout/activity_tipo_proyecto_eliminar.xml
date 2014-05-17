@@ -6,11 +6,31 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".TipoProyectoEliminarActivity" >
+    tools:context=".ProyectoEliminarActivity" >
 
-    <TextView
+<EditText
+        android:id="@+id/txtTipoProyectoEliminar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:hint="@string/CodigoTipoProyecto"
+        android:maxLength="50"
+        android:inputType="number" >
 
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btnEliminarTipoProyecto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtTipoProyectoEliminar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:onClick="eliminarTipoProyecto"
+        android:text="@string/eliminar" 
+        />
 </RelativeLayout>
