@@ -56,31 +56,6 @@ public class ControlBD {
 		public void onCreate(SQLiteDatabase db) {
 			// TODO Auto-generated method stub
 			try {
-				// lo de light xD
-				/*
-				 * db.execSQL(
-				 * "CREATE TABLE alumno( carnet VARCHAR(27) NOT NULL PRIMARY KEY, nombre VARCHAR(100),telefono VARCHAR(8),dui VARCHAR(10));"
-				 * ); db.execSQL(
-				 * "CREATE TABLE bitacora( id INTEGER NOT NULL PRIMARY KEY, carnet VARCHAR(7) NOT NULL,idTipoTrabajo INTEGER NOT NULL,carnet VARCHAR(7) NOT NULL,fecha DATE,descripcion VARCHAR(500);"
-				 * ); db.execSQL(
-				 * "CREATE TABLE cargo( idCargo INTEGER NOT NULL PRIMARY KEY,nombre VARCHAR(100),descripcion VARCHAR(250);"
-				 * ); db.execSQL(
-				 * "CREATE TABLE encargadoserviciosocial( idEncargado INTEGER NOT NULL PRIMARY KEY,nombre VARCHAR(100) NOT NULL,email VARCHAR(50),telefono VARCHAR(8),facultad VARCHAR(100), escuela VARCHAR(50);"
-				 * ); db.execSQL(
-				 * "CREATE TABLE institucion( idinstitucion INTEGER NOT NULL PRIMARY KEY,nombre VARCHAR(100),nit VARCHAR(17);"
-				 * ); db.execSQL(
-				 * "CREATE TABLE proyecto( idproyecto INTEGER NOT NULL PRIMARY KEY, idsolicitante INTEGER NOT NULL, idtipoproyecto INTEGER NOT NULL, idencargado INTEGER NOT NULL, nombre VARCHAR(100);"
-				 * ); db.execSQL(
-				 * "CREATE TABLE solicitante( idsolicitante INTEGER NOT NULL PRIMARY KEY, idinstitucion INTEGER NOT NULL, idcargo INTEGER NOT NULL, nombre VARCHAR(100), telefono VARCHAR(8),correo_electronico VARCHAR(100);"
-				 * ); db.execSQL(
-				 * "CREATE TABLE tipoproyecto( idtipoproyecto INTEGER NOT NULL PRIMARY KEY, nombre VARCHAR(100);"
-				 * ); db.execSQL(
-				 * "CREATE TABLE tipotrabajo( idtipotrabajo INTEGER NOT NULL PRIMARY KEY, nombre VARCHAR(100) NOT NULL,valor REAL NOT NULL;"
-				 * ); db.execSQL(
-				 * "CREATE TABLE asignacionproyecto( carnet VARCHAR(7) NOT NULL, idproyecto INTEGER NOT NULL, fecha DATE, PRIMARY KEY(carnet,idproyecto);"
-				 * );
-				 */
-
 				// lo del script de powerdesigner
 				db.execSQL("create table ALUMNO (CARNET VARCHAR(7) not null primary key, NOMBRE VARCHAR(100) not null, "
 						+ "TELEFONO VARCHAR(8) not null, DUI VARCHAR(10) not null, NIT VARCHAR(17) not null, EMAIL VARCHAR(50));");
@@ -107,41 +82,62 @@ public class ControlBD {
 				db.execSQL("create table ASIGNACIONPROYECTO ( CARNET VARCHAR(7) not null, IDPROYECTO INTEGER not null, FECHA DATE, PRIMARY KEY(carnet,idproyecto)"
 						+ " CONSTRAINT fk_asignacionproyecto_proyecto FOREIGN KEY (idproyecto) REFERENCES proyecto(idproyecto) ON DELETE RESTRICT, CONSTRAINT "
 						+ "fk_asignacionproyecto_alumno FOREIGN KEY (carnet) REFERENCES alumno(carnet) ON DELETE RESTRICT );");
+				//triggers
+				db.execSQL("CREATE TRIGGER fk_solicitante_cargo BEFORE INSERT ON solicitante FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT idcargo FROM cargo" +
+						" WHERE idcargo = NEW.idcargo) IS NULL) THEN RAISE(ABORT, 'No existe cargo') END; END;");
+				db.execSQL("CREATE TRIGGER fk_solicitante_institucion BEFORE INSERT ON solicitante FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT idinstitucion"
+						+" FROM institucion WHERE idinstitucion = NEW.idinstitucion) IS NULL) THEN RAISE(ABORT, 'No existe institucion') END; END;");
+				db.execSQL("CREATE TRIGGER fk_proyecto_encargado BEFORE INSERT ON proyecto FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT idencargado FROM "
+						+"encargadoserviciosocial WHERE idencargado = NEW.idencargado) IS NULL) THEN RAISE(ABORT, 'No existe encargado') END; END;");
+				db.execSQL("CREATE TRIGGER fk_proyecto_solicitante BEFORE INSERT ON proyecto FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT idsolicitante FROM "
+						+"solicitante WHERE idsolicitante = NEW.idsolicitante) IS NULL) THEN RAISE(ABORT, 'No existe solicitante') END; END;");
+				db.execSQL("CREATE TRIGGER fk_proyecto_tipoproyecto BEFORE INSERT ON proyecto FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT idtipoproyecto FROM"
+						+" tipoproyecto WHERE idtipoproyecto = NEW.idtipoproyecto) IS NULL) THEN RAISE(ABORT, 'No existe tipo de proyecto') END; END;");
+				db.execSQL("CREATE TRIGGER fk_asignacionproyecto_proyecto BEFORE INSERT ON asignacionproyecto FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT "
+						+"idproyecto FROM proyecto WHERE idproyecto = NEW.idproyecto) IS NULL) THEN RAISE(ABORT, 'No existe proyecto') END; END;");
+				db.execSQL("CREATE TRIGGER fk_asignacionproyecto_alumno BEFORE INSERT ON asignacionproyecto FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT " 
+						+"carnet FROM alumno WHERE carnet = NEW.carnet) IS NULL) THEN RAISE(ABORT, 'No existe alumno') END; END;");
+				db.execSQL("CREATE TRIGGER fk_bitacora_tipotrabajo BEFORE INSERT ON bitacora FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT idtipotrabajo FROM "
+						+"tipotrabajo WHERE idtipotrabajo = NEW.idtipotrabajo) IS NULL) THEN RAISE(ABORT, 'No existe tipo de trabajo') END; END;");
+				db.execSQL("CREATE TRIGGER fk_bitacora_proyecto BEFORE INSERT ON bitacora FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT idproyecto FROM " +
+						"proyecto WHERE idproyecto = NEW.idproyecto) IS NULL) THEN RAISE(ABORT, 'No existe proyecto') END; END;");
+				db.execSQL("CREATE TRIGGER fk_bitacora_alumno BEFORE INSERT ON bitacora FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT carnet FROM alumno " +
+						"WHERE carnet = NEW.carnet) IS NULL) THEN RAISE(ABORT, 'No existe alumno') END; END;");
 				// inserciones
-				db.execSQL("insert into alumno values('FG12098', 'Pedro Fuentes',   '23456781', '033206621', '06142307906731', 'pedro@yahoo.es');"
-						+ "insert into alumno values('MJ10458', 'Luis Martinez',   '22378781', '033673420', '06132307901231', 'luis@yahoo.com');"
-						+ "insert into alumno values('QS11457', 'Juan Quevedo',    '23456896', '033209871', '09232307904531', 'juan@gmail.es');"
-						+ "insert into alumno values('SA09027', 'Ricardo Sanchez', '23451231', '033207823', '08122307901931', 'ricardo@hotmail.es');");
-				db.execSQL("insert into institucion values(null, 'Institución 1', '06142506921232');"
-						+ "insert into institucion values(null, 'Institución 2', '02142509871232');"
-						+ "insert into institucion values(null, 'Institución 3', '06172506924567');");
-				db.execSQL("insert into cargo values(null, 'Presidente', 'Puesto mas alto');"
-						+ "insert into cargo values(null, 'Jefe de informatica', 'Puesto intermedio');");
-				db.execSQL("insert into solicitante values (null, 2, 1, 'Juan Peraza', '27845689', 'peraza@info.org');"
-						+ "insert into solicitante values (null, 1, 2, 'Mario Luigi', '27856239', 'mario@emq.info');");
-				db.execSQL("insert into tipoproyecto values (null, 'Gubernamental');"
-						+ "insert into tipoproyecto values (null, 'Social');"
-						+ "insert into tipoproyecto values (null, 'Privado');");
-				db.execSQL("insert into tipotrabajo values(null, 'Programación', 12.50);"
-						+ "insert into tipotrabajo values(null, 'Diseño', 32.18);"
-						+ "insert into tipotrabajo values(null, 'Analisis', 27.40);");
-				db.execSQL("insert into encargadoserviciosocial values(null, 'Esteban Gonzalez', 'gonzalez@ues.edu.sv', '23458512', 'Economía', 'Economía');"
-						+ "insert into encargadoserviciosocial values(null, 'Sebastian Dominguez', 'dominguezez@ues.edu.sv', '23453421', 'medicina', 'Medicina');"
-						+ "insert into encargadoserviciosocial values(null, 'Kevin Funes', 'funes@ues.edu.sv', '23454100', 'Agronomía', 'Veterinaria');"
-						+ "insert into encargadoserviciosocial values(null, 'Julio Campos', 'campos@ues.edu.sv', '23450074', 'Ingenieria y arquitectura', 'Ingenieria Industrial');");
-				db.execSQL("insert into proyecto values(null, 2, 2, 3, 'Cuidado de perrros');"
-						+ "insert into proyecto values(null, 1, 3, 2, 'Atención a personas');"
-						+ "insert into proyecto values(null, 2, 1, 1, 'Consultoria contable');"
-						+ "insert into proyecto values(null, 1, 3, 4, 'Revision de maquila');");
-				db.execSQL("insert into asignacionproyecto values ('FG12098', 1, date('2014-06-29'));"
-						+ "insert into asignacionproyecto values ('MJ10458', 2, date('2014-05-12'));"
-						+ "insert into asignacionproyecto values ('QS11457', 3, date('2014-02-04'));"
-						+ "insert into asignacionproyecto values ('SA09027', 4, date('2014-08-22'));");
-				db.execSQL("insert into bitacora values(1, 1, 'FG12098', 1, date('2014-06-29'), 'Introduccion de objetivos');"
-						+ "insert into bitacora values(null, 2, 'FG12098', 1, date('2014-07-02'), 'Diseñando cosas');"
-						+ "insert into bitacora values(null, 2, 'MJ10458', 3, date('2013-11-18'), 'Presentacion de resultados');"
-						+ "insert into bitacora values(null, 3, 'MJ10458', 3, date('2013-11-20'), 'Avance literal');");
-
+				db.execSQL("insert into alumno values('FG12098', 'Pedro Fuentes',   '23456781', '033206621', '06142307906731', 'pedro@yahoo.es');");
+				db.execSQL("insert into alumno values('MJ10458', 'Luis Martinez',   '22378781', '033673420', '06132307901231', 'luis@yahoo.com');");
+				db.execSQL("insert into alumno values('QS11457', 'Juan Quevedo',    '23456896', '033209871', '09232307904531', 'juan@gmail.es');");
+				db.execSQL("insert into alumno values('SA09027', 'Ricardo Sanchez', '23451231', '033207823', '08122307901931', 'ricardo@hotmail.es');");
+				db.execSQL("insert into institucion values(null, 'Institución 1', '06142506921232');");
+				db.execSQL("insert into institucion values(null, 'Institución 2', '02142509871232');");
+				db.execSQL("insert into institucion values(null, 'Institución 3', '06172506924567');");
+				db.execSQL("insert into cargo values(null, 'Presidente', 'Puesto mas alto');");
+				db.execSQL("insert into cargo values(null, 'Jefe de informatica', 'Puesto intermedio');");
+				db.execSQL("insert into solicitante values (null, 2, 1, 'Juan Peraza', '27845689', 'peraza@info.org');");
+				db.execSQL("insert into solicitante values (null, 1, 2, 'Mario Luigi', '27856239', 'mario@emq.info');");
+				db.execSQL("insert into tipoproyecto values (null, 'Gubernamental');");
+				db.execSQL("insert into tipoproyecto values (null, 'Social');");
+				db.execSQL("insert into tipoproyecto values (null, 'Privado');");
+				db.execSQL("insert into tipotrabajo values(null, 'Programación', 12.50);");
+				db.execSQL("insert into tipotrabajo values(null, 'Diseño', 32.18);");
+				db.execSQL("insert into tipotrabajo values(null, 'Analisis', 27.40);");
+				db.execSQL("insert into encargadoserviciosocial values(null, 'Esteban Gonzalez', 'gonzalez@ues.edu.sv', '23458512', 'Economía', 'Economía');");
+				db.execSQL("insert into encargadoserviciosocial values(null, 'Sebastian Dominguez', 'dominguezez@ues.edu.sv', '23453421', 'medicina', 'Medicina');");
+				db.execSQL("insert into encargadoserviciosocial values(null, 'Kevin Funes', 'funes@ues.edu.sv', '23454100', 'Agronomía', 'Veterinaria');");
+				db.execSQL("insert into encargadoserviciosocial values(null, 'Julio Campos', 'campos@ues.edu.sv', '23450074', 'Ingenieria y arquitectura', 'Ingenieria Industrial');");
+				db.execSQL("insert into proyecto values(null, 2, 2, 3, 'Cuidado de perrros');");
+				db.execSQL("insert into proyecto values(null, 1, 3, 2, 'Atención a personas');");
+				db.execSQL("insert into proyecto values(null, 2, 1, 1, 'Consultoria contable');");
+				db.execSQL("insert into proyecto values(null, 1, 3, 4, 'Revision de maquila');");
+				db.execSQL("insert into asignacionproyecto values ('FG12098', 1, date('2014-06-29'));");
+				db.execSQL("insert into asignacionproyecto values ('MJ10458', 2, date('2014-05-12'));");
+				db.execSQL("insert into asignacionproyecto values ('QS11457', 3, date('2014-02-04'));");
+				db.execSQL("insert into asignacionproyecto values ('SA09027', 4, date('2014-08-22'));");
+				db.execSQL("insert into bitacora values(1, 1, 'FG12098', 1, date('2014-06-29'), 'Introduccion de objetivos');");
+				db.execSQL("insert into bitacora values(null, 2, 'FG12098', 1, date('2014-07-02'), 'Diseñando cosas');");
+				db.execSQL("insert into bitacora values(null, 2, 'MJ10458', 3, date('2013-11-18'), 'Presentacion de resultados');");
+				db.execSQL("insert into bitacora values(null, 3, 'MJ10458', 3, date('2013-11-20'), 'Avance literal');");
+				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
