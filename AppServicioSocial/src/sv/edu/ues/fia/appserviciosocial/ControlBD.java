@@ -1,6 +1,5 @@
 package sv.edu.ues.fia.appserviciosocial;
 
-
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -10,12 +9,13 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
 public class ControlBD {
 
 	private static final String[] camposAlumno = new String[] { "carnet",
 			"nombre", "telefono", "dui", "nit", "email" };
 	private static final String[] camposAsignacionProyecto = new String[] {
-		"carnet", "idProyecto", "fecha" };
+			"carnet", "idProyecto", "fecha" };
 	private static final String[] camposBitacora = new String[] { "idBitacora",
 			"carnet", "idProyecto", "idTipoTrabajo", "fecha", "descripcion" };
 	private static final String[] camposEncargadoServicioSocial = new String[] {
@@ -179,7 +179,7 @@ public class ControlBD {
 		valoresAlumno.put("nit", alumno.getNit());
 		valoresAlumno.put("email", alumno.getEmail());
 		contador = db.insert("alumno", null, valoresAlumno);
-	
+
 		if (contador == -1 || contador == 0) {
 			mensaje = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
 		} else {
@@ -218,8 +218,7 @@ public class ControlBD {
 		valoresEncargado.put("telefono", encargado.getTelefono());
 		valoresEncargado.put("facultad", encargado.getFacultad());
 		valoresEncargado.put("escuela", encargado.getEscuela());
-		
-		
+
 		contador = db.insert("encargadoserviciosocial", null, valoresEncargado);
 		if (contador == -1 || contador == 0) {
 			mensaje = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
@@ -242,23 +241,22 @@ public class ControlBD {
 		long contador = 0;
 
 		ContentValues values = new ContentValues();
-		if(verificarIntegridad(proyecto,1))
-		{
-		values.putNull("idproyecto");
-		// coloca un null en el valor autoincremental
-		// vendría siendo igual a insert into proyect(codigoProyecto,...)
-		// values(null, ...);
-		values.put("idsolicitante", proyecto.getIdSolicitante());
-		values.put("idtipoproyecto", proyecto.getIdTipoProyecto());
-		values.put("idencargado", proyecto.getIdEncargado());
-		values.put("nombre", proyecto.getNombre());
-		contador = db.insert("proyecto", null, values);
+		if (verificarIntegridad(proyecto, 1)) {
+			values.putNull("idproyecto");
+			// coloca un null en el valor autoincremental
+			// vendría siendo igual a insert into proyect(codigoProyecto,...)
+			// values(null, ...);
+			values.put("idsolicitante", proyecto.getIdSolicitante());
+			values.put("idtipoproyecto", proyecto.getIdTipoProyecto());
+			values.put("idencargado", proyecto.getIdEncargado());
+			values.put("nombre", proyecto.getNombre());
+			contador = db.insert("proyecto", null, values);
 		}
-		
+
 		if (contador == -1 || contador == 0) {
 			mensaje = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
 		} else {
-			mensaje = "Registro ingresado "+contador;
+			mensaje = "Registro ingresado " + contador;
 		}
 		return mensaje;
 	}
@@ -268,24 +266,24 @@ public class ControlBD {
 	}
 
 	public String insertar(TipoProyecto tipoProyecto) {
-		String mensaje="";
+		String mensaje = "";
 		long contador = 0;
-		//String values[]={tipoProyecto.getNombre()};
-		Cursor cursor = db.query("tipoproyecto", camposTipoProyecto,"nombre='"+tipoProyecto.getNombre()+"'",null,null,null,null,null);
-		if(cursor.moveToFirst())
-		{
-			return mensaje="Registro ya almacenado en la Base de Datos";
-			
-		}		
+		// String values[]={tipoProyecto.getNombre()};
+		Cursor cursor = db.query("tipoproyecto", camposTipoProyecto, "nombre='"
+				+ tipoProyecto.getNombre() + "'", null, null, null, null, null);
+		if (cursor.moveToFirst()) {
+			return mensaje = "Registro ya almacenado en la Base de Datos";
+
+		}
 		ContentValues content = new ContentValues();
 		content.putNull("idtipoproyecto");
-		content.put("nombre",tipoProyecto.getNombre());
-		contador=db.insert("tipoproyecto", null, content);
-		
+		content.put("nombre", tipoProyecto.getNombre());
+		contador = db.insert("tipoproyecto", null, content);
+
 		if (contador == -1 || contador == 0) {
 			mensaje = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
 		} else {
-			mensaje = "Registro ingresado "+contador;
+			mensaje = "Registro ingresado " + contador;
 		}
 		return mensaje;
 	}
@@ -329,20 +327,18 @@ public class ControlBD {
 	}
 
 	public String actualizar(Proyecto proyecto) {
-		if(verificarIntegridad(proyecto, 2))
-		{
-		String[] id = { String.valueOf(proyecto.getIdProyecto()) };
-		ContentValues cv = new ContentValues();
+		if (verificarIntegridad(proyecto, 2)) {
+			String[] id = { String.valueOf(proyecto.getIdProyecto()) };
+			ContentValues cv = new ContentValues();
 
-		cv.put("idproyecto", proyecto.getIdProyecto());
-		cv.put("idsolicitante", proyecto.getIdSolicitante());
-		cv.put("idtipoproyecto", proyecto.getIdTipoProyecto());
-		cv.put("idencargado", proyecto.getIdEncargado());
-		cv.put("nombre", proyecto.getNombre());
-		db.update("proyecto", cv, "idproyecto = ?", id);
-		return "Registro Actualizado Correctamente";
-		}
-		else
+			cv.put("idproyecto", proyecto.getIdProyecto());
+			cv.put("idsolicitante", proyecto.getIdSolicitante());
+			cv.put("idtipoproyecto", proyecto.getIdTipoProyecto());
+			cv.put("idencargado", proyecto.getIdEncargado());
+			cv.put("nombre", proyecto.getNombre());
+			db.update("proyecto", cv, "idproyecto = ?", id);
+			return "Registro Actualizado Correctamente";
+		} else
 			return "Registro no Existente";
 	}
 
@@ -351,7 +347,20 @@ public class ControlBD {
 	}
 
 	public String actualizar(TipoProyecto tipoProyecto) {
-		return null;
+
+		if (verificarIntegridad(tipoProyecto, 3)) {
+			String[] id = { String.valueOf(tipoProyecto.getIdTipoProyecto()) };
+			ContentValues cv = new ContentValues();
+
+			cv.put("idtipoproyecto", tipoProyecto.getIdTipoProyecto());
+			cv.put("nombre", tipoProyecto.getNombre());
+			db.update("tipoproyecto", cv, "idtipoproyecto = ?", id);
+			return "Registro Actualizado Correctamente";
+		}
+
+		else
+			return "Registro no Existente";
+
 	}
 
 	public String actualizar(TipoTrabajo tipoTrabajo) {
@@ -372,19 +381,18 @@ public class ControlBD {
 	public String eliminar(AsignacionProyecto asignacion, int tipo) {
 		String regAfectados = "filas afectadas= ";
 		int contador = 0;
-		String id[]= null;
-		switch(tipo)
-		{
-		//Se envio en carnet
+		String id[] = null;
+		switch (tipo) {
+		// Se envio en carnet
 		case 1:
-			id[0]=String.valueOf(asignacion.getCarnet());
-			contador += db.delete("asignacionproyecto", "carnet=?",id);
-		break;
-		//Se envio el idProyecto
+			id[0] = String.valueOf(asignacion.getCarnet());
+			contador += db.delete("asignacionproyecto", "carnet=?", id);
+			break;
+		// Se envio el idProyecto
 		case 2:
-			id[0]=String.valueOf(asignacion.getIdProyecto());
-			contador += db.delete("asignacionproyecto", "idproyecto=?",id);
-		break;
+			id[0] = String.valueOf(asignacion.getIdProyecto());
+			contador += db.delete("asignacionproyecto", "idproyecto=?", id);
+			break;
 		}
 		regAfectados += contador;
 		return regAfectados;
@@ -408,9 +416,9 @@ public class ControlBD {
 
 	public String eliminar(Proyecto proyecto) {
 		String regAfectados = "filas afectadas= ";
-		String id[]={String.valueOf(proyecto.getIdProyecto())};
+		String id[] = { String.valueOf(proyecto.getIdProyecto()) };
 		int contador = 0;
-		contador += db.delete("proyecto", "idproyecto=?",id);
+		contador += db.delete("proyecto", "idproyecto=?", id);
 		regAfectados += contador;
 		return regAfectados;
 
@@ -421,7 +429,19 @@ public class ControlBD {
 	}
 
 	public String eliminar(TipoProyecto tipoProyecto) {
-		return null;
+		String regAfectados = "filas afectadas= ";
+		int contador = 0;
+		/*si regresa true es q existe tipoproyecto como fk en proyecto y lo eliminara antes
+		 * caso contrario solo eliminara tipoproyecto de su respectiva tabla
+		 * 
+		 */
+		if(verificarIntegridad(tipoProyecto, 4)){
+			contador+=db.delete("proyecto","idtipoproyecto='" + tipoProyecto.getIdTipoProyecto() + "'", null);
+		}
+		contador+=db.delete("tipoproyecto","idtipoproyecto='" + tipoProyecto.getIdTipoProyecto() + "'", null);
+		regAfectados+=contador;
+		return regAfectados;
+	
 	}
 
 	public String eliminar(TipoTrabajo tipoTrabajo) {
@@ -448,18 +468,19 @@ public class ControlBD {
 		}
 	}
 
-	public AsignacionProyecto consultarAsignacionProyecto(String parametro, int tipo) {
+	public AsignacionProyecto consultarAsignacionProyecto(String parametro,
+			int tipo) {
 		String[] id = { parametro };
 		Cursor cursor = null;
 		switch (tipo) {
 		case 1:
-			cursor = db.query("asignacionproyecto", camposAsignacionProyecto, "carnet = ?",
-					id, null, null, null);
-		break;
+			cursor = db.query("asignacionproyecto", camposAsignacionProyecto,
+					"carnet = ?", id, null, null, null);
+			break;
 		case 2:
-			cursor = db.query("asignacionproyecto", camposAsignacionProyecto, "idproyecto = ?",
-					id, null, null, null);
-		break;
+			cursor = db.query("asignacionproyecto", camposAsignacionProyecto,
+					"idproyecto = ?", id, null, null, null);
+			break;
 		}
 		if (cursor.moveToFirst()) {
 			AsignacionProyecto asignacion = new AsignacionProyecto();
@@ -476,56 +497,62 @@ public class ControlBD {
 		return null;
 	}
 
-	
-	
-	public ArrayList<EncargadoServicioSocial> consultarEncargadoServicioSocial(String busqueda, int seleccion) {
+	public ArrayList<EncargadoServicioSocial> consultarEncargadoServicioSocial(
+			String busqueda, int seleccion) {
 		String[] id = { busqueda };
-		int opcion=seleccion;
+		int opcion = seleccion;
 		Cursor cursor;
-		ArrayList<EncargadoServicioSocial> lista=new ArrayList<EncargadoServicioSocial>();
+		ArrayList<EncargadoServicioSocial> lista = new ArrayList<EncargadoServicioSocial>();
 		switch (opcion) {
-		
-		//Se eligio id
+
+		// Se eligio id
 		case 0:
-	cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "idEncargado = ?",
-					id, null, null, null);
-	break;
-	//se eligio nombre
+			cursor = db.query("encargadoserviciosocial",
+					camposEncargadoServicioSocial, "idEncargado = ?", id, null,
+					null, null);
+			break;
+		// se eligio nombre
 		case 1:
-			
-			cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "nombre= ?",
-					id, null, null, null);
+
+			cursor = db.query("encargadoserviciosocial",
+					camposEncargadoServicioSocial, "nombre= ?", id, null, null,
+					null);
 			break;
-			//Se eligio email
+		// Se eligio email
 		case 2:
-			cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "email= ?",
-					id, null, null, null);
+			cursor = db.query("encargadoserviciosocial",
+					camposEncargadoServicioSocial, "email= ?", id, null, null,
+					null);
 			break;
-		//se eligio telefono
+		// se eligio telefono
 		case 3:
-			cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "telefono= ?",
-					id, null, null, null);
+			cursor = db.query("encargadoserviciosocial",
+					camposEncargadoServicioSocial, "telefono= ?", id, null,
+					null, null);
 			break;
-			//se eligio facultad
+		// se eligio facultad
 		case 4:
-			cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "facultad= ?",
-					id, null, null, null);
+			cursor = db.query("encargadoserviciosocial",
+					camposEncargadoServicioSocial, "facultad= ?", id, null,
+					null, null);
 			break;
-			//se eligio escuela
+		// se eligio escuela
 		case 5:
-			cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "escuela = ?",
-					id, null, null, null);
+			cursor = db.query("encargadoserviciosocial",
+					camposEncargadoServicioSocial, "escuela = ?", id, null,
+					null, null);
 		default:
-			cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "idEncargado = ?",
-					id, null, null, null);
+			cursor = db.query("encargadoserviciosocial",
+					camposEncargadoServicioSocial, "idEncargado = ?", id, null,
+					null, null);
 		}
-			// Cursor cursor =
-			// db.query("proyecto",camposProyecto,id+" LIKE '%"+nombreProyecto+"%'",null,null,null,null,null);
-			//if(cursor!=null){
+		// Cursor cursor =
+		// db.query("proyecto",camposProyecto,id+" LIKE '%"+nombreProyecto+"%'",null,null,null,null,null);
+		// if(cursor!=null){
 		if (cursor.moveToFirst()) {
-			do{
-				EncargadoServicioSocial encargado= new EncargadoServicioSocial();
-				
+			do {
+				EncargadoServicioSocial encargado = new EncargadoServicioSocial();
+
 				encargado.setIdEncargado(cursor.getInt(0));
 				encargado.setNombre(cursor.getString(1));
 				encargado.setEmail(cursor.getString(2));
@@ -533,15 +560,14 @@ public class ControlBD {
 				encargado.setFacultad(cursor.getString(4));
 				encargado.setEscuela(cursor.getString(5));
 				lista.add(encargado);
-			}while(cursor.moveToNext());
-				return lista;
-			
-			} else {
-				return null;
-			}
-			
+			} while (cursor.moveToNext());
+			return lista;
+
+		} else {
+			return null;
 		}
-			
+
+	}
 
 	public Escuela consultarEscuela(String idEscuela) {
 		return null;
@@ -552,7 +578,7 @@ public class ControlBD {
 	}
 
 	public Proyecto consultarProyecto(String codigoProyecto) {
-	
+
 		String[] id = { codigoProyecto };
 		// String id="nombreProyecto";
 		Cursor cursor = db.query("proyecto", camposProyecto, "idproyecto = ?",
@@ -581,8 +607,8 @@ public class ControlBD {
 	public TipoProyecto consultarTipoProyecto(String idTipoProyecto) {
 		String[] id = { idTipoProyecto };
 		// String id="nombreProyecto";
-		Cursor cursor = db.query("tipoproyecto", camposTipoProyecto, "idtipoproyecto = ?",
-				id, null, null, null);
+		Cursor cursor = db.query("tipoproyecto", camposTipoProyecto,
+				"idtipoproyecto = ?", id, null, null, null);
 		// Cursor cursor =
 		// db.query("proyecto",camposProyecto,id+" LIKE '%"+nombreProyecto+"%'",null,null,null,null,null);
 		if (cursor.moveToFirst()) {
@@ -605,21 +631,26 @@ public class ControlBD {
 	public String llenarBD() {
 		return null;
 	}
-	
-	private boolean verificarIntegridad(Object dato, int relacion)throws SQLException {
+
+	private boolean verificarIntegridad(Object dato, int relacion)
+			throws SQLException {
 		switch (relacion) {
 
 		case 1: {
-			// verificar que al insertar proyecto exista IdSolicitante e IDTipoProyecto
+			// verificar que al insertar proyecto exista IdSolicitante e
+			// IDTipoProyecto
 			Proyecto proyecto = (Proyecto) dato;
 			String[] id1 = { String.valueOf(proyecto.getIdSolicitante()) };
 			String[] id2 = { String.valueOf(proyecto.getIdTipoProyecto()) };
+			String[] id3 = { String.valueOf(proyecto.getIdEncargado()) };
 			abrir();
-			Cursor cursor1 = db.query("solicitante", null, "idsolicitante = ?", id1, null,
-					null, null);
-			Cursor cursor2 = db.query("tipoproyecto", null, "idtipoproyecto = ?", id2,
-					null, null, null);
-			if (cursor1.moveToFirst() && cursor2.moveToFirst()) {
+			Cursor cursor1 = db.query("solicitante", null, "idsolicitante = ?",
+					id1, null, null, null);
+			Cursor cursor2 = db.query("tipoproyecto", null,
+					"idtipoproyecto = ?", id2, null, null, null);
+			Cursor cursor3 = db.query("encargado", null,
+					"idencargado = ?", id3, null, null, null);
+			if (cursor1.moveToFirst() && cursor2.moveToFirst()&&cursor3.moveToFirst()) {
 				// Se encontraron datos
 				return true;
 			}
@@ -630,9 +661,10 @@ public class ControlBD {
 			// verificar que al modificar nota exista carnet del alumno, el
 			// codigo de materia y el ciclo
 			Proyecto proyecto = (Proyecto) dato;
-			String[] ids = { String.valueOf(proyecto.getIdProyecto())};
+			String[] ids = { String.valueOf(proyecto.getIdProyecto()) };
 			abrir();
-			Cursor c = db.query("proyecto", null,"idproyecto = ?", ids,null, null, null);
+			Cursor c = db.query("proyecto", null, "idproyecto = ?", ids, null,
+					null, null);
 			if (c.moveToFirst()) {
 				// Se encontraron datos
 				return true;
@@ -640,11 +672,38 @@ public class ControlBD {
 			return false;
 		}
 
-
+		case 3: {
+			// verificar que existe el tipoProyecto al actualizar
+			TipoProyecto tipoProyecto = (TipoProyecto) dato;
+			String[] id = { String.valueOf(tipoProyecto.getIdTipoProyecto()) };
+			abrir();
+			Cursor cursor = db.query("tipoproyecto", camposTipoProyecto, "idtipoproyecto=?",
+					id, null, null, null);
+			if (cursor.moveToFirst()) {
+				return true;
+			}
+			else
+				return false;
+		}
+		
+		case 4:
+		{
+			//verifica que existe el tipoProyecto antes de eliminar
+			//lo q hace es q verifica si en proyecto esta como fk tipoproyecto de ser 
+			//asi regresara true y en el metodo de eliminar se eliminara ese registro
+			//de la tabla proyecto 
+			TipoProyecto tipoProyecto = (TipoProyecto)dato;
+			String id[] = { String.valueOf(tipoProyecto.getIdTipoProyecto()) };
+			abrir();
+			Cursor cursor = db.query(true,"proyecto", new String[]{"idtipoproyecto"},"idtipoproyecto='" + tipoProyecto.getIdTipoProyecto() + "'", null, null,
+					null, null, null);
+			if(cursor.moveToFirst())
+				return true;
+			else
+				return false;
+		}	
 		default:
 			return false;
 		}
 	}// fin verificacion integridad
-
-
 }// fin ControlDB
