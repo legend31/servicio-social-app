@@ -11,10 +11,10 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".AlumnoActualizarActivity" >
+    tools:context=".AlumnoEliminarActivity" >
 
     <Button
-        android:id="@+id/btnEliminar"
+        android:id="@+id/btnEliminarEncargado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/TablaDeDatosEncargado"
@@ -33,7 +33,7 @@
         android:layout_marginTop="45dp" >
 
         <EditText
-            android:id="@+id/edtActualizarEncargado"
+            android:id="@+id/edtEliminarEncargado"
             android:layout_width="175dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -77,7 +77,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName" 
+                android:enabled ="false"
+				android:focusable="false"
+				android:focusableInTouchMode="false"
+				android:cursorVisible="false"
+				android:longClickable="false" />
         </TableRow>
 
         <TableRow
@@ -96,7 +101,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress" 
+                android:enabled ="false"
+				android:focusable="false"
+				android:focusableInTouchMode="false"
+				android:cursorVisible="false"
+				android:longClickable="false"/>
         </TableRow>
 
         <TableRow
@@ -108,14 +118,20 @@
                 android:id="@+id/txtTelefonoEncargado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/telefono" />
+                android:text="@string/telefono" 
+               />
 
             <EditText
                 android:id="@+id/edtTelefonoEncargado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="number"
+                 android:enabled ="false"
+				android:focusable="false"
+				android:focusableInTouchMode="false"
+				android:cursorVisible="false"
+				android:longClickable="false" />
         </TableRow>
 
         <TableRow
@@ -127,14 +143,20 @@
                 android:id="@+id/txtFacultadEncargao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/facultad" />
+                android:text="@string/facultad"
+                 />
 
             <EditText
                 android:id="@+id/edtFacultadEncargado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="text" />
+                android:inputType="text"
+                android:enabled ="false"
+				android:focusable="false"
+				android:focusableInTouchMode="false"
+				android:cursorVisible="false"
+				android:longClickable="false" />
         </TableRow>
 
         <TableRow
@@ -153,7 +175,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="text" />
+                android:inputType="text" 
+                android:enabled ="false"
+				android:focusable="false"
+				android:focusableInTouchMode="false"
+				android:cursorVisible="false"
+				android:longClickable="false"/>
         </TableRow>
     </TableLayout>
 
