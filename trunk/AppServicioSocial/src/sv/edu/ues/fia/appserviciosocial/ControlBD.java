@@ -96,7 +96,7 @@ public class ControlBD {
 						+ " tipoproyecto WHERE idtipoproyecto = NEW.idtipoproyecto) IS NULL) THEN RAISE(ABORT, 'No existe tipo de proyecto') END; END;");
 				
 				//triggers tipoProyecto
-				db.execSQL("CREATE TRIGGER TipoProyectoELiminar BEFORE DELETE ON TIPOPROYECTO FOR EACH ROW BEGIN DELETE FROM PROYECTO WHERE IDTIPOPROYECTO=OLD.IDTIPOPROYECTO; END");
+				//db.execSQL("CREATE TRIGGER TipoProyectoELiminar BEFORE DELETE ON TIPOPROYECTO FOR EACH ROW BEGIN DELETE FROM PROYECTO WHERE IDTIPOPROYECTO=OLD.IDTIPOPROYECTO; END");
 
 
 				// triggers para asignacionProyecto
@@ -439,10 +439,10 @@ public class ControlBD {
 		 * eliminara antes caso contrario solo eliminara tipoproyecto de su
 		 * respectiva tabla
 		 */
-		 /*if (verificarIntegridad(tipoProyecto, 4)) 
+		 if (verificarIntegridad(tipoProyecto, 4)) 
 		 {
 			contador += db.delete("proyecto","idtipoproyecto='"+ tipoProyecto.getIdTipoProyecto() + "'",null);
-		 }*/
+		 }
 		contador += db.delete("tipoproyecto","idtipoproyecto='" + tipoProyecto.getIdTipoProyecto() + "'",null);
 		//regAfectados += contador;
 		if(contador==0)
