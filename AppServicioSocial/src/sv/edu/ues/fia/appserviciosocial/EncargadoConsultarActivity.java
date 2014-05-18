@@ -11,9 +11,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TableLayout;
 import android.widget.Toast;
 
 
@@ -21,9 +23,20 @@ public class EncargadoConsultarActivity extends Activity implements OnItemSelect
 	 ControlBD base;
 	 EditText txtBusqueda;
 	 int seleccion;
+	 int indicador;
 	 int largoCadena;
 	 ArrayList<EncargadoServicioSocial> datos;
 	 ListView li;
+	 private TableLayout tablaDeDatos;
+	 private EditText edtNombre;
+     private EditText edtTelefono;
+     private EditText edtFacultad;
+     private EditText edtEscuela;
+     private EditText edtEmail;
+     private Button btnAtras;
+     private Button btnAdelante;
+     EncargadoServicioSocial encargado;
+     int cantidad;
 	 
 
 	@Override
@@ -34,8 +47,23 @@ public class EncargadoConsultarActivity extends Activity implements OnItemSelect
 		base = new ControlBD(this);
         txtBusqueda= (EditText) findViewById(R.id.edtBuscarEncargado);
        
+        //los datos que se mostraran
+        tablaDeDatos = (TableLayout) findViewById(R.id.TablaDeDatosEncargado);
+        tablaDeDatos.setVisibility(View.INVISIBLE);
+        btnAtras = (Button) findViewById(R.id.btnAtras);
+        btnAtras.setVisibility(View.INVISIBLE);
+        btnAdelante = (Button) findViewById(R.id.btnAdelante);
+        btnAdelante.setVisibility(View.INVISIBLE);
+      
         
-		
+        edtNombre = (EditText) findViewById(R.id.edtNombreEncargado);
+        edtEmail = (EditText) findViewById(R.id.edtEmailEncargado);
+         edtTelefono = (EditText) findViewById(R.id.edtTelefonoEncargado);
+        
+         edtFacultad= (EditText) findViewById(R.id.edtFacultadEncargado);
+         edtEscuela = (EditText) findViewById(R.id.edtEscuelaEncargado);
+         
+         
 		//spinner
 		Spinner spinner=(Spinner) findViewById(R.id.spinnerEncargado);
 		ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource
@@ -48,7 +76,7 @@ public class EncargadoConsultarActivity extends Activity implements OnItemSelect
 
 
 	public void onItemSelected (AdapterView<?> parent, View view, int pos, long id){
-		Toast.makeText(parent.getContext(), "Selecciono la opcion: " + pos, Toast.LENGTH_SHORT).show();
+		//Toast.makeText(parent.getContext(), "Selecciono la opcion: " + pos, Toast.LENGTH_SHORT).show();
 		seleccion=pos;
 		
 	}
@@ -67,7 +95,7 @@ public class EncargadoConsultarActivity extends Activity implements OnItemSelect
          }
          
          base.abrir();
-         //datos= base.consultarEncargadoServicioSocial(busqueda, seleccion);
+         datos= base.consultarEncargadoServicioSocial(busqueda, seleccion);
        base.cerrar();
          if(datos == null)
          {
@@ -76,21 +104,72 @@ public class EncargadoConsultarActivity extends Activity implements OnItemSelect
          }
          
          else{
-        	 Toast.makeText(this, "Registro " +busqueda +"encontrado", Toast.LENGTH_LONG).show();
-        	 
-        	 li=(ListView)findViewById(R.id.listView1);
-        	 ArrayAdapter<EncargadoServicioSocial> adaptador=new ArrayAdapter<EncargadoServicioSocial> (this,android.R.layout.simple_list_item_1, datos);
+        	
+        	 Toast.makeText(this, "Se encontraron" +datos.size() +"registro", Toast.LENGTH_LONG).show();
+        	 cantidad=datos.size() - 1;
+        	// li=(ListView)findViewById(R.id.listView1);
+        	 //ArrayAdapter<EncargadoServicioSocial> adaptador=new ArrayAdapter<EncargadoServicioSocial> (this,android.R.layout.simple_list_item_1, datos);
         				
-        	li.setAdapter(adaptador);
+        	//li.setAdapter(adaptador);
         	 //llenado de lista con una concatenacion de dos datos significantes de la tabla, puede ser el id junto con el nombre
         	 //al pulsar abre un activity
-        	
+indicador=0;
+        	 mostrarDatos();
                  
          } 
+
          
  }
 	
-	
+	 
+	 public void adelante(View v){
+    	 indicador=indicador+1;
+    	 mostrarDatos();
+     }
+     
+	 public void atras(View v){
+		 indicador=indicador-1;
+    	 mostrarDatos();
+     }
+     
+	 
+	public void mostrarDatos(){
+		
+		
+        encargado=datos.get(indicador);
+    	tablaDeDatos.setVisibility(View.VISIBLE);
+           // btnActualizar.setVisibility(View.VISIBLE);
+            edtNombre.setText(encargado.getNombre());
+            edtEmail.setText(encargado.getEmail());
+            edtTelefono.setText(encargado.getTelefono());
+            edtFacultad.setText(encargado.getFacultad());
+            edtEscuela.setText(encargado.getEscuela());
+            
+             
+            //mostrar los botones de navegacion
+        if(indicador==0 && cantidad!=indicador){
+        	btnAtras.setVisibility(View.INVISIBLE);
+        	btnAdelante.setVisibility(View.VISIBLE);
+        	return;
+        }
+        if(indicador==0 && cantidad==indicador){
+        	btnAtras.setVisibility(View.INVISIBLE);
+        	btnAdelante.setVisibility(View.INVISIBLE);
+        	return;
+        }
+        if(indicador!=0 && cantidad!=indicador){
+        	btnAtras.setVisibility(View.VISIBLE);
+        	btnAdelante.setVisibility(View.VISIBLE);
+        	return;
+        }
+        if(indicador!=0 && cantidad==indicador){
+        	btnAtras.setVisibility(View.VISIBLE);
+        	btnAdelante.setVisibility(View.INVISIBLE);
+        	return;
+        }
+        	
+            
+	}
 	
 public void onNothingSelected(AdapterView<?> arg0){
 	

@@ -1,8 +1,13 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+<LinearLayout 
+    
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_gravity="center|center_horizontal"
     android:gravity="center_horizontal"
     android:orientation="vertical"
@@ -17,8 +22,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/title_activity_encargado_consultar" 
-        android:textSize="20sp"/>
+        android:text="@string/title_activity_encargado_consultar"
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/edtBuscarEncargado"
@@ -49,10 +54,136 @@
         android:text="@string/buscar" 
         android:onClick="consultarEncargado"/>
 
-    <ListView
-        android:id="@+id/listView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-    </ListView>
+      <TableLayout
+        android:id="@+id/TablaDeDatosEncargado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout1"
+       
+        android:layout_marginTop="22dp" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/nombreEncargado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nombre" />
+
+            <EditText
+                android:id="@+id/edtNombreEncargado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/txtEmailEncargado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/email" />
+
+            <EditText
+                android:id="@+id/edtEmailEncargado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textEmailAddress" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/txtTelefonoEncargado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/telefono" />
+
+            <EditText
+                android:id="@+id/edtTelefonoEncargado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/txtFacultadEncargao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/facultad" />
+
+            <EditText
+                android:id="@+id/edtFacultadEncargado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/txtEscuelaEncargado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/escuela" />
+
+            <EditText
+                android:id="@+id/edtEscuelaEncargado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text" />
+        </TableRow>
+    </TableLayout>
+
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content" 
+          android:layout_marginTop="5dp">
+
+    <Button
+        android:id="@+id/btnAdelante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="22dp"
+        android:onClick="adelante"
+        android:text="@string/adelante" />
+
+    <Button
+        android:id="@+id/btnAtras"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="24dp"
+        android:onClick="atras"
+        android:text="@string/atras" />
+          
+      </RelativeLayout>
 
 </LinearLayout>
+</ScrollView>

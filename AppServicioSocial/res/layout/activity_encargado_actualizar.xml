@@ -1,28 +1,172 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent" >
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".EncargadoActualizarActivity" >
-
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_alignRight="@+id/button1"
-        android:layout_marginBottom="60dp" />
+    tools:context=".AlumnoActualizarActivity" >
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/btnActualizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="94dp"
-        android:text="Button" />
+        android:layout_below="@+id/TablaDeDatosEncargado"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="31dp"
+        android:onClick="actualizarEncargado"
+        android:text="@string/actualizar" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/txtTituloActualizar"
+        android:layout_marginTop="45dp" >
+
+        <EditText
+            android:id="@+id/edtActualizarEncargado"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/idEncargado"
+            android:inputType="text"
+             >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/btnBuscarEncargado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="consultarEncargadoActualizar"
+            android:text="@string/buscar" />
+    </LinearLayout>
+
+    <TableLayout
+        android:id="@+id/TablaDeDatosEncargado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/nombreEncargado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nombre" />
+
+            <EditText
+                android:id="@+id/edtNombreEncargado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/txtEmailEncargado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/email" />
+
+            <EditText
+                android:id="@+id/edtEmailEncargado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textEmailAddress" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/txtTelefonoEncargado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/telefono" />
+
+            <EditText
+                android:id="@+id/edtTelefonoEncargado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/txtFacultadEncargao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/facultad" />
+
+            <EditText
+                android:id="@+id/edtFacultadEncargado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/txtEscuelaEncargado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/escuela" />
+
+            <EditText
+                android:id="@+id/edtEscuelaEncargado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text" />
+        </TableRow>
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/txtTituloActualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="@string/title_activity_encargado_actualizar"
+        android:textSize="20sp" />
 
 </RelativeLayout>
+
+</ScrollView>
