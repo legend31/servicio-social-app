@@ -82,27 +82,34 @@ public class ControlBD {
 				db.execSQL("create table ASIGNACIONPROYECTO ( CARNET VARCHAR(7) not null, IDPROYECTO INTEGER not null, FECHA DATE, PRIMARY KEY(carnet,idproyecto)"
 						+ " CONSTRAINT fk_asignacionproyecto_proyecto FOREIGN KEY (idproyecto) REFERENCES proyecto(idproyecto) ON DELETE RESTRICT, CONSTRAINT "
 						+ "fk_asignacionproyecto_alumno FOREIGN KEY (carnet) REFERENCES alumno(carnet) ON DELETE RESTRICT );");
-				//triggers
-				db.execSQL("CREATE TRIGGER fk_solicitante_cargo BEFORE INSERT ON solicitante FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT idcargo FROM cargo" +
-						" WHERE idcargo = NEW.idcargo) IS NULL) THEN RAISE(ABORT, 'No existe cargo') END; END;");
+				// triggers
+				db.execSQL("CREATE TRIGGER fk_solicitante_cargo BEFORE INSERT ON solicitante FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT idcargo FROM cargo"
+						+ " WHERE idcargo = NEW.idcargo) IS NULL) THEN RAISE(ABORT, 'No existe cargo') END; END;");
 				db.execSQL("CREATE TRIGGER fk_solicitante_institucion BEFORE INSERT ON solicitante FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT idinstitucion"
-						+" FROM institucion WHERE idinstitucion = NEW.idinstitucion) IS NULL) THEN RAISE(ABORT, 'No existe institucion') END; END;");
+						+ " FROM institucion WHERE idinstitucion = NEW.idinstitucion) IS NULL) THEN RAISE(ABORT, 'No existe institucion') END; END;");
+				// triggers para proyecto
 				db.execSQL("CREATE TRIGGER fk_proyecto_encargado BEFORE INSERT ON proyecto FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT idencargado FROM "
-						+"encargadoserviciosocial WHERE idencargado = NEW.idencargado) IS NULL) THEN RAISE(ABORT, 'No existe encargado') END; END;");
+						+ "encargadoserviciosocial WHERE idencargado = NEW.idencargado) IS NULL) THEN RAISE(ABORT, 'No existe encargado') END; END;");
 				db.execSQL("CREATE TRIGGER fk_proyecto_solicitante BEFORE INSERT ON proyecto FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT idsolicitante FROM "
-						+"solicitante WHERE idsolicitante = NEW.idsolicitante) IS NULL) THEN RAISE(ABORT, 'No existe solicitante') END; END;");
+						+ "solicitante WHERE idsolicitante = NEW.idsolicitante) IS NULL) THEN RAISE(ABORT, 'No existe solicitante') END; END;");
 				db.execSQL("CREATE TRIGGER fk_proyecto_tipoproyecto BEFORE INSERT ON proyecto FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT idtipoproyecto FROM"
-						+" tipoproyecto WHERE idtipoproyecto = NEW.idtipoproyecto) IS NULL) THEN RAISE(ABORT, 'No existe tipo de proyecto') END; END;");
+						+ " tipoproyecto WHERE idtipoproyecto = NEW.idtipoproyecto) IS NULL) THEN RAISE(ABORT, 'No existe tipo de proyecto') END; END;");
+				
+				//triggers tipoProyecto
+				db.execSQL("CREATE TRIGGER TipoProyectoELiminar BEFORE DELETE ON TIPOPROYECTO FOR EACH ROW BEGIN DELETE FROM PROYECTO WHERE IDTIPOPROYECTO=OLD.IDTIPOPROYECTO; END");
+
+
+				// triggers para asignacionProyecto
 				db.execSQL("CREATE TRIGGER fk_asignacionproyecto_proyecto BEFORE INSERT ON asignacionproyecto FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT "
-						+"idproyecto FROM proyecto WHERE idproyecto = NEW.idproyecto) IS NULL) THEN RAISE(ABORT, 'No existe proyecto') END; END;");
-				db.execSQL("CREATE TRIGGER fk_asignacionproyecto_alumno BEFORE INSERT ON asignacionproyecto FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT " 
-						+"carnet FROM alumno WHERE carnet = NEW.carnet) IS NULL) THEN RAISE(ABORT, 'No existe alumno') END; END;");
+						+ "idproyecto FROM proyecto WHERE idproyecto = NEW.idproyecto) IS NULL) THEN RAISE(ABORT, 'No existe proyecto') END; END;");
+				db.execSQL("CREATE TRIGGER fk_asignacionproyecto_alumno BEFORE INSERT ON asignacionproyecto FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT "
+						+ "carnet FROM alumno WHERE carnet = NEW.carnet) IS NULL) THEN RAISE(ABORT, 'No existe alumno') END; END;");
 				db.execSQL("CREATE TRIGGER fk_bitacora_tipotrabajo BEFORE INSERT ON bitacora FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT idtipotrabajo FROM "
-						+"tipotrabajo WHERE idtipotrabajo = NEW.idtipotrabajo) IS NULL) THEN RAISE(ABORT, 'No existe tipo de trabajo') END; END;");
-				db.execSQL("CREATE TRIGGER fk_bitacora_proyecto BEFORE INSERT ON bitacora FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT idproyecto FROM " +
-						"proyecto WHERE idproyecto = NEW.idproyecto) IS NULL) THEN RAISE(ABORT, 'No existe proyecto') END; END;");
-				db.execSQL("CREATE TRIGGER fk_bitacora_alumno BEFORE INSERT ON bitacora FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT carnet FROM alumno " +
-						"WHERE carnet = NEW.carnet) IS NULL) THEN RAISE(ABORT, 'No existe alumno') END; END;");
+						+ "tipotrabajo WHERE idtipotrabajo = NEW.idtipotrabajo) IS NULL) THEN RAISE(ABORT, 'No existe tipo de trabajo') END; END;");
+				db.execSQL("CREATE TRIGGER fk_bitacora_proyecto BEFORE INSERT ON bitacora FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT idproyecto FROM "
+						+ "proyecto WHERE idproyecto = NEW.idproyecto) IS NULL) THEN RAISE(ABORT, 'No existe proyecto') END; END;");
+				db.execSQL("CREATE TRIGGER fk_bitacora_alumno BEFORE INSERT ON bitacora FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT carnet FROM alumno "
+						+ "WHERE carnet = NEW.carnet) IS NULL) THEN RAISE(ABORT, 'No existe alumno') END; END;");
 				// inserciones
 				db.execSQL("insert into alumno values('FG12098', 'Pedro Fuentes',   '23456781', '033206621', '06142307906731', 'pedro@yahoo.es');");
 				db.execSQL("insert into alumno values('MJ10458', 'Luis Martinez',   '22378781', '033673420', '06132307901231', 'luis@yahoo.com');");
@@ -137,7 +144,7 @@ public class ControlBD {
 				db.execSQL("insert into bitacora values(null, 2, 'FG12098', 1, date('2014-07-02'), 'Diseñando cosas');");
 				db.execSQL("insert into bitacora values(null, 2, 'MJ10458', 3, date('2013-11-18'), 'Presentacion de resultados');");
 				db.execSQL("insert into bitacora values(null, 3, 'MJ10458', 3, date('2013-11-20'), 'Avance literal');");
-				
+
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -237,20 +244,18 @@ public class ControlBD {
 		long contador = 0;
 
 		ContentValues values = new ContentValues();
-		if (verificarIntegridad(proyecto, 1)) {
-			values.putNull("idproyecto");
-			// coloca un null en el valor autoincremental
-			// vendría siendo igual a insert into proyect(codigoProyecto,...)
-			// values(null, ...);
-			values.put("idsolicitante", proyecto.getIdSolicitante());
-			values.put("idtipoproyecto", proyecto.getIdTipoProyecto());
-			values.put("idencargado", proyecto.getIdEncargado());
-			values.put("nombre", proyecto.getNombre());
-			contador = db.insert("proyecto", null, values);
-		}
+		// if (verificarIntegridad(proyecto, 1)) {
+
+		values.putNull("idproyecto");
+		values.put("idsolicitante", proyecto.getIdSolicitante());
+		values.put("idtipoproyecto", proyecto.getIdTipoProyecto());
+		values.put("idencargado", proyecto.getIdEncargado());
+		values.put("nombre", proyecto.getNombre());
+		contador = db.insert("proyecto", null, values);
+		// }
 
 		if (contador == -1 || contador == 0) {
-			mensaje = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+			mensaje = "Error al Insertar el registro. Verificar inserción";
 		} else {
 			mensaje = "Registro ingresado " + contador;
 		}
@@ -277,7 +282,7 @@ public class ControlBD {
 		contador = db.insert("tipoproyecto", null, content);
 
 		if (contador == -1 || contador == 0) {
-			mensaje = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+			mensaje = "Error al Insertar el registro. Verificar inserción";
 		} else {
 			mensaje = "Registro ingresado " + contador;
 		}
@@ -323,19 +328,20 @@ public class ControlBD {
 	}
 
 	public String actualizar(Proyecto proyecto) {
-		if (verificarIntegridad(proyecto, 2)) {
-			String[] id = { String.valueOf(proyecto.getIdProyecto()) };
-			ContentValues cv = new ContentValues();
+		// if (verificarIntegridad(proyecto, 2)) {
+		String[] id = { String.valueOf(proyecto.getIdProyecto()) };
+		ContentValues cv = new ContentValues();
 
-			cv.put("idproyecto", proyecto.getIdProyecto());
-			cv.put("idsolicitante", proyecto.getIdSolicitante());
-			cv.put("idtipoproyecto", proyecto.getIdTipoProyecto());
-			cv.put("idencargado", proyecto.getIdEncargado());
-			cv.put("nombre", proyecto.getNombre());
-			db.update("proyecto", cv, "idproyecto = ?", id);
-			return "Registro Actualizado Correctamente";
-		} else
-			return "Registro no Existente";
+		cv.put("idproyecto", proyecto.getIdProyecto());
+		cv.put("idsolicitante", proyecto.getIdSolicitante());
+		cv.put("idtipoproyecto", proyecto.getIdTipoProyecto());
+		cv.put("idencargado", proyecto.getIdEncargado());
+		cv.put("nombre", proyecto.getNombre());
+		db.update("proyecto", cv, "idproyecto = ?", id);
+		return "Registro Actualizado Correctamente";
+		/*
+		 * } else return "Registro no Existente";
+		 */
 	}
 
 	public String actualizar(Solicitante solicitante) {
@@ -344,18 +350,19 @@ public class ControlBD {
 
 	public String actualizar(TipoProyecto tipoProyecto) {
 
-		if (verificarIntegridad(tipoProyecto, 3)) {
-			String[] id = { String.valueOf(tipoProyecto.getIdTipoProyecto()) };
-			ContentValues cv = new ContentValues();
+		// if (verificarIntegridad(tipoProyecto, 3)) {
+		String[] id = { String.valueOf(tipoProyecto.getIdTipoProyecto()) };
+		ContentValues cv = new ContentValues();
 
-			cv.put("idtipoproyecto", tipoProyecto.getIdTipoProyecto());
-			cv.put("nombre", tipoProyecto.getNombre());
-			db.update("tipoproyecto", cv, "idtipoproyecto = ?", id);
-			return "Registro Actualizado Correctamente";
-		}
-
-		else
-			return "Registro no Existente";
+		cv.put("idtipoproyecto", tipoProyecto.getIdTipoProyecto());
+		cv.put("nombre", tipoProyecto.getNombre());
+		db.update("tipoproyecto", cv, "idtipoproyecto = ?", id);
+		return "Registro Actualizado Correctamente";
+		/*
+		 * }
+		 * 
+		 * else return "Registro no Existente";
+		 */
 
 	}
 
@@ -427,17 +434,22 @@ public class ControlBD {
 	public String eliminar(TipoProyecto tipoProyecto) {
 		String regAfectados = "filas afectadas= ";
 		int contador = 0;
-		/*si regresa true es q existe tipoproyecto como fk en proyecto y lo eliminara antes
-		 * caso contrario solo eliminara tipoproyecto de su respectiva tabla
-		 * 
+		/*
+		 * si regresa true es q existe tipoproyecto como fk en proyecto y lo
+		 * eliminara antes caso contrario solo eliminara tipoproyecto de su
+		 * respectiva tabla
 		 */
-		if(verificarIntegridad(tipoProyecto, 4)){
-			contador+=db.delete("proyecto","idtipoproyecto='" + tipoProyecto.getIdTipoProyecto() + "'", null);
-		}
-		contador+=db.delete("tipoproyecto","idtipoproyecto='" + tipoProyecto.getIdTipoProyecto() + "'", null);
-		regAfectados+=contador;
-		return regAfectados;
-	
+		 /*if (verificarIntegridad(tipoProyecto, 4)) 
+		 {
+			contador += db.delete("proyecto","idtipoproyecto='"+ tipoProyecto.getIdTipoProyecto() + "'",null);
+		 }*/
+		contador += db.delete("tipoproyecto","idtipoproyecto='" + tipoProyecto.getIdTipoProyecto() + "'",null);
+		//regAfectados += contador;
+		if(contador==0)
+			return "No se eliminó ningun Registro. No existe Tipo Proyecto con ID "+tipoProyecto.getIdTipoProyecto();
+		else
+			return regAfectados = "Registro eliminado con exito";
+		
 	}
 
 	public String eliminar(TipoTrabajo tipoTrabajo) {
@@ -632,9 +644,8 @@ public class ControlBD {
 			throws SQLException {
 		switch (relacion) {
 
-		case 1: {
-			// verificar que al insertar proyecto exista IdSolicitante e
-			// IDTipoProyecto
+		case 1: { // verificar que al insertar proyecto exista IdSolicitante e
+					// IDTipoProyecto
 			Proyecto proyecto = (Proyecto) dato;
 			String[] id1 = { String.valueOf(proyecto.getIdSolicitante()) };
 			String[] id2 = { String.valueOf(proyecto.getIdTipoProyecto()) };
@@ -644,62 +655,62 @@ public class ControlBD {
 					id1, null, null, null);
 			Cursor cursor2 = db.query("tipoproyecto", null,
 					"idtipoproyecto = ?", id2, null, null, null);
-			Cursor cursor3 = db.query("encargado", null,
-					"idencargado = ?", id3, null, null, null);
-			if (cursor1.moveToFirst() && cursor2.moveToFirst()&&cursor3.moveToFirst()) {
+			Cursor cursor3 = db.query("encargado", null, "idencargado = ?",
+					id3, null, null, null);
+			if (cursor1.moveToFirst() && cursor2.moveToFirst()
+					&& cursor3.moveToFirst()) {
 				// Se encontraron datos
 				return true;
 			}
 			return false;
 		}
 
-		case 2: {
-			// verificar que al modificar nota exista carnet del alumno, el
-			// codigo de materia y el ciclo
+		case 2: { // verificar que al modificar nota exista carnet del alumno,
+					// el codigo de materia y el ciclo
 			Proyecto proyecto = (Proyecto) dato;
 			String[] ids = { String.valueOf(proyecto.getIdProyecto()) };
 			abrir();
 			Cursor c = db.query("proyecto", null, "idproyecto = ?", ids, null,
 					null, null);
-			if (c.moveToFirst()) {
-				// Se encontraron datos
+			if (c.moveToFirst()) { // Se encontraron datos
 				return true;
 			}
 			return false;
 		}
 
-		case 3: {
-			// verificar que existe el tipoProyecto al actualizar
+		case 3: { // verificar que existe el tipoProyecto al actualizar
 			TipoProyecto tipoProyecto = (TipoProyecto) dato;
 			String[] id = { String.valueOf(tipoProyecto.getIdTipoProyecto()) };
 			abrir();
-			Cursor cursor = db.query("tipoproyecto", camposTipoProyecto, "idtipoproyecto=?",
-					id, null, null, null);
+			Cursor cursor = db.query("tipoproyecto", camposTipoProyecto,
+					"idtipoproyecto=?", id, null, null, null);
 			if (cursor.moveToFirst()) {
 				return true;
-			}
+			} else
+				return false;
+		}
+
+		case 4: { // verifica que existe el tipoProyecto antes de eliminar lo q
+			// hace es q verifica si en proyecto esta como fk tipoproyecto de
+			// ser //asi
+			// regresara true y en el metodo de eliminar se eliminara ese
+			// registro //de
+			// la tabla proyecto
+			TipoProyecto tipoProyecto = (TipoProyecto) dato;
+			String id[] = { String.valueOf(tipoProyecto.getIdTipoProyecto()) };
+			abrir();
+			Cursor cursor = db.query(true, "proyecto",
+					new String[] { "idtipoproyecto" }, "idtipoproyecto='"
+							+ tipoProyecto.getIdTipoProyecto() + "'", null,
+					null, null, null, null);
+			if (cursor.moveToFirst())
+				return true;
 			else
 				return false;
 		}
-		
-		case 4:
-		{
-			//verifica que existe el tipoProyecto antes de eliminar
-			//lo q hace es q verifica si en proyecto esta como fk tipoproyecto de ser 
-			//asi regresara true y en el metodo de eliminar se eliminara ese registro
-			//de la tabla proyecto 
-			TipoProyecto tipoProyecto = (TipoProyecto)dato;
-			String id[] = { String.valueOf(tipoProyecto.getIdTipoProyecto()) };
-			abrir();
-			Cursor cursor = db.query(true,"proyecto", new String[]{"idtipoproyecto"},"idtipoproyecto='" + tipoProyecto.getIdTipoProyecto() + "'", null, null,
-					null, null, null);
-			if(cursor.moveToFirst())
-				return true;
-			else
-				return false;
-		}	
 		default:
 			return false;
 		}
 	}// fin verificacion integridad
+
 }// fin ControlDB
