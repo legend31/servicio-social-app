@@ -355,7 +355,15 @@ public class ControlBD {
 	}
 
 	public String actualizar(EncargadoServicioSocial encargado) {
-		return null;
+		String[] id = { String.valueOf(encargado.getIdEncargado())};
+		ContentValues cv = new ContentValues();
+		cv.put("nombre", encargado.getNombre());
+		cv.put("email", encargado.getEmail());
+		cv.put("telefono", encargado.getTelefono());
+		cv.put("facultad", encargado.getFacultad());
+		cv.put("escuela", encargado.getEscuela());
+		db.update("encargadoserviciosocial", cv, "idencargado = ?", id);
+		return "Registro Actualizado Correctamente";
 	}
 
 	public String actualizar(Escuela escuela) {
@@ -454,7 +462,12 @@ public class ControlBD {
 	}
 
 	public String eliminar(EncargadoServicioSocial encargado) {
-		return null;
+		String regAfectados = "";
+		int contador = 0;
+		contador += db.delete("encargadoserviciosocial", "idencargado='" + encargado.getIdEncargado() + "'",
+				null);
+		regAfectados += contador;
+		return regAfectados;
 	}
 
 	public String eliminar(Escuela escuela) {

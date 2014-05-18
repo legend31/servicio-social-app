@@ -29,6 +29,7 @@ public class EncargadoConsultarActivity extends Activity implements OnItemSelect
 	 ListView li;
 	 private TableLayout tablaDeDatos;
 	 private EditText edtNombre;
+	 private EditText edtIdEncargado;
      private EditText edtTelefono;
      private EditText edtFacultad;
      private EditText edtEscuela;
@@ -55,7 +56,7 @@ public class EncargadoConsultarActivity extends Activity implements OnItemSelect
         btnAdelante = (Button) findViewById(R.id.btnAdelante);
         btnAdelante.setVisibility(View.INVISIBLE);
       
-        
+       edtIdEncargado = (EditText) findViewById(R.id.edtIdEncargado);
         edtNombre = (EditText) findViewById(R.id.edtNombreEncargado);
         edtEmail = (EditText) findViewById(R.id.edtEmailEncargado);
          edtTelefono = (EditText) findViewById(R.id.edtTelefonoEncargado);
@@ -79,6 +80,7 @@ public class EncargadoConsultarActivity extends Activity implements OnItemSelect
 		//Toast.makeText(parent.getContext(), "Selecciono la opcion: " + pos, Toast.LENGTH_SHORT).show();
 		seleccion=pos;
 		
+		
 	}
 	
 	
@@ -90,7 +92,14 @@ public class EncargadoConsultarActivity extends Activity implements OnItemSelect
          if(busqueda == null || busqueda.trim() == "" )
          {
                  Toast.makeText(this, "No se ingreso informacion para la busqueda.", Toast.LENGTH_LONG).show();
+                 tablaDeDatos.setVisibility(View.INVISIBLE);
+               
+                 btnAtras.setVisibility(View.INVISIBLE);
+               
+                 btnAdelante.setVisibility(View.INVISIBLE);
+                 
                  return;
+                 
                  
          }
          
@@ -100,6 +109,12 @@ public class EncargadoConsultarActivity extends Activity implements OnItemSelect
          if(datos == null)
          {
                  Toast.makeText(this, "Registro " +busqueda +" no encontrado", Toast.LENGTH_LONG).show();
+                 tablaDeDatos.setVisibility(View.INVISIBLE);
+                 
+                 btnAtras.setVisibility(View.INVISIBLE);
+               
+                 btnAdelante.setVisibility(View.INVISIBLE);
+                 
                  return;
          }
          
@@ -139,6 +154,8 @@ indicador=0;
         encargado=datos.get(indicador);
     	tablaDeDatos.setVisibility(View.VISIBLE);
            // btnActualizar.setVisibility(View.VISIBLE);
+    	edtIdEncargado.setText(Integer.toString(encargado.getIdEncargado()));
+    	 //Toast.makeText(this, "Su id es" +encargado.getIdEncargado() +"registro", Toast.LENGTH_LONG).show();
             edtNombre.setText(encargado.getNombre());
             edtEmail.setText(encargado.getEmail());
             edtTelefono.setText(encargado.getTelefono());
