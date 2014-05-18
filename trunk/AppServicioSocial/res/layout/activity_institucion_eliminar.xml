@@ -25,6 +25,7 @@
         android:layout_below="@+id/editNitInstitucionEliminar"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="37dp"
+        android:onClick="eliminarInstitucion"
         android:text="@string/eliminar" />
 
 </RelativeLayout>

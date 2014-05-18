@@ -36,7 +36,8 @@
         android:layout_below="@+id/editNitInstitucion"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="34dp"
-        android:text="@string/guardar" />
+        android:text="@string/guardar"
+        android:onClick="insertarInstitucion" />
 
 </RelativeLayout>
 
