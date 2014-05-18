@@ -19,7 +19,7 @@ public class ControlBD {
 	private static final String[] camposBitacora = new String[] { "idBitacora",
 			"carnet", "idProyecto", "idTipoTrabajo", "fecha", "descripcion" };
 	private static final String[] camposEncargadoServicioSocial = new String[] {
-			"idEncargado", "idEscuela", "nombre", "email", "telefono" };
+			"idEncargado", "nombre", "email", "telefono", "facultad", "escuela"};
 	private static final String[] camposEscuela = new String[] { "idEscuela",
 			"idEncargado", "nombre", "facultad" };
 	private static final String[] camposInstitucion = new String[] {
@@ -513,6 +513,28 @@ public class ControlBD {
 		return null;
 	}
 
+	
+	/*
+	public EncargadoServicioSocial consultarEncargadoServicioSocial(String busqueda) {
+		String[] id = { busqueda };
+		Cursor cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "idencargado = ?", id,
+				null, null, null);
+		if (cursor.moveToFirst()) {
+			EncargadoServicioSocial encargado = new EncargadoServicioSocial();
+			encargado.setIdEncargado(cursor.getInt(0));
+			encargado.setNombre(cursor.getString(1));
+			encargado.setEmail(cursor.getString(2));
+			encargado.setTelefono(cursor.getString(3));
+			encargado.setFacultad(cursor.getString(4));
+			encargado.setEscuela(cursor.getString(5));
+			return encargado;
+		} else {
+			return null;
+		}
+	}*/
+	
+	/////////Metodo para que regrese mas de un dato en la consulta  >>>>pendiente de arreglar<<<<<<<  ///////////
+	
 	public ArrayList<EncargadoServicioSocial> consultarEncargadoServicioSocial(
 			String busqueda, int seleccion) {
 		String[] id = { busqueda };
@@ -584,6 +606,8 @@ public class ControlBD {
 		}
 
 	}
+
+
 
 	public Escuela consultarEscuela(String idEscuela) {
 		return null;

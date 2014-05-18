@@ -133,6 +133,8 @@
     <string name="cargo">Cargo del solicitante</string>
     <string name="idEncargado">ID de Encargado</string>
     <string name="escuela">Escuela</string>
+     <string name="atras">Atras</string>
+      <string name="adelante">Adelante</string>
      
 
     
