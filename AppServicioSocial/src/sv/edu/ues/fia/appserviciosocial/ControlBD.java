@@ -197,7 +197,12 @@ public class ControlBD {
 		valoresAsignacion.put("carnet", asignacion.getCarnet());
 		valoresAsignacion.put("idproyecto", asignacion.getIdProyecto());
 		valoresAsignacion.put("fecha", asignacion.getFecha());
-		contador = db.insert("asignacionproyecto", null, valoresAsignacion);
+		try{
+		contador = db.insertOrThrow("asignacionproyecto", null, valoresAsignacion);
+		}catch(Exception integridad)
+		{
+			return integridad.getMessage();
+		}
 		if (contador == -1 || contador == 0) {
 			mensaje = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
 		} else {
@@ -381,7 +386,7 @@ public class ControlBD {
 	public String eliminar(AsignacionProyecto asignacion, int tipo) {
 		String regAfectados = "filas afectadas= ";
 		int contador = 0;
-		String id[] = null;
+		String id[] = new String[1];
 		switch (tipo) {
 		// Se envio en carnet
 		case 1:
@@ -476,8 +481,8 @@ public class ControlBD {
 		}
 	}
 
-	public AsignacionProyecto consultarAsignacionProyecto(String parametro,
-			int tipo) {
+	public ArrayList<AsignacionProyecto> consultarAsignacionProyecto(String parametro,int tipo) {
+		ArrayList<AsignacionProyecto> asignaciones = new ArrayList<AsignacionProyecto>();
 		String[] id = { parametro };
 		Cursor cursor = null;
 		switch (tipo) {
@@ -491,11 +496,14 @@ public class ControlBD {
 			break;
 		}
 		if (cursor.moveToFirst()) {
-			AsignacionProyecto asignacion = new AsignacionProyecto();
-			asignacion.setCarnet(cursor.getString(0));
-			asignacion.setIdProyecto(cursor.getString(1));
-			asignacion.setFecha(cursor.getString(2));
-			return asignacion;
+			do{
+				AsignacionProyecto asignacion = new AsignacionProyecto();
+				asignacion.setCarnet(cursor.getString(0));
+				asignacion.setIdProyecto(cursor.getString(1));
+				asignacion.setFecha(cursor.getString(2));
+				asignaciones.add(asignacion);
+			}while(cursor.moveToNext());
+			return asignaciones;
 		} else {
 			return null;
 		}

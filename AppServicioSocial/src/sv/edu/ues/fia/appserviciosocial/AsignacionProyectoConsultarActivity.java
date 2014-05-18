@@ -1,7 +1,11 @@
 package sv.edu.ues.fia.appserviciosocial;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -49,40 +53,27 @@ public class AsignacionProyectoConsultarActivity extends Activity {
 	}
 	
 		public void consultarAsignacionProyecto(View v) {
-		/*
-		Object [] datos = new Object[10];
-		datos[0] = "Nombre:";
-		datos[1] = "Rodrigo Valle";
-		datos[2] = "Teléfono:";
-		datos[3] = "22724569";
-		datos[4] = "DUI:";
-		datos[5] = "032568402";
-		datos[6] = "NIT:";
-		datos[7] = "06142906937897";
-		datos[8] = "E-mail:";
-		datos[9] = "rodrigoahv@yahoo.es";
+		
 		String info="";
-		//Llenando tabla
-		ArrayAdapter<Object> adaptador =
-		        new ArrayAdapter<Object>(this, android.R.layout.simple_list_item_1, datos);
-		gdvTabla.setAdapter(adaptador);
-		*/
-		String info="";
-		String texto = txtBusqueda.getText().toString();
-		if(texto == null || texto == "")
+		String texto = txtBusqueda.getText().toString().trim();
+		Log.i("Hola", "valor de texto ->"+texto+"<-");
+		if(texto == null || texto == "" || texto.length() == 0)
 		{
+			Log.i("Hola", "entre al if");
 			switch(radioGrupo.getCheckedRadioButtonId())
 			{
 			case R.id.rbtAlumno:
+				Log.i("Hola", "alumno");
 				info = "Carnet inválido";
 			break;
 			case R.id.rbtProyecto:
+				Log.i("Hola", "proyecto");
 				info = "Proyecto inválido";
 			break;
 			}
 			Toast.makeText(this, info, Toast.LENGTH_LONG).show();
 			return;
-		}
+		}//
 		auxiliar.abrir();
 		int tipo = 0;
 		switch(radioGrupo.getCheckedRadioButtonId())
@@ -94,32 +85,39 @@ public class AsignacionProyectoConsultarActivity extends Activity {
 			tipo = 2;
 		break;
 		}
-		AsignacionProyecto asignacion = auxiliar.consultarAsignacionProyecto(texto, tipo);
+		Log.i("Hola", "antes de consultar");
+		ArrayList<AsignacionProyecto> asignaciones = auxiliar.consultarAsignacionProyecto(texto, tipo);
 		auxiliar.cerrar();
-		if(asignacion == null)
+		if(asignaciones == null)
 		{
 			gdvTabla.setVisibility(View.INVISIBLE);
 			Toast.makeText(this, "Asignación de proyecto no encontrado", Toast.LENGTH_LONG).show();
 			return;
 		}
 		else{
-			/*String [] datos = new String[10];
-			datos[0] = "Nombre:";
-			datos[1] = alumno.getNombre();
-			datos[2] = "Teléfono:";
-			datos[3] = alumno.getTelefono();
-			datos[4] = "DUI:";
-			datos[5] = alumno.getDui();
-			datos[6] = "NIT:";
-			datos[7] = alumno.getNit();
-			datos[8] = "E-mail:";
-			datos[9] = alumno.getEmail();
-			
+			List<String> datos= new ArrayList<String>();
+			if(tipo ==1)
+			{
+				datos.add("Proyectos");
+				datos.add("Fecha");
+				for (AsignacionProyecto asignacion : asignaciones) {
+					datos.add(asignacion.getIdProyecto());
+					datos.add(asignacion.getFecha());
+				}
+			}
+			else if(tipo == 2){
+				datos.add("Alumnos");
+				datos.add("Fecha");
+				for (AsignacionProyecto asignacion : asignaciones) {
+					datos.add(asignacion.getCarnet());
+					datos.add(asignacion.getFecha());
+				}
+			}
 			//Llenando tabla
-			lblDatos.setVisibility(View.VISIBLE);
-			ArrayAdapter<String> adaptador =
+			ArrayAdapter<String> adaptador = 
 			        new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, datos);
-			gdvTabla.setAdapter(adaptador);*/
+			gdvTabla.setAdapter(adaptador);
+			gdvTabla.setVisibility(View.VISIBLE);
 		}
 		
 	}
