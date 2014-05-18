@@ -94,10 +94,9 @@ public class ControlBD {
 						+ "solicitante WHERE idsolicitante = NEW.idsolicitante) IS NULL) THEN RAISE(ABORT, 'No existe solicitante') END; END;");
 				db.execSQL("CREATE TRIGGER fk_proyecto_tipoproyecto BEFORE INSERT ON proyecto FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT idtipoproyecto FROM"
 						+ " tipoproyecto WHERE idtipoproyecto = NEW.idtipoproyecto) IS NULL) THEN RAISE(ABORT, 'No existe tipo de proyecto') END; END;");
-				
-				//triggers tipoProyecto
-				db.execSQL("CREATE TRIGGER TipoProyectoELiminar BEFORE DELETE ON TIPOPROYECTO FOR EACH ROW BEGIN DELETE FROM PROYECTO WHERE IDTIPOPROYECTO=OLD.IDTIPOPROYECTO; END");
 
+				// triggers tipoProyecto
+				//db.execSQL("CREATE TRIGGER TipoProyectoELiminar BEFORE DELETE ON TIPOPROYECTO FOR EACH ROW BEGIN DELETE FROM PROYECTO WHERE IDTIPOPROYECTO=OLD.IDTIPOPROYECTO; END");
 
 				// triggers para asignacionProyecto
 				db.execSQL("CREATE TRIGGER fk_asignacionproyecto_proyecto BEFORE INSERT ON asignacionproyecto FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT "
@@ -252,7 +251,7 @@ public class ControlBD {
 		values.put("idencargado", proyecto.getIdEncargado());
 		values.put("nombre", proyecto.getNombre());
 		contador = db.insert("proyecto", null, values);
-		// }
+		// }//este no xq ya tengo el trigger
 
 		if (contador == -1 || contador == 0) {
 			mensaje = "Error al Insertar el registro. Verificar inserción";
@@ -269,20 +268,14 @@ public class ControlBD {
 	public String insertar(TipoProyecto tipoProyecto) {
 		String mensaje = "";
 		long contador = 0;
-		// String values[]={tipoProyecto.getNombre()};
-		Cursor cursor = db.query("tipoproyecto", camposTipoProyecto, "nombre='"
-				+ tipoProyecto.getNombre() + "'", null, null, null, null, null);
-		if (cursor.moveToFirst()) {
-			return mensaje = "Registro ya almacenado en la Base de Datos";
-
+		if (verificarIntegridad(tipoProyecto, 5)!=true) {
+			ContentValues content = new ContentValues();
+			content.putNull("idtipoproyecto");
+			content.put("nombre", tipoProyecto.getNombre());
+			contador = db.insert("tipoproyecto", null, content);
 		}
-		ContentValues content = new ContentValues();
-		content.putNull("idtipoproyecto");
-		content.put("nombre", tipoProyecto.getNombre());
-		contador = db.insert("tipoproyecto", null, content);
-
 		if (contador == -1 || contador == 0) {
-			mensaje = "Error al Insertar el registro. Verificar inserción";
+			mensaje = "Error al Insertar el registro. Registro con el mismo nombre a uno anterior";
 		} else {
 			mensaje = "Registro ingresado " + contador;
 		}
@@ -328,20 +321,23 @@ public class ControlBD {
 	}
 
 	public String actualizar(Proyecto proyecto) {
-		// if (verificarIntegridad(proyecto, 2)) {
-		String[] id = { String.valueOf(proyecto.getIdProyecto()) };
-		ContentValues cv = new ContentValues();
+		if (verificarIntegridad(proyecto, 2)) {
+			String[] id = { String.valueOf(proyecto.getIdProyecto()) };
+			ContentValues cv = new ContentValues();
+			long contador=0;
 
-		cv.put("idproyecto", proyecto.getIdProyecto());
-		cv.put("idsolicitante", proyecto.getIdSolicitante());
-		cv.put("idtipoproyecto", proyecto.getIdTipoProyecto());
-		cv.put("idencargado", proyecto.getIdEncargado());
-		cv.put("nombre", proyecto.getNombre());
-		db.update("proyecto", cv, "idproyecto = ?", id);
-		return "Registro Actualizado Correctamente";
-		/*
-		 * } else return "Registro no Existente";
-		 */
+			cv.put("idproyecto", proyecto.getIdProyecto());
+			cv.put("idsolicitante", proyecto.getIdSolicitante());
+			cv.put("idtipoproyecto", proyecto.getIdTipoProyecto());
+			cv.put("idencargado", proyecto.getIdEncargado());
+			cv.put("nombre", proyecto.getNombre());
+			contador+=db.update("proyecto", cv, "idproyecto = ?", id);
+			if(contador==-1||contador==0)
+				return "Registro No Actualizado.";
+			else
+				return "Registro Actualizado Correctamente.";
+		} else
+			return "Registro no Existente";
 	}
 
 	public String actualizar(Solicitante solicitante) {
@@ -349,20 +345,21 @@ public class ControlBD {
 	}
 
 	public String actualizar(TipoProyecto tipoProyecto) {
+		long contador=0;
 
-		// if (verificarIntegridad(tipoProyecto, 3)) {
-		String[] id = { String.valueOf(tipoProyecto.getIdTipoProyecto()) };
-		ContentValues cv = new ContentValues();
+		if (verificarIntegridad(tipoProyecto, 3)) {
+			String[] id = { String.valueOf(tipoProyecto.getIdTipoProyecto()) };
+			ContentValues cv = new ContentValues();
 
-		cv.put("idtipoproyecto", tipoProyecto.getIdTipoProyecto());
-		cv.put("nombre", tipoProyecto.getNombre());
-		db.update("tipoproyecto", cv, "idtipoproyecto = ?", id);
-		return "Registro Actualizado Correctamente";
-		/*
-		 * }
-		 * 
-		 * else return "Registro no Existente";
-		 */
+			cv.put("idtipoproyecto", tipoProyecto.getIdTipoProyecto());
+			cv.put("nombre", tipoProyecto.getNombre());
+			contador+=db.update("tipoproyecto", cv, "idtipoproyecto = ?", id);
+			if(contador==-1||contador==0)
+				return "Registro No Actualizado.";
+			else
+				return "Registro Actualizado Correctamente.";
+		} else
+			return "Registro no Existente";
 
 	}
 
@@ -419,9 +416,13 @@ public class ControlBD {
 
 	public String eliminar(Proyecto proyecto) {
 		String regAfectados = "filas afectadas= ";
-		String id[] = { String.valueOf(proyecto.getIdProyecto()) };
 		int contador = 0;
-		contador += db.delete("proyecto", "idproyecto=?", id);
+
+		if (verificarIntegridad(proyecto, 2)) {
+			String id[] = { String.valueOf(proyecto.getIdProyecto()) };
+			contador += db.delete("proyecto", "idproyecto=?", id);
+		}
+
 		regAfectados += contador;
 		return regAfectados;
 
@@ -433,24 +434,22 @@ public class ControlBD {
 
 	public String eliminar(TipoProyecto tipoProyecto) {
 		String regAfectados = "filas afectadas= ";
-		int contador = 0;
+		long contador = 0;
 		/*
 		 * si regresa true es q existe tipoproyecto como fk en proyecto y lo
 		 * eliminara antes caso contrario solo eliminara tipoproyecto de su
 		 * respectiva tabla
 		 */
-		 //if (verificarIntegridad(tipoProyecto, 4)) 
-		 //{
-			//contador += db.delete("proyecto","idtipoproyecto='"+ tipoProyecto.getIdTipoProyecto() + "'",null);
-		 //}
-		
+		if (verificarIntegridad(tipoProyecto, 4)) {
+			contador += db.delete("proyecto","idtipoproyecto='"+ tipoProyecto.getIdTipoProyecto() + "'",null);
+		}
+
 		contador += db.delete("tipoproyecto","idtipoproyecto='" + tipoProyecto.getIdTipoProyecto() + "'",null);
-		
-		//regAfectados += contador;
-		if(contador==0||contador==-1)
-			return "No se eliminó ningun Registro. No existe Tipo Proyecto con ID "+tipoProyecto.getIdTipoProyecto();
+		regAfectados += contador;
+		if (contador == 0 || contador == -1)
+			return regAfectados;
 		else
-			return regAfectados = "Registro eliminado con exito";
+			return regAfectados;
 	}
 
 	public String eliminar(TipoTrabajo tipoTrabajo) {
@@ -589,7 +588,7 @@ public class ControlBD {
 	public Proyecto consultarProyecto(String codigoProyecto) {
 
 		String[] id = { codigoProyecto };
-		// String id="nombreProyecto";
+
 		Cursor cursor = db.query("proyecto", camposProyecto, "idproyecto = ?",
 				id, null, null, null);
 		// Cursor cursor =
@@ -629,6 +628,8 @@ public class ControlBD {
 		} else {
 			return null;
 		}
+		
+		//retorna null si no existe el TipoProeycto con ese id
 
 	}
 
@@ -666,8 +667,7 @@ public class ControlBD {
 			return false;
 		}
 
-		case 2: { // verificar que al modificar nota exista carnet del alumno,
-					// el codigo de materia y el ciclo
+		case 2: {// verifica si existe el proyecto antes de actualizar, eliminar
 			Proyecto proyecto = (Proyecto) dato;
 			String[] ids = { String.valueOf(proyecto.getIdProyecto()) };
 			abrir();
@@ -700,15 +700,25 @@ public class ControlBD {
 			TipoProyecto tipoProyecto = (TipoProyecto) dato;
 			String id[] = { String.valueOf(tipoProyecto.getIdTipoProyecto()) };
 			abrir();
-			Cursor cursor = db.query(true, "proyecto",
-					new String[] { "idtipoproyecto" }, "idtipoproyecto='"
-							+ tipoProyecto.getIdTipoProyecto() + "'", null,
+			Cursor cursor = db.query(true, "proyecto",new String[] { "idtipoproyecto" }, "idtipoproyecto='"+ tipoProyecto.getIdTipoProyecto() + "'", null,
 					null, null, null, null);
 			if (cursor.moveToFirst())
 				return true;
 			else
 				return false;
 		}
+
+		case 5: {//ve si existe un tipoProyecto con el mismo nombre
+			TipoProyecto tipoProyecto = (TipoProyecto) dato;
+			Cursor cursor = db.query("tipoproyecto", camposTipoProyecto,
+					"nombre='" + tipoProyecto.getNombre() + "'", null, null,
+					null, null);
+			if (cursor.moveToFirst()) {
+				return true;
+			} else
+				return false;
+		}
+
 		default:
 			return false;
 		}
