@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.ContactsContract.CommonDataKinds.Email;
 
 public class ControlBD {
 
@@ -27,7 +28,7 @@ public class ControlBD {
 	private static final String[] camposProyecto = new String[] { "idProyecto",
 			"idSolicitante", "idTipoProyecto", "idEncargado", "nombre" };
 	private static final String[] camposSolicitante = new String[] {
-			"idSolicitante", "idInstitucion", "nombre", "cargo" };
+			"idSolicitante", "idInstitucion","idCargo", "nombre", "telefono","correo_electronico" };
 	private static final String[] camposTipoProyecto = new String[] {
 			"idTipoProyecto", "nombre" };
 	private static final String[] camposTipoTrabajo = new String[] {
@@ -240,7 +241,24 @@ public class ControlBD {
 	}
 
 	public String insertar(Institucion institucion) {
-		return null;
+		String mensaje = "";
+		Institucion institucionVerificando = 
+				consultarInstitucion(institucion.getNit());
+		//long contador = 0;
+		ContentValues valoresInstitucion = new ContentValues();
+		valoresInstitucion.putNull("idinstitucion");
+		valoresInstitucion.put("nombre", institucion.getNombre());
+		valoresInstitucion.put("nit", institucion.getNit());
+		
+		//if (contador == -1 || contador == 0) {
+		if ( institucionVerificando != null )
+			mensaje = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+		 else {
+			//contador = db.insert("institucion", null, valoresInstitucion);
+			db.insert("institucion", null, valoresInstitucion);
+			mensaje = "Registro ingresado";
+		}
+		return mensaje;
 	}
 
 	public String insertar(Proyecto proyecto) {
@@ -267,7 +285,30 @@ public class ControlBD {
 	}
 
 	public String insertar(Solicitante solicitante) {
-		return null;
+		String mensaje = "";
+		long contador = 0;
+
+		ContentValues values = new ContentValues();		
+
+		values.putNull("idsolicitante");
+		values.put("idinstitucion", solicitante.getIdInstitucion());
+		values.put("idcargo", solicitante.getIdCargo());
+		values.put("nombre", solicitante.getNombre());
+		values.put("telefono", solicitante.getTelefono());
+		values.put("correo_electronico", solicitante.getCorreo());		
+		
+		contador = db.insert("solicitante", null, values);
+		/*
+		if (contador == -1 || contador == 0) 
+			mensaje = "Error al Insertar el registro. Verificar inserción";
+		 else
+			mensaje = "Registro ingresado " + contador;
+		*/
+		String [] arrayEmail = {solicitante.getCorreo()}; 
+		Cursor cursor = db.query("solicitante",camposSolicitante,"correo_electronico = ?",
+				arrayEmail,null,null,null);
+		cursor.moveToFirst();		
+		return cursor.getString(0);
 	}
 
 	public String insertar(TipoProyecto tipoProyecto) {
@@ -322,7 +363,12 @@ public class ControlBD {
 	}
 
 	public String actualizar(Institucion institucion) {
-		return null;
+		String[] nit = { institucion.getNitAnterior() };
+		ContentValues cv = new ContentValues();
+		cv.put("nombre", institucion.getNombre());		
+		cv.put("nit", institucion.getNit());		
+		db.update("institucion", cv, "nit = ?", nit);
+		return "Registro Actualizado Correctamente";
 	}
 
 	public String actualizar(Proyecto proyecto) {
@@ -416,7 +462,12 @@ public class ControlBD {
 	}
 
 	public String eliminar(Institucion institucion) {
-		return null;
+		String regAfectados = "filas afectadas= ";
+		String id[] = { String.valueOf(institucion.getNit()) };
+		int contador = 0;
+		contador += db.delete("institucion", "nit=?", id);
+		regAfectados += contador;
+		return regAfectados;
 	}
 
 	public String eliminar(Proyecto proyecto) {
@@ -613,10 +664,30 @@ public class ControlBD {
 		return null;
 	}
 
-	public Institucion consultarInstitucion(String idInstitucion) {
-		return null;
+	public Institucion consultarInstitucion(String nitInstitucion) {
+		String [] nit = {nitInstitucion};
+		
+		Cursor cursor = db.query("institucion",
+				camposInstitucion, "nit = ?", nit,
+				null, null, null);
+		
+		if ( cursor.moveToFirst() ) 				
+			return new Institucion(cursor.getString(0), //IdInstitucion
+								   cursor.getString(1), //Nombre
+								   cursor.getString(2));//NIT
+		 else 
+			return null;
+		
 	}
-
+	
+	public Cargo consultarCargo(String idCargo){
+		Cargo cargo = new Cargo();
+		cargo.setDescripcion("descripcion");
+		cargo.setIdCargo("0");
+		cargo.setNombre("Supervisor");
+		return cargo;
+	}
+	
 	public Proyecto consultarProyecto(String codigoProyecto) {
 
 		String[] id = { codigoProyecto };
