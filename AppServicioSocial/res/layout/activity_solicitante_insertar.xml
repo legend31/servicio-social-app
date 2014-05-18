@@ -45,22 +45,34 @@
         android:hint="@string/email" />
 
     <EditText
-        android:id="@+id/editInstitucion"
+        android:id="@+id/editNitInstitucionSolicitante"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editTelefono"
         android:layout_below="@+id/editCorreo"
         android:layout_marginTop="18dp"
         android:ems="10"
-        android:hint="@string/institucion" />
+        android:hint="NIT institución" />
+
+    <EditText
+        android:id="@+id/editcargo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editNitInstitucionSolicitante"
+        android:layout_below="@+id/editNitInstitucionSolicitante"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="ID Cargo" />
 
     <Button
         android:id="@+id/btnConsultar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editInstitucion"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_alignRight="@+id/editcargo"
+        android:layout_below="@+id/editcargo"
+        android:layout_marginRight="44dp"
+        android:layout_marginTop="33dp"
+        android:onClick="insertarSolicitante"
         android:text="@string/guardar" />
 
 </RelativeLayout>

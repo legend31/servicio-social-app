@@ -24,17 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editActNitInstitucion"
         android:layout_centerHorizontal="true"
+        android:onClick="buscarInstitucion"
         android:text="@string/buscar" />
-
-    <EditText
-        android:id="@+id/editActNombreInstitucion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnActBuscarInstitucion"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="42dp"
-        android:ems="10"
-        android:hint="@string/nombre" />
 
     <Button
         android:id="@+id/btnActualizarInstitucion"
@@ -42,7 +33,29 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/btnActBuscarInstitucion"
         android:layout_below="@+id/editActNombreInstitucion"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="50dp"
+        android:onClick="actualizarInstitucion"
         android:text="@string/actualizar" />
+
+    <EditText
+        android:id="@+id/editActNombreInstitucion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/btnActBuscarInstitucion"
+        android:layout_marginRight="36dp"
+        android:layout_marginTop="59dp"
+        android:ems="10"
+        android:hint="@string/nombre"
+        android:onClick="actualizarInstitucion" />
+
+    <EditText
+        android:id="@+id/editNuevoNit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editActNombreInstitucion"
+        android:layout_below="@+id/editActNombreInstitucion"
+        android:ems="10"
+        android:hint="Nuevo NIT" />
 
 </RelativeLayout>

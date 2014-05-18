@@ -27,7 +27,8 @@
         android:layout_alignBaseline="@+id/editNitInstitucion"
         android:layout_alignBottom="@+id/editNitInstitucion"
         android:layout_toRightOf="@+id/editNitInstitucion"
-        android:text="Button" />
+        android:onClick="consultarInstitucion"
+        android:text="@string/buscar" />
 
     <TextView
         android:id="@+id/textView1"

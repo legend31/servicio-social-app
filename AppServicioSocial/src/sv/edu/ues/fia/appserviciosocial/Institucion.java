@@ -3,7 +3,30 @@ package sv.edu.ues.fia.appserviciosocial;
 public class Institucion {
 	private String idInstitucion,
 				   nombre,
-				   nit;
+				   nit,
+				   nitAnterior;	
+
+	public Institucion(String idInstitucion,String nombre, String nit) {
+		this(nombre,nit);
+		this.idInstitucion = idInstitucion;		
+	}
+	
+	public Institucion(String nombre, String nit) {
+		super();
+		this.nombre = nombre;
+		this.nit = nit;
+	}
+
+	
+	public String getNitAnterior() {
+		return nitAnterior;
+	}
+
+
+	public void setNitAnterior(String nitAnterior) {
+		this.nitAnterior = nitAnterior;
+	}
+
 
 	public String getIdInstitucion() {
 		return idInstitucion;
