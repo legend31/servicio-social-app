@@ -1,15 +1,12 @@
 package sv.edu.ues.fia.appserviciosocial;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.ContactsContract.CommonDataKinds.Email;
 
 public class ControlBD {
 
@@ -202,7 +199,8 @@ public class ControlBD {
 		contador = db.insertOrThrow("asignacionproyecto", null, valoresAsignacion);
 		}catch(Exception integridad)
 		{
-			return integridad.getMessage();
+			String ex = integridad.getMessage();
+			return ex.substring(0, ex.lastIndexOf("(code 19)"));
 		}
 		if (contador == -1 || contador == 0) {
 			mensaje = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
