@@ -211,7 +211,22 @@ public class ControlBD {
 	}
 
 	public String insertar(Bitacora bitacora) {
-		return null;
+		String mensaje = "";
+		long contador = 0;
+		ContentValues valoresBitacora = new ContentValues();
+		valoresBitacora.putNull("id");
+		valoresBitacora.put("carnet", bitacora.getCarnet());
+		valoresBitacora.put("idProyecto", bitacora.getIdProyecto());
+		valoresBitacora.put("idTipoTrabajo", bitacora.getIdTipoTrabajo());
+		valoresBitacora.put("fecha", bitacora.getFecha());
+		valoresBitacora.put("descripcion", bitacora.getdescripcion());
+		contador = db.insert("bitacora", null, valoresBitacora);
+		if (contador == -1 || contador == 0) {
+			mensaje = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+		} else {
+			mensaje = "Registro ingresado";
+		}
+		return mensaje;
 	}
 
 	public String insertar(EncargadoServicioSocial encargado) {
