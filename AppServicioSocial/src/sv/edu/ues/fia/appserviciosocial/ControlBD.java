@@ -347,7 +347,16 @@ public class ControlBD {
 	}
 
 	public String actualizar(AsignacionProyecto asignacion) {
-		return null;
+		int contador =0;
+		String[] id = { asignacion.getCarnet(), asignacion.getIdProyecto() };
+		ContentValues cv = new ContentValues();
+		cv.put("fecha", asignacion.getFecha());
+		contador+=db.update("asignacionproyecto", cv, "carnet = ? AND idproyecto=?", id);
+		if(contador == 0 || contador == -1)
+		{
+			return "Registro no actualizado";
+		}
+		return "Registro Actualizado Correctamente";
 	}
 
 	public String actualizar(Bitacora bitacora) {
@@ -437,21 +446,14 @@ public class ControlBD {
 		return regAfectados;
 	}
 
-	public String eliminar(AsignacionProyecto asignacion, int tipo) {
+	public String eliminar(AsignacionProyecto asignacion) {
 		String regAfectados = "filas afectadas= ";
 		int contador = 0;
-		String id[] = new String[1];
-		switch (tipo) {
-		// Se envio en carnet
-		case 1:
-			id[0] = String.valueOf(asignacion.getCarnet());
-			contador += db.delete("asignacionproyecto", "carnet=?", id);
-			break;
-		// Se envio el idProyecto
-		case 2:
-			id[0] = String.valueOf(asignacion.getIdProyecto());
-			contador += db.delete("asignacionproyecto", "idproyecto=?", id);
-			break;
+		String id[] = {asignacion.getCarnet(), asignacion.getIdProyecto()};
+		contador += db.delete("asignacionproyecto", "carnet=? AND idproyecto=?", id);
+		if(contador == 0 || contador == -1)
+		{
+			return "No se realizó eliminación";
 		}
 		regAfectados += contador;
 		return regAfectados;
