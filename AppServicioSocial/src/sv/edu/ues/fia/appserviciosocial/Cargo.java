@@ -1,13 +1,14 @@
 package sv.edu.ues.fia.appserviciosocial;
 
 public class Cargo {
-	private String idCargo,nombre,descripcion;
+	private int idCargo;
+	private String nombre,descripcion;
 
-	public String getIdCargo() {
+	public int getIdCargo() {
 		return idCargo;
 	}
 
-	public void setIdCargo(String idCargo) {
+	public void setIdCargo(int idCargo) {
 		this.idCargo = idCargo;
 	}
 

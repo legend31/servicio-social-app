@@ -1,5 +1,7 @@
 package sv.edu.ues.fia.appserviciosocial;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
@@ -57,8 +59,13 @@ public class SolicitanteInsertarActivity extends Activity {
 					   Toast.makeText(this, "Institución no existe", Toast.LENGTH_LONG).show();
 				   else{
 					   String idInstitucion = institucion.getIdInstitucion();
-					   Cargo cargo = auxiliar.consultarCargo(idCargo);
-					   idCargo = cargo.getIdCargo();
+					   //lo que miguel modifico
+					   ArrayList<Cargo> datos=auxiliar.consultarCargo(idCargo, 0);
+					   Cargo cargo=datos.get(0);
+					   idCargo = Integer.toString(cargo.getIdCargo());
+					   //como estaba
+					   //Cargo cargo = auxiliar.consultarCargo(idCargo);
+					  
 					   if ( idCargo == null)
 						   Toast.makeText(this, "ID cargo no existe", Toast.LENGTH_LONG).show();   
 					   else{						   

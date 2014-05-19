@@ -133,21 +133,29 @@
     <string name="cargo">Cargo del solicitante</string>
     <string name="idEncargado">ID de Encargado</string>
     <string name="escuela">Escuela</string>
-     <string name="atras">Atras</string>
-      <string name="adelante">Adelante</string>
      
-
+       <string name="idCargo">ID Cargo</string>
+      
+     
+<string name="atras">Siguiente</string>
+      <string name="adelante">Anterior</string>
     
        <string name="criterioBusqueda">Seleccione un criterio de busqueda</string>
+       
     <string-array name="camposArrayEncargado">
         <item> ID Encargado</item>
         <item> Nombre</item>
         <item> Email</item>
         <item> Telefono</item>
         <item> Facultad</item>
-        <item> Escuela</item>
-        
+        <item> Escuela</item>     
     </string-array>
+    
+     <string-array name="camposArrayCargo">
+        <item> ID Cargo</item>
+        <item> Nombre</item>    
+    </string-array>
+    
     <string name="idTipoTrabajo">Id Tipo de Trabajo</string>
     <string name="descripcion">Descripcion</string>
     
