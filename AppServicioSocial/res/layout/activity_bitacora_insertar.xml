@@ -61,7 +61,8 @@
         android:layout_alignLeft="@+id/editText5"
         android:layout_below="@+id/editText5"
         android:layout_marginTop="24dp"
-        android:text="@string/ingresar" />
+        android:text="@string/ingresar"
+        android:onClick="insertarBitacora" />
 
     <EditText
         android:id="@+id/editText1"
