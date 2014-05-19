@@ -220,7 +220,13 @@ public class ControlBD {
 		valoresBitacora.put("idTipoTrabajo", bitacora.getIdTipoTrabajo());
 		valoresBitacora.put("fecha", bitacora.getFecha());
 		valoresBitacora.put("descripcion", bitacora.getdescripcion());
-		contador = db.insert("bitacora", null, valoresBitacora);
+		try{
+			contador = db.insert("bitacora", null, valoresBitacora);
+			}catch(Exception integridad)
+			{
+				String ex = integridad.getMessage();
+				return ex.substring(0, ex.lastIndexOf("(code 19)"));
+			}
 		if (contador == -1 || contador == 0) {
 			mensaje = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
 		} else {
