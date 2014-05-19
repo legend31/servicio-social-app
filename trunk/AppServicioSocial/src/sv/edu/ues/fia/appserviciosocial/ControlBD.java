@@ -234,8 +234,21 @@ public class ControlBD {
 		return mensaje;
 	}
 
-	public String insertar(Escuela escuela) {
-		return null;
+	public String insertar(Cargo cargo) {
+		String mensaje = "";
+		long contador = 0;
+		ContentValues valoresCargo = new ContentValues();
+		valoresCargo.putNull("idcargo");
+		valoresCargo.put("nombre", cargo.getNombre());
+		valoresCargo.put("descripcion", cargo.getDescripcion());
+		
+		contador = db.insert("cargo", null, valoresCargo);
+		if (contador == -1 || contador == 0) {
+			mensaje = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+		} else {
+			mensaje = "Registro ingresado";
+		}
+		return mensaje;
 	}
 
 	public String insertar(Institucion institucion) {
@@ -578,25 +591,7 @@ public class ControlBD {
 	}
 
 	
-	/*
-	public EncargadoServicioSocial consultarEncargadoServicioSocial(String busqueda) {
-		String[] id = { busqueda };
-		Cursor cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial, "idencargado = ?", id,
-				null, null, null);
-		if (cursor.moveToFirst()) {
-			EncargadoServicioSocial encargado = new EncargadoServicioSocial();
-			encargado.setIdEncargado(cursor.getInt(0));
-			encargado.setNombre(cursor.getString(1));
-			encargado.setEmail(cursor.getString(2));
-			encargado.setTelefono(cursor.getString(3));
-			encargado.setFacultad(cursor.getString(4));
-			encargado.setEscuela(cursor.getString(5));
-			return encargado;
-		} else {
-			return null;
-		}
-	}*/
-	
+
 	/////////Metodo para que regrese mas de un dato en la consulta  >>>>pendiente de arreglar<<<<<<<  ///////////
 	
 	public ArrayList<EncargadoServicioSocial> consultarEncargadoServicioSocial(
@@ -671,6 +666,54 @@ public class ControlBD {
 
 	}
 
+	//consultar cargo
+	public ArrayList<Cargo> consultarCargo(String busqueda, int seleccion) {
+		String[] id = { busqueda };
+		int opcion = seleccion;
+		Cursor cursor;
+		ArrayList<Cargo> lista = new ArrayList<Cargo>();
+		switch (opcion) {
+
+		// Se eligio id
+		case 0:
+			cursor = db.query("cargo",
+					camposCargo, "idCargo = ?", id, null,
+					null, null);
+			break;
+		// se eligio nombre
+		case 1:
+
+			cursor = db.query("cargo",
+					camposCargo, "nombre= ?", id, null, null,
+					null);
+			break;
+		// Se eligio email
+		
+		default:
+			cursor = db.query("cargo",
+					camposCargo, "idCargo= ?", id, null,
+					null, null);
+		}
+		// Cursor cursor =
+		// db.query("proyecto",camposProyecto,id+" LIKE '%"+nombreProyecto+"%'",null,null,null,null,null);
+		// if(cursor!=null){
+		if (cursor.moveToFirst()) {
+			do {
+				Cargo cargo=new Cargo();
+
+				cargo.setIdCargo(cursor.getInt(0));
+				cargo.setNombre(cursor.getString(1));
+				cargo.setDescripcion(cursor.getString(2));
+				
+				lista.add(cargo);
+			} while (cursor.moveToNext());
+			return lista;
+
+		} else {
+			return null;
+		}
+
+	}//fin consultar cargo
 
 
 	public Escuela consultarEscuela(String idEscuela) {
@@ -692,7 +735,7 @@ public class ControlBD {
 			return null;
 		
 	}
-	
+	/*
 	public Cargo consultarCargo(String idCargo){
 		Cargo cargo = new Cargo();
 		cargo.setDescripcion("descripcion");
@@ -700,7 +743,7 @@ public class ControlBD {
 		cargo.setNombre("Supervisor");
 		return cargo;
 	}
-	
+	*/
 	public Proyecto consultarProyecto(String codigoProyecto) {
 
 		String[] id = { codigoProyecto };

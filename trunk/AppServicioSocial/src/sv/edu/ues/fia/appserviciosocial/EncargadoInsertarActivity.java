@@ -44,12 +44,12 @@ public class EncargadoInsertarActivity extends Activity {
             String error = "";
             
            
-            if(nombre == null || nombre.trim() == "")
+            if(escuela == null || escuela.trim() == "")
             {
                     error= "Escuela Ingresado";
             }
          
-            if(nombre == null || nombre.trim() == "")
+            if(facultad == null || facultad.trim() == "")
             {
                     error= "Facultad Ingresado";
             }

@@ -1,7 +1,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -9,8 +12,60 @@
     tools:context=".CargoInsertarActivity" >
 
     <TextView
+        android:id="@+id/titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="42dp"
+        android:gravity="center|center_horizontal"
+        android:text="@string/title_activity_cargo_insertar"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/edtNombreCargo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/titulo"
+        android:layout_marginTop="35dp"
+        android:ems="10"
+        android:hint="@string/nombre"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/edtDescripcionCargo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/edtNombreCargo"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="@string/descripcion"
+        android:inputType="textMultiLine" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btnGuardarCargo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/edtDescripcionCargo"
+        android:layout_below="@+id/edtDescripcionCargo"
+        android:layout_marginTop="68dp"
+        android:onClick="insertarCargo"
+        android:text="@string/guardar" />
+
+    <Button
+        android:id="@+id/btnLimpiarCargo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnGuardarCargo"
+        android:layout_alignBottom="@+id/btnGuardarCargo"
+        android:layout_alignLeft="@+id/edtDescripcionCargo"
+        android:onClick="limpiarCargo"
+        android:text="@string/limpiar" />
 
 </RelativeLayout>

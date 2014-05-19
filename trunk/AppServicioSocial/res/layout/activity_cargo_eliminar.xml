@@ -1,16 +1,126 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent" >
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".CargoEliminarActivity" >
+    tools:context=".EncargadoEliminarActivity" >
 
-    <TextView
+    <Button
+        android:id="@+id/btnEliminarCargo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_below="@+id/TablaDeDatosCargo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="31dp"
+        android:onClick="eliminarCargo"
+        android:text="@string/eliminar" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/txtTituloEliminar"
+        android:layout_marginTop="45dp" >
+
+        <EditText
+            android:id="@+id/edtEliminarEncargado"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/idEncargado"
+            android:inputType="number"
+             >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/btnBuscarCargo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="consultarCargoEliminar"
+            android:text="@string/buscar" />
+    </LinearLayout>
+
+    <TableLayout
+        android:id="@+id/TablaDeDatosCargo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/nombreCargo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nombre" />
+
+            <EditText
+                android:id="@+id/edtNombreCargo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text" 
+                android:enabled ="false"
+				android:focusable="false"
+				android:focusableInTouchMode="false"
+				android:cursorVisible="false"
+				android:longClickable="false"/>
+        </TableRow>
+          
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/descripcionCargo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/descripcion" />
+
+            <EditText
+                android:id="@+id/edtDescripcionCargo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:enabled ="false"
+				android:focusable="false"
+				android:focusableInTouchMode="false"
+				android:cursorVisible="false"
+				android:longClickable="false" />
+        </TableRow>
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/txtTituloEliminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="@string/title_activity_cargo_eliminar"
+        android:textSize="20sp" />
 
 </RelativeLayout>
+
+</ScrollView>
