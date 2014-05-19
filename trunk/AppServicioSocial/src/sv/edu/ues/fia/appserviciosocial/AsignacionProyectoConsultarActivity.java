@@ -2,16 +2,13 @@ package sv.edu.ues.fia.appserviciosocial;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import android.os.Bundle;
 import android.app.Activity;
-import android.util.Log;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -56,18 +53,14 @@ public class AsignacionProyectoConsultarActivity extends Activity {
 		
 		String info="";
 		String texto = txtBusqueda.getText().toString().trim();
-		Log.i("Hola", "valor de texto ->"+texto+"<-");
 		if(texto == null || texto == "" || texto.length() == 0)
 		{
-			Log.i("Hola", "entre al if");
 			switch(radioGrupo.getCheckedRadioButtonId())
 			{
 			case R.id.rbtAlumno:
-				Log.i("Hola", "alumno");
 				info = "Carnet inválido";
 			break;
 			case R.id.rbtProyecto:
-				Log.i("Hola", "proyecto");
 				info = "Proyecto inválido";
 			break;
 			}
@@ -85,7 +78,6 @@ public class AsignacionProyectoConsultarActivity extends Activity {
 			tipo = 2;
 		break;
 		}
-		Log.i("Hola", "antes de consultar");
 		ArrayList<AsignacionProyecto> asignaciones = auxiliar.consultarAsignacionProyecto(texto, tipo);
 		auxiliar.cerrar();
 		if(asignaciones == null)
@@ -102,7 +94,8 @@ public class AsignacionProyectoConsultarActivity extends Activity {
 				datos.add("Fecha");
 				for (AsignacionProyecto asignacion : asignaciones) {
 					datos.add(asignacion.getIdProyecto());
-					datos.add(asignacion.getFecha());
+					String aux = asignacion.getFecha();
+					datos.add(aux.substring(8)+"/"+aux.substring(5, 7)+"/"+aux.substring(0,4));
 				}
 			}
 			else if(tipo == 2){
@@ -110,7 +103,8 @@ public class AsignacionProyectoConsultarActivity extends Activity {
 				datos.add("Fecha");
 				for (AsignacionProyecto asignacion : asignaciones) {
 					datos.add(asignacion.getCarnet());
-					datos.add(asignacion.getFecha());
+					String aux = asignacion.getFecha();
+					datos.add(aux.substring(8)+"/"+aux.substring(5, 7)+"/"+aux.substring(0,4));
 				}
 			}
 			//Llenando tabla

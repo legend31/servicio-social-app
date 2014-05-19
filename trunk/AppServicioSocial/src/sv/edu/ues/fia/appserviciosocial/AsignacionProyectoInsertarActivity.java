@@ -3,7 +3,6 @@ package sv.edu.ues.fia.appserviciosocial;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
-
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -114,7 +113,7 @@ public class AsignacionProyectoInsertarActivity extends Activity {
 			final Calendar c = Calendar.getInstance();
 			try {
 				// Si en algun momento se ha informado la fecha se recupera
-				String format = "MM-dd-yyyy";
+				String format = "dd/MM/yyyy";
 				SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.US);
 				c.setTime(sdf.parse(String.valueOf(txtFecha.getText())));
 			} catch (Exception e) {
