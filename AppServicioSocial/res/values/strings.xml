@@ -46,20 +46,20 @@
     <!-- Lista de titulos de navegacion -->
     <string-array name="nav_options">
         <item>Alumno</item>
-        <item>Bitacora</item>
-        <item>Encargado Social</item>
-        <item>Proyecto</item>
-        <item>Tipo Proyecto</item>
         <item>Asignacion De Proyecto</item>
-        <item>Tipo Trabajo</item>
-        <item>Solicitante</item>
+        <item>Bitacora</item>
+        <item>Cargo</item>
+        <item>Encargado Social</item>
         <item>Institucion</item>
-        <item>Escuela</item>
+        <item>Proyecto</item>
+        <item>Solicitante</item>
+        <item>Tipo Proyecto</item>
+        <item>Tipo Trabajo</item>
     </string-array>
     <!-- Lista de iconos de navegacion -->
     <array name="navigation_iconos">
         <item>@drawable/ic_action_home</item>
-        <item>@drawable/ic_action_user</item>
+        <item>@drawable/ic_action_user</item> 
         <item>@drawable/ic_action_star</item>
         <item>@drawable/ic_action_event</item>
         <item>@drawable/ic_action_place</item>
