@@ -395,7 +395,29 @@ public class ControlBD {
 	}
 
 	public String actualizar(Bitacora bitacora) {
-		return null;
+		String mensaje = "";
+		String[] id ={toString().valueOf(bitacora.getId())};
+		long contador = 0;
+		ContentValues valoresBitacora = new ContentValues();
+		
+		valoresBitacora.put("carnet", bitacora.getCarnet());
+		valoresBitacora.put("idProyecto", bitacora.getIdProyecto());
+		valoresBitacora.put("idTipoTrabajo", bitacora.getIdTipoTrabajo());
+		valoresBitacora.put("fecha",bitacora.getFecha());
+		valoresBitacora.put("descripcion", bitacora.getdescripcion());
+		try{
+			contador = db.update("bitacora", valoresBitacora, "id=?", id );
+			}catch(Exception integridad)
+			{
+				String ex = integridad.getMessage();
+				return ex.substring(0, ex.lastIndexOf("(code 19)"));
+			}
+		if (contador == -1 || contador == 0) {
+			mensaje = "Error al modificar el registro";
+		} else {
+			mensaje = "Registro modificado";
+		}
+		return mensaje;
 	}
 
 	public String actualizar(EncargadoServicioSocial encargado) {
