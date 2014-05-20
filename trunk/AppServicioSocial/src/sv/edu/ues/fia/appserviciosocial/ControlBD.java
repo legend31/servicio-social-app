@@ -14,7 +14,7 @@ public class ControlBD {
 			"nombre", "telefono", "dui", "nit", "email" };
 	private static final String[] camposAsignacionProyecto = new String[] {
 			"carnet", "idProyecto", "fecha" };
-	private static final String[] camposBitacora = new String[] { "idBitacora",
+	private static final String[] camposBitacora = new String[] { "id",
 			"carnet", "idProyecto", "idTipoTrabajo", "fecha", "descripcion" };
 	private static final String[] camposEncargadoServicioSocial = new String[] {
 			"idEncargado", "nombre", "email", "telefono", "facultad", "escuela"};
@@ -621,8 +621,21 @@ public class ControlBD {
 		}
 	}
 
-	public Bitacora consultarBitacora(String fecha) {
-		return null;
+	public Bitacora consultarBitacora(String parametro) {
+		String[] id = { parametro };//parametro
+		Cursor cursor = db.query("bitacora", camposBitacora,"id= ?", id,
+				null, null, null);
+		if (cursor.moveToFirst()) {
+			Bitacora objBitacora = new Bitacora();
+			objBitacora.setCarnet(cursor.getString(1));
+			objBitacora.setIdProyecto(cursor.getInt(2));
+			objBitacora.setIdTipoTrabajo(cursor.getInt(3));
+			objBitacora.setFecha(cursor.getString(4));
+			objBitacora.setdescripcion(cursor.getString(5));			
+			return objBitacora;
+		} else {
+			return null;
+		}
 	}
 
 	
