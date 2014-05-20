@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -27,6 +28,8 @@ public class BitacoraInsertarActivity extends Activity {
 		 editText3=(EditText) findViewById(R.id. editText3);
 		 editText4=(EditText) findViewById(R.id.editText4);
 		 editText5=(EditText) findViewById(R.id.editText5);
+		
+		 
 	}
 
 	@Override
