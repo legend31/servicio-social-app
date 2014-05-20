@@ -42,8 +42,9 @@ public class CargoMenuActivity extends TabActivity {
 		  TabHost tabHost = getTabHost();
 	 
 	       tabHost.addTab(tabHost.newTabSpec("Crear").setIndicator("", getResources().getDrawable(R.drawable.nuevo)).setContent(intent1));
-	       tabHost.addTab(tabHost.newTabSpec("Actualizar").setIndicator("", getResources().getDrawable(R.drawable.actualizar)).setContent(intent2));
+	       
 	       tabHost.addTab(tabHost.newTabSpec("Consultar").setIndicator("", getResources().getDrawable(R.drawable.consultar)).setContent(intent3));
+	       tabHost.addTab(tabHost.newTabSpec("Actualizar").setIndicator("", getResources().getDrawable(R.drawable.actualizar)).setContent(intent2));
 	       tabHost.addTab(tabHost.newTabSpec("Eliminar").setIndicator("", getResources().getDrawable(R.drawable.delete)).setContent(intent4));
 	       
 		

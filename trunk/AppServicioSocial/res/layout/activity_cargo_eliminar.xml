@@ -11,7 +11,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".EncargadoEliminarActivity" >
+    tools:context=".CargoEliminarActivity" >
 
     <Button
         android:id="@+id/btnEliminarCargo"
@@ -33,11 +33,11 @@
         android:layout_marginTop="45dp" >
 
         <EditText
-            android:id="@+id/edtEliminarEncargado"
+            android:id="@+id/edtIdCargo"
             android:layout_width="175dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/idEncargado"
+            android:hint="@string/idCargo"
             android:inputType="number"
              >
 

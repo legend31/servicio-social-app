@@ -410,8 +410,14 @@ public class ControlBD {
 		return "Registro Actualizado Correctamente";
 	}
 
-	public String actualizar(Escuela escuela) {
-		return null;
+	public String actualizar(Cargo cargo) {
+		String[] id = { String.valueOf(cargo.getIdCargo())};
+		ContentValues cv = new ContentValues();
+		cv.put("nombre", cargo.getNombre());
+		cv.put("descripcion", cargo.getDescripcion());
+		
+		db.update("cargo", cv, "idcargo = ?", id);
+		return "Registro Actualizado Correctamente";
 	}
 
 	public String actualizar(Institucion institucion) {
@@ -507,8 +513,13 @@ public class ControlBD {
 		return regAfectados;
 	}
 
-	public String eliminar(Escuela escuela) {
-		return null;
+	public String eliminar(Cargo cargo) {
+		String regAfectados = "";
+		int contador = 0;
+		contador += db.delete("cargo", "idcargo='" + cargo.getIdCargo() + "'",
+				null);
+		regAfectados += contador;
+		return regAfectados;
 	}
 
 	public String eliminar(Institucion institucion) {
@@ -700,27 +711,22 @@ public class ControlBD {
 
 		// Se eligio id
 		case 0:
-			cursor = db.query("cargo",
-					camposCargo, "idCargo = ?", id, null,
+			cursor = db.query("cargo",camposCargo, "idCargo = ?", id, null,
 					null, null);
 			break;
 		// se eligio nombre
 		case 1:
 
-			cursor = db.query("cargo",
-					camposCargo, "nombre= ?", id, null, null,
+			cursor = db.query("cargo",camposCargo, "nombre= ?", id, null, null,
 					null);
 			break;
 		// Se eligio email
 		
 		default:
-			cursor = db.query("cargo",
-					camposCargo, "idCargo= ?", id, null,
+			cursor = db.query("cargo", camposCargo, "idCargo= ?", id, null,
 					null, null);
 		}
-		// Cursor cursor =
-		// db.query("proyecto",camposProyecto,id+" LIKE '%"+nombreProyecto+"%'",null,null,null,null,null);
-		// if(cursor!=null){
+		
 		if (cursor.moveToFirst()) {
 			do {
 				Cargo cargo=new Cargo();

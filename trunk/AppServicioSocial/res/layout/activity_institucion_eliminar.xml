@@ -13,7 +13,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:ems="10"
-        android:hint="@string/nit" >
+        android:hint="@string/nit"
+        android:inputType="number" >
 
         <requestFocus />
     </EditText>

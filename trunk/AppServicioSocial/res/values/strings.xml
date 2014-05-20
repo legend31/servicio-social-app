@@ -160,4 +160,10 @@
     <string name="descripcion">Descripcion</string>
     <string name="idBitacora">Id Bitacora</string>
     
+    
+    
+    
+    <string name="nitInstitucion">NIT Institución</string>
+     <string name="nuevoNit">Nuevo NIT</string>
+    
 </resources>

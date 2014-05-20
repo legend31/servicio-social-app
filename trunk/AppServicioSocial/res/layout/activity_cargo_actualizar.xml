@@ -11,7 +11,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".EncargadoActualizarActivity" >
+    tools:context=".CargoActualizarActivity" >
 
     <Button
         android:id="@+id/btnActualizar"
@@ -33,11 +33,11 @@
         android:layout_marginTop="45dp" >
 
         <EditText
-            android:id="@+id/edtIdEncargado"
+            android:id="@+id/edtIdCargo"
             android:layout_width="175dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/idEncargado"
+            android:hint="@string/idCargo"
             android:inputType="number"
              >
 
@@ -45,7 +45,7 @@
         </EditText>
 
         <Button
-            android:id="@+id/btnBuscarEncargado"
+            android:id="@+id/btnBuscarCargo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -109,7 +109,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
-        android:text="@string/title_activity_encargado_actualizar"
+        android:text="@string/title_activity_cargo_actualizar"
         android:textSize="20sp" />
 
 </RelativeLayout>

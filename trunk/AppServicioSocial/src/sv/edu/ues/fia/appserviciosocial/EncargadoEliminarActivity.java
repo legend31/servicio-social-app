@@ -80,7 +80,7 @@ public class EncargadoEliminarActivity extends Activity {
              int idEncargado = Integer.parseInt(edtIdEncargado.getText().toString());
              if(edtIdEncargado.getText().toString() == null || edtIdEncargado.getText().toString().trim() == "" )
              {
-                     Toast.makeText(this, "Carnet inválido", Toast.LENGTH_LONG).show();
+                     Toast.makeText(this, "Valor inválido", Toast.LENGTH_LONG).show();
                      return;
              }
              EncargadoServicioSocial encargado =new EncargadoServicioSocial();
