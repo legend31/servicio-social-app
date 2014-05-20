@@ -137,8 +137,8 @@
        <string name="idCargo">ID Cargo</string>
       
      
-<string name="atras">Siguiente</string>
-      <string name="adelante">Anterior</string>
+<string name="atras">Anterior</string>
+      <string name="adelante">Siguiente</string>
     
        <string name="criterioBusqueda">Seleccione un criterio de busqueda</string>
        
