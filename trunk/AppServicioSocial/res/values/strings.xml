@@ -158,5 +158,6 @@
     
     <string name="idTipoTrabajo">Id Tipo de Trabajo</string>
     <string name="descripcion">Descripcion</string>
+    <string name="idBitacora">Id Bitacora</string>
     
 </resources>
