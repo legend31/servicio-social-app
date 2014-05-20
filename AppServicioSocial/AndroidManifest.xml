@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="sv.edu.ues.fia.appserviciosocial"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.0"
+    android:configChanges="orientation|keyboardHidden"
+	android:screenOrientation="portrait" >
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -14,7 +16,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.AccesoActivity"
-            android:label="@string/acceso" >
+            android:label="@string/acceso"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,11 +26,13 @@
         </activity>
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.MenuTablasActivity"
-            android:label="@string/title_activity_menu_tablas" >
+            android:label="@string/title_activity_menu_tablas"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.AlumnoMenuActivity"
-            android:label="@string/title_activity_menu_alumno" >
+            android:label="@string/title_activity_menu_alumno"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.AlumnoInsertarActivity"
@@ -47,7 +52,8 @@
         </activity>
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.AsignacionProyectoMenuActivity"
-            android:label="@string/title_activity_asignacion_proyecto_menu" >
+            android:label="@string/title_activity_asignacion_proyecto_menu"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.AsignacionProyectoInsertarActivity"
@@ -75,7 +81,8 @@
         </activity>
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.ProyectoMenuActivity"
-            android:label="@string/title_activity_proyecto_menu" >
+            android:label="@string/title_activity_proyecto_menu"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.ProyectoConsultarActivity"
@@ -115,11 +122,13 @@
         </activity>
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.InstitucionMenuActivity"
-            android:label="@string/title_activity_institucion_menu" >
+            android:label="@string/title_activity_institucion_menu"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.SolicitanteMenuActivity"
-            android:label="@string/title_activity_solicitante_menu" >
+            android:label="@string/title_activity_solicitante_menu"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.ProyectoEliminarActivity"
@@ -127,7 +136,8 @@
         </activity>
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.EncargadoMenuActivity"
-            android:label="@string/title_activity_encargado_menu" >
+            android:label="@string/title_activity_encargado_menu"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.EncargadoInsertarActivity"
@@ -151,7 +161,8 @@
         </activity>
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.BitacoraMenuActivity"
-            android:label="@string/title_activity_bitacora_menu" >
+            android:label="@string/title_activity_bitacora_menu"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.BitacoraInsertarActivity"
@@ -171,7 +182,8 @@
         </activity>
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.TipoProyectoMenuActivity"
-            android:label="@string/title_activity_tipo_proyecto_menu" >
+            android:label="@string/title_activity_tipo_proyecto_menu"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.TipoProyectoInsertarActivity"
@@ -194,7 +206,8 @@
         
          <activity
             android:name="sv.edu.ues.fia.appserviciosocial.CargoMenuActivity"
-            android:label="@string/title_activity_cargo_menu" >
+            android:label="@string/title_activity_cargo_menu"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.CargoInsertarActivity"
