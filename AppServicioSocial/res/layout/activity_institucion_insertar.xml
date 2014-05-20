@@ -14,7 +14,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="34dp"
         android:ems="10"
-        android:hint="@string/institucionNombre" />
+        android:hint="@string/institucionNombre" 
+        android:inputType="text"/>
 
     <EditText
         android:id="@+id/editNitInstitucion"
@@ -24,7 +25,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp"
         android:ems="10"
-        android:hint="@string/nit" >
+        android:hint="@string/nit"
+        android:inputType="number" >
 
         <requestFocus />
     </EditText>

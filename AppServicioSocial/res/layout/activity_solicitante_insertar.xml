@@ -17,19 +17,21 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="50dp"
         android:ems="10"
-        android:hint="@string/telefono" />
+        android:hint="@string/telefono" 
+        android:inputType="number"/>
 
     <EditText
         android:id="@+id/editNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/txtTelefono"
-        android:layout_alignLeft="@+id/txtTelefono"
-        android:layout_marginBottom="28dp"
+        android:layout_alignBottom="@+id/editTelefono"
+        android:layout_alignLeft="@+id/editTelefono"
+        android:layout_marginBottom="35dp"
         android:ems="10"
-        android:hint="@string/nombre" >
+        android:hint="@string/nombre"
+        android:inputType="text" >
 
         <requestFocus />
     </EditText>
@@ -42,7 +44,8 @@
         android:layout_below="@+id/editTelefono"
         android:layout_marginTop="14dp"
         android:ems="10"
-        android:hint="@string/email" />
+        android:hint="@string/email" 
+        android:inputType="textEmailAddress"/>
 
     <EditText
         android:id="@+id/editNitInstitucionSolicitante"
@@ -52,7 +55,8 @@
         android:layout_below="@+id/editCorreo"
         android:layout_marginTop="18dp"
         android:ems="10"
-        android:hint="NIT institución" />
+        android:hint="@string/nitInstitucion"
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/editcargo"
@@ -62,7 +66,8 @@
         android:layout_below="@+id/editNitInstitucionSolicitante"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="ID Cargo" />
+        android:hint="@string/idCargo" 
+        android:inputType="number" />
 
     <Button
         android:id="@+id/btnConsultar"

@@ -13,7 +13,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:ems="10"
-        android:hint="@string/nit" >
+        android:hint="@string/nit" 
+        android:inputType="number">
 
         <requestFocus />
     </EditText>
@@ -47,7 +48,8 @@
         android:layout_marginTop="59dp"
         android:ems="10"
         android:hint="@string/nombre"
-        android:onClick="actualizarInstitucion" />
+        android:onClick="actualizarInstitucion" 
+        android:inputType="text"/>
 
     <EditText
         android:id="@+id/editNuevoNit"
@@ -56,6 +58,7 @@
         android:layout_alignLeft="@+id/editActNombreInstitucion"
         android:layout_below="@+id/editActNombreInstitucion"
         android:ems="10"
-        android:hint="Nuevo NIT" />
+        android:hint="@string/nuevoNit" 
+        android:inputType="number"/>
 
 </RelativeLayout>
