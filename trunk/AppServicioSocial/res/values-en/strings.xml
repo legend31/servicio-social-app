@@ -8,10 +8,10 @@
     <string name="action_settings">Settings</string>
     <string name="actualizar">Update</string>
     <string name="actualizarpor">Update by:</string>
-    <string name="adelante">Previous</string>
+    <string name="adelante">Next</string>
     <string name="alumno">Student</string>
     <string name="asignar">Assign</string>
-    <string name="atras">Next</string>
+    <string name="atras">Previous</string>
     <string name="bienvenido">Welcome! Introduce your details</string>
     <string name="bitacora">Binnacle</string>
     <string name="boton1">Student</string>
@@ -21,7 +21,7 @@
     <string name="button3">Project</string>
     <string name="cargo">Petitioner Post</string>
     <string name="carnet">Identity Card</string>
-    <string name="consultar">Consultation</string>
+    <string name="consultar">Consult</string>
     <string name="criterioBusqueda">Select an option for the rearch</string>
     <string name="datos">Data</string>
     <string name="descripcion">Description</string>
@@ -30,7 +30,7 @@
     <string name="dui">DUI</string>
     <string name="eliminar">Delete</string>
     <string name="eliminarpor">Delete by:</string>
-    <string name="email">E-mail</string>
+    <string name="email">Email</string>
     <string name="escuela">College</string>
     <string name="facultad">School</string>
     <string name="fecha">Date</string>
@@ -41,7 +41,7 @@
     <string name="idProyecto">ID Project</string>
     <string name="idSolicitante">ID Petitioner</string>
     <string name="idTipoTrabajo">ID Job Type</string>
-    <string name="ingresar">"Sign In "</string>
+    <string name="ingresar">Sign In</string>
     <string name="insertar">Introduce</string>
     <string name="institucion">Institution</string>
     <string name="institucionNombre">Institution´s Name</string>
