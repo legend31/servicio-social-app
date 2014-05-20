@@ -500,8 +500,20 @@ public class ControlBD {
 		return regAfectados;
 	}
 
-	public String eliminar(Bitacora bitacora) {
-		return null;
+	public String eliminarBitacora(String idBitacora) {
+		String regAfectados = "filas afectadas= ";
+		long contador = 0;
+		/*
+		 * si regresa true es q existe tipoproyecto como fk en proyecto y lo
+		 * eliminara antes caso contrario solo eliminara tipoproyecto de su
+		 * respectiva tabla
+		 */
+		contador += db.delete("bitacora","id='" + idBitacora + "'",null);
+		regAfectados += contador;
+		if (contador == 0 || contador == -1)
+			return regAfectados;
+		else
+			return regAfectados;
 	}
 
 	public String eliminar(EncargadoServicioSocial encargado) {
