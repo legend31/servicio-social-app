@@ -111,7 +111,6 @@
     <string name="title_activity_encargado_actualizar">Actualizar Encargado</string>
     <string name="title_activity_encargado_eliminar">Eliminar Encargado</string>
     <string name="bitacora">Bitacora</string>
-    
     <string name="title_activity_bitacora_menu">Bitacora</string>
     <string name="title_activity_bitacora_insertar">BitacoraInsertarActivity</string>
     <string name="title_activity_bitacora_consultar">BitacoraConsultarActivity</string>
@@ -127,12 +126,17 @@
     <string name="title_activity_cargo_actualizar">Actualizar Cargo</string>
     <string name="title_activity_cargo_consultar">Consultar Cargo</string>
     <string name="title_activity_cargo_eliminar">Eliminar Cargo</string>
-    
-
-  <string name="facultad">Facultad</string>
+    <string name="facultad">Facultad</string>
     <string name="cargo">Cargo del solicitante</string>
     <string name="idEncargado">ID de Encargado</string>
     <string name="escuela">Escuela</string>
+<<<<<<< .mine
+    <string name="idCargo">ID Cargo</string>
+    <string name="atras">Siguiente</string>
+    <string name="adelante">Anterior</string>
+    <string name="criterioBusqueda">Seleccione un criterio de busqueda</string>
+
+=======
      
        <string name="idCargo">ID Cargo</string>
       
@@ -142,24 +146,29 @@
     
        <string name="criterioBusqueda">Seleccione un criterio de busqueda</string>
        
+>>>>>>> .r126
     <string-array name="camposArrayEncargado">
         <item> ID Encargado</item>
         <item> Nombre</item>
         <item> Email</item>
         <item> Telefono</item>
         <item> Facultad</item>
-        <item> Escuela</item>     
+        <item> Escuela</item>
     </string-array>
-    
-     <string-array name="camposArrayCargo">
+    <string-array name="camposArrayCargo">
         <item> ID Cargo</item>
-        <item> Nombre</item>    
+        <item> Nombre</item>
     </string-array>
-    
+
     <string name="idTipoTrabajo">Id Tipo de Trabajo</string>
     <string name="descripcion">Descripcion</string>
     <string name="idBitacora">Id Bitacora</string>
-    
+    <string name="title_activity_tipo_trabajo">TipoTrabajoActivity</string>
+    <string name="title_activity_tipo_trabajo_insertar">TipoTrabajoInsertar</string>
+    <string name="title_activity_tipo_trabajo_modificar">TipoTrabajoModificar</string>
+    <string name="title_activity_tipo_trabajo_consultar">TipoTrabajoConsultar</string>
+    <string name="title_activity_tipo_trabajo_eliminar">TipoTrabajoEliminar</string>
+
     
     
     
