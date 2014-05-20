@@ -398,8 +398,7 @@ public class ControlBD {
 		String mensaje = "";
 		String[] id ={toString().valueOf(bitacora.getId())};
 		long contador = 0;
-		ContentValues valoresBitacora = new ContentValues();
-		
+		ContentValues valoresBitacora = new ContentValues();		
 		valoresBitacora.put("carnet", bitacora.getCarnet());
 		valoresBitacora.put("idProyecto", bitacora.getIdProyecto());
 		valoresBitacora.put("idTipoTrabajo", bitacora.getIdTipoTrabajo());
