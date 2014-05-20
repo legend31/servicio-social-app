@@ -218,7 +218,7 @@ public class ControlBD {
 		valoresBitacora.put("carnet", bitacora.getCarnet());
 		valoresBitacora.put("idProyecto", bitacora.getIdProyecto());
 		valoresBitacora.put("idTipoTrabajo", bitacora.getIdTipoTrabajo());
-		valoresBitacora.put("fecha", bitacora.getFecha());
+		valoresBitacora.put("fecha",bitacora.getFecha());
 		valoresBitacora.put("descripcion", bitacora.getdescripcion());
 		try{
 			contador = db.insert("bitacora", null, valoresBitacora);
