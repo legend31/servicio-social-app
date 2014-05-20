@@ -10,7 +10,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/icono_servicio"
         android:theme="@style/AppTheme" >
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.AccesoActivity"

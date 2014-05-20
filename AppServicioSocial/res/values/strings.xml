@@ -58,22 +58,22 @@
     </string-array>
     <!-- Lista de iconos de navegacion -->
     <array name="navigation_iconos">
-        <item>@drawable/ic_action_home</item>
         <item>@drawable/ic_action_user</item> 
-        <item>@drawable/ic_action_star</item>
-        <item>@drawable/ic_action_event</item>
-        <item>@drawable/ic_action_place</item>
         <item>@drawable/ic_action_labels</item>
+        <item>@drawable/ic_action_event</item>
+        <item>@drawable/ic_action_star</item>
+        <item>@drawable/ic_action_user</item> 
+        <item>@drawable/ic_action_home</item>
+        <item>@drawable/ic_action_event</item>
+        <item>@drawable/ic_action_user</item> 
+        <item>@drawable/ic_action_event</item>
         <item>@drawable/ic_action_settings</item>
-        <item>@drawable/ic_action_share</item>
-        <item>@drawable/ic_action_settings</item>
-        <item>@drawable/ic_action_share</item>
     </array>
 
     <string name="drawer_open">Menu de Tablas</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="title_activity_proyecto_insertar">ProyectoInsertarActivity</string>
-    <string name="title_activity_proyecto_menu">ProyectoMenuActivity</string>
+    <string name="title_activity_proyecto_menu">Proyecto</string>
     <string name="title_activity_navigation_drawer_menu">NavigationDrawerMenuActivity</string>
     <string name="idProyecto">ID Proyecto</string>
     <string name="nombreProyecto">Nombre Proyecto</string>
@@ -94,13 +94,13 @@
     <string name="idSolicitante">ID Solicitante</string>
     <string name="title_activity_solicitante_consultar">SolicitanteConsultarActivity</string>
     <string name="title_activity_solicitante_actualizar">SolicitanteActualizarActivity</string>
-    <string name="title_activity_solicitante_menu">SolicitanteMenu</string>
-    <string name="title_activity_institucion_menua">InstitucionMenuaActivity</string>
+    <string name="title_activity_solicitante_menu">Solicitante</string>
+    <string name="title_activity_institucion_menua">Institución</string>
     <string name="title_activity_institucion_insertar">InstitucionInsertarActivity</string>
     <string name="title_activity_institucion_consultar">InstitucionConsultarActivity</string>
     <string name="title_activity_institucion_actualizar">InstitucionActualizarActivity</string>
     <string name="title_activity_institucion_eliminar">InstitucionEliminarActivity</string>
-    <string name="title_activity_institucion_menu">InstitucionMenuActivity</string>
+    <string name="title_activity_institucion_menu">Institución</string>
     <string name="institucionNombre">Nombre Institución</string>
     <string name="title_activity_actualizar_proyecto">ActualizarProyectoActivity</string>
     <string name="mensaje">Ingrese el ID del Proyecto</string>
@@ -116,7 +116,7 @@
     <string name="title_activity_bitacora_consultar">BitacoraConsultarActivity</string>
     <string name="title_activity_bitacora_actualizar">BitacoraActualizarActivity</string>
     <string name="title_activity_bitacora_eliminar">BitacoraEliminarActivity</string>
-    <string name="title_activity_tipo_proyecto_menu">TipoProyectoMenuActivity</string>
+    <string name="title_activity_tipo_proyecto_menu">Tipo Proyecto</string>
     <string name="title_activity_tipo_proyecto_insertar">TipoProyectoInsertarActivity</string>
     <string name="title_activity_tipo_proyecto_actualizar">TipoProyectoActualizarActivity</string>
     <string name="title_activity_tipo_proyecto_consultar">TipoProyectoConsultarActivity</string>
@@ -130,23 +130,11 @@
     <string name="cargo">Cargo del solicitante</string>
     <string name="idEncargado">ID de Encargado</string>
     <string name="escuela">Escuela</string>
-<<<<<<< .mine
     <string name="idCargo">ID Cargo</string>
     <string name="atras">Siguiente</string>
     <string name="adelante">Anterior</string>
     <string name="criterioBusqueda">Seleccione un criterio de busqueda</string>
 
-=======
-     
-       <string name="idCargo">ID Cargo</string>
-      
-     
-<string name="atras">Anterior</string>
-      <string name="adelante">Siguiente</string>
-    
-       <string name="criterioBusqueda">Seleccione un criterio de busqueda</string>
-       
->>>>>>> .r126
     <string-array name="camposArrayEncargado">
         <item> ID Encargado</item>
         <item> Nombre</item>
@@ -163,7 +151,7 @@
     <string name="idTipoTrabajo">Id Tipo de Trabajo</string>
     <string name="descripcion">Descripcion</string>
     <string name="idBitacora">Id Bitacora</string>
-    <string name="title_activity_tipo_trabajo">TipoTrabajoActivity</string>
+    <string name="title_activity_tipo_trabajo">Tipo Trabajo</string>
     <string name="title_activity_tipo_trabajo_insertar">TipoTrabajoInsertar</string>
     <string name="title_activity_tipo_trabajo_modificar">TipoTrabajoModificar</string>
     <string name="title_activity_tipo_trabajo_consultar">TipoTrabajoConsultar</string>
