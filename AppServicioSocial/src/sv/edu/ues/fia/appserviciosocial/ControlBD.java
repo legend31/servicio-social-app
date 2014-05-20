@@ -80,6 +80,7 @@ public class ControlBD {
 				db.execSQL("create table ASIGNACIONPROYECTO ( CARNET VARCHAR(7) not null, IDPROYECTO INTEGER not null, FECHA DATE, PRIMARY KEY(carnet,idproyecto)"
 						+ " CONSTRAINT fk_asignacionproyecto_proyecto FOREIGN KEY (idproyecto) REFERENCES proyecto(idproyecto) ON DELETE RESTRICT, CONSTRAINT "
 						+ "fk_asignacionproyecto_alumno FOREIGN KEY (carnet) REFERENCES alumno(carnet) ON DELETE RESTRICT );");
+				db.execSQL("create table usuarios (id INTEGER not null primary key autoincrement, usuario VARCHAR(50) not null, password VARCHAR(100) not null, tipo INTEGER not null);");
 				// triggers
 				db.execSQL("CREATE TRIGGER fk_solicitante_cargo BEFORE INSERT ON solicitante FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT idcargo FROM cargo"
 						+ " WHERE idcargo = NEW.idcargo) IS NULL) THEN RAISE(ABORT, 'No existe cargo') END; END;");
@@ -141,6 +142,8 @@ public class ControlBD {
 				db.execSQL("insert into bitacora values(null, 2, 'FG12098', 1, date('2014-07-02'), 'Diseñando cosas');");
 				db.execSQL("insert into bitacora values(null, 2, 'MJ10458', 3, date('2013-11-18'), 'Presentacion de resultados');");
 				db.execSQL("insert into bitacora values(null, 3, 'MJ10458', 3, date('2013-11-20'), 'Avance literal');");
+				db.execSQL("insert into usuarios values(null, 'admin', 'admin', 1);");
+				db.execSQL("insert into usuarios values(null, 'alumno', 'alumno', 2);");
 
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -815,6 +818,18 @@ public class ControlBD {
 
 	public TipoTrabajo consultarTipoTrabajo(String idTipoTrabajo) {
 		return null;
+	}
+	
+	public String verificarUsuario(String usuario, String password)
+	{
+		String[] id = { usuario, password };
+		String[] campo = {"tipo"};
+		Cursor cursor = db.query("usuarios", campo, "usuario = ? AND password = ?", id, null, null, null);
+		if (cursor.moveToFirst()) {
+			return cursor.getString(0);
+		} else {
+			return null;
+		}
 	}
 
 	// Llenado de base de datos para datos iniciales en caso los necesite
