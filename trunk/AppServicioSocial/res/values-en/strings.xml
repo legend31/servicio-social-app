@@ -111,15 +111,15 @@
       <!-- Lista de titulos de navegacion -->
     <string-array name="nav_options">
         <item>Student</item>
-        <item>Binnacle</item>
-        <item>Social Manager</item>
-        <item>Project</item>
-        <item>Proyect Type</item>
         <item>Project Assigment</item>
-        <item>Job Type</item>
-        <item>Petitioner</item>
-        <item>Institution</item>
+        <item>Binnacle</item>
         <item>College</item>
+        <item>Social Manager</item>
+        <item>Institution</item>
+        <item>Project</item>
+        <item>Petitioner</item>
+        <item>Proyect Type</item>
+        <item>Job Type</item>
     </string-array>
 
 </resources>
