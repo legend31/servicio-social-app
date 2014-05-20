@@ -69,23 +69,20 @@ public class BitacoraActualizarActivity extends Activity {
 			botonBuscar.setText("Buscar");
 			Toast.makeText(this, "Bitacora no encontrado", Toast.LENGTH_LONG).show();
 			return;
-		}
-		else{
+		}else{
 			
-		
+		    
 			editText1.setText(objBitacora.getCarnet());			
-			editText2.setText(objBitacora.getIdProyecto());			
-			editText3.setText(objBitacora.getIdTipoTrabajo());			
+			editText2.setText(String.valueOf(objBitacora.getIdProyecto()));			
+			editText3.setText(String.valueOf(objBitacora.getIdTipoTrabajo()));			
 			editText4.setText(objBitacora.getFecha());			
 			editText5.setText(objBitacora.getdescripcion());
 			
 			//Llenando tabla
 			
 			botonBuscar.setText("Modificar");
-		}
-		}
-		else
-		{
+		     }
+		}else{
 			Bitacora objBitacora= new Bitacora();
 			objBitacora.setId(Integer.parseInt(idBitacora));
 			objBitacora.setCarnet(carnet);
