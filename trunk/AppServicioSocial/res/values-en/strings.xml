@@ -31,7 +31,7 @@
     <string name="eliminar">Delete</string>
     <string name="eliminarpor">Delete by:</string>
     <string name="email">E-mail</string>
-    <string name="escuela">School</string>
+    <string name="escuela">College</string>
     <string name="facultad">School</string>
     <string name="fecha">Date</string>
     <string name="guardar">Save</string>
@@ -107,5 +107,19 @@
     <string name="title_activity_tipo_proyecto_insertar">ProjectTyperInsertActivity</string>
     <string name="title_activity_tipo_proyecto_menu">ProjectTyperMenuActivity</string>
     <string name="usuario">User</string>
+    
+      <!-- Lista de titulos de navegacion -->
+    <string-array name="nav_options">
+        <item>Student</item>
+        <item>Binnacle</item>
+        <item>Social Manager</item>
+        <item>Project</item>
+        <item>Proyect Type</item>
+        <item>Project Assigment</item>
+        <item>Job Type</item>
+        <item>Petitioner</item>
+        <item>Institution</item>
+        <item>College</item>
+    </string-array>
 
 </resources>
