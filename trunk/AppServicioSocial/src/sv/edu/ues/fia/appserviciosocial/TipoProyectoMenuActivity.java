@@ -146,8 +146,11 @@ public class TipoProyectoMenuActivity extends TabActivity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1,
 					int position, long id) {
-				NavDrawerLayout.closeDrawer(NavList);
-				abrirActivity(position);
+				if(position != 0)
+            	{
+            	NavDrawerLayout.closeDrawer(NavList);
+            	abrirActivity(position);
+            	}
 			}
 		});
 
