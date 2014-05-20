@@ -9,21 +9,12 @@
     tools:context=".BitacoraInsertarActivity" >
 
     <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:hint="@string/carnet" />
-
-    <EditText
         android:id="@+id/editText5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editText4"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="60dp"
         android:ems="10"
         android:hint="@string/descripcion"
         android:inputType="textMultiLine" />
@@ -59,5 +50,35 @@
         android:ems="10"
         android:hint="@string/idProyecto"
         android:inputType="number" />
+
+    <Button
+        android:id="@+id/botonBuscar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="16dp"
+        android:text="@string/buscar" 
+        android:onClick="modificarBitacora"/>
+
+    <EditText
+        android:id="@+id/txtIdBitacora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/botonBuscar"
+        android:layout_alignLeft="@+id/editText1"
+        android:layout_toLeftOf="@+id/botonBuscar"
+        android:ems="10"
+        android:hint="@string/idBitacora"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editText2"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="@string/carnet" />
 
 </RelativeLayout>
