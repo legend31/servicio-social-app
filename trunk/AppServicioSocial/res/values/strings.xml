@@ -157,9 +157,6 @@
     <string name="title_activity_tipo_trabajo_consultar">Consultar Tipo de Trabajo</string>
     <string name="title_activity_tipo_trabajo_eliminar">Eliminar Tipo de Trabajo</string>
 
-    
-    
-    
     <string name="nitInstitucion">NIT Institución</string>
      <string name="nuevoNit">Nuevo NIT</string>
      <string name="tipoTrabajo">Tipo Trabajo</string>
