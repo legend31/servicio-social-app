@@ -1,5 +1,7 @@
 package sv.edu.ues.fia.appserviciosocial;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
@@ -9,15 +11,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.Toast;
 import android.os.Build;
 
 public class SolicitanteActualizarActivity extends Activity {
-
+	private EditText txtNombre,txtIdSolicitante,txtNitInstitucion, txtIdCargo,txtTelefono,txtEmail;
+	private ControlBD auxiliar;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_solicitante_actualizar);
-
+		auxiliar = new ControlBD(this);
+		txtIdSolicitante = (EditText)findViewById(R.id.editIdSolicitanteActualizar);
+		txtNitInstitucion = (EditText)findViewById(R.id.editConsNitInstitucion);
+		txtIdCargo = (EditText)findViewById(R.id.editIdCargo);
+		txtTelefono= (EditText)findViewById(R.id.editTelefonoSolicitante);
+		txtEmail = (EditText)findViewById(R.id.editCorreoSolicitante);
+		txtNombre = (EditText)findViewById(R.id.editNombreSolicitante);
 	}
 
 	@Override
@@ -40,9 +51,108 @@ public class SolicitanteActualizarActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
+	public void buscarSolicitante(View v){
+		txtNombre.setText("");
+		txtEmail.setText("");
+		txtIdCargo.setText("");
+		txtNitInstitucion.setText("");
+		txtNombre.setText("");
+		txtTelefono.setText("");
+		
+		String id = txtIdSolicitante.getText().toString();
+		//Validando
+		if(id == null || id.matches("")){
+			Toast.makeText(this, "ID inválido", Toast.LENGTH_LONG).show();
+			return;			
+		}
+		
+		auxiliar.abrir();
+		
+		Solicitante solicitante= auxiliar.consultarSolicitante(id);
+		
+		
+		if(solicitante == null)	{
+			
+			txtNombre.setText("");
+			Toast.makeText(this, "Solicitante con id " + id +
+					" no encontrado", Toast.LENGTH_LONG).show();
+			return;
+		}else{
+			
+			Institucion institucion = auxiliar.
+					consultarInstitucionById(solicitante.getIdInstitucion());
+			
+			txtNombre.setText(solicitante.getNombre());
+			txtTelefono.setText(solicitante.getTelefono());
+			txtEmail.setText(solicitante.getCorreo());
+			txtIdCargo.setText(solicitante.getIdCargo());
+			if (institucion != null)
+				txtNitInstitucion.setText(institucion.getNit());
+			else
+				Toast.makeText(this, "No se encontro institución " + 
+						solicitante.getIdInstitucion(), Toast.LENGTH_LONG).show();
+				
+		}
+		
+		auxiliar.cerrar();
 	
-
+		
+	}
+	
+	
+	public void actualizarSolicitante(View v){
+		String nombre = txtNombre.getText().toString(),
+				   telefono = txtTelefono.getText().toString(),
+				   email = txtEmail.getText().toString(),
+				   nitInstitucion = txtNitInstitucion.getText().toString(),
+				   idCargo = txtIdCargo.getText().toString();
+			
+			try{
+				if ( !vacio(nombre,"Nombre") && !vacio(telefono,"telefono")  &&!vacio(email,"E-mail")
+				   && !vacio(nitInstitucion,"NIT institución") && !vacio(idCargo,"ID Cargo"))
+					if ( telefono.length() == 8)
+						if ( nitInstitucion.length() == 14){
+						   auxiliar.abrir();
+						   Institucion institucion = auxiliar.consultarInstitucion(nitInstitucion);
+						   if (institucion == null)
+							   Toast.makeText(this, "Institución no existe", Toast.LENGTH_LONG).show();
+						   else{						   
+							   String idInstitucion = institucion.getIdInstitucion();						   
+							   ArrayList<Cargo> datos=auxiliar.consultarCargo(idCargo, 0);
+							   if (datos != null ) {
+							     Cargo cargo=datos.get(0);						   
+							     idCargo = Integer.toString(cargo.getIdCargo());
+							   				  
+								 if ( idCargo == null)
+									   Toast.makeText(this, "ID cargo no existe", Toast.LENGTH_LONG).show();   
+								 else{						   
+									 Solicitante solicitante = new Solicitante(idInstitucion, idCargo, nombre, telefono, email);					   
+									 solicitante.setIdSolicitante(txtIdSolicitante.getText().toString());
+									 String idAsignado = auxiliar.actualizar(solicitante);
+									 Toast.makeText(this, "Registro actualizado", Toast.LENGTH_SHORT).show();						   
+									   
+								 }
+							   }else  {
+								   Toast.makeText(this, "Cago no existe : "+idCargo, Toast.LENGTH_LONG).show();
+							   }
+				
+						   }					   
+						   auxiliar.cerrar();
+						}else
+							Toast.makeText(this, "NIT no válido ", Toast.LENGTH_LONG).show();
+					else
+						Toast.makeText(this, "telefono no válido ", Toast.LENGTH_LONG).show();  
+						
+					}catch(Exception e){
+					   Toast.makeText(this, "Error "+e, Toast.LENGTH_LONG).show();			   
+				   }	
+	}
+		
+	private boolean vacio(String campo,String nombreCampo){
+		if (campo.matches("")){
+			Toast.makeText(this, nombreCampo + " esta vacio ", Toast.LENGTH_LONG).show();
+			return true;
+		}else
+			return false;
+	}
 }
