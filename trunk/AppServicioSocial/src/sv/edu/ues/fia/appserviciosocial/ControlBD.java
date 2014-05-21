@@ -1,12 +1,14 @@
 package sv.edu.ues.fia.appserviciosocial;
 
 import java.util.ArrayList;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class ControlBD {
 
@@ -471,7 +473,21 @@ public class ControlBD {
 	}
 
 	public String actualizar(Solicitante solicitante) {
-		return null;
+		String[] id = { solicitante.getIdSolicitante()};
+		ContentValues cv = new ContentValues();
+		cv.put("nombre", solicitante.getNombre());
+		cv.put("correo_electronico", solicitante.getCorreo());
+		cv.put("telefono", solicitante.getTelefono());
+		cv.put("idcargo", solicitante.getIdCargo());
+		cv.put("idInstitucion", solicitante.getIdInstitucion());
+		Log.i("DB","Se almacena: "
+				+solicitante.getNombre()+" "
+				+solicitante.getCorreo()+" "
+				+solicitante.getTelefono()+" "
+				+solicitante.getIdCargo()+" "
+				+solicitante.getIdInstitucion()+" "+id);
+		db.update("solicitante", cv, "idsolicitante = ?", id);
+		return "Registro Actualizado Correctamente";
 	}
 
 	public String actualizar(TipoProyecto tipoProyecto) {
@@ -579,7 +595,13 @@ public class ControlBD {
 	}
 
 	public String eliminar(Solicitante solicitante) {
-		return null;
+		String regAfectados = "filas afectadas= ";
+		String id[] = { solicitante.getIdSolicitante() };
+		int contador = 0;
+		contador += db.delete("solicitante", "idSolicitante=?", id);
+		
+		regAfectados += contador;
+		return regAfectados;
 	}
 
 	public String eliminar(TipoProyecto tipoProyecto) {
@@ -811,6 +833,24 @@ public class ControlBD {
 			return null;
 		
 	}
+	
+	public Institucion consultarInstitucionById(String idInstitucion) {
+		String [] id = {idInstitucion};
+		
+		Cursor cursor = db.query("institucion",
+				camposInstitucion, "idinstitucion = ?", id,
+				null, null, null);
+		
+		if ( cursor.moveToFirst() ) 				
+			return new Institucion(cursor.getString(0), //IdInstitucion
+								   cursor.getString(1), //Nombre
+								   cursor.getString(2));//NIT
+		 else 
+			return null;
+		
+	}
+	
+	
 	/*
 	public Cargo consultarCargo(String idCargo){
 		Cargo cargo = new Cargo();
@@ -844,7 +884,28 @@ public class ControlBD {
 	}
 
 	public Solicitante consultarSolicitante(String idSolicitante) {
-		return null;
+		String[] id = { idSolicitante };
+		// String id="nombreProyecto";
+		Cursor cursor = db.query("solicitante", camposSolicitante,
+				"idsolicitante = ?", id, null, null, null);
+	
+		if (cursor.moveToFirst()) {			
+			Solicitante solicitante= new Solicitante(cursor.getString(1),//IdInstitucion
+					cursor.getString(2),//IdCargo
+					cursor.getString(3),//NOmbre
+					cursor.getString(4),//telefono
+					cursor.getString(5));	//email
+			
+			
+			solicitante.setIdSolicitante(idSolicitante);
+			Log.i("OK", "Retornado solicitante: "+cursor.getString(0)+" "+cursor.getString(1)+" "+cursor.getString(2)+" "
+					+cursor.getString(3)+" "+cursor.getString(4)+" "+cursor.getString(5)+" ");
+			return solicitante;
+	
+		} else {
+			Log.i("NOT OK", "Retornado null");
+			return null;
+		}
 	}
 
 	public TipoProyecto consultarTipoProyecto(String idTipoProyecto) {
