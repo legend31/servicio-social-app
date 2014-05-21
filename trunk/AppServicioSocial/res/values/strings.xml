@@ -162,5 +162,6 @@
     
     <string name="nitInstitucion">NIT Institución</string>
      <string name="nuevoNit">Nuevo NIT</string>
+     <string name="tipoTrabajo">Tipo Trabajo</string>
     
 </resources>
