@@ -15,7 +15,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
+
 public class BitacoraMenuActivity extends TabActivity {
+	
 	private String[] titulos;
     private DrawerLayout NavDrawerLayout;
     private ListView NavList;
@@ -32,14 +34,9 @@ public class BitacoraMenuActivity extends TabActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_bitacora_menu);
-
-
-
 		// Obtiene el actionbar y habilita el boton de navegacion hacia arriba
 		ActionBar actionBar = getActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(false);
-		
-
+		actionBar.setDisplayHomeAsUpEnabled(false);	
 		// Crea las cuatro pestañas de menu y monta adentro las activities
 		TabHost pestañas = getTabHost();
 		TabSpec crear = pestañas.newTabSpec("Crear");
@@ -152,7 +149,7 @@ public class BitacoraMenuActivity extends TabActivity {
 
 	}
 
-	
+//////////////////////	
 	
 	
 	@Override
