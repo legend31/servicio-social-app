@@ -152,10 +152,10 @@
     <string name="descripcion">Descripcion</string>
     <string name="idBitacora">Id Bitacora</string>
     <string name="title_activity_tipo_trabajo">Tipo Trabajo</string>
-    <string name="title_activity_tipo_trabajo_insertar">TipoTrabajoInsertar</string>
-    <string name="title_activity_tipo_trabajo_modificar">TipoTrabajoModificar</string>
-    <string name="title_activity_tipo_trabajo_consultar">TipoTrabajoConsultar</string>
-    <string name="title_activity_tipo_trabajo_eliminar">TipoTrabajoEliminar</string>
+    <string name="title_activity_tipo_trabajo_insertar">Inserta Tipo de Trabajo</string>
+    <string name="title_activity_tipo_trabajo_modificar">Modificar Tipo de Trabajo</string>
+    <string name="title_activity_tipo_trabajo_consultar">Consultar Tipo de Trabajo</string>
+    <string name="title_activity_tipo_trabajo_eliminar">Eliminar Tipo de Trabajo</string>
 
     
     
