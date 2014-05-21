@@ -69,7 +69,15 @@
         android:layout_alignRight="@+id/button2"
         android:layout_below="@+id/btnEncargado"
         android:text="@string/bitacora" />
-    
+     <Button
+        android:id="@+id/botonTipoTrabajo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnEncargado"
+        android:layout_alignRight="@+id/button2"
+        android:layout_below="@+id/btnCargo"
+        android:text="@string/tipoTrabajo" />
+     
     <Button
         android:id="@+id/btnTipoProyecto"
         android:layout_width="wrap_content"
