@@ -185,6 +185,22 @@
             android:name="sv.edu.ues.fia.appserviciosocial.BitacoraEliminarActivity"
             android:label="@string/title_activity_bitacora_eliminar" >
         </activity>
+         <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.TipoTrabajoInsertar"
+            android:label="@string/title_activity_tipo_trabajo_insertar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.TipoTrabajoModificar"
+            android:label="@string/title_activity_tipo_trabajo_modificar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.TipoTrabajoConsultar"
+            android:label="@string/title_activity_tipo_trabajo_consultar" >
+        </activity>
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.TipoTrabajoEliminar"
+            android:label="@string/title_activity_tipo_trabajo_eliminar" >
+        </activity>
         <activity
             android:name="sv.edu.ues.fia.appserviciosocial.TipoProyectoMenuActivity"
             android:label="@string/title_activity_tipo_proyecto_menu"
