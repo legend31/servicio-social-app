@@ -64,16 +64,14 @@ public class MenuTablasActivity extends Activity implements OnClickListener{
 			case R.id.btnCargo:
 				i = new Intent(this, CargoMenuActivity.class);
 				break;
-
 			case R.id.botonBitacora:
 				i = new Intent(this, BitacoraMenuActivity.class);
+				break;			
+			case R.id.btnTipoProyecto:
+				i = new Intent(this, TipoProyectoMenuActivity.class);
 				break;
 			case R.id.botonTipoTrabajo:
 				i = new Intent(this, TipoTrabajoActivity.class);
-				break;
-			case R.id.btnTipoProyecto:
-				i = new Intent(this, TipoProyectoMenuActivity.class);
-			
 			default:
 		}
 		i.putExtra("tipoUsuario", tipoUsuario);
