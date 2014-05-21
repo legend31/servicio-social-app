@@ -24,6 +24,7 @@ public class MenuTablasActivity extends Activity implements OnClickListener{
 		findViewById(R.id.btnEncargado).setOnClickListener(this);
 		findViewById(R.id.btnTipoProyecto).setOnClickListener(this);
 		findViewById(R.id.btnCargo).setOnClickListener(this);
+		findViewById(R.id.botonTipoTrabajo).setOnClickListener(this);
 		Bundle b = getIntent().getExtras();
 		tipoUsuario = b.getInt("tipoUsuario");
 		
@@ -66,6 +67,9 @@ public class MenuTablasActivity extends Activity implements OnClickListener{
 
 			case R.id.botonBitacora:
 				i = new Intent(this, BitacoraMenuActivity.class);
+				break;
+			case R.id.botonTipoTrabajo:
+				i = new Intent(this, TipoTrabajoActivity.class);
 				break;
 			case R.id.btnTipoProyecto:
 				i = new Intent(this, TipoProyectoMenuActivity.class);
