@@ -1,77 +1,94 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="sv.edu.ues.fia.appserviciosocial.SolicitanteActualizarActivity"
     tools:ignore="MergeRootFrame" >
 
-    <EditText
-        android:id="@+id/editIdSolicitanteActualizar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:hint="@string/idSolicitante" />
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
 
-    <Button
-        android:id="@+id/btnActualizarSolicitante"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/editIdSolicitanteActualizar"
-        android:layout_toRightOf="@+id/editIdSolicitanteActualizar"
-        android:text="@string/buscar" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
 
-    <EditText
-        android:id="@+id/editCorreoSolicitante"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editTelefonoSolicitante"
-        android:layout_centerVertical="true"
-        android:ems="10"
-        android:hint="@string/email" />
+            <EditText
+                android:id="@+id/editIdSolicitanteActualizar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:ems="10"
+                android:hint="@string/idSolicitante" />
 
-    <EditText
-        android:id="@+id/editInstitucionSolicitante"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editCorreoSolicitante"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:hint="@string/institucion" />
+            <Button
+                android:id="@+id/btnActualizarSolicitante"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:onClick="buscarSolicitante"
+                android:text="@string/buscar"
+                android:textAlignment="inherit" />
 
-    <EditText
-        android:id="@+id/editTelefonoSolicitante"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/editCorreoSolicitante"
-        android:layout_alignLeft="@+id/editInstitucionSolicitante"
-        android:layout_marginBottom="16dp"
-        android:ems="10"
-        android:hint="@string/telefono" />
+            <EditText
+                android:id="@+id/editNombreSolicitante"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="14dp"
+                android:ems="10"
+                android:hint="@string/nombre" />
 
-    <EditText
-        android:id="@+id/editNombreSolicitante"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/editTelefonoSolicitante"
-        android:layout_alignLeft="@+id/editTelefonoSolicitante"
-        android:ems="10"
-        android:hint="@string/nombre" >
+            <EditText
+                android:id="@+id/editTelefonoSolicitante"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:ems="10"
+                android:hint="@string/telefono" />
 
-        <requestFocus />
-    </EditText>
+            <EditText
+                android:id="@+id/editCorreoSolicitante"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:ems="10"
+                android:hint="@string/email" >
 
-    <Button
-        android:id="@+id/btnActualizarSolicitante"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editInstitucionSolicitante"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="21dp"
-        android:text="@string/actualizar" />
+                <requestFocus />
+            </EditText>
 
-</RelativeLayout>
+            <EditText
+                android:id="@+id/editConsNitInstitucion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:ems="10"
+                android:hint="@string/nitInstitucion" />
+
+            <EditText
+                android:id="@+id/editIdCargo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:ems="10"
+                android:hint="@string/idCargo" />
+
+            <Button
+                android:id="@+id/btnActualizarSolicitante"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="21dp"
+                android:onClick="actualizarSolicitante"
+                android:text="@string/actualizar" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
