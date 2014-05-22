@@ -530,7 +530,28 @@ public class ControlBD {
 	}
 
 	public String actualizar(TipoTrabajo tipoTrabajo) {
-		return null;
+
+        String mensaje = "";
+        String[] id ={tipoTrabajo.getIdTipoTrabajo()};
+        long contador = 0;
+        ContentValues valoresTipoTrabajo = new ContentValues();	
+        valoresTipoTrabajo.put("idTipoTrabajo",tipoTrabajo.getIdTipoTrabajo());
+		valoresTipoTrabajo.put("nombre", tipoTrabajo.getNombre());
+		valoresTipoTrabajo.put("valor", tipoTrabajo.getValor());		
+		try{
+			contador = db.update("tipotrabajo", valoresTipoTrabajo,"idtipotrabajo=?",id);
+			}catch(Exception integridad)
+			{
+				String ex = integridad.getMessage();
+				return ex.substring(0, ex.lastIndexOf("(code 19)"));
+			}
+		if (contador == -1 || contador == 0) {
+			mensaje = "Error al modificar el registro";
+		} else {
+			mensaje = "Registro modificado";
+		}
+		return mensaje;	
+        
 	}
 
 	// Eliminaciones
@@ -645,7 +666,14 @@ public class ControlBD {
 	}
 
 	public String eliminar(TipoTrabajo tipoTrabajo) {
-		return null;
+		String regAfectados = "filas afectadas= ";
+		long contador = 0;
+		contador+=db.delete("tipotrabajo","idtipotrabajo='"+tipoTrabajo.getIdTipoTrabajo()+"'", null);
+		regAfectados += contador;
+		if (contador == 0 || contador == -1)
+			return "No se pudo eliminar";
+		else
+			return regAfectados;		
 	}
 
 	// Consultas
