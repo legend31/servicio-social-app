@@ -54,5 +54,14 @@ public class TipoTrabajoEliminar extends Activity {
 		
 	}
 
-
+	public void eliminarTipoTrabajo(View v){
+		String mensaje;
+		String idTipoTrabajo=editText1.getText().toString();
+		TipoTrabajo objTipoTrabajo= new TipoTrabajo();
+		objTipoTrabajo.setIdTipoTrabajo(idTipoTrabajo);
+		auxiliar.abrir();
+		mensaje=auxiliar.eliminar(objTipoTrabajo);
+		auxiliar.cerrar();
+		Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
+	}
 }
