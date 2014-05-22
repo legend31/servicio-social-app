@@ -85,6 +85,7 @@ public void insertarBitacora(View v){
 	String regInsertados=auxiliar.insertar(objBitacora);
 	auxiliar.cerrar();
 	Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+	
 }
 	
 }
