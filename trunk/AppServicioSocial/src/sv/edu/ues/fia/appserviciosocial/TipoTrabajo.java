@@ -3,7 +3,7 @@ package sv.edu.ues.fia.appserviciosocial;
 public class TipoTrabajo {
 	String idTipoTrabajo;
 	String nombre;
-	String valor;
+	Double valor;
 	
 	public String getIdTipoTrabajo(){
 		return idTipoTrabajo;
@@ -12,7 +12,7 @@ public class TipoTrabajo {
 	public String getNombre(){
 		return nombre;
 	}
-	public String getValor() {
+	public Double getValor() {
 		return valor;
 	}
 	public void setIdTipoTrabajo(String idTipoTrabajo){
@@ -22,6 +22,6 @@ public class TipoTrabajo {
 		this.nombre=nombre;
 	}
 	public void setValor(String valor){
-		this.valor=valor;
+		this.valor=Double.parseDouble(valor);
 	}
 }
