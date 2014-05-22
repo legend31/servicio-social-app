@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class TipoTrabajoEliminar extends Activity {
@@ -13,7 +14,7 @@ public class TipoTrabajoEliminar extends Activity {
 			private EditText editText1;
 			private EditText editText2;
 			private EditText editText3;
-
+			private Button button1;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -23,6 +24,10 @@ public class TipoTrabajoEliminar extends Activity {
 		editText1=(EditText) findViewById(R.id.editText1);
 		editText2=(EditText) findViewById(R.id.editText2);
 		editText3=(EditText) findViewById(R.id.editText3);
+		button1=(Button) findViewById(R.id.button1);
+		button1.setVisibility(View.INVISIBLE);
+		editText2.setVisibility(View.INVISIBLE);
+		editText3.setVisibility(View.INVISIBLE);
 	}
 
 	@Override
@@ -48,7 +53,9 @@ public class TipoTrabajoEliminar extends Activity {
 		}else{
 			editText2.setText(objTipoTrabajo.getNombre());
 			editText3.setText(toString().valueOf(objTipoTrabajo.getValor()));
-			
+			button1.setVisibility(View.VISIBLE);
+			editText2.setVisibility(View.VISIBLE);
+			editText3.setVisibility(View.VISIBLE);
 		}
 			
 		
@@ -63,5 +70,8 @@ public class TipoTrabajoEliminar extends Activity {
 		mensaje=auxiliar.eliminar(objTipoTrabajo);
 		auxiliar.cerrar();
 		Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
+		button1.setVisibility(View.INVISIBLE);
+		editText2.setVisibility(View.INVISIBLE);
+		editText3.setVisibility(View.INVISIBLE);
 	}
 }
