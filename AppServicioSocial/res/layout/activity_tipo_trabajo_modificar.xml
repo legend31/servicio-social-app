@@ -41,7 +41,8 @@
         android:layout_below="@+id/editText3"
         android:layout_marginLeft="26dp"
         android:layout_marginTop="71dp"
-        android:text="@string/actualizar" />
+        android:text="@string/actualizar" 
+        android:onClick="modificarTipoTrabajo"/>
 
     <EditText
         android:id="@+id/editText2"
@@ -60,6 +61,7 @@
         android:layout_above="@+id/editText2"
         android:layout_marginLeft="28dp"
         android:layout_toRightOf="@+id/editText1"
-        android:text="@string/buscar" />
+        android:text="@string/buscar"
+        android:onClick="consultarTipoTrabajo" />
 
 </RelativeLayout>
