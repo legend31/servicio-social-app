@@ -366,7 +366,27 @@ public class ControlBD {
 	}
 
 	public String insertar(TipoTrabajo tipoTrabajo) {
-		return null;
+		String mensaje = "";
+		long contador = 0;
+		//"idTipoTrabajo", "nombre", "valor" 
+		ContentValues valoresTipoTrabajo = new ContentValues();
+		valoresTipoTrabajo.putNull("idTipoTrabajo");//autonumerico
+		valoresTipoTrabajo.put("nombre", tipoTrabajo.getNombre());
+		valoresTipoTrabajo.put("valor", tipoTrabajo.getValor());		
+		try{
+			contador = db.insert("tipotrabajo", null, valoresTipoTrabajo);
+			}catch(Exception integridad)
+			{
+				String ex = integridad.getMessage();
+				return ex.substring(0, ex.lastIndexOf("(code 19)"));
+			}
+		if (contador == -1 || contador == 0) {
+			mensaje = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+		} else {
+			mensaje = "Registro ingresado";
+		}
+		return mensaje;	
+		
 	}
 
 	// Actualizaciones
