@@ -50,9 +50,43 @@ public class TipoTrabajoModificar extends Activity {
 			editText3.setText(toString().valueOf(objTipoTrabajo.getValor()));
 			
 		}
-			
 		
 	}
 
-
+	public void modificarTipoTrabajo(View v){
+		//crear nuevas variables con los valores del layout
+				String info = "";
+				String idTipoTrabajo=editText1.getText().toString();
+				String nombre=editText2.getText().toString();
+				String valor=editText3.getText().toString();
+				//validacion
+				if(nombre.length()==0 )
+				{
+					info = "Debe introducir el nombre";
+				}
+				if(valor.length()==0 )
+				{
+					info =info+ " Debe introducir el valor";
+				}
+				//Avisando errores
+				if(info.length()!=0)
+				{
+					Toast.makeText(this, info, Toast.LENGTH_SHORT).show();
+					return;
+				}
+				info="Datos validados";
+				Toast.makeText(this, info, Toast.LENGTH_SHORT).show();
+				//Realizar la insercion en la base de datos
+				//Creacion del objeto
+				TipoTrabajo objTipoTrabajo= new TipoTrabajo();
+				//llenar el objeto
+				objTipoTrabajo.setIdTipoTrabajo(idTipoTrabajo);
+				objTipoTrabajo.setNombre(nombre);
+				objTipoTrabajo.setValor(valor);
+				//realizar la inserción
+				auxiliar.abrir();
+				String regInsertados=auxiliar.actualizar(objTipoTrabajo);
+				auxiliar.cerrar();
+				Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+	}
 }
