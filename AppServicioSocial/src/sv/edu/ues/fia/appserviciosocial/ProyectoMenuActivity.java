@@ -38,34 +38,49 @@ public class ProyectoMenuActivity extends TabActivity {
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 
+		Bundle b = getIntent().getExtras();
+		tipoUsuario = b.getInt("tipoUsuario");
+
 		Resources res = getResources();
 		TabHost pestañas = getTabHost();
 		TabHost.TabSpec spec;
 
-		spec = pestañas.newTabSpec("Insertar");
-		spec.setIndicator("", res.getDrawable(R.drawable.nuevo));
-		Intent insertarIntent = new Intent(this, ProyectoInsertarActivity.class);
-		spec.setContent(insertarIntent);
-		pestañas.addTab(spec);
+		if (tipoUsuario == 1) {
+			spec = pestañas.newTabSpec("Insertar");
+			spec.setIndicator("", res.getDrawable(R.drawable.nuevo));
+			Intent insertarIntent = new Intent(this,
+					ProyectoInsertarActivity.class);
+			spec.setContent(insertarIntent);
+			pestañas.addTab(spec);
 
-		spec = pestañas.newTabSpec("Consultar");
-		spec.setIndicator("", res.getDrawable(R.drawable.consultar));
-		Intent consultarIntent = new Intent(this,
-				ProyectoConsultarActivity.class);
-		spec.setContent(consultarIntent);
-		pestañas.addTab(spec);
+			spec = pestañas.newTabSpec("Consultar");
+			spec.setIndicator("", res.getDrawable(R.drawable.consultar));
+			Intent consultarIntent = new Intent(this,
+					ProyectoConsultarActivity.class);
+			spec.setContent(consultarIntent);
+			pestañas.addTab(spec);
 
-		spec = pestañas.newTabSpec("Actualizar");
-		spec.setIndicator("", res.getDrawable(R.drawable.actualizar));
-		Intent actualizarIntent = new Intent(this,ProyectoActualizarActivity.class);
-		spec.setContent(actualizarIntent);
-		pestañas.addTab(spec);
+			spec = pestañas.newTabSpec("Actualizar");
+			spec.setIndicator("", res.getDrawable(R.drawable.actualizar));
+			Intent actualizarIntent = new Intent(this,
+					ProyectoActualizarActivity.class);
+			spec.setContent(actualizarIntent);
+			pestañas.addTab(spec);
 
-		spec = pestañas.newTabSpec("Eliminar");
-		spec.setIndicator("", res.getDrawable(R.drawable.delete));
-		Intent eliminarIntent = new Intent(this,ProyectoEliminarActivity.class);
-		spec.setContent(eliminarIntent);
-		pestañas.addTab(spec);
+			spec = pestañas.newTabSpec("Eliminar");
+			spec.setIndicator("", res.getDrawable(R.drawable.delete));
+			Intent eliminarIntent = new Intent(this,
+					ProyectoEliminarActivity.class);
+			spec.setContent(eliminarIntent);
+			pestañas.addTab(spec);
+		} else if (tipoUsuario == 2) {
+			spec = pestañas.newTabSpec("Consultar");
+			spec.setIndicator("", res.getDrawable(R.drawable.consultar));
+			Intent consultarIntent = new Intent(this,
+					ProyectoConsultarActivity.class);
+			spec.setContent(consultarIntent);
+			pestañas.addTab(spec);
+		}
 
 		// Drawer Layout
 		this.NavDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -82,28 +97,41 @@ public class ProyectoMenuActivity extends TabActivity {
 		titulos = getResources().getStringArray(R.array.nav_options);
 		// Listado de titulos de barra de navegacion
 		NavItms = new ArrayList<Item_objct>();
-		Bundle b = getIntent().getExtras();
-        tipoUsuario = b.getInt("tipoUsuario");
-        if(tipoUsuario == 1)
-        {
-        	//Agregamos objetos Item_objct al array
-            NavItms.add(new Item_objct(titulos[0], NavIcons.getResourceId(0, -1)));
-            NavItms.add(new Item_objct(titulos[1], NavIcons.getResourceId(1, -1)));
-            NavItms.add(new Item_objct(titulos[2], NavIcons.getResourceId(2, -1)));
-            NavItms.add(new Item_objct(titulos[3], NavIcons.getResourceId(3, -1)));
-            NavItms.add(new Item_objct(titulos[4], NavIcons.getResourceId(4, -1)));
-            NavItms.add(new Item_objct(titulos[5], NavIcons.getResourceId(5, -1)));
-            NavItms.add(new Item_objct(titulos[6], NavIcons.getResourceId(6, -1)));
-            NavItms.add(new Item_objct(titulos[7], NavIcons.getResourceId(7, -1)));
-            NavItms.add(new Item_objct(titulos[8], NavIcons.getResourceId(8, -1)));
-            NavItms.add(new Item_objct(titulos[9], NavIcons.getResourceId(9, -1)));
-        }
-        else if(tipoUsuario == 2)
-        {
-        	NavItms.add(new Item_objct(titulos[0], NavIcons.getResourceId(0, -1)));
-            NavItms.add(new Item_objct(titulos[1], NavIcons.getResourceId(1, -1)));
-            NavItms.add(new Item_objct(titulos[2], NavIcons.getResourceId(2, -1)));
-        }
+
+		if (tipoUsuario == 1) {
+			// Agregamos objetos Item_objct al array
+			NavItms.add(new Item_objct(titulos[0], NavIcons
+					.getResourceId(0, -1)));
+			NavItms.add(new Item_objct(titulos[1], NavIcons
+					.getResourceId(1, -1)));
+			NavItms.add(new Item_objct(titulos[2], NavIcons
+					.getResourceId(2, -1)));
+			NavItms.add(new Item_objct(titulos[3], NavIcons
+					.getResourceId(3, -1)));
+			NavItms.add(new Item_objct(titulos[4], NavIcons
+					.getResourceId(4, -1)));
+			NavItms.add(new Item_objct(titulos[5], NavIcons
+					.getResourceId(5, -1)));
+			NavItms.add(new Item_objct(titulos[6], NavIcons
+					.getResourceId(6, -1)));
+			NavItms.add(new Item_objct(titulos[7], NavIcons
+					.getResourceId(7, -1)));
+			NavItms.add(new Item_objct(titulos[8], NavIcons
+					.getResourceId(8, -1)));
+			NavItms.add(new Item_objct(titulos[9], NavIcons
+					.getResourceId(9, -1)));
+		} else if (tipoUsuario == 2) {
+			NavItms.add(new Item_objct(titulos[0], NavIcons
+					.getResourceId(0, -1)));
+			NavItms.add(new Item_objct(titulos[4], NavIcons
+					.getResourceId(0, -1)));
+			NavItms.add(new Item_objct(titulos[5], NavIcons
+					.getResourceId(5, -1)));
+			NavItms.add(new Item_objct(titulos[6], NavIcons
+					.getResourceId(6, -1)));
+			NavItms.add(new Item_objct(titulos[8], NavIcons
+					.getResourceId(9, -1)));
+		}
 		// Declaramos y seteamos nuestrp adaptador al cual le pasamos el array
 		// con los titulos
 		NavAdapter = new NavigationAdapter(this, NavItms);
@@ -144,11 +172,10 @@ public class ProyectoMenuActivity extends TabActivity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1,
 					int position, long id) {
-				if(position != 0)
-            	{
-            	NavDrawerLayout.closeDrawer(NavList);
-            	abrirActivity(position);
-            	}
+				if (position != 0) {
+					NavDrawerLayout.closeDrawer(NavList);
+					abrirActivity(position);
+				}
 			}
 		});
 
@@ -179,58 +206,63 @@ public class ProyectoMenuActivity extends TabActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	private void abrirActivity(int posicion){
+	private void abrirActivity(int posicion) {
 		Intent i = null;
-		switch(tipoUsuario)
-		{
+		switch (tipoUsuario) {
 		case 1:
 			switch (posicion) {
 			case 1:
 				i = new Intent(this, AlumnoMenuActivity.class);
-			break;
+				break;
 			case 2:
 				i = new Intent(this, AsignacionProyectoMenuActivity.class);
-			break;
+				break;
 			case 3:
 				i = new Intent(this, BitacoraMenuActivity.class);
-			break;
+				break;
 			case 4:
 				i = new Intent(this, CargoMenuActivity.class);
-			break;
+				break;
 			case 5:
 				i = new Intent(this, EncargadoMenuActivity.class);
-			break;
+				break;
 			case 6:
 				i = new Intent(this, InstitucionMenuActivity.class);
-			break;
+				break;
 			case 7:
 				i = new Intent(this, ProyectoMenuActivity.class);
-			break;
+				break;
 			case 8:
 				i = new Intent(this, SolicitanteMenuActivity.class);
-			break;
+				break;
 			case 9:
 				i = new Intent(this, TipoProyectoMenuActivity.class);
-			break;
+				break;
 			case 10:
-				//i = new Intent(this, TipoTrabajoMenuActivity.class);
-			break;
+				// i = new Intent(this, TipoTrabajoMenuActivity.class);
+				break;
 			}
-		break;
+			break;
 		case 2:
-			switch(posicion)
-			{
+			switch (posicion) {
 			case 1:
 				i = new Intent(this, AlumnoMenuActivity.class);
-			break;
+				break;
 			case 2:
-				i = new Intent(this, AsignacionProyectoMenuActivity.class);
-			break;
+				i = new Intent(this, EncargadoMenuActivity.class);
+				break;
 			case 3:
-				i = new Intent(this, BitacoraMenuActivity.class);
-			break;
+				i = new Intent(this, InstitucionMenuActivity.class);
+				break;
+			case 4:
+				i = new Intent(this, ProyectoMenuActivity.class);
+				break;
+			case 5:
+				i = new Intent(this, TipoProyectoMenuActivity.class);
+				break;
+
 			}
-		break;
+			break;
 		}
 		i.putExtra("tipoUsuario", tipoUsuario);
 		startActivity(i);
