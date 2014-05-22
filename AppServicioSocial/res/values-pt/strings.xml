@@ -1,0 +1,127 @@
+<resources>
+
+    <string name="CodigoEncargadoProyecto">Projeto Code Manager</string>
+    <string name="CodigoSolicitante">Código requerente</string>
+    <string name="CodigoTipoProyecto">"Código Tipo de projeto "</string>
+    <string name="Encargado">Responsável</string>
+    <string name="acceso">Serviço Social</string>
+    <string name="action_settings">Configurações</string>
+    <string name="actualizar">Atualizar</string>
+    <string name="actualizarpor">Atualização para:</string>
+    <string name="adelante">Seguinte</string>
+    <string name="alumno">Estudante</string>
+    <string name="asignar">Atribuir</string>
+    <string name="atras">Anterior</string>
+    <string name="bienvenido">Bem-vindo, digite suas informações</string>
+    <string name="bitacora">Caixa de bússola</string>
+    <string name="boton1">Estudante</string>
+    <string name="boton2">Atribuição de Projetos</string>
+    <string name="buscar">Pesquisa</string>
+    <string name="buscarpor">Pesquisar para:</string>
+    <string name="button3">Projeto</string>
+    <string name="cargo">Cargo Requerente</string>
+    <string name="carnet">Cartão</string>
+    <string name="consultar">Consultar</string>
+    <string name="criterioBusqueda">Selecione os critérios de pesquisa</string>
+    <string name="datos">Dados</string>
+    <string name="descripcion">descrição</string>
+    <string name="drawer_close">Fechar barra de navegação</string>
+    <string name="drawer_open">Tabelas do menu</string>
+    <string name="dui">DUI</string>
+    <string name="eliminar">Remover</string>
+    <string name="eliminarpor">Remover:</string>
+    <string name="email">Email</string>
+    <string name="escuela">Escola</string>
+    <string name="facultad">Faculdade</string>
+    <string name="fecha">Data</string>
+    <string name="guardar">Salvar</string>
+    <string name="hello_world">Olá, mundo!</string>
+    <string name="idBitacora">Código bitacora</string>
+    <string name="idCargo">Usar o código</string>
+    <string name="idEncargado">Código responsável</string>
+    <string name="idProyecto">Código de projeto</string>
+    <string name="idSolicitante">Código requerente</string>
+    <string name="idTipoTrabajo">Código do tipo de trabalho</string>
+    <string name="ingresar">Entre</string>
+    <string name="insertar">Inserir</string>
+    <string name="institucion">Instituição</string>
+    <string name="institucionNombre">Nome da instituição</string>
+    <string name="limpiar">Limpar</string>
+    <string name="mensaje">Digite o projeto de código</string>
+    <string name="nit">NIT</string>
+    <string name="nitInstitucion">NIT Instituição</string>
+    <string name="nombre">Nome</string>
+    <string name="nombreProyecto">Nome de Projeto</string>
+    <string name="nombreTipoProyecto">Nome do tipo de projeto</string>
+    <string name="nuevoNit">Novo NIT</string>
+    <string name="opciones">Opções</string>
+    <string name="password">Password</string>
+    <string name="proyecto">Projeto</string>
+    <string name="solicitante">Requirente</string>
+    <string name="telefono">Número de telefone</string>
+    <string name="tipoProyecto">Tipo de projeto</string>
+    <string name="title_activity_actualizar_proyecto">AtualizarProjetoActivity</string>
+    <string name="title_activity_alumno_actualizar">EstudanteAtualizarActivity</string>
+    <string name="title_activity_alumno_consultar">EstudanteConsultarActivity</string>
+    <string name="title_activity_alumno_eliminar">EstudanteRemoverActivity</string>
+    <string name="title_activity_alumno_insertar">EstudanteInserirActivity</string>
+    <string name="title_activity_asignacion_proyecto_actualizar">AtribuiçãoProjetosAtualizarActivity</string>
+    <string name="title_activity_asignacion_proyecto_consultar">AtribuiçãoProjetosConsultarActivity</string>
+    <string name="title_activity_asignacion_proyecto_eliminar">AtribuiçãoProjetosRemoverActivity</string>
+    <string name="title_activity_asignacion_proyecto_insertar">AtribuiçãoProjetosInserirActivity</string>
+    <string name="title_activity_asignacion_proyecto_menu">Atribuição Projetos</string>
+    <string name="title_activity_bitacora_actualizar">CaixaDeBússolaAtualizarActivity</string>
+    <string name="title_activity_bitacora_consultar">CaixaDeBússolaConsultarActivity</string>
+    <string name="title_activity_bitacora_eliminar">CaixaDeBússolaRemoverActivity</string>
+    <string name="title_activity_bitacora_insertar">CaixaDeBússolaInserirActivity</string>
+    <string name="title_activity_bitacora_menu">Caixa de Bússola</string>
+    <string name="title_activity_cargo_actualizar">Atualizar Cargo</string>
+    <string name="title_activity_cargo_consultar">Consultar Cargo</string>
+    <string name="title_activity_cargo_eliminar">Remover Cargo</string>
+    <string name="title_activity_cargo_insertar">Inserir Cargo</string>
+    <string name="title_activity_cargo_menu">Cargo</string>
+    <string name="title_activity_encargado_actualizar">Atualizar Responsável</string>
+    <string name="title_activity_encargado_consultar">Consultar Responsável</string>
+    <string name="title_activity_encargado_eliminar">Remover Responsável</string>
+    <string name="title_activity_encargado_insertar">Inserir Responsável</string>
+    <string name="title_activity_encargado_menu">Taxa de Serviço Social,</string>
+    <string name="title_activity_institucion_actualizar">InstituiçãoAtualizarActivity</string>
+    <string name="title_activity_institucion_consultar">InstituiçãoConsultarActivity</string>
+    <string name="title_activity_institucion_eliminar">InstituiçãoRemoverActivity</string>
+    <string name="title_activity_institucion_insertar">InstituiçãoInserirActivity</string>
+    <string name="title_activity_institucion_menu">InstituiçãoMenuActivity</string>
+    <string name="title_activity_institucion_menua">InstituiçãoMenuActivity</string>
+    <string name="title_activity_menu_alumno">Estudante</string>
+    <string name="title_activity_menu_tablas">Menu Principal</string>
+    <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
+    <string name="title_activity_navigation_drawer_menu">NavigationDrawerActivityActivity</string>
+    <string name="title_activity_proyecto_consultar">ProjetoConsultarActivity</string>
+    <string name="title_activity_proyecto_elimini">ProjetoRemoverActivity</string>
+    <string name="title_activity_proyecto_insertar">ProjetoInserirActivity</string>
+    <string name="title_activity_proyecto_menu">ProjetoMenuActivity</string>
+    <string name="title_activity_solicitante_actualizar">RequerenteAtualizarActivity</string>
+    <string name="title_activity_solicitante_consultar">RequerenteConsultarActivity</string>
+    <string name="title_activity_solicitante_eliminar">RequerenteRemoverActivity</string>
+    <string name="title_activity_solicitante_insertar">RequerenteInserirActivity</string>
+    <string name="title_activity_solicitante_menu">Menu do Requerente</string>
+    <string name="title_activity_tipo_proyecto_actualizar">TipoDeProyetoAtualizarActivity</string>
+    <string name="title_activity_tipo_proyecto_consultar">TipoDeProyetoConsultarActivity</string>
+    <string name="title_activity_tipo_proyecto_eliminar">TipoDeProyetoRemoverActivity</string>
+    <string name="title_activity_tipo_proyecto_insertar">TipoDeProyetoInserirActivity</string>
+    <string name="title_activity_tipo_proyecto_menu">TipoDeProyetoMenuActivity</string>
+    <string name="usuario">Usuário</string>
+    
+      <string-array name="nav_options">
+        <item>Estudante</item>
+        <item>Caixa de Bússola</item>
+        <item>Socialmente Responsávelr</item>
+        <item>Projeto</item>
+        <item>Tipo do Proyeto</item>
+        <item>Atribuição de Projetos</item>
+        <item>Cargo Type</item>
+        <item>Requerente</item>
+        <item>Instituição</item>
+        <item>Escola</item>
+    </string-array>
+
+</resources>
