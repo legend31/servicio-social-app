@@ -19,8 +19,8 @@ public class TipoTrabajoInsertar extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tipo_trabajo_insertar);
-		auxiliar = new ControlBD(this);
-		//Relacionar variables globales con los controles del layout		
+		//Relacionar variables globales con los controles del layout	
+		auxiliar = new ControlBD(this);			
 		editText2=(EditText) findViewById(R.id.editText2);
 		editText3=(EditText) findViewById(R.id.editText3);
 	}
