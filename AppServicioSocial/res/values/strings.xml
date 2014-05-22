@@ -58,14 +58,14 @@
     </string-array>
     <!-- Lista de iconos de navegacion -->
     <array name="navigation_iconos">
-        <item>@drawable/ic_action_user</item> 
+        <item>@drawable/ic_action_user</item>
         <item>@drawable/ic_action_labels</item>
         <item>@drawable/ic_action_event</item>
         <item>@drawable/ic_action_star</item>
-        <item>@drawable/ic_action_user</item> 
+        <item>@drawable/ic_action_user</item>
         <item>@drawable/ic_action_home</item>
         <item>@drawable/ic_action_event</item>
-        <item>@drawable/ic_action_user</item> 
+        <item>@drawable/ic_action_user</item>
         <item>@drawable/ic_action_event</item>
         <item>@drawable/ic_action_settings</item>
     </array>
@@ -156,10 +156,10 @@
     <string name="title_activity_tipo_trabajo_modificar">Modificar Tipo de Trabajo</string>
     <string name="title_activity_tipo_trabajo_consultar">Consultar Tipo de Trabajo</string>
     <string name="title_activity_tipo_trabajo_eliminar">Eliminar Tipo de Trabajo</string>
-
     <string name="nitInstitucion">NIT Institución</string>
-     <string name="nuevoNit">Nuevo NIT</string>
-     <string name="tipoTrabajo">Tipo Trabajo</string>
-     <string name="valor">$</string>
-    
+    <string name="nuevoNit">Nuevo NIT</string>
+    <string name="tipoTrabajo">Tipo Trabajo</string>
+    <string name="valor">$</string>
+    <string name="title_activity_pantalla_inicial">PantallaInicialActivity</string>
+
 </resources>
