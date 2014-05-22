@@ -37,6 +37,6 @@
         android:layout_marginLeft="26dp"
         android:layout_marginTop="71dp"
         android:text="@string/insertar"
-        android:onClick="insertarTipoTrabajo"/>
+        android:onClick="insertarTipoTrabajo" />
 
 </RelativeLayout>
