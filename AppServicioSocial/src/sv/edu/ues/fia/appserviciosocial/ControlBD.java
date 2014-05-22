@@ -368,7 +368,7 @@ public class ControlBD {
 	public String insertar(TipoTrabajo tipoTrabajo) {
 		String mensaje = "";
 		long contador = 0;
-		//"idTipoTrabajo", "nombre", "valor" 
+		 
 		ContentValues valoresTipoTrabajo = new ContentValues();
 		valoresTipoTrabajo.putNull("idTipoTrabajo");//autonumerico
 		valoresTipoTrabajo.put("nombre", tipoTrabajo.getNombre());
