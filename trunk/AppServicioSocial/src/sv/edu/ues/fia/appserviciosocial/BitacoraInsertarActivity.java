@@ -39,7 +39,7 @@ public class BitacoraInsertarActivity extends Activity {
 		return true;
 	}
 public void insertarBitacora(View v){
-	
+	//crear nuevas variables con los valores del layout
 	String carnet=editText1.getText().toString();
 	String idProyecto =editText2.getText().toString();
 	String idTipoTrabajo = editText3.getText().toString();
