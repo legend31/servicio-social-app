@@ -950,7 +950,21 @@ public class ControlBD {
 	}
 
 	public TipoTrabajo consultarTipoTrabajo(String idTipoTrabajo) {
-		return null;
+		String[] id = { idTipoTrabajo };
+		// String id="nombreProyecto";
+		Cursor cursor = db.query("tipotrabajo", camposTipoTrabajo,
+				"idtipotrabajo = ?", id, null, null, null);
+		// Cursor cursor =
+		// db.query("proyecto",camposProyecto,id+" LIKE '%"+nombreProyecto+"%'",null,null,null,null,null);
+		if (cursor.moveToFirst()) {
+			TipoTrabajo objTipoTrabajo = new TipoTrabajo();
+			objTipoTrabajo.setIdTipoTrabajo(toString().valueOf(cursor.getInt(0)));
+			objTipoTrabajo.setNombre(cursor.getString(1));
+			objTipoTrabajo.setValor(toString().valueOf(cursor.getDouble(2)));
+			return objTipoTrabajo;
+		} else {
+			return null;
+		}
 	}
 	
 	public String verificarUsuario(String usuario, String password)
