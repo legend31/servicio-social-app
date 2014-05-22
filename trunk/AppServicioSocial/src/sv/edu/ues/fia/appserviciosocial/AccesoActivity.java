@@ -34,7 +34,8 @@ public class AccesoActivity extends Activity {
 		else
 		{
 			int tipoUsuario = Integer.parseInt(tipo);
-			Intent menu = new Intent(this, MenuTablasActivity.class);
+			//Intent menu = new Intent(this, MenuTablasActivity.class);
+			Intent menu = new Intent(this, PantallaInicialActivity.class);
 			menu.putExtra("tipoUsuario", tipoUsuario);
 			startActivity(menu);
 	        overridePendingTransition(R.anim.left_in, R.anim.left_out);

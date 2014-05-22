@@ -975,7 +975,9 @@ public class ControlBD {
 			return false;
 		}
 
-		case 2: {// verifica si existe el proyecto antes de actualizar, eliminar
+		case 2: {// verifica si existe el proyecto antes de actualizar , eliminar
+			//tambien para actualizar tendria que verificar que exista ese tipoproyecto
+			//idsolicitante y encargado
 			Proyecto proyecto = (Proyecto) dato;
 			String[] ids = { String.valueOf(proyecto.getIdProyecto()) };
 			abrir();

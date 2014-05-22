@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="sv.edu.ues.fia.appserviciosocial"
-    android:versionCode="1"
-    android:versionName="1.0"
     android:configChanges="orientation|keyboardHidden"
-	android:screenOrientation="portrait" >
+    android:screenOrientation="portrait"
+    android:versionCode="1"
+    android:versionName="1.0" >
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -185,7 +185,7 @@
             android:name="sv.edu.ues.fia.appserviciosocial.BitacoraEliminarActivity"
             android:label="@string/title_activity_bitacora_eliminar" >
         </activity>
-         <activity
+        <activity
             android:name="sv.edu.ues.fia.appserviciosocial.TipoTrabajoInsertar"
             android:label="@string/title_activity_tipo_trabajo_insertar" >
         </activity>
@@ -222,10 +222,7 @@
             android:name="sv.edu.ues.fia.appserviciosocial.TipoProyectoEliminarActivity"
             android:label="@string/title_activity_tipo_proyecto_eliminar" >
         </activity>
-        
-        
-        
-         <activity
+        <activity
             android:name="sv.edu.ues.fia.appserviciosocial.CargoMenuActivity"
             android:label="@string/title_activity_cargo_menu"
             android:screenOrientation="portrait" >
@@ -246,9 +243,10 @@
             android:name="sv.edu.ues.fia.appserviciosocial.CargoEliminarActivity"
             android:label="@string/title_activity_cargo_eliminar" >
         </activity>
-        
-        
-        
+        <activity
+            android:name="sv.edu.ues.fia.appserviciosocial.PantallaInicialActivity"
+            android:label="@string/title_activity_pantalla_inicial" >
+        </activity>
     </application>
 
 </manifest>
