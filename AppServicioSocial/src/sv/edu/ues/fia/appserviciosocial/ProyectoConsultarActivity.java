@@ -70,6 +70,7 @@ public class ProyectoConsultarActivity extends Activity {
 		editTipoProyecto.setText("");
 		editEncargado.setText("");
 		editSolicitante.setText("");
+		editNumeroProyectos.setText("");
 	}
 
 }

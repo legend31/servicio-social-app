@@ -217,10 +217,10 @@ public class ControlBD {
 				db.execSQL("insert into proyecto values(null, 1, 3, 4, 'Revision de maquila');");
 				
 				
-				db.execSQL("insert into proyecto values(null, 2, 8, 7, 'Diseño de un pagina web');");
-				db.execSQL("insert into proyecto values(null, 1, 6, 7, 'Analisis de procesos');");
-				db.execSQL("insert into proyecto values(null, 2, 4, 5, 'Refuerzo a niños con problemas de aprendizaje ');");
-				db.execSQL("insert into proyecto values(null, 3, 2, 7, 'Automatizacion de inventarios');");
+				db.execSQL("insert into proyecto values(null, 7, 6, 5, 'Diseño de un pagina web');");
+				db.execSQL("insert into proyecto values(null, 4, 2, 3, 'Analisis de procesos');");
+				db.execSQL("insert into proyecto values(null, 6, 1, 4, 'Refuerzo a niños con problemas de aprendizaje ');");
+				db.execSQL("insert into proyecto values(null, 7, 2, 3, 'Automatizacion de inventarios');");
 				
 				//inserciones asignacion de proyecto
 				db.execSQL("insert into asignacionproyecto values ('FG12098', 1, date('2014-06-29'));");
@@ -1015,18 +1015,21 @@ public class ControlBD {
 	public Proyecto consultarProyecto(String codigoProyecto) {
 
 		String[] id = { codigoProyecto };
+		String []campos = {"id","numero"};
 
 		Cursor cursor = db.query("proyecto", camposProyecto, "idproyecto = ?",
 				id, null, null, null);
-		// Cursor cursor =
+		Cursor cursor2 = db.query("totalproyectos",campos,null,null,null,null,null);
+		
 		// db.query("proyecto",camposProyecto,id+" LIKE '%"+nombreProyecto+"%'",null,null,null,null,null);
-		if (cursor.moveToFirst()) {
+		if (cursor.moveToFirst()&&cursor2.moveToFirst()) {
 			Proyecto proyecto = new Proyecto();
 			proyecto.setIdProyecto(cursor.getInt(0));
 			proyecto.setIdSolicitante(cursor.getInt(1));
 			proyecto.setIdTipoProyecto(cursor.getInt(2));
 			proyecto.setIdEncargado(cursor.getInt(3));
 			proyecto.setNombre(cursor.getString(4));
+			proyecto.setNumeroProyectos(cursor2.getInt(1));
 
 			return proyecto;
 		} else {
