@@ -217,7 +217,7 @@ public class ControlBD {
 				db.execSQL("insert into proyecto values(null, 1, 3, 4, 'Revision de maquila');");
 				
 				
-				db.execSQL("insert into proyecto values(null, 7, 6, 5, 'Diseño de un pagina web');");
+				db.execSQL("insert into proyecto values(null, 7, 3, 5, 'Diseño de un pagina web');");
 				db.execSQL("insert into proyecto values(null, 4, 2, 3, 'Analisis de procesos');");
 				db.execSQL("insert into proyecto values(null, 6, 1, 4, 'Refuerzo a niños con problemas de aprendizaje ');");
 				db.execSQL("insert into proyecto values(null, 7, 2, 3, 'Automatizacion de inventarios');");
