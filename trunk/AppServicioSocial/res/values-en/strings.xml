@@ -134,4 +134,19 @@
         <item> ID Post</item>
         <item> Name</item>
     </string-array>
+    
+
+    <string name="idBitacora">Id Binnaccle</string>
+    <string name="title_activity_tipo_trabajo">Job Type</string>
+    <string name="title_activity_tipo_trabajo_insertar">Introduce Job Type</string>
+    <string name="title_activity_tipo_trabajo_modificar">Modify Job Type</string>
+    <string name="title_activity_tipo_trabajo_consultar">Consult Job Type</string>
+    <string name="title_activity_tipo_trabajo_eliminar">Eliminate Job Type</string>
+    <string name="nitInstitucion">Institution NIT</string>
+    <string name="nuevoNit">New NIT</string>
+    <string name="tipoTrabajo">Job Type</string>
+    <string name="valor">$</string>
+    <string name="title_activity_pantalla_inicial">Tables Menu</string>
+    <string name="numeroProyectos">Total of Projects</string>
+    
 </resources>
