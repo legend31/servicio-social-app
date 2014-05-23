@@ -131,8 +131,8 @@
     <string name="idEncargado">ID de Encargado</string>
     <string name="escuela">Escuela</string>
     <string name="idCargo">ID Cargo</string>
-    <string name="atras">Siguiente</string>
-    <string name="adelante">Anterior</string>
+    <string name="atras">Anterior</string>
+    <string name="adelante">Siguiente</string>
     <string name="criterioBusqueda">Seleccione un criterio de busqueda</string>
 
     <string-array name="camposArrayEncargado">

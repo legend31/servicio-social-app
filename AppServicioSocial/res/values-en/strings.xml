@@ -122,4 +122,16 @@
         <item>Job Type</item>
     </string-array>
 
+     <string-array name="camposArrayEncargado">
+        <item> ID Social Manager</item>
+        <item> Name</item>
+        <item> Email</item>
+        <item> Phone</item>
+        <item> School</item>
+        <item> College</item>
+    </string-array>
+    <string-array name="camposArrayCargo">
+        <item> ID Post</item>
+        <item> Name</item>
+    </string-array>
 </resources>

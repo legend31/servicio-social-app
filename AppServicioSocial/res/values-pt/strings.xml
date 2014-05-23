@@ -123,5 +123,18 @@
         <item>Instituição</item>
         <item>Escola</item>
     </string-array>
+    
+       <string-array name="camposArrayEncargado">
+        <item> ID Socialmente Responsávelr</item>
+        <item> Nome</item>
+        <item> Email</item>
+        <item> Número de telefone</item>
+        <item> Faculdade</item>
+        <item> Escola</item>
+    </string-array>
+    <string-array name="camposArrayCargo">
+        <item> Código Cargo</item>
+        <item> Nome</item>
+    </string-array>
 
 </resources>
