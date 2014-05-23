@@ -12,6 +12,7 @@ public class ProyectoConsultarActivity extends Activity {
 	EditText editNombre, editCodigoProyecto, editTipoProyecto, editEncargado,
 			editSolicitante;
 	EditText editIdProyecto;
+	EditText editNumeroProyectos;
 	ControlBD helper;
 
 	@Override
@@ -28,6 +29,8 @@ public class ProyectoConsultarActivity extends Activity {
 		editTipoProyecto = (EditText) findViewById(R.id.editConsultaTipoProyecto);
 		editEncargado = (EditText) findViewById(R.id.editConsultaCodigoEncargadoProyecto);
 		editSolicitante = (EditText) findViewById(R.id.editConsultaCodigoSolicitante);
+		editNumeroProyectos = (EditText)findViewById(R.id.editConsultaNumeroProyectos);
+
 
 	}
 
@@ -56,6 +59,7 @@ public class ProyectoConsultarActivity extends Activity {
 			editEncargado.setText(String.valueOf(proyecto.getIdEncargado()));
 			editSolicitante
 					.setText(String.valueOf(proyecto.getIdSolicitante()));
+			editNumeroProyectos.setText(String.valueOf(proyecto.getNumeroProyectos()));
 		}
 
 	}
