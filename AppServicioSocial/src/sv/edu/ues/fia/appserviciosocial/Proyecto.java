@@ -8,6 +8,7 @@ public class Proyecto {
 	int idTipoProyecto;
 	int idEncargado;
 	String nombre;
+	int numeroProyectos;
 	
 	Proyecto(int idProyecto, int idSolicitante, int idTipoProyecto, int idEncargado, String nombre)
 	{
@@ -58,6 +59,13 @@ public class Proyecto {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	public void setNumeroProyectos(int numero){
+		this.numeroProyectos=numero;
+	}
+	
+	public int getNumeroProyectos(){
+		return numeroProyectos;
 	}
 	
 	

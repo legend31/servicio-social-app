@@ -161,5 +161,6 @@
     <string name="tipoTrabajo">Tipo Trabajo</string>
     <string name="valor">$</string>
     <string name="title_activity_pantalla_inicial">Menú de Tablas</string>
+    <string name="numeroProyectos">Numero de Proyectos</string>
 
 </resources>

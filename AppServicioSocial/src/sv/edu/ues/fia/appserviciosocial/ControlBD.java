@@ -83,6 +83,8 @@ public class ControlBD {
 						+ " CONSTRAINT fk_asignacionproyecto_proyecto FOREIGN KEY (idproyecto) REFERENCES proyecto(idproyecto) ON DELETE RESTRICT, CONSTRAINT "
 						+ "fk_asignacionproyecto_alumno FOREIGN KEY (carnet) REFERENCES alumno(carnet) ON DELETE RESTRICT );");
 				db.execSQL("create table usuarios (id INTEGER not null primary key autoincrement, usuario VARCHAR(50) not null, password VARCHAR(100) not null, tipo INTEGER not null);");
+				db.execSQL("create table totalproyectos (id INTEGER not null primary key autoincrement, numero INTERGER not null);");
+				db.execSQL("insert into totalproyectos values(null,0);");
 				
 				// triggers
 				db.execSQL("CREATE TRIGGER fk_solicitante_cargo BEFORE INSERT ON solicitante FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT idcargo FROM cargo"
@@ -97,6 +99,11 @@ public class ControlBD {
 				db.execSQL("CREATE TRIGGER fk_proyecto_tipoproyecto BEFORE INSERT ON proyecto FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT idtipoproyecto FROM"
 						+ " tipoproyecto WHERE idtipoproyecto = NEW.idtipoproyecto) IS NULL) THEN RAISE(ABORT, 'No existe tipo de proyecto') END; END;");
 
+				
+				db.execSQL("CREATE TRIGGER update_numeroproyecto1 AFTER INSERT ON proyecto BEGIN UPDATE totalproyectos SET " +
+						"numero=numero+1; END;");
+				db.execSQL("CREATE TRIGGER update_numeroproyecto2 AFTER DELETE ON proyecto BEGIN UPDATE totalproyectos SET "
+						+"numero=numero-1; END;");
 				// triggers tipoProyecto
 				//db.execSQL("CREATE TRIGGER TipoProyectoELiminar BEFORE DELETE ON TIPOPROYECTO FOR EACH ROW BEGIN DELETE FROM PROYECTO WHERE IDTIPOPROYECTO=OLD.IDTIPOPROYECTO; END");
 
