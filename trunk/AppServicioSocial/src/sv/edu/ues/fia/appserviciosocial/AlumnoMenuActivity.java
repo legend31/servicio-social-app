@@ -102,8 +102,8 @@ public class AlumnoMenuActivity extends TabActivity {
 		titulos = getResources().getStringArray(R.array.nav_options);
 		// Listado de titulos de barra de navegacion
 		NavItms = new ArrayList<Item_objct>();
-		// Bundle b = getIntent().getExtras();
-		// tipoUsuario = b.getInt("tipoUsuario");
+
+		
 		if (tipoUsuario == 1) {
 			// Agregamos objetos Item_objct al array
 			NavItms.add(new Item_objct(titulos[0], NavIcons
@@ -222,7 +222,7 @@ public class AlumnoMenuActivity extends TabActivity {
 				i = new Intent(this, TipoProyectoMenuActivity.class);
 				break;
 			case 10:
-				//i = new Intent(this, TipoTrabajoMenuActivity.class);
+				i = new Intent(this, TipoTrabajoActivity.class);
 				break;
 			}
 			break;

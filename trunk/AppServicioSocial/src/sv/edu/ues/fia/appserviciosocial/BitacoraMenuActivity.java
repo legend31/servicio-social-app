@@ -94,9 +94,16 @@ public class BitacoraMenuActivity extends TabActivity {
         }
         else if(tipoUsuario == 2)
         {
-        	NavItms.add(new Item_objct(titulos[0], NavIcons.getResourceId(0, -1)));
-            NavItms.add(new Item_objct(titulos[1], NavIcons.getResourceId(1, -1)));
-            NavItms.add(new Item_objct(titulos[2], NavIcons.getResourceId(2, -1)));
+        	NavItms.add(new Item_objct(titulos[0], NavIcons
+					.getResourceId(0, -1)));
+			NavItms.add(new Item_objct(titulos[4], NavIcons
+					.getResourceId(0, -1)));
+			NavItms.add(new Item_objct(titulos[5], NavIcons
+					.getResourceId(5, -1)));
+			NavItms.add(new Item_objct(titulos[6], NavIcons
+					.getResourceId(6, -1)));
+			NavItms.add(new Item_objct(titulos[8], NavIcons
+					.getResourceId(9, -1)));
         }
         
       //Declaramos y seteamos nuestrp adaptador al cual le pasamos el array con los titulos	       
@@ -141,7 +148,7 @@ public class BitacoraMenuActivity extends TabActivity {
             	if(position != 0)
             	{
             	NavDrawerLayout.closeDrawer(NavList);
-            	
+            	abrirActivity(position);
             	}
             }
         });
@@ -150,6 +157,70 @@ public class BitacoraMenuActivity extends TabActivity {
 	}
 
 //////////////////////	
+	
+	private void abrirActivity(int posicion) {
+		Intent i = null;
+		switch (tipoUsuario) {
+		case 1:
+			switch (posicion) {
+			case 1:
+				i = new Intent(this, AlumnoMenuActivity.class);
+				break;
+			case 2:
+				i = new Intent(this, AsignacionProyectoMenuActivity.class);
+				break;
+			case 3:
+				i = new Intent(this, BitacoraMenuActivity.class);
+				break;
+			case 4:
+				i = new Intent(this, CargoMenuActivity.class);
+				break;
+			case 5:
+				i = new Intent(this, EncargadoMenuActivity.class);
+				break;
+			case 6:
+				i = new Intent(this, InstitucionMenuActivity.class);
+				break;
+			case 7:
+				i = new Intent(this, ProyectoMenuActivity.class);
+				break;
+			case 8:
+				i = new Intent(this, SolicitanteMenuActivity.class);
+				break;
+			case 9:
+				i = new Intent(this, TipoProyectoMenuActivity.class);
+				break;
+			case 10:
+				i = new Intent(this, TipoTrabajoActivity.class);
+				break;
+			}
+			break;
+		case 2:
+			switch (posicion) {
+			case 1:
+				i = new Intent(this, AlumnoMenuActivity.class);
+				break;
+			case 2:
+				i = new Intent(this, EncargadoMenuActivity.class);
+				break;
+			case 3:
+				i = new Intent(this, InstitucionMenuActivity.class);
+				break;
+			case 4:
+				i = new Intent(this, ProyectoMenuActivity.class);
+				break;
+			case 5:
+				i = new Intent(this, TipoProyectoMenuActivity.class);
+				break;
+
+			}
+			break;
+		}
+		i.putExtra("tipoUsuario", tipoUsuario);
+		startActivity(i);
+		overridePendingTransition(R.anim.left_in, R.anim.left_out);
+	}
+
 	
 	
 	@Override

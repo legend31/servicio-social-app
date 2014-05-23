@@ -215,7 +215,7 @@ public class InstitucionMenuActivity extends TabActivity {
 				i = new Intent(this, TipoProyectoMenuActivity.class);
 				break;
 			case 10:
-				//i = new Intent(this, TipoTrabajoMenuActivity.class);
+				i = new Intent(this, TipoTrabajoActivity.class);
 				break;
 			}
 			break;

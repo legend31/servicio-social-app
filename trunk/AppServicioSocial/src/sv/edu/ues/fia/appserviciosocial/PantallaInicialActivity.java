@@ -27,9 +27,9 @@ public class PantallaInicialActivity extends Activity implements
 	private String[] actividades = { "AlumnoMenuActivity",
 			"AsignacionProyectoMenuActivity", "BitacoraMenuActivity",
 			"CargoMenuActivity", "EncargadoMenuActivity",
-			"InstitucionMenuActivity", "InstitucionMenuActivity",
+			"InstitucionMenuActivity", "SolicitanteMenuActivity",
 			"ProyectoMenuActivity", "TipoProyectoMenuActivity",
-			"TipoTrabajoMenuActivity" };
+			"TipoTrabajoActivity" };
 
 	private String[] actividadesAlumno = { "AlumnoMenuActivity",
 			"EncargadoMenuActivity", "InstitucionMenuActivity",
