@@ -153,64 +153,69 @@ public class AsignacionProyectoMenuActivity extends TabActivity {
 	        
 	}
 
-	private void abrirActivity(int posicion){
+	private void abrirActivity(int posicion) {
 		Intent i = null;
-		switch(tipoUsuario)
-		{
+		switch (tipoUsuario) {
 		case 1:
 			switch (posicion) {
 			case 1:
 				i = new Intent(this, AlumnoMenuActivity.class);
-			break;
+				break;
 			case 2:
 				i = new Intent(this, AsignacionProyectoMenuActivity.class);
-			break;
+				break;
 			case 3:
 				i = new Intent(this, BitacoraMenuActivity.class);
-			break;
+				break;
 			case 4:
 				i = new Intent(this, CargoMenuActivity.class);
-			break;
+				break;
 			case 5:
 				i = new Intent(this, EncargadoMenuActivity.class);
-			break;
+				break;
 			case 6:
 				i = new Intent(this, InstitucionMenuActivity.class);
-			break;
+				break;
 			case 7:
 				i = new Intent(this, ProyectoMenuActivity.class);
-			break;
+				break;
 			case 8:
 				i = new Intent(this, SolicitanteMenuActivity.class);
-			break;
+				break;
 			case 9:
 				i = new Intent(this, TipoProyectoMenuActivity.class);
-			break;
+				break;
 			case 10:
-				//i = new Intent(this, TipoTrabajoMenuActivity.class);
-			break;
+				i = new Intent(this, TipoTrabajoActivity.class);
+				break;
 			}
-		break;
+			break;
 		case 2:
-			switch(posicion)
-			{
+			switch (posicion) {
 			case 1:
 				i = new Intent(this, AlumnoMenuActivity.class);
-			break;
+				break;
 			case 2:
-				i = new Intent(this, AsignacionProyectoMenuActivity.class);
-			break;
+				i = new Intent(this, EncargadoMenuActivity.class);
+				break;
 			case 3:
-				i = new Intent(this, BitacoraMenuActivity.class);
-			break;
+				i = new Intent(this, InstitucionMenuActivity.class);
+				break;
+			case 4:
+				i = new Intent(this, ProyectoMenuActivity.class);
+				break;
+			case 5:
+				i = new Intent(this, TipoProyectoMenuActivity.class);
+				break;
+
 			}
-		break;
+			break;
 		}
 		i.putExtra("tipoUsuario", tipoUsuario);
 		startActivity(i);
 		overridePendingTransition(R.anim.left_in, R.anim.left_out);
 	}
-	
+
 	@Override
 	 protected void onPostCreate(Bundle savedInstanceState) {
 	 super.onPostCreate(savedInstanceState);
