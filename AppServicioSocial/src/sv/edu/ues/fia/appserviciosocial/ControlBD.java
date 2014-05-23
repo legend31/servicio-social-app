@@ -118,40 +118,136 @@ public class ControlBD {
 						+ "proyecto WHERE idproyecto = NEW.idproyecto) IS NULL) THEN RAISE(ABORT, 'No existe proyecto') END; END;");
 				db.execSQL("CREATE TRIGGER fk_bitacora_alumno BEFORE INSERT ON bitacora FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT carnet FROM alumno "
 						+ "WHERE carnet = NEW.carnet) IS NULL) THEN RAISE(ABORT, 'No existe alumno') END; END;");
-				// inserciones
+				
+				// inserciones alumno
 				db.execSQL("insert into alumno values('FG12098', 'Pedro Fuentes',   '23456781', '033206621', '06142307906731', 'pedro@yahoo.es');");
 				db.execSQL("insert into alumno values('MJ10458', 'Luis Martinez',   '22378781', '033673420', '06132307901231', 'luis@yahoo.com');");
 				db.execSQL("insert into alumno values('QS11457', 'Juan Quevedo',    '23456896', '033209871', '09232307904531', 'juan@gmail.es');");
 				db.execSQL("insert into alumno values('SA09027', 'Ricardo Sanchez', '23451231', '033207823', '08122307901931', 'ricardo@hotmail.es');");
+				
+				db.execSQL("insert into alumno values('PP08002', 'Ramon Peraza', '23478392', '033902384', '08122208901931', 'ramon@hotmail.es');");
+				db.execSQL("insert into alumno values('DM09017', 'Juan Dominguez', '23423431', '03902833', '06143112921931', 'juan@hotmail.es');");
+				db.execSQL("insert into alumno values('LO07027', 'Esteban Letona', '23456731', '031893423', '08122707906731', 'esteban@hotmail.es');");
+				db.execSQL("insert into alumno values('ME06007', 'Pedro Mendoza', '67851231', '039014843', '06142307901931', 'mendoza@yahoo.com');");
+				db.execSQL("insert into alumno values('SA09127', 'Arturo Solis', '78231231', '033902323', '08122308901931', 'arturo23@hotmail.com');");
+				db.execSQL("insert into alumno values('TA10067', 'Mario Torres', '28941231', '033904823', '06142304901931', 'mario@hotmail.es');");
+				db.execSQL("insert into alumno values('SL04002', 'Laura Silva', '23491231', '019307823', '08122307881931', 'laurasilva@gmail.com');");
+				db.execSQL("insert into alumno values('SB00001', 'Veronica Sandoval', '23490341', '030948823', '08122207901931', 'verosandoval@hotmail.com');");
+				db.execSQL("insert into alumno values('NA09080', 'Ligia Nuñez', '23569131', '039048323', '06143107901931', 'ligianz@hotmail.es');");
+				db.execSQL("insert into alumno values('FE07022', 'Francisco Flores', '23902358', '032908323', '08122227901931', 'paquitoflores@hotmail.com');");
+				db.execSQL("insert into alumno values('BC03028', 'Ricardo Bernal', '23902783', '033109383', '08120507901931', 'ricbernal@yahoo.es');");
+				
+				
+				
+				
+				
+				//inserciones institucion
 				db.execSQL("insert into institucion values(null, 'Institución 1', '06142506921232');");
 				db.execSQL("insert into institucion values(null, 'Institución 2', '02142509871232');");
 				db.execSQL("insert into institucion values(null, 'Institución 3', '06172506924567');");
+				
+				db.execSQL("insert into institucion values(null, 'Institución 4', '06172092344567');");
+				db.execSQL("insert into institucion values(null, 'Institución 5', '06179038924567');");
+				db.execSQL("insert into institucion values(null, 'Institución 6', '06172506920934');");
+				db.execSQL("insert into institucion values(null, 'Institución 7', '06172509284567');");
+				db.execSQL("insert into institucion values(null, 'Institución 8', '06172590238941');");
+				db.execSQL("insert into institucion values(null, 'Institución 9', '06172509034567');");
+				
+				
+				//inserciones cargo
 				db.execSQL("insert into cargo values(null, 'Presidente', 'Puesto mas alto');");
 				db.execSQL("insert into cargo values(null, 'Jefe de informatica', 'Puesto intermedio');");
+				
+				db.execSQL("insert into cargo values(null, 'Contador', 'Area financiera');");
+				db.execSQL("insert into cargo values(null, 'Administrador', 'Puesto intermedio');");
+				db.execSQL("insert into cargo values(null, 'Jefe de recursos humanos', 'Manejo de personal');");
+				db.execSQL("insert into cargo values(null, 'Director de ventas', 'Gestiona vendedores');");
+				db.execSQL("insert into cargo values(null, 'Medico', 'Area de odontologia');");
+				db.execSQL("insert into cargo values(null, 'Jefe de comunicaciones', 'Puesto intermedio');");
+				
+				
+				
+				//inserciones solicitante
 				db.execSQL("insert into solicitante values (null, 2, 1, 'Juan Peraza', '27845689', 'peraza@info.org');");
 				db.execSQL("insert into solicitante values (null, 1, 2, 'Mario Luigi', '27856239', 'mario@emq.info');");
+				
+				db.execSQL("insert into solicitante values (null, 5, 2, 'Marta Lopez', '27856239', 'marlpez@hotmail.com');");
+				db.execSQL("insert into solicitante values (null, 7, 7, 'Israel Campos', '27890389', 'israel@lpaq.info');");
+				db.execSQL("insert into solicitante values (null, 3, 2, 'Elba Lazo', '27892339', 'lazo@emq.info');");
+				db.execSQL("insert into solicitante values (null, 2, 8, 'Mario Perdomo', '27809849', 'perdomomario@insq.info');");
+				db.execSQL("insert into solicitante values (null, 4, 2, 'Marisela Ruiz', '27893239', 'mruiz@loq.info');");
+				db.execSQL("insert into solicitante values (null, 8, 3, 'Leonel Aguirre', '27092339', 'leoaguirre@fgh.info');");
+				
+				
+				
+				//inserciones tipo de proyecto
 				db.execSQL("insert into tipoproyecto values (null, 'Gubernamental');");
 				db.execSQL("insert into tipoproyecto values (null, 'Social');");
 				db.execSQL("insert into tipoproyecto values (null, 'Privado');");
+				
+				//inserciones tipo de trabajo
 				db.execSQL("insert into tipotrabajo values(null, 'Programación', 12.50);");
 				db.execSQL("insert into tipotrabajo values(null, 'Diseño', 32.18);");
 				db.execSQL("insert into tipotrabajo values(null, 'Analisis', 27.40);");
+				
+				db.execSQL("insert into tipotrabajo values(null, 'Mantenimiento', 22.50);");
+				db.execSQL("insert into tipotrabajo values(null, 'Atencion enfermos', 28.90);");
+				db.execSQL("insert into tipotrabajo values(null, 'Refuerzo escolar', 10.99);");
+				db.execSQL("insert into tipotrabajo values(null, 'Auxiliar contable', 15.30);");
+				db.execSQL("insert into tipotrabajo values(null, 'Trabajo Comunitario', 8.90);");
+				
+				
+				
+				//inserciones encargado
 				db.execSQL("insert into encargadoserviciosocial values(null, 'Esteban Gonzalez', 'gonzalez@ues.edu.sv', '23458512', 'Economía', 'Economía');");
-				db.execSQL("insert into encargadoserviciosocial values(null, 'Sebastian Dominguez', 'dominguezez@ues.edu.sv', '23453421', 'medicina', 'Medicina');");
+				db.execSQL("insert into encargadoserviciosocial values(null, 'Sebastian Dominguez', 'dominguezez@ues.edu.sv', '23453421', 'Medicina', 'Medicina');");
 				db.execSQL("insert into encargadoserviciosocial values(null, 'Kevin Funes', 'funes@ues.edu.sv', '23454100', 'Agronomía', 'Veterinaria');");
 				db.execSQL("insert into encargadoserviciosocial values(null, 'Julio Campos', 'campos@ues.edu.sv', '23450074', 'Ingenieria y arquitectura', 'Ingenieria Industrial');");
+				
+				db.execSQL("insert into encargadoserviciosocial values(null, 'Mauricio Funes', 'funes@ues.edu.sv', '23450912', 'Humanidades', 'Psicologia');");
+				db.execSQL("insert into encargadoserviciosocial values(null, 'Franco Perez', 'perez@ues.edu.sv', '23409562', 'Odontologia', 'odontologia');");
+				db.execSQL("insert into encargadoserviciosocial values(null, 'Carlos Martinez', 'martinez@ues.edu.sv', '29802342', 'Jurisprudencia', 'Derecho');");
+				db.execSQL("insert into encargadoserviciosocial values(null, 'Angelica Nuila', 'nuila@ues.edu.sv', '23093482', 'Ingenieria y arquitectura', 'Sistemas Informaticos');");
+				db.execSQL("insert into encargadoserviciosocial values(null, 'Pedro Marmol', 'marmol@ues.edu.sv', '28938512', 'Quimica y Farmacia', 'Quimica');");
+				
+				//inserciones proyecto
 				db.execSQL("insert into proyecto values(null, 2, 2, 3, 'Cuidado de perrros');");
 				db.execSQL("insert into proyecto values(null, 1, 3, 2, 'Atención a personas');");
 				db.execSQL("insert into proyecto values(null, 2, 1, 1, 'Consultoria contable');");
 				db.execSQL("insert into proyecto values(null, 1, 3, 4, 'Revision de maquila');");
+				
+				
+				db.execSQL("insert into proyecto values(null, 2, 8, 7, 'Diseño de un pagina web');");
+				db.execSQL("insert into proyecto values(null, 1, 6, 7, 'Analisis de procesos');");
+				db.execSQL("insert into proyecto values(null, 2, 4, 5, 'Refuerzo a niños con problemas de aprendizaje ');");
+				db.execSQL("insert into proyecto values(null, 3, 2, 7, 'Automatizacion de inventarios');");
+				
+				//inserciones asignacion de proyecto
 				db.execSQL("insert into asignacionproyecto values ('FG12098', 1, date('2014-06-29'));");
 				db.execSQL("insert into asignacionproyecto values ('MJ10458', 2, date('2014-05-12'));");
 				db.execSQL("insert into asignacionproyecto values ('QS11457', 3, date('2014-02-04'));");
 				db.execSQL("insert into asignacionproyecto values ('SA09027', 4, date('2014-08-22'));");
+				
+				db.execSQL("insert into asignacionproyecto values ('PP08002', 4, date('2014-08-22'));");
+				db.execSQL("insert into asignacionproyecto values ('DM09017', 6, date('2014-06-12'));");
+				db.execSQL("insert into asignacionproyecto values ('LO07027', 7, date('2014-04-29'));");
+				db.execSQL("insert into asignacionproyecto values ('ME06007', 3, date('2014-03-16'));");
+				db.execSQL("insert into asignacionproyecto values ('SA09127', 8, date('2014-02-19'));");
+				db.execSQL("insert into asignacionproyecto values ('TA10067', 5, date('2014-02-27'));");
+				db.execSQL("insert into asignacionproyecto values ('SL04002', 4, date('2014-03-09'));");
+				db.execSQL("insert into asignacionproyecto values ('SB00001', 3, date('2014-06-04'));");
+				db.execSQL("insert into asignacionproyecto values ('NA09080', 2, date('2014-07-03'));");
+				db.execSQL("insert into asignacionproyecto values ('FE07022', 1, date('2014-01-15'));");
+				db.execSQL("insert into asignacionproyecto values ('BC03028', 8, date('2014-11-08'));");
+				
+				//inserciones bitacora
 				db.execSQL("insert into bitacora values(1, 1, 'FG12098', 1, date('2014-06-29'), 'Introduccion de objetivos');");
 				db.execSQL("insert into bitacora values(null, 2, 'FG12098', 1, date('2014-07-02'), 'Diseñando cosas');");
 				db.execSQL("insert into bitacora values(null, 2, 'MJ10458', 3, date('2013-11-18'), 'Presentacion de resultados');");
 				db.execSQL("insert into bitacora values(null, 3, 'MJ10458', 3, date('2013-11-20'), 'Avance literal');");
+				
+				
+				//PARA EL LOGIN , NO TOCAR
 				db.execSQL("insert into usuarios values(null, 'admin', 'admin', 1);");
 				db.execSQL("insert into usuarios values(null, 'alumno', 'alumno', 2);");
 
