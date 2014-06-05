@@ -11,6 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class ControlBD {
+	
 
 	private static final String[] camposAlumno = new String[] { "carnet",
 			"nombre", "telefono", "dui", "nit", "email" };
@@ -44,6 +45,7 @@ public class ControlBD {
 		DBHelper = new DatabaseHelper(ctx);
 	}
 
+	
 	private static class DatabaseHelper extends SQLiteOpenHelper {
 		private static final String Base_Datos = "BaseDeDatos.s3db";
 		private static final int VERSION = 1;
@@ -254,6 +256,9 @@ public class ControlBD {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			
+
+			
 		}
 
 		@Override
@@ -360,6 +365,7 @@ public class ControlBD {
 			mensaje = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
 		} else {
 			mensaje = "Registro ingresado";
+			
 		}
 		return mensaje;
 	}
@@ -375,6 +381,8 @@ public class ControlBD {
 		contador = db.insert("cargo", null, valoresCargo);
 		if (contador == -1 || contador == 0) {
 			mensaje = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+			
+			
 		} else {
 			mensaje = "Registro ingresado";
 		}

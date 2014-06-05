@@ -4,6 +4,8 @@ import java.util.StringTokenizer;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -20,6 +22,10 @@ public class AlumnoInsertarActivity extends Activity {
 	private EditText txtNit;
 	private EditText txtEmail;
 
+	SoundPool soundPool;
+	int exito;
+	int fracaso;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -31,6 +37,10 @@ public class AlumnoInsertarActivity extends Activity {
 		txtDui = (EditText) findViewById(R.id.txtDui);
 		txtNit = (EditText) findViewById(R.id.txtNit);
 		txtEmail = (EditText) findViewById(R.id.txtEmail);
+
+		 soundPool = new SoundPool( 2, AudioManager.STREAM_MUSIC , 0);
+         exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);
+         fracaso = soundPool.load(getApplicationContext(), R.raw.sonido2, 0);
 
 	}
 
@@ -88,6 +98,16 @@ public class AlumnoInsertarActivity extends Activity {
 		String regInsertados = auxiliar.insertar(alumno);
 		auxiliar.cerrar();
 		Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+		
+		
+		 if(regInsertados.length()>=20){
+        	 soundPool.play(exito, 1, 1, 1, 0, 1);
+        }
+        else{
+        soundPool.play(fracaso, 1, 1, 1, 0, 1);
+
+        }
+		 
 	}
 
 	public void Scan(View v) {

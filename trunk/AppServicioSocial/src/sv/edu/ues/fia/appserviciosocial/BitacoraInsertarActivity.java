@@ -1,10 +1,11 @@
 package sv.edu.ues.fia.appserviciosocial;
 
 import android.app.Activity;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -16,6 +17,10 @@ public class BitacoraInsertarActivity extends Activity {
 	private EditText editText3;
 	private EditText editText4;
 	private EditText editText5;
+	//sonidos
+		SoundPool soundPool;
+		int exito;
+		int fracaso;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +33,11 @@ public class BitacoraInsertarActivity extends Activity {
 		 editText3=(EditText) findViewById(R.id. editText3);
 		 editText4=(EditText) findViewById(R.id.editText4);
 		 editText5=(EditText) findViewById(R.id.editText5);
-		
+
+			//sonidos
+		         soundPool = new SoundPool( 2, AudioManager.STREAM_MUSIC , 0);
+		         exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);
+		         fracaso = soundPool.load(getApplicationContext(), R.raw.sonido2, 0);
 		 
 	}
 
@@ -86,6 +95,14 @@ public void insertarBitacora(View v){
 	auxiliar.cerrar();
 	Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
 	
+	//sonidos
+	   if(regInsertados.length()>=20){
+	            	 soundPool.play(exito, 1, 1, 1, 0, 1);
+	            }
+	            else{
+	            soundPool.play(fracaso, 1, 1, 1, 0, 1);
+
+	            }
 }
 	
 }
