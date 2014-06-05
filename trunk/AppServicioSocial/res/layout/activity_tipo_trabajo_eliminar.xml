@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/button1"
+        android:layout_alignRight="@+id/btnQR"
         android:layout_marginTop="21dp"
         android:ems="10"
         android:hint="@string/idTipoTrabajo"
@@ -34,7 +34,7 @@
         android:inputType="numberDecimal" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/btnQR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editText3"

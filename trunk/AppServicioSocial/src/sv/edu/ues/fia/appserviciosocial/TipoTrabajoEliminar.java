@@ -24,7 +24,7 @@ public class TipoTrabajoEliminar extends Activity {
 		editText1=(EditText) findViewById(R.id.editText1);
 		editText2=(EditText) findViewById(R.id.editText2);
 		editText3=(EditText) findViewById(R.id.editText3);
-		button1=(Button) findViewById(R.id.button1);
+		button1=(Button) findViewById(R.id.btnQR);
 		button1.setVisibility(View.INVISIBLE);
 		editText2.setVisibility(View.INVISIBLE);
 		editText3.setVisibility(View.INVISIBLE);
