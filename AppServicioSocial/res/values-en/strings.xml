@@ -89,7 +89,7 @@
     <string name="title_activity_institucion_menu">InstitutionMenuActivity</string>
     <string name="title_activity_institucion_menua">InstitutionMenuActivity</string>
     <string name="title_activity_menu_alumno">Student</string>
-    <string name="title_activity_menu_tablas">Principal Menu</string>
+    <string name="title_activity_menu_tablas">Main Menu</string>
     <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
     <string name="title_activity_navigation_drawer_menu">NavigationDrawerActivityActivity</string>
     <string name="title_activity_proyecto_consultar">ProjectConsultActivity</string>
