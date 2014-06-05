@@ -1,13 +1,24 @@
 package sv.edu.ues.fia.appserviciosocial;
 
+import android.app.Activity;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.app.Activity;
 
 public class CargoInsertarActivity extends Activity {
-	 ControlBD base;
+	
+	
+	SoundPool soundPool;
+	int exito;
+	int fracaso;
+	 
+	
+	ControlBD base;
+	 
 	   // private EditText txtIdEncargado;
 	    private EditText edtNombre;
 	    private EditText edtDescripcion;
@@ -20,6 +31,11 @@ public class CargoInsertarActivity extends Activity {
          //txtIdEncargado = (EditText) findViewById(R.id.txtIdEncargadoEncargado);
          edtNombre = (EditText) findViewById(R.id.edtNombreCargo);
          edtDescripcion = (EditText) findViewById(R.id.edtDescripcionCargo);
+         
+    
+         soundPool = new SoundPool( 2, AudioManager.STREAM_MUSIC , 0);
+         exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);
+         fracaso = soundPool.load(getApplicationContext(), R.raw.sonido2, 0);
          
 	}
 	public void insertarCargo(View v)
@@ -62,6 +78,14 @@ public class CargoInsertarActivity extends Activity {
             String regInsertados=base.insertar(cargo);
             base.cerrar();
             Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+            
+            if(regInsertados.length()>=20){
+            	 soundPool.play(exito, 1, 1, 1, 0, 1);
+            }
+            else{
+            soundPool.play(fracaso, 1, 1, 1, 0, 1);
+
+            }
     }
 
 	public void limpiarCargo(View v) {
