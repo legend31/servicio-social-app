@@ -105,7 +105,6 @@ public class AlumnoInsertarActivity extends Activity {
         }
         else{
         soundPool.play(fracaso, 1, 1, 1, 0, 1);
-
         }
 		 
 	}
@@ -118,9 +117,9 @@ public class AlumnoInsertarActivity extends Activity {
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		if (requestCode == 0) {
 			if (resultCode == RESULT_OK) {
-				String cadena = intent.getStringExtra("SCAN_RESULT");
+				String datos = intent.getStringExtra("SCAN_RESULT");
 				// Poner los datos en los campos respectivos
-				StringTokenizer tokens = new StringTokenizer(cadena, ":;");
+				StringTokenizer tokens = new StringTokenizer(datos, ":;");
 				int i = 0;
 				while (tokens.hasMoreTokens()) {
 					String elemento = tokens.nextToken();
@@ -146,8 +145,7 @@ public class AlumnoInsertarActivity extends Activity {
 				}
 			} else if (resultCode == RESULT_CANCELED) {
 				// Si se cancelo la captura.
-				Toast.makeText(this, "Se cancelo el ESCANEO", Toast.LENGTH_LONG)
-						.show();
+				Toast.makeText(this, "Se canceló la captura del código QR", Toast.LENGTH_SHORT).show();
 			}
 		}
 	}
