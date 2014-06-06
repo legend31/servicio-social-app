@@ -3,23 +3,23 @@ package sv.edu.ues.fia.appserviciosocial;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.app.ActionBar;
-import android.app.Fragment;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.os.Build;
 
 public class SolicitanteInsertarActivity extends Activity {
 
 	private EditText txtNombre,txtTelefono,txtEmail,txtNitInstitucion,txtCargo;
 	private ControlBD auxiliar;
+	//sonidos
+		SoundPool soundPool;
+		int exito;
+		int fracaso;
+		 
 	
 	@Override
 	
@@ -32,6 +32,12 @@ public class SolicitanteInsertarActivity extends Activity {
 		txtNitInstitucion = (EditText) findViewById(R.id.editNitInstitucionSolicitante);
 		txtCargo = (EditText) findViewById(R.id.editcargo);
 		auxiliar = new ControlBD(this);
+		
+
+		//sonidos
+	         soundPool = new SoundPool( 2, AudioManager.STREAM_MUSIC , 0);
+	         exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);
+	         fracaso = soundPool.load(getApplicationContext(), R.raw.sonido2, 0);
 	}
 
 	@Override
@@ -71,11 +77,15 @@ public class SolicitanteInsertarActivity extends Activity {
 							 else{						   
 								 Solicitante solicitante = new Solicitante(idInstitucion, idCargo, nombre, telefono, email);					   
 								 String idAsignado = auxiliar.insertar(solicitante);
+								 //sonido
+								 soundPool.play(exito, 1, 1, 1, 0, 1);
 								 Toast.makeText(this, "Registro insertado", Toast.LENGTH_SHORT).show();						   
 								 Toast.makeText(this, "ID asignado a solicitante : "+idAsignado, Toast.LENGTH_LONG).show();
 								   
 							 }
 						   }else  {
+							   //sonido
+							   soundPool.play(fracaso, 1, 1, 1, 0, 1);
 							   Toast.makeText(this, "Cago no existe : "+idCargo, Toast.LENGTH_LONG).show();
 						   }
 			
@@ -87,6 +97,7 @@ public class SolicitanteInsertarActivity extends Activity {
 					Toast.makeText(this, "telefono no válido ", Toast.LENGTH_LONG).show();  
 					
 				}catch(Exception e){
+					soundPool.play(fracaso, 1, 1, 1, 0, 1);
 				   Toast.makeText(this, "Error "+e, Toast.LENGTH_LONG).show();			   
 			   }
 	}

@@ -1,7 +1,9 @@
 package sv.edu.ues.fia.appserviciosocial;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +20,11 @@ public class ProyectoInsertarActivity extends Activity {
 	ControlBD helper;
 	Button btnIngresar;
 	String info = "";
+	//sonidos
+		SoundPool soundPool;
+		int exito;
+		int fracaso;
+		 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +36,13 @@ public class ProyectoInsertarActivity extends Activity {
 		idEncargado = (EditText) findViewById(R.id.editCodeEncargadoProyecto);
 		nombre = (EditText) findViewById(R.id.editNombreProyecto);
 		btnIngresar = (Button) findViewById(R.id.btnIngresarProyecto);
+
+		//sonidos
+	         soundPool = new SoundPool( 2, AudioManager.STREAM_MUSIC , 0);
+	         exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);
+	         fracaso = soundPool.load(getApplicationContext(), R.raw.sonido2, 0);
+
+
 
 	}
 
@@ -68,7 +82,16 @@ public class ProyectoInsertarActivity extends Activity {
 		String regInsertados = helper.insertar(proyecto);
 		helper.cerrar();
 		Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+		
 
+		//sonidos
+	   if(regInsertados.length()<=25){
+	            	 soundPool.play(exito, 1, 1, 1, 0, 1);
+	            }
+	            else{
+	            soundPool.play(fracaso, 1, 1, 1, 0, 1);
+
+	            }
 	}
 
 	public void limpiar(View v) {
