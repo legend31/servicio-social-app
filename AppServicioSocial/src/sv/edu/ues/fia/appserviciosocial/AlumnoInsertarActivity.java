@@ -100,7 +100,7 @@ public class AlumnoInsertarActivity extends Activity {
 		Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
 		
 		
-		 if(regInsertados.length()>=20){
+		 if(regInsertados.length()<=20){
         	 soundPool.play(exito, 1, 1, 1, 0, 1);
         }
         else{

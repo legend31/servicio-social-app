@@ -116,7 +116,7 @@ public class AsignacionProyectoInsertarActivity extends Activity {
 		auxiliar.cerrar();
 		Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
 		//sonidos
-		   if(regInsertados.length()>=20){
+		   if(regInsertados.length()<=20){
 		            	 soundPool.play(exito, 1, 1, 1, 0, 1);
 		            }
 		            else{

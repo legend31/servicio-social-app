@@ -1,22 +1,25 @@
 package sv.edu.ues.fia.appserviciosocial;
 
 import android.app.Activity;
-import android.app.ActionBar;
-import android.app.Fragment;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.os.Build;
 
 public class InstitucionInsertarActivity extends Activity {
 	private EditText txtNombreInstitucion,
 					 txtNitInstitucion;
 	private ControlBD auxiliar;
+	
+	//sonidos
+		SoundPool soundPool;
+		int exito;
+		int fracaso;
+		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -24,6 +27,12 @@ public class InstitucionInsertarActivity extends Activity {
 		auxiliar = new ControlBD(this);
 		txtNombreInstitucion = (EditText) findViewById(R.id.editNombreInstitucion);
 		txtNitInstitucion = (EditText) findViewById(R.id.editNitInstitucion);
+		
+		//sonidos
+        soundPool = new SoundPool( 2, AudioManager.STREAM_MUSIC , 0);
+        exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);
+        fracaso = soundPool.load(getApplicationContext(), R.raw.sonido2, 0);
+
 	}
 
 	@Override
@@ -71,6 +80,15 @@ public class InstitucionInsertarActivity extends Activity {
 		String regInsertados=auxiliar.insertar(institucion);
 		auxiliar.cerrar();
 		Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+		
+		//sonidos
+		   if(regInsertados.length()<=20){
+		            	 soundPool.play(exito, 1, 1, 1, 0, 1);
+		            }
+		            else{
+		            soundPool.play(fracaso, 1, 1, 1, 0, 1);
+
+		            }
 	}
 	
 

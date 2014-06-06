@@ -1,10 +1,11 @@
 package sv.edu.ues.fia.appserviciosocial;
 
 import android.app.Activity;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -14,7 +15,11 @@ public class TipoTrabajoInsertar extends Activity {
 	ControlBD auxiliar;	
 	private EditText editText2;
 	private EditText editText3;
-	
+	//sonidos
+		SoundPool soundPool;
+		int exito;
+		int fracaso;
+		 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -23,6 +28,11 @@ public class TipoTrabajoInsertar extends Activity {
 		auxiliar = new ControlBD(this);			
 		editText2=(EditText) findViewById(R.id.editText2);
 		editText3=(EditText) findViewById(R.id.editText3);
+		//sonidos
+        soundPool = new SoundPool( 2, AudioManager.STREAM_MUSIC , 0);
+        exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);
+        fracaso = soundPool.load(getApplicationContext(), R.raw.sonido2, 0);
+
 	}
 
 	@Override
@@ -66,6 +76,14 @@ public class TipoTrabajoInsertar extends Activity {
 		String regInsertados=auxiliar.insertar(objTipoTrabajo);
 		auxiliar.cerrar();
 		Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+		//sonidos
+		   if(regInsertados.length()<=25){
+		            	 soundPool.play(exito, 1, 1, 1, 0, 1);
+		            }
+		            else{
+		            soundPool.play(fracaso, 1, 1, 1, 0, 1);
+
+		            }
 	}
 
 }
