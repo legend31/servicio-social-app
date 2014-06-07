@@ -73,6 +73,7 @@ public class ProyectoMenuActivity extends TabActivity {
 					ProyectoEliminarActivity.class);
 			spec.setContent(eliminarIntent);
 			pestañas.addTab(spec);
+			
 		} else if (tipoUsuario == 2) {
 			spec = pestañas.newTabSpec("Consultar");
 			spec.setIndicator("", res.getDrawable(R.drawable.consultar));

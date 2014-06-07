@@ -1,17 +1,32 @@
 package sv.edu.ues.fia.appserviciosocial;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.StringTokenizer;
-
+import android.media.MediaScannerConnection.MediaScannerConnectionClient;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.media.AudioManager;
 import android.media.SoundPool;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.media.MediaScannerConnection;
 import android.widget.Toast;
 
+@SuppressLint("SimpleDateFormat")
 public class AlumnoInsertarActivity extends Activity {
 
 	ControlBD auxiliar;
@@ -25,7 +40,14 @@ public class AlumnoInsertarActivity extends Activity {
 	SoundPool soundPool;
 	int exito;
 	int fracaso;
-	
+
+	private static int TAKE_PICTURE = 1;
+	private String name = "";
+	private Uri file;
+	private ImageView image;
+	private File photo;
+	private String path;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,10 +60,18 @@ public class AlumnoInsertarActivity extends Activity {
 		txtNit = (EditText) findViewById(R.id.txtNit);
 		txtEmail = (EditText) findViewById(R.id.txtEmail);
 
-		 soundPool = new SoundPool( 2, AudioManager.STREAM_MUSIC , 0);
-         exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);
-         fracaso = soundPool.load(getApplicationContext(), R.raw.sonido2, 0);
+		soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+		exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);
+		fracaso = soundPool.load(getApplicationContext(), R.raw.sonido2, 0);
 
+		image = (ImageView) findViewById(R.id.mainimage);
+
+		/*
+		 * if(savedInstanceState != null)
+		 * if(savedInstanceState.getString("Foto")!=null){
+		 * image.setImageURI(Uri.parse(savedInstanceState.getString("Foto")));
+		 * file = Uri.parse(savedInstanceState.getString("Foto")); }
+		 */
 	}
 
 	@Override
@@ -94,24 +124,37 @@ public class AlumnoInsertarActivity extends Activity {
 		alumno.setDui(dui);
 		alumno.setNit(nit);
 		alumno.setEmail(email);
+		alumno.setPath(path);
 		auxiliar.abrir();
 		String regInsertados = auxiliar.insertar(alumno);
 		auxiliar.cerrar();
 		Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
-		
-		
-		 if(regInsertados.length()<=20){
-        	 soundPool.play(exito, 1, 1, 1, 0, 1);
-        }
-        else{
-        soundPool.play(fracaso, 1, 1, 1, 0, 1);
-        }
-		 
+
+		if (regInsertados.length() <= 20) {
+			soundPool.play(exito, 1, 1, 1, 0, 1);
+		} else {
+			soundPool.play(fracaso, 1, 1, 1, 0, 1);
+		}
+
 	}
 
 	public void Scan(View v) {
 		Intent intent = new Intent("com.google.zxing.client.android.SCAN");
 		startActivityForResult(intent, 0);
+	}
+
+	public void tomarFoto(View view) {
+		// name = Environment.getExternalStorageDirectory() + "/foto.jpg";
+		photo = new File(Environment.getExternalStorageDirectory(),
+				String.valueOf(Calendar.getInstance().getTimeInMillis())
+						+ ".jpg");
+		Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+		int code = TAKE_PICTURE;
+
+		file = Uri.fromFile(photo);
+		intent.putExtra(MediaStore.EXTRA_OUTPUT, file);
+		startActivityForResult(intent, code);
+
 	}
 
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
@@ -145,9 +188,35 @@ public class AlumnoInsertarActivity extends Activity {
 				}
 			} else if (resultCode == RESULT_CANCELED) {
 				// Si se cancelo la captura.
-				Toast.makeText(this, "Se canceló la captura del código QR", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "Se canceló la captura del código QR",
+						Toast.LENGTH_SHORT).show();
 			}
 		}
-	}
 
+		if (requestCode == TAKE_PICTURE)
+			if (resultCode == RESULT_OK)
+			{
+				image.setImageBitmap(BitmapFactory.decodeFile(photo.getAbsolutePath()));
+				//esta direccion es la que se guarda en la BD
+				path = photo.getAbsolutePath();
+				
+				
+				//esta parte es para guardar la imagen en la galeria, pero 
+				//creo q no funciona REVISAR MAS TARDE
+				new MediaScannerConnectionClient() {
+					private MediaScannerConnection msc = null; {
+						msc = new MediaScannerConnection(getApplicationContext(), this); msc.connect();
+					}
+					public void onMediaScannerConnected() { 
+						msc.scanFile(name, null);
+					}
+					public void onScanCompleted(String path, Uri uri) { 
+						msc.disconnect();
+					} 
+				};
+			}
+			else
+				Toast.makeText(getApplicationContext(), "fotografia no tomada",
+						Toast.LENGTH_SHORT).show();
+	}
 }

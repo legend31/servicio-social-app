@@ -163,5 +163,10 @@
     <string name="title_activity_pantalla_inicial">Menú de Tablas</string>
     <string name="numeroProyectos">Número de Proyectos</string>
     <string name="insertarqr">Insertar datos por QR</string>
+    
+    <string name="imagen">imagen</string>
+    <string name="tomarFoto">Tomar Foto</string>
+    <string name="fotografia">Fotografia del Alumno</string>
+    
 
 </resources>

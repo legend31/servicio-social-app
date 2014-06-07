@@ -8,6 +8,7 @@ public class Alumno {
 	private String dui;
 	private String nit;
 	private String email;
+	private String path;
 
 	public String getCarnet() {
 		return carnet;
@@ -55,6 +56,14 @@ public class Alumno {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
 	}
 
 }
