@@ -1,96 +1,126 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/RelativeLayout1"
+    android:id="@+id/scroll"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".EncargadoInsertarActivity" >
+    android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/titulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
-        android:gravity="center"
-        android:text="@string/title_activity_encargado_insertar"
-        android:textSize="20sp" />
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context=".EncargadoInsertarActivity" >
 
-    <EditText
-        android:id="@+id/txtNombreEncargado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/titulo"
-        android:layout_marginTop="35dp"
-        android:ems="10"
-        android:hint="@string/nombre"
-        android:inputType="textPersonName" />
+        <TextView
+            android:id="@+id/titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="@string/title_activity_encargado_insertar"
+            android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/txtEmailEncargado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/txtNombreEncargado"
-        android:ems="10"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress" />
+        <EditText
+            android:id="@+id/txtNombreEncargado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/titulo"
+            android:layout_marginTop="35dp"
+            android:ems="10"
+            android:hint="@string/nombre"
+            android:inputType="textPersonName" />
 
-    <EditText
-        android:id="@+id/txtTelefonoEncargado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/txtEmailEncargado"
-        android:ems="10"
-        android:hint="@string/telefono"
-        android:inputType="phone" />
+        <EditText
+            android:id="@+id/txtEmailEncargado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/txtNombreEncargado"
+            android:ems="10"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress" />
 
-    <EditText
-        android:id="@+id/txtFacultadEncargado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/txtTelefonoEncargado"
-        android:ems="10"
-        android:hint="@string/facultad"
-        android:inputType="text" />
+        <EditText
+            android:id="@+id/txtTelefonoEncargado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/txtEmailEncargado"
+            android:ems="10"
+            android:hint="@string/telefono"
+            android:inputType="phone" />
 
-    <EditText
-        android:id="@+id/txtEscuelaEncargado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/txtFacultadEncargado"
-        android:ems="10"
-        android:hint="@string/escuela"
-        android:inputType="text" />
+        <EditText
+            android:id="@+id/txtFacultadEncargado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/txtTelefonoEncargado"
+            android:ems="10"
+            android:hint="@string/facultad"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btnLimpiarEncargado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/txtEscuelaEncargado"
-        android:layout_below="@+id/txtEscuelaEncargado"
-        android:layout_marginTop="23dp"
-        android:text="@string/limpiar"
-        android:onClick="limpiarEncargado" />
+        <EditText
+            android:id="@+id/txtEscuelaEncargado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/txtFacultadEncargado"
+            android:ems="10"
+            android:hint="@string/escuela"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btnGuardarEncargado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtEscuelaEncargado"
-        android:layout_alignTop="@+id/btnLimpiarEncargado"
-        android:text="@string/guardar"
-        android:onClick="insertarEncargado" />
+        <TableLayout
+            android:id="@+id/tablaBotones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtEscuelaEncargado"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp" >
 
-</RelativeLayout>
+            <TableRow>
+
+                <Button
+                    android:id="@+id/btnLimpiarEncargado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="23dp"
+                    android:onClick="limpiarEncargado"
+                    android:text="@string/limpiar" />
+
+                <Button
+                    android:id="@+id/btnGuardarEncargado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="23dp"
+                    android:onClick="insertarEncargado"
+                    android:text="@string/guardar" />
+
+                <Button
+                    android:id="@+id/btnTomarFoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="23dp"
+                    android:onClick="tomarFoto"
+                    android:text="@string/tomarFoto" />
+            </TableRow>
+        </TableLayout>
+
+        <ImageView
+            android:id="@+id/mainimage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tablaBotones"
+            android:layout_centerHorizontal="true" 
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+</ScrollView>

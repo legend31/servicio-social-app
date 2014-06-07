@@ -122,6 +122,13 @@
                 <requestFocus />
             </EditText>
 
+            <ImageView
+                android:id="@+id/mainImageSolicitante"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/TablaDeDatosEncargado"
+                android:layout_centerHorizontal="true" />
+
             <Space
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

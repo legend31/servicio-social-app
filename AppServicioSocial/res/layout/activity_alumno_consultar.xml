@@ -39,7 +39,8 @@
             android:id="@+id/mainimage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/gdvTabla" />
+            android:layout_below="@+id/gdvTabla"
+            />
 
         <LinearLayout
             android:id="@+id/linearLayout1"
