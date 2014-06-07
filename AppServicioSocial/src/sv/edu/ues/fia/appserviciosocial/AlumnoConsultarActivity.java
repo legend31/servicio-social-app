@@ -2,11 +2,13 @@ package sv.edu.ues.fia.appserviciosocial;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.graphics.BitmapFactory;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +18,8 @@ public class AlumnoConsultarActivity extends Activity {
 	EditText txtCarnet;
 	GridView gdvTabla;
 	TextView lblDatos;
+	ImageView image;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +29,10 @@ public class AlumnoConsultarActivity extends Activity {
 		txtCarnet = (EditText) findViewById(R.id.txtCarnet);
 		gdvTabla = (GridView) findViewById(R.id.gdvTabla);
 		lblDatos = (TextView) findViewById(R.id.lblDatos);
+		image = (ImageView)findViewById(R.id.mainimage);
 		gdvTabla.setVisibility(View.INVISIBLE);
 		lblDatos.setVisibility(View.INVISIBLE);
+		
 	}
 
 	@Override
@@ -53,6 +59,7 @@ public class AlumnoConsultarActivity extends Activity {
 		{
 			lblDatos.setVisibility(View.INVISIBLE);
 			gdvTabla.setVisibility(View.INVISIBLE);
+			
 			Toast.makeText(this, "Alumno con carnet " +carnet +" no encontrado", Toast.LENGTH_LONG).show();
 			return;
 		}
@@ -68,6 +75,8 @@ public class AlumnoConsultarActivity extends Activity {
 			datos[7] = alumno.getNit();
 			datos[8] = "E-mail:";
 			datos[9] = alumno.getEmail();
+			String path = alumno.getPath();
+
 			
 			//Llenando tabla
 			ArrayAdapter<String> adaptador =
@@ -75,6 +84,9 @@ public class AlumnoConsultarActivity extends Activity {
 			gdvTabla.setAdapter(adaptador);
 			lblDatos.setVisibility(View.VISIBLE);
 			gdvTabla.setVisibility(View.VISIBLE);
+			
+			image.setImageBitmap(BitmapFactory.decodeFile(path));
+			
 		}
 		
 	}

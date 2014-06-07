@@ -14,7 +14,7 @@ public class ControlBD {
 	
 
 	private static final String[] camposAlumno = new String[] { "carnet",
-			"nombre", "telefono", "dui", "nit", "email" };
+			"nombre", "telefono", "dui", "nit", "email","path" };
 	private static final String[] camposAsignacionProyecto = new String[] {
 			"carnet", "idProyecto", "fecha" };
 	private static final String[] camposBitacora = new String[] { "id",
@@ -60,7 +60,7 @@ public class ControlBD {
 			try {
 				// lo del script de powerdesigner
 				db.execSQL("create table ALUMNO (CARNET VARCHAR(7) not null primary key, NOMBRE VARCHAR(100) not null, "
-						+ "TELEFONO VARCHAR(8) not null, DUI VARCHAR(10) not null, NIT VARCHAR(17) not null, EMAIL VARCHAR(50));");
+						+ "TELEFONO VARCHAR(8) not null, DUI VARCHAR(10) not null, NIT VARCHAR(17) not null, EMAIL VARCHAR(50), PATH VARCHAR(100));");
 				db.execSQL("create table BITACORA ( ID INTEGER not null primary key autoincrement, IDTIPOTRABAJO INTEGER not null, CARNET VARCHAR(7) "
 						+ "not null, IDPROYECTO INTEGER not null, FECHA DATE not null, DESCRIPCION VARCHAR(250) not null, "
 						+ "constraint FK_BITACORA_COMPONE_PROYECTO foreign key (IDPROYECTO) references PROYECTO (IDPROYECTO),constraint "
@@ -86,7 +86,6 @@ public class ControlBD {
 						+ "fk_asignacionproyecto_alumno FOREIGN KEY (carnet) REFERENCES alumno(carnet) ON DELETE RESTRICT );");
 				db.execSQL("create table usuarios (id INTEGER not null primary key autoincrement, usuario VARCHAR(50) not null, password VARCHAR(100) not null, tipo INTEGER not null);");
 				db.execSQL("create table totalproyectos (id INTEGER not null primary key autoincrement, numero INTERGER not null);");
-				db.execSQL("insert into totalproyectos values(null,0);");
 				
 				// triggers
 				db.execSQL("CREATE TRIGGER fk_solicitante_cargo BEFORE INSERT ON solicitante FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT idcargo FROM cargo"
@@ -122,22 +121,22 @@ public class ControlBD {
 						+ "WHERE carnet = NEW.carnet) IS NULL) THEN RAISE(ABORT, 'No existe alumno') END; END;");
 				
 				// inserciones alumno
-				db.execSQL("insert into alumno values('FG12098', 'Pedro Fuentes',   '23456781', '033206621', '06142307906731', 'pedro@yahoo.es');");
-				db.execSQL("insert into alumno values('MJ10458', 'Luis Martinez',   '22378781', '033673420', '06132307901231', 'luis@yahoo.com');");
-				db.execSQL("insert into alumno values('QS11457', 'Juan Quevedo',    '23456896', '033209871', '09232307904531', 'juan@gmail.es');");
-				db.execSQL("insert into alumno values('SA09027', 'Ricardo Sanchez', '23451231', '033207823', '08122307901931', 'ricardo@hotmail.es');");
+				db.execSQL("insert into alumno values('FG12098', 'Pedro Fuentes',   '23456781', '033206621', '06142307906731', 'pedro@yahoo.es','path1');");
+				db.execSQL("insert into alumno values('MJ10458', 'Luis Martinez',   '22378781', '033673420', '06132307901231', 'luis@yahoo.com','path2');");
+				db.execSQL("insert into alumno values('QS11457', 'Juan Quevedo',    '23456896', '033209871', '09232307904531', 'juan@gmail.es','path3');");
+				db.execSQL("insert into alumno values('SA09027', 'Ricardo Sanchez', '23451231', '033207823', '08122307901931', 'ricardo@hotmail.es','path4');");
 				
-				db.execSQL("insert into alumno values('PP08002', 'Ramon Peraza', '23478392', '033902384', '08122208901931', 'ramon@hotmail.es');");
-				db.execSQL("insert into alumno values('DM09017', 'Juan Dominguez', '23423431', '03902833', '06143112921931', 'juan@hotmail.es');");
-				db.execSQL("insert into alumno values('LO07027', 'Esteban Letona', '23456731', '031893423', '08122707906731', 'esteban@hotmail.es');");
-				db.execSQL("insert into alumno values('ME06007', 'Pedro Mendoza', '67851231', '039014843', '06142307901931', 'mendoza@yahoo.com');");
-				db.execSQL("insert into alumno values('SA09127', 'Arturo Solis', '78231231', '033902323', '08122308901931', 'arturo23@hotmail.com');");
-				db.execSQL("insert into alumno values('TA10067', 'Mario Torres', '28941231', '033904823', '06142304901931', 'mario@hotmail.es');");
-				db.execSQL("insert into alumno values('SL04002', 'Laura Silva', '23491231', '019307823', '08122307881931', 'laurasilva@gmail.com');");
-				db.execSQL("insert into alumno values('SB00001', 'Veronica Sandoval', '23490341', '030948823', '08122207901931', 'verosandoval@hotmail.com');");
-				db.execSQL("insert into alumno values('NA09080', 'Ligia Nuñez', '23569131', '039048323', '06143107901931', 'ligianz@hotmail.es');");
-				db.execSQL("insert into alumno values('FE07022', 'Francisco Flores', '23902358', '032908323', '08122227901931', 'paquitoflores@hotmail.com');");
-				db.execSQL("insert into alumno values('BC03028', 'Ricardo Bernal', '23902783', '033109383', '08120507901931', 'ricbernal@yahoo.es');");
+				db.execSQL("insert into alumno values('PP08002', 'Ramon Peraza', '23478392', '033902384', '08122208901931', 'ramon@hotmail.es','path5');");
+				db.execSQL("insert into alumno values('DM09017', 'Juan Dominguez', '23423431', '03902833', '06143112921931', 'juan@hotmail.es','path6');");
+				db.execSQL("insert into alumno values('LO07027', 'Esteban Letona', '23456731', '031893423', '08122707906731', 'esteban@hotmail.es','path7');");
+				db.execSQL("insert into alumno values('ME06007', 'Pedro Mendoza', '67851231', '039014843', '06142307901931', 'mendoza@yahoo.com','path8');");
+				db.execSQL("insert into alumno values('SA09127', 'Arturo Solis', '78231231', '033902323', '08122308901931', 'arturo23@hotmail.com','path9');");
+				db.execSQL("insert into alumno values('TA10067', 'Mario Torres', '28941231', '033904823', '06142304901931', 'mario@hotmail.es','path10');");
+				db.execSQL("insert into alumno values('SL04002', 'Laura Silva', '23491231', '019307823', '08122307881931', 'laurasilva@gmail.com','path11');");
+				db.execSQL("insert into alumno values('SB00001', 'Veronica Sandoval', '23490341', '030948823', '08122207901931', 'verosandoval@hotmail.com','path12');");
+				db.execSQL("insert into alumno values('NA09080', 'Ligia Nuñez', '23569131', '039048323', '06143107901931', 'ligianz@hotmail.es','path13');");
+				db.execSQL("insert into alumno values('FE07022', 'Francisco Flores', '23902358', '032908323', '08122227901931', 'paquitoflores@hotmail.com','path14');");
+				db.execSQL("insert into alumno values('BC03028', 'Ricardo Bernal', '23902783', '033109383', '08120507901931', 'ricbernal@yahoo.es','path15');");
 				
 				
 				
@@ -218,7 +217,6 @@ public class ControlBD {
 				db.execSQL("insert into proyecto values(null, 2, 1, 1, 'Consultoria contable');");
 				db.execSQL("insert into proyecto values(null, 1, 3, 4, 'Revision de maquila');");
 				
-				
 				db.execSQL("insert into proyecto values(null, 7, 3, 5, 'Diseño de un pagina web');");
 				db.execSQL("insert into proyecto values(null, 4, 2, 3, 'Analisis de procesos');");
 				db.execSQL("insert into proyecto values(null, 6, 1, 4, 'Refuerzo a niños con problemas de aprendizaje ');");
@@ -252,6 +250,8 @@ public class ControlBD {
 				//PARA EL LOGIN , NO TOCAR
 				db.execSQL("insert into usuarios values(null, 'admin', 'admin', 1);");
 				db.execSQL("insert into usuarios values(null, 'alumno', 'alumno', 2);");
+				db.execSQL("insert into totalproyectos values(null,0);");
+				
 
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -292,6 +292,7 @@ public class ControlBD {
 		valoresAlumno.put("dui", alumno.getDui());
 		valoresAlumno.put("nit", alumno.getNit());
 		valoresAlumno.put("email", alumno.getEmail());
+		valoresAlumno.put("path",alumno.getPath());
 		contador = db.insert("alumno", null, valoresAlumno);
 
 		if (contador == -1 || contador == 0) {
@@ -802,6 +803,8 @@ public class ControlBD {
 			alumno.setDui(cursor.getString(3));
 			alumno.setNit(cursor.getString(4));
 			alumno.setEmail(cursor.getString(5));
+			//MODIFICACION
+			alumno.setPath(cursor.getString(6));
 			return alumno;
 		} else {
 			return null;
