@@ -166,22 +166,28 @@ public class AlumnoInsertarActivity extends Activity {
 				int i = 0;
 				while (tokens.hasMoreTokens()) {
 					String elemento = tokens.nextToken();
-					if (i == 1) {
+					if(i == 0 && !elemento.equals("QRAlumnoID"))
+					{
+						Toast.makeText(this,"El código QR no corresponde a la funcionalidad de esta aplicación",
+								Toast.LENGTH_SHORT).show();
+						return;
+					}
+					if (i == 2) {
 						txtCarnet.setText(elemento);
 					}
-					if (i == 3) {
+					if (i == 4) {
 						txtNombre.setText(elemento);
 					}
-					if (i == 5) {
+					if (i == 6) {
 						txtTelefono.setText(elemento);
 					}
-					if (i == 7) {
+					if (i == 8) {
 						txtDui.setText(elemento);
 					}
-					if (i == 9) {
+					if (i == 10) {
 						txtNit.setText(elemento);
 					}
-					if (i == 11) {
+					if (i == 12) {
 						txtEmail.setText(elemento);
 					}
 					i++;
