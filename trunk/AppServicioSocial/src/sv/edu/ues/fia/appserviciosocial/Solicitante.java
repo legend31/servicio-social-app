@@ -7,7 +7,21 @@ public class Solicitante {
 					idCargo,
 					nombre,
 					telefono,
-					correo;
+					correo,path;
+
+	//MODIFICACION
+	public Solicitante(String idInstitucion,
+			String idCargo, String nombre, String telefono, String correo,
+			String path) {
+		super();
+		//this.idSolicitante = idSolicitante;
+		this.idInstitucion = idInstitucion;
+		this.idCargo = idCargo;
+		this.nombre = nombre;
+		this.telefono = telefono;
+		this.correo = correo;
+		this.path = path;
+	}
 
 	public Solicitante( String idInstitucion,
 			String idCargo, String nombre, String telefono, String correo) {
@@ -66,6 +80,14 @@ public class Solicitante {
 
 	public void setCorreo(String correo) {
 		this.correo = correo;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
 	}
 	
 }

@@ -10,6 +10,7 @@ public class EncargadoServicioSocial {
      private String telefono;
      private String facultad;
      private String escuela;
+     private String path;
      
 	
 
@@ -65,6 +66,14 @@ public class EncargadoServicioSocial {
 	public String toString() {
 		return "EncargadoServicioSocial [idEncargado=" + idEncargado
 				+ ", nombre=" + nombre + "]";
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
 	}
 	
 	

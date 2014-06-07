@@ -69,13 +69,37 @@
                 android:hint="@string/nitInstitucion"
                 android:inputType="number" />
 
-            <Button
-                android:id="@+id/btnConsultar"
+            <LinearLayout
+                android:id="@+id/linearBotones"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:onClick="insertarSolicitante"
-                android:text="@string/guardar" />
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp" >
+
+                <Button
+                    android:id="@+id/btnConsultar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="insertarSolicitante"
+                    android:text="@string/guardar" />
+
+                <Button
+                    android:id="@+id/btnTomarFoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btnQR"
+                    android:layout_centerHorizontal="true"
+                    android:onClick="tomarFoto"
+                    android:text="@string/tomarFoto" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/mainimage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:layout_gravity="center"/>
         </LinearLayout>
     </ScrollView>
 
