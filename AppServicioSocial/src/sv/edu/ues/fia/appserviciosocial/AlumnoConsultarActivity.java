@@ -1,8 +1,10 @@
 package sv.edu.ues.fia.appserviciosocial;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.graphics.BitmapFactory;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -19,6 +21,11 @@ public class AlumnoConsultarActivity extends Activity {
 	GridView gdvTabla;
 	TextView lblDatos;
 	ImageView image;
+	//sonidos
+		SoundPool soundPool;
+		int exito;
+		int fracaso;
+		 
 	
 	
 	@Override
@@ -32,7 +39,12 @@ public class AlumnoConsultarActivity extends Activity {
 		image = (ImageView)findViewById(R.id.mainimage);
 		gdvTabla.setVisibility(View.INVISIBLE);
 		lblDatos.setVisibility(View.INVISIBLE);
-		
+		//sonidos
+        soundPool = new SoundPool( 2, AudioManager.STREAM_MUSIC , 0);
+        exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);
+        fracaso = soundPool.load(getApplicationContext(), R.raw.sonido2, 0);
+
+
 	}
 
 	@Override
@@ -59,11 +71,13 @@ public class AlumnoConsultarActivity extends Activity {
 		{
 			lblDatos.setVisibility(View.INVISIBLE);
 			gdvTabla.setVisibility(View.INVISIBLE);
-			
+			soundPool.play(fracaso, 1, 1, 1, 0, 1);
 			Toast.makeText(this, "Alumno con carnet " +carnet +" no encontrado", Toast.LENGTH_LONG).show();
+			
 			return;
 		}
 		else{
+			soundPool.play(exito, 1, 1, 1, 0, 1);
 			String [] datos = new String[10];
 			datos[0] = "Nombre:";
 			datos[1] = alumno.getNombre();
