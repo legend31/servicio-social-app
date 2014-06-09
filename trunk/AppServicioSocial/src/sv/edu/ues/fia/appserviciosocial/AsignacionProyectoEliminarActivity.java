@@ -2,7 +2,10 @@ package sv.edu.ues.fia.appserviciosocial;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+
 import android.app.Activity;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -23,6 +26,11 @@ public class AsignacionProyectoEliminarActivity extends Activity {
 	Button btnAtras;
 	int tamañoArray = 0, index = 0, tipo = 0;
 	ArrayList<AsignacionProyecto> asignaciones;
+	//sonidos
+	SoundPool soundPool;
+	int exito;
+	int fracaso;
+	 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +45,11 @@ public class AsignacionProyectoEliminarActivity extends Activity {
 		btnAtras = (Button) findViewById(R.id.btnAtras);
 		btnAtras.setVisibility(View.INVISIBLE);
 		auxiliar = new ControlBD(this);
+		//sonidos
+        soundPool = new SoundPool( 2, AudioManager.STREAM_MUSIC , 0);
+        exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);
+        fracaso = soundPool.load(getApplicationContext(), R.raw.sonido2, 0);
+
 	}
 
 	@Override
@@ -89,6 +102,7 @@ public class AsignacionProyectoEliminarActivity extends Activity {
 		if (asignaciones == null) {
 			Toast.makeText(this, "Asignación de proyecto no encontrado",
 					Toast.LENGTH_LONG).show();
+			soundPool.play(fracaso, 1, 1, 1, 0, 1);
 			return;
 		} else {
 			index = 0;
@@ -166,5 +180,13 @@ public class AsignacionProyectoEliminarActivity extends Activity {
 		String regInsertados=auxiliar.eliminar(asignacion);
 		auxiliar.cerrar();
 		Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+		//sonidos
+		   if(regInsertados.length()<=25){
+		            	 soundPool.play(exito, 1, 1, 1, 0, 1);
+		            }
+		            else{
+		            soundPool.play(fracaso, 1, 1, 1, 0, 1);
+
+		            }
 	}
 }

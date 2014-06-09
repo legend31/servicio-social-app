@@ -1,28 +1,36 @@
 package sv.edu.ues.fia.appserviciosocial;
 
 import android.app.Activity;
-import android.app.ActionBar;
-import android.app.Fragment;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.os.Build;
 
 public class InstitucionEliminarActivity extends Activity {
 
 	private ControlBD auxiliar;
 	private EditText txtNit;
+	//sonidos
+	SoundPool soundPool;
+	int exito;
+	int fracaso;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_institucion_eliminar);
 		txtNit = (EditText) findViewById(R.id.editNitInstitucionEliminar);
 		auxiliar = new ControlBD(this);
+
+		//sonidos
+	         soundPool = new SoundPool( 2, AudioManager.STREAM_MUSIC , 0);
+	         exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);
+	         fracaso = soundPool.load(getApplicationContext(), R.raw.sonido2, 0);
+
+
 	}
 
 	@Override
@@ -58,9 +66,11 @@ public class InstitucionEliminarActivity extends Activity {
 		if (institucion != null){			
 			auxiliar.eliminar(institucion);
 			Toast.makeText(this, "Eliminación correcta", Toast.LENGTH_SHORT).show();
+			soundPool.play(exito, 1, 1, 1, 0, 1);
 		}else
 			Toast.makeText(this, "No existe institucion con NIT " + nit, Toast.LENGTH_SHORT).show();
-		
+		soundPool.play(fracaso, 1, 1, 1, 0, 1);
+
 		auxiliar.cerrar();
 		
 	}
