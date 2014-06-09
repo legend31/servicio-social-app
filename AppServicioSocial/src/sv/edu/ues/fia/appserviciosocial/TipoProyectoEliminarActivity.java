@@ -1,7 +1,9 @@
 package sv.edu.ues.fia.appserviciosocial;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
@@ -11,6 +13,11 @@ public class TipoProyectoEliminarActivity extends Activity {
 	
 	EditText txtTipoProyecto;
 	ControlBD helper;
+	//sonidos
+		SoundPool soundPool;
+		int exito;
+		
+		 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +26,10 @@ public class TipoProyectoEliminarActivity extends Activity {
 		
 		txtTipoProyecto = (EditText)findViewById(R.id.txtTipoProyectoEliminar);
 		helper = new ControlBD(this);
+		//sonidos
+        soundPool = new SoundPool( 2, AudioManager.STREAM_MUSIC , 0);
+        exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);
+       
 	}
 
 	@Override
@@ -36,6 +47,7 @@ public class TipoProyectoEliminarActivity extends Activity {
 		mensaje = helper.eliminar(tipoProyecto);
 		helper.cerrar();
 		Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+		soundPool.play(exito, 1, 1, 1, 0, 1);
 	}
 
 }

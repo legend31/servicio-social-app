@@ -1,15 +1,16 @@
 package sv.edu.ues.fia.appserviciosocial;
 
-import android.R.integer;
-import android.os.Bundle;
 import android.app.Activity;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
-import android.widget.Button;
 import android.widget.Toast;
 
 public class BitacoraEliminarActivity extends Activity {
@@ -18,6 +19,11 @@ public class BitacoraEliminarActivity extends Activity {
 	GridView gdvTabla;
 	TextView lblDatos;
 	Button btnBuscar;
+	//sonidos
+		SoundPool soundPool;
+		int exito;
+		int fracaso;
+		 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +37,13 @@ public class BitacoraEliminarActivity extends Activity {
 		gdvTabla.setVisibility(View.INVISIBLE);
 		lblDatos.setVisibility(View.INVISIBLE);
 		
-		
+		//sonidos
+        soundPool = new SoundPool( 2, AudioManager.STREAM_MUSIC , 0);
+        exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);
+        fracaso = soundPool.load(getApplicationContext(), R.raw.sonido2, 0);
+
+
+
 	}
 
 	@Override
@@ -63,6 +75,7 @@ public void consultarBitacora(View v) {
 			gdvTabla.setVisibility(View.INVISIBLE);
 			btnBuscar.setText("Buscar");
 			Toast.makeText(this, "Bitacora no encontrado", Toast.LENGTH_LONG).show();
+			soundPool.play(fracaso, 1, 1, 1, 0, 1);
 			return;
 		}
 		else{
@@ -93,6 +106,7 @@ public void consultarBitacora(View v) {
 			mensaje=auxiliar.eliminarBitacora(idBitacora);
 			auxiliar.cerrar();
 			Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
+			soundPool.play(exito, 1, 1, 1, 0, 1);
 			lblDatos.setVisibility(View.INVISIBLE);
 			gdvTabla.setVisibility(View.INVISIBLE);
 			btnBuscar.setText("Buscar");
