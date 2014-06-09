@@ -1,7 +1,9 @@
 package sv.edu.ues.fia.appserviciosocial;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +19,11 @@ public class TipoProyectoActualizarActivity extends Activity {
 	EditText txtIdTipoProyecto;
 	TableLayout tabla;
 	Button btnActualizarTipoProyecto;
+	//sonidos
+		SoundPool soundPool;
+		int exito;
+		int fracaso;
+		 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +37,12 @@ public class TipoProyectoActualizarActivity extends Activity {
 		txtTipoProyecto = (EditText)findViewById(R.id.txtIdTipoProyecto);
 		txtNombre = (EditText)findViewById(R.id.txtNombreTipoProyect);
 		txtIdTipoProyecto = (EditText)findViewById(R.id.txtCodigoTipoProyecto1);
-		
+
+		//sonidos
+	         soundPool = new SoundPool( 2, AudioManager.STREAM_MUSIC , 0);
+	         exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);
+	         fracaso = soundPool.load(getApplicationContext(), R.raw.sonido2, 0);
+
 		
 	}
 
@@ -51,6 +63,7 @@ public class TipoProyectoActualizarActivity extends Activity {
 			tabla.setVisibility(View.INVISIBLE);
 			btnActualizarTipoProyecto.setVisibility(View.INVISIBLE);
 			Toast.makeText(this, "Tipo Proyecto con ID " +txtTipoProyecto.getText().toString() +" no encontrado", Toast.LENGTH_LONG).show();
+			soundPool.play(fracaso, 1, 1, 1, 0, 1);
 			return;
 		}
 		else{
@@ -89,7 +102,14 @@ public class TipoProyectoActualizarActivity extends Activity {
 		String regInsertados=helper.actualizar(tipoProyecto);
 		helper.cerrar();
 		Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
-		
+		//sonidos
+		   if(regInsertados.length()>25){
+		            	 soundPool.play(exito, 1, 1, 1, 0, 1);
+		            }
+		            else{
+		            soundPool.play(fracaso, 1, 1, 1, 0, 1);
+
+		            }
 	}
 
 }

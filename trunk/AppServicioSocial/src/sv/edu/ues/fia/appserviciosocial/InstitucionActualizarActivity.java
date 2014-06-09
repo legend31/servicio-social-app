@@ -1,24 +1,26 @@
 package sv.edu.ues.fia.appserviciosocial;
 
 import android.app.Activity;
-import android.app.ActionBar;
-import android.app.Fragment;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.os.Build;
 
 public class InstitucionActualizarActivity extends Activity {
 	
 	private ControlBD auxiliar;
 	private EditText txtNit,txtNombre, txtNuevoNit;
 	private Button btnActulizar;
+	//sonidos
+		SoundPool soundPool;
+		int exito;
+		int fracaso;
+		 
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,12 @@ public class InstitucionActualizarActivity extends Activity {
 		txtNuevoNit= (EditText) findViewById(R.id.editNuevoNit);
 		btnActulizar = (Button) findViewById(R.id.btnActualizarInstitucion);
 		btnActulizar.setEnabled(false);
+
+		//sonidos
+	         soundPool = new SoundPool( 2, AudioManager.STREAM_MUSIC , 0);
+	         exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);
+	         fracaso = soundPool.load(getApplicationContext(), R.raw.sonido2, 0);
+
 	}
 
 	@Override
@@ -73,6 +81,7 @@ public class InstitucionActualizarActivity extends Activity {
 			txtNombre.setText("");
 			Toast.makeText(this, "Institucion con nit " + nit +
 					" no encontrado", Toast.LENGTH_LONG).show();
+			soundPool.play(fracaso, 1, 1, 1, 0, 1);
 			btnActulizar.setEnabled(false);
 			return;
 		}else			
@@ -106,7 +115,8 @@ public class InstitucionActualizarActivity extends Activity {
 		auxiliar.abrir();
 		auxiliar.actualizar(institucion);
 		Toast.makeText(this, "Registro actualizado correctamente",
-		Toast.LENGTH_LONG).show();					
+		Toast.LENGTH_LONG).show();	
+		soundPool.play(exito, 1, 1, 1, 0, 1);
 		auxiliar.cerrar();			
 	}
 

@@ -3,21 +3,22 @@ package sv.edu.ues.fia.appserviciosocial;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.app.ActionBar;
-import android.app.Fragment;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.os.Build;
 
 public class SolicitanteActualizarActivity extends Activity {
 	private EditText txtNombre,txtIdSolicitante,txtNitInstitucion, txtIdCargo,txtTelefono,txtEmail;
 	private ControlBD auxiliar;
+	//sonidos
+		SoundPool soundPool;
+		int exito;
+		int fracaso;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -29,6 +30,12 @@ public class SolicitanteActualizarActivity extends Activity {
 		txtTelefono= (EditText)findViewById(R.id.editTelefonoSolicitante);
 		txtEmail = (EditText)findViewById(R.id.editCorreoSolicitante);
 		txtNombre = (EditText)findViewById(R.id.editNombreSolicitante);
+
+		//sonidos
+	         soundPool = new SoundPool( 2, AudioManager.STREAM_MUSIC , 0);
+	         exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);
+	         fracaso = soundPool.load(getApplicationContext(), R.raw.sonido2, 0);
+
 	}
 
 	@Override
@@ -76,6 +83,7 @@ public class SolicitanteActualizarActivity extends Activity {
 			txtNombre.setText("");
 			Toast.makeText(this, "Solicitante con id " + id +
 					" no encontrado", Toast.LENGTH_LONG).show();
+			soundPool.play(fracaso, 1, 1, 1, 0, 1);
 			return;
 		}else{
 			
@@ -91,7 +99,7 @@ public class SolicitanteActualizarActivity extends Activity {
 			else
 				Toast.makeText(this, "No se encontro institución " + 
 						solicitante.getIdInstitucion(), Toast.LENGTH_LONG).show();
-				
+			soundPool.play(fracaso, 1, 1, 1, 0, 1);
 		}
 		
 		auxiliar.cerrar();
@@ -130,7 +138,7 @@ public class SolicitanteActualizarActivity extends Activity {
 									 solicitante.setIdSolicitante(txtIdSolicitante.getText().toString());
 									 String idAsignado = auxiliar.actualizar(solicitante);
 									 Toast.makeText(this, "Registro actualizado", Toast.LENGTH_SHORT).show();						   
-									   
+									 soundPool.play(exito, 1, 1, 1, 0, 1); 
 								 }
 							   }else  {
 								   Toast.makeText(this, "Cago no existe : "+idCargo, Toast.LENGTH_LONG).show();
@@ -144,7 +152,8 @@ public class SolicitanteActualizarActivity extends Activity {
 						Toast.makeText(this, "telefono no válido ", Toast.LENGTH_LONG).show();  
 						
 					}catch(Exception e){
-					   Toast.makeText(this, "Error "+e, Toast.LENGTH_LONG).show();			   
+					   Toast.makeText(this, "Error "+e, Toast.LENGTH_LONG).show();
+					   soundPool.play(fracaso, 1, 1, 1, 0, 1);
 				   }	
 	}
 		
