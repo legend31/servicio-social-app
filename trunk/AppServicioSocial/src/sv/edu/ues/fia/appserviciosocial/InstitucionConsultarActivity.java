@@ -1,23 +1,24 @@
 package sv.edu.ues.fia.appserviciosocial;
 
 import android.app.Activity;
-import android.app.ActionBar;
-import android.app.Fragment;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.os.Build;
 
 public class InstitucionConsultarActivity extends Activity {
 	
 	private ControlBD auxiliar;
 	private EditText txtNombre, txtNit;
+	//sonidos
+		SoundPool soundPool;
+		int exito;
+		int fracaso;
+		 
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,10 @@ public class InstitucionConsultarActivity extends Activity {
 		txtNombre = (EditText) findViewById(R.id.editVNombreInstitucion);
 		txtNit= (EditText) findViewById(R.id.editNitInstitucion);
 		auxiliar = new ControlBD(this);
+		//sonidos
+        soundPool = new SoundPool( 2, AudioManager.STREAM_MUSIC , 0);
+        exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);
+        fracaso = soundPool.load(getApplicationContext(), R.raw.sonido2, 0);
 	}
 
 	@Override
@@ -68,8 +73,10 @@ public void consultarInstitucion(View v) {
 			txtNombre.setText("");
 			Toast.makeText(this, "Institucion con nit " + nit +
 					" no encontrado", Toast.LENGTH_LONG).show();
+			soundPool.play(fracaso, 1, 1, 1, 0, 1);
 			return;
 		}else
+			soundPool.play(exito, 1, 1, 1, 0, 1);
 			txtNombre.setText(institucion.getNombre());
 		
 		

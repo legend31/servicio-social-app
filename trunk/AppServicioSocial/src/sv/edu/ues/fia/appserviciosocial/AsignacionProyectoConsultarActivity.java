@@ -2,7 +2,10 @@ package sv.edu.ues.fia.appserviciosocial;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import android.app.Activity;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -18,6 +21,10 @@ public class AsignacionProyectoConsultarActivity extends Activity {
 	GridView gdvTabla;
 	RadioGroup radioGrupo;
 	ControlBD auxiliar;
+	//sonidos
+		SoundPool soundPool;
+		int exito;
+		int fracaso;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +34,10 @@ public class AsignacionProyectoConsultarActivity extends Activity {
 		gdvTabla = (GridView) findViewById(R.id.gdvTabla);
 		radioGrupo = (RadioGroup) findViewById(R.id.radioGroup1);
 		auxiliar = new ControlBD(this);
+		//sonidos
+        soundPool = new SoundPool( 2, AudioManager.STREAM_MUSIC , 0);
+        exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);
+        fracaso = soundPool.load(getApplicationContext(), R.raw.sonido2, 0);
 	}
 
 	@Override
@@ -84,9 +95,11 @@ public class AsignacionProyectoConsultarActivity extends Activity {
 		{
 			gdvTabla.setVisibility(View.INVISIBLE);
 			Toast.makeText(this, "Asignación de proyecto no encontrado", Toast.LENGTH_LONG).show();
+			soundPool.play(fracaso, 1, 1, 1, 0, 1);
 			return;
 		}
 		else{
+			soundPool.play(exito, 1, 1, 1, 0, 1);
 			List<String> datos= new ArrayList<String>();
 			if(tipo ==1)
 			{
