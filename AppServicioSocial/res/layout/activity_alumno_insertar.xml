@@ -76,7 +76,11 @@
             android:layout_below="@+id/btnEliminar"
             android:layout_centerHorizontal="true"
             android:onClick="Scan"
-            android:text="@string/insertarqr" />
+            android:text="@string/insertarqr"
+            android:background="@drawable/btn_aspecto"
+        	android:padding="5dp"
+        	android:textColor="@android:color/white"
+        	android:layout_margin="2dp" />
 
         <Button
             android:id="@+id/btnEliminar"
@@ -84,8 +88,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtEmail"
             android:layout_centerHorizontal="true"
+            android:background="@drawable/btn_aspecto"
             android:onClick="insertarAlumno"
-            android:text="@string/guardar" />
+            android:padding="5dp"
+            android:layout_margin="2dp"
+            android:text="@string/guardar"
+            android:textColor="@android:color/white" />
 
         <EditText
             android:id="@+id/txtCarnet"
@@ -109,7 +117,11 @@
             android:layout_below="@+id/btnQR"
             android:layout_centerHorizontal="true"
             android:onClick="tomarFoto"
-            android:text="@string/tomarFoto" />
+            android:text="@string/tomarFoto"
+            android:background="@drawable/btn_aspecto"
+        	android:padding="5dp"
+        	android:textColor="@android:color/white"
+        	android:layout_margin="2dp" />
 
         <ImageView
             android:id="@+id/mainimage"
