@@ -1,13 +1,12 @@
 package sv.edu.ues.fia.appserviciosocial;
-import android.os.Bundle;
 import android.app.Activity;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class BitacoraActualizarActivity extends Activity {
@@ -20,6 +19,11 @@ public class BitacoraActualizarActivity extends Activity {
 	EditText editText3;
 	EditText editText4;
 	EditText editText5;
+	//sonidos
+		SoundPool soundPool;
+		int exito;
+		int fracaso;
+		 
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,10 @@ public class BitacoraActualizarActivity extends Activity {
 		editText3= (EditText) findViewById(R.id.editText3);
 		editText4= (EditText) findViewById(R.id.editText4);
 		editText5= (EditText) findViewById(R.id.editText5);
+		//sonidos
+        soundPool = new SoundPool( 2, AudioManager.STREAM_MUSIC , 0);
+        exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);
+        fracaso = soundPool.load(getApplicationContext(), R.raw.sonido2, 0);
 	}
 
 	@Override
@@ -68,6 +76,7 @@ public class BitacoraActualizarActivity extends Activity {
 			
 			botonBuscar.setText("Buscar");
 			Toast.makeText(this, "Bitacora no encontrado", Toast.LENGTH_LONG).show();
+			soundPool.play(fracaso, 1, 1, 1, 0, 1);
 			return;
 		}else{
 			
@@ -95,6 +104,14 @@ public class BitacoraActualizarActivity extends Activity {
 			auxiliar.cerrar();
 			Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();			
 			botonBuscar.setText("Buscar");
+			//sonidos
+			   if(mensaje.length()<=25){
+			            	 soundPool.play(exito, 1, 1, 1, 0, 1);
+			            }
+			            else{
+			            soundPool.play(fracaso, 1, 1, 1, 0, 1);
+
+			            }
 		}
 		
 	}
