@@ -38,7 +38,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:onClick="consultarSolicitante"
-                android:text="@string/buscar" />
+                android:text="@string/buscar"
+                android:background="@drawable/btn_consultar"
+       			android:padding="5dp"
+        		android:textColor="@android:color/white" />
 
             <TextView
                 android:id="@+id/textView1"

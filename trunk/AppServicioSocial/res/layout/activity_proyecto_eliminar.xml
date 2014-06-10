@@ -32,5 +32,8 @@
         android:layout_marginTop="24dp"
         android:onClick="eliminarProyecto"
         android:text="@string/eliminar" 
+        android:background="@drawable/btn_eliminar"
+       	android:padding="5dp"
+        android:textColor="@android:color/white"
         />
 </RelativeLayout>

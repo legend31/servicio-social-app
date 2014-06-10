@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/title_activity_cargo_consultar"
-        android:textSize="20sp" />
+        android:textSize="20sp"/>
 
     <EditText
         android:id="@+id/edtBuscarCargo"
@@ -52,7 +52,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/buscar" 
-        android:onClick="consultarCargo"/>
+        android:onClick="consultarCargo"
+        android:background="@drawable/btn_consultar"
+        android:padding="5dp"
+        android:textColor="@android:color/white"/>
 
       <TableLayout
         android:id="@+id/TablaDeDatosCargo"
@@ -150,7 +153,10 @@
         android:layout_alignParentTop="true"
         android:layout_marginRight="22dp"
         android:onClick="adelante"
-        android:text="@string/adelante" />
+        android:text="@string/adelante"
+        android:background="@drawable/btn_consultar"
+        android:padding="5dp"
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/btnAtras"
@@ -160,7 +166,10 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="24dp"
         android:onClick="atras"
-        android:text="@string/atras" />
+        android:text="@string/atras"
+        android:background="@drawable/btn_consultar"
+        android:padding="5dp"
+        android:textColor="@android:color/white" />
           
       </RelativeLayout>
 

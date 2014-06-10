@@ -68,7 +68,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="consultarAlumno"
-                android:text="@string/buscar" />
+                android:text="@string/buscar"
+                android:background="@drawable/btn_consultar"
+        		android:padding="5dp"
+        		android:textColor="@android:color/white" />
         </LinearLayout>
     </RelativeLayout>
 

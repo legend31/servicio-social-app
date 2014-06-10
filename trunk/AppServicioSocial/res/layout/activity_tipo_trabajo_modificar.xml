@@ -33,17 +33,6 @@
         android:hint="@string/valor"
         android:inputType="numberDecimal" />
 
-    <Button
-        android:id="@+id/btnQR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText3"
-        android:layout_below="@+id/editText3"
-        android:layout_marginLeft="26dp"
-        android:layout_marginTop="71dp"
-        android:text="@string/actualizar" 
-        android:onClick="modificarTipoTrabajo"/>
-
     <EditText
         android:id="@+id/editText2"
         android:layout_width="wrap_content"
@@ -59,9 +48,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/editText2"
-        android:layout_marginLeft="28dp"
         android:layout_toRightOf="@+id/editText1"
+        android:onClick="consultarTipoTrabajo"
         android:text="@string/buscar"
-        android:onClick="consultarTipoTrabajo" />
+        android:background="@drawable/btn_actualizar"
+       	android:padding="5dp"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/btnQR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:onClick="modificarTipoTrabajo"
+        android:text="@string/actualizar"
+        android:background="@drawable/btn_actualizar"
+       	android:padding="5dp"
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>

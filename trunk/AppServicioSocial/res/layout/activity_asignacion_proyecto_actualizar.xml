@@ -71,7 +71,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/buscar"
-            android:onClick="consultarAsignacionProyecto" />
+            android:onClick="consultarAsignacionProyecto"
+            android:background="@drawable/btn_actualizar"
+        	android:padding="5dp"
+        	android:textColor="@android:color/white" />
     </LinearLayout>
 
     <Button
@@ -83,7 +86,10 @@
         android:layout_below="@+id/linearLayout3"
         android:layout_marginTop="26dp"
         android:onClick="atras"
-        android:text="&lt;" />
+        android:text="&lt;"
+        android:background="@drawable/btn_actualizar"
+        android:padding="5dp"
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/btnAdelante"
@@ -94,7 +100,10 @@
         android:layout_alignBottom="@+id/btnAtras"
         android:layout_alignRight="@+id/linearLayout1"
         android:onClick="adelante"
-        android:text=">" />
+        android:text=">"
+        android:background="@drawable/btn_actualizar"
+        android:padding="5dp"
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/button4"
@@ -104,7 +113,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="43dp"
         android:text="@string/actualizar"
-        android:onClick="actualizarAsignacionProyecto" />
+        android:onClick="actualizarAsignacionProyecto"
+        android:background="@drawable/btn_actualizar"
+        android:padding="5dp"
+        android:textColor="@android:color/white" />
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -127,7 +139,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:drawableLeft="@drawable/ic_action_event" />
+            android:drawableLeft="@drawable/ic_action_event"
+            android:background="@drawable/btn_actualizar"
+        	android:padding="5dp"
+        	android:textColor="@android:color/white" />
     </LinearLayout>
 
     <EditText

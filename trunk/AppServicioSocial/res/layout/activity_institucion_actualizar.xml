@@ -26,7 +26,10 @@
         android:layout_below="@+id/editActNitInstitucion"
         android:layout_centerHorizontal="true"
         android:onClick="buscarInstitucion"
-        android:text="@string/buscar" />
+        android:text="@string/buscar"
+        android:background="@drawable/btn_actualizar"
+        android:padding="5dp"
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/btnActualizarInstitucion"
@@ -36,7 +39,10 @@
         android:layout_below="@+id/editActNombreInstitucion"
         android:layout_marginTop="50dp"
         android:onClick="actualizarInstitucion"
-        android:text="@string/actualizar" />
+        android:text="@string/actualizar"
+        android:background="@drawable/btn_actualizar"
+        android:padding="5dp"
+        android:textColor="@android:color/white" />
 
     <EditText
         android:id="@+id/editActNombreInstitucion"

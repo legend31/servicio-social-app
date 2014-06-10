@@ -31,6 +31,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="19dp"
         android:onClick="insertarTipoProyecto"
-        android:text="@string/insertar" />
+        android:text="@string/insertar"
+        android:background="@drawable/btn_insertar"
+       	android:padding="5dp"
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>

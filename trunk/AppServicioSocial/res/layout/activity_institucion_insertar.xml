@@ -39,7 +39,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="34dp"
         android:text="@string/guardar"
-        android:onClick="insertarInstitucion" />
+        android:onClick="insertarInstitucion"
+        android:background="@drawable/btn_insertar"
+        android:padding="5dp"
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>
 

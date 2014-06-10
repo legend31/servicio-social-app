@@ -32,7 +32,10 @@
                 android:layout_gravity="center_horizontal"
                 android:onClick="buscarSolicitante"
                 android:text="@string/buscar"
-                android:textAlignment="inherit" />
+                android:textAlignment="inherit"
+                android:background="@drawable/btn_actualizar"
+       			android:padding="5dp"
+        		android:textColor="@android:color/white" />
 
             <EditText
                 android:id="@+id/editNombreSolicitante"
@@ -85,7 +88,10 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="21dp"
                 android:onClick="actualizarSolicitante"
-                android:text="@string/actualizar" />
+                android:text="@string/actualizar"
+                android:background="@drawable/btn_actualizar"
+       			android:padding="5dp"
+        		android:textColor="@android:color/white" />
 
         </LinearLayout>
 

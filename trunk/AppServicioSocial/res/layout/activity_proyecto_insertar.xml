@@ -70,11 +70,18 @@
             <Button
                 android:id="@+id/btnIngresarProyecto"
                 android:onClick="insertarProyecto"
-                android:text="@string/insertar" />
+                android:text="@string/insertar"
+                android:background="@drawable/btn_insertar"
+       			android:padding="5dp"
+        		android:textColor="@android:color/white" />
 
             <Button
                 android:onClick="limpiar"
-                android:text="@string/limpiar" />
+                android:text="@string/limpiar"
+                android:background="@drawable/btn_insertar"
+       			android:padding="5dp"
+        		android:textColor="@android:color/white"
+        		android:layout_marginLeft="5dp" />
 
         </TableRow>
     </TableLayout>

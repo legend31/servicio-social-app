@@ -16,7 +16,10 @@
         android:layout_alignParentTop="true"
         android:layout_marginRight="16dp"
         android:text="@string/buscar" 
-        android:onClick="modificarBitacora"/>
+        android:onClick="modificarBitacora"
+        android:background="@drawable/btn_actualizar"
+        android:padding="5dp"
+        android:textColor="@android:color/white"/>
 
     <EditText
         android:id="@+id/txtIdBitacora"

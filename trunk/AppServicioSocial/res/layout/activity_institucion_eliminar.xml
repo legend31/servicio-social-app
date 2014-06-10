@@ -27,6 +27,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="37dp"
         android:onClick="eliminarInstitucion"
-        android:text="@string/eliminar" />
+        android:text="@string/eliminar"
+        android:background="@drawable/btn_eliminar"
+        android:padding="5dp"
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>
