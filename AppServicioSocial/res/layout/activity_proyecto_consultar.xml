@@ -34,14 +34,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="consultarProyecto"
-                android:text="@string/consultar" />
+                android:text="@string/consultar"
+                android:background="@drawable/btn_consultar"
+       			android:padding="5dp"
+        		android:textColor="@android:color/white" />
 
             <Button
                 android:id="@+id/botonLimpiar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="limpiarTexto"
-                android:text="@string/limpiar" />
+                android:text="@string/limpiar"
+                android:background="@drawable/btn_consultar"
+       			android:padding="5dp"
+        		android:textColor="@android:color/white"
+        		android:layout_marginLeft="5dp" />
         </LinearLayout>
 
         <TextView

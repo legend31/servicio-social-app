@@ -17,8 +17,8 @@
         android:layout_marginTop="60dp"
         android:ems="10"
         android:hint="@string/carnet"
-        android:maxLength="7"
-        android:inputType="textPersonName" >
+        android:inputType="textPersonName"
+        android:maxLength="7" >
 
         <requestFocus />
     </EditText>
@@ -30,7 +30,10 @@
         android:layout_below="@+id/txtCarnet"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
+        android:background="@drawable/btn_eliminar"
         android:onClick="eliminarAlumno"
-        android:text="@string/eliminar" />
+        android:padding="5dp"
+        android:text="@string/eliminar"
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>

@@ -21,7 +21,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="31dp"
         android:onClick="eliminarEncargado"
-        android:text="@string/eliminar" />
+        android:text="@string/eliminar"
+        android:background="@drawable/btn_eliminar"
+        android:padding="5dp"
+        android:textColor="@android:color/white" />
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -50,7 +53,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="consultarEncargadoEliminar"
-            android:text="@string/buscar" />
+            android:text="@string/buscar"
+            android:background="@drawable/btn_eliminar"
+        	android:padding="5dp"
+        	android:textColor="@android:color/white" />
     </LinearLayout>
 
     <TableLayout

@@ -21,7 +21,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="31dp"
         android:onClick="actualizarCargo"
-        android:text="@string/actualizar" />
+        android:text="@string/actualizar"
+        android:background="@drawable/btn_actualizar"
+        android:padding="5dp"
+        android:textColor="@android:color/white" />
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -50,7 +53,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="consultarCargoActualizar"
-            android:text="@string/buscar" />
+            android:text="@string/buscar"
+            android:background="@drawable/btn_actualizar"
+        	android:padding="5dp"
+        	android:textColor="@android:color/white" />
     </LinearLayout>
 
     <TableLayout

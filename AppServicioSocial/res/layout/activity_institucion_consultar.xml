@@ -29,7 +29,10 @@
         android:layout_alignBottom="@+id/editNitInstitucion"
         android:layout_toRightOf="@+id/editNitInstitucion"
         android:onClick="consultarInstitucion"
-        android:text="@string/buscar" />
+        android:text="@string/buscar"
+        android:background="@drawable/btn_consultar"
+        android:padding="5dp"
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/textView1"

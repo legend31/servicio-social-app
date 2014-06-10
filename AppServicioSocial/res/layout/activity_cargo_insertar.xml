@@ -56,7 +56,10 @@
         android:layout_below="@+id/edtDescripcionCargo"
         android:layout_marginTop="68dp"
         android:onClick="insertarCargo"
-        android:text="@string/guardar" />
+        android:text="@string/guardar"
+        android:background="@drawable/btn_insertar"
+        android:padding="5dp"
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/btnLimpiarCargo"
@@ -66,6 +69,9 @@
         android:layout_alignBottom="@+id/btnGuardarCargo"
         android:layout_alignLeft="@+id/edtDescripcionCargo"
         android:onClick="limpiarCargo"
-        android:text="@string/limpiar" />
+        android:text="@string/limpiar"
+        android:background="@drawable/btn_insertar"
+        android:padding="5dp"
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>

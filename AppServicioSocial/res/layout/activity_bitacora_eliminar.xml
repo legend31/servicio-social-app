@@ -56,7 +56,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/buscar"
-            android:onClick="consultarBitacora" />
+            android:onClick="consultarBitacora"
+            android:background="@drawable/btn_eliminar"
+        	android:padding="5dp"
+        	android:textColor="@android:color/white" />
     </LinearLayout>
 
 </RelativeLayout>

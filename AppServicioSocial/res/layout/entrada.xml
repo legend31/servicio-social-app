@@ -12,7 +12,10 @@
         android:layout_gravity="center"
         android:maxLines="1"
         android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@android:color/holo_blue_dark"
+        android:fontFamily="sans-serif-black"
+        android:textStyle="bold" />
 
     <FrameLayout
         android:layout_width="fill_parent"

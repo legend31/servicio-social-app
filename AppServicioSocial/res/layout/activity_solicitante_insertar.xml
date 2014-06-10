@@ -83,7 +83,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="insertarSolicitante"
-                    android:text="@string/guardar" />
+                    android:text="@string/guardar"
+                    android:background="@drawable/btn_insertar"
+       				android:padding="5dp"
+        			android:textColor="@android:color/white" />
 
                 <Button
                     android:id="@+id/btnTomarFoto"
@@ -92,7 +95,11 @@
                     android:layout_below="@+id/btnQR"
                     android:layout_centerHorizontal="true"
                     android:onClick="tomarFoto"
-                    android:text="@string/tomarFoto" />
+                    android:text="@string/tomarFoto"
+                    android:background="@drawable/btn_insertar"
+       				android:padding="5dp"
+        			android:textColor="@android:color/white"
+        			android:layout_marginLeft="5dp" />
             </LinearLayout>
 
             <ImageView

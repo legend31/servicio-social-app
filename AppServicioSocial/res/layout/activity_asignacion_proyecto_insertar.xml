@@ -56,7 +56,10 @@
             android:id="@+id/btnFecha"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_action_event" />
+            android:drawableLeft="@drawable/ic_action_event"
+            android:background="@drawable/btn_insertar"
+        	android:padding="5dp"
+        	android:textColor="@android:color/white" />
     </LinearLayout>
 
     <Button
@@ -67,6 +70,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="68dp"
         android:onClick="insertarAsignacionProyecto"
-        android:text="@string/asignar" />
+        android:text="@string/asignar"
+        android:background="@drawable/btn_insertar"
+        android:padding="5dp"
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>

@@ -48,7 +48,7 @@
         android:layout_marginTop="48dp"
         android:onClick="ingresar"
         android:text="@string/ingresar"
-        android:background="@drawable/btn_aspecto"
+        android:background="@drawable/btn_insertar"
         android:padding="8dp"
         android:textColor="@android:color/white" />
 
