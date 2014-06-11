@@ -29,7 +29,7 @@
             android:id="@+id/gdvTabla"
             android:layout_width="match_parent"
             android:layout_height="312dp"
-            android:layout_below="@+id/lblDatos"
+            android:layout_below="@+id/mainimage"
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:numColumns="2" >
@@ -38,8 +38,10 @@
         <ImageView
             android:id="@+id/mainimage"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/gdvTabla"
+            android:layout_height="100dp"
+            android:layout_below="@+id/lblDatos"
+            android:padding="10dp"
+            android:src="@drawable/anonimo"
             />
 
         <LinearLayout

@@ -15,120 +15,148 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context=".AlumnoInsertarActivity" >
 
-        <EditText
-            android:id="@+id/txtNombre"
+        <TableLayout
+            android:id="@+id/tablaEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/txtCarnet"
-            android:layout_below="@+id/txtCarnet"
-            android:ems="10"
-            android:hint="@string/nombre"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/txtTelefono"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/txtNombre"
-            android:layout_below="@+id/txtNombre"
-            android:ems="10"
-            android:hint="@string/telefono"
-            android:inputType="phone"
-            android:maxLength="8" />
-
-        <EditText
-            android:id="@+id/txtDui"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/txtTelefono"
-            android:layout_below="@+id/txtTelefono"
-            android:ems="10"
-            android:hint="@string/dui"
-            android:inputType="number"
-            android:maxLength="9" />
-
-        <EditText
-            android:id="@+id/txtNit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/txtDui"
-            android:layout_below="@+id/txtDui"
-            android:ems="10"
-            android:hint="@string/nit"
-            android:inputType="number"
-            android:maxLength="14" />
-
-        <EditText
-            android:id="@+id/txtEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/txtNit"
-            android:layout_below="@+id/txtNit"
-            android:ems="10"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress" >
-        </EditText>
-
-        <Button
-            android:id="@+id/btnQR"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btnEliminar"
             android:layout_centerHorizontal="true"
-            android:onClick="Scan"
-            android:text="@string/insertarqr"
-            android:background="@drawable/btn_insertar"
-        	android:padding="5dp"
-        	android:textColor="@android:color/white"
-        	android:layout_margin="2dp" />
+            android:layout_marginBottom="5dp" >
 
-        <Button
-            android:id="@+id/btnEliminar"
+            <TableRow>
+
+                <ImageView
+                    android:id="@+id/mainimage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    android:paddingBottom="5dp"
+                    android:src="@drawable/anonimo" />
+            </TableRow>
+
+            <TableRow>
+
+                <EditText
+                    android:id="@+id/txtNombre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/nombre"
+                    android:inputType="textPersonName" />
+            </TableRow>
+
+            <TableRow>
+
+                <EditText
+                    android:id="@+id/txtTelefono"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/telefono"
+                    android:inputType="phone"
+                    android:maxLength="8" />
+            </TableRow>
+
+            <TableRow>
+
+                <EditText
+                    android:id="@+id/txtDui"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/dui"
+                    android:inputType="number"
+                    android:maxLength="9" />
+            </TableRow>
+
+            <TableRow>
+
+                <EditText
+                    android:id="@+id/txtNit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/nit"
+                    android:inputType="number"
+                    android:maxLength="14" />
+            </TableRow>
+
+            <TableRow>
+
+                <EditText
+                    android:id="@+id/txtEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress" >
+                </EditText>
+            </TableRow>
+
+            <TableRow>
+
+                <EditText
+                    android:id="@+id/txtCarnet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/carnet"
+                    android:inputType="textPersonName"
+                    android:maxLength="7" >
+
+                    <requestFocus />
+                </EditText>
+            </TableRow>
+        </TableLayout>
+
+        <TableLayout
+            android:id="@+id/tablaBotones"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtEmail"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/btn_insertar"
-            android:onClick="insertarAlumno"
-            android:padding="5dp"
-            android:layout_margin="2dp"
-            android:text="@string/guardar"
-            android:textColor="@android:color/white" />
+            android:paddingTop="5dp"
+            android:layout_below="@+id/tablaEdit" >
 
-        <EditText
-            android:id="@+id/txtCarnet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="14dp"
-            android:ems="10"
-            android:hint="@string/carnet"
-            android:inputType="textPersonName"
-            android:maxLength="7" >
+            <TableRow>
 
-            <requestFocus />
-        </EditText>
+                <Button
+                    android:id="@+id/btnQR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/btn_insertar"
+                    android:onClick="Scan"
+                    android:padding="5dp"
+                    android:text="@string/insertarqr"
+                    android:textColor="@android:color/white" />
+            </TableRow>
 
-        <Button
-            android:id="@+id/btnTomarFoto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btnQR"
-            android:layout_centerHorizontal="true"
-            android:onClick="tomarFoto"
-            android:text="@string/tomarFoto"
-            android:background="@drawable/btn_insertar"
-        	android:padding="5dp"
-        	android:textColor="@android:color/white"
-        	android:layout_margin="2dp" />
+            <TableRow>
 
-        <ImageView
-            android:id="@+id/mainimage"
-            android:layout_width="wrap_content"
-            android:layout_below="@+id/btnTomarFoto"
-            android:layout_height="wrap_content"
-            />
+                <Button
+                    android:id="@+id/btnEliminar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/btn_insertar"
+                    android:onClick="insertarAlumno"
+                    android:padding="5dp"
+                    android:text="@string/guardar"
+                    android:textColor="@android:color/white" />
+            </TableRow>
+
+            <TableRow>
+
+                <Button
+                    android:id="@+id/btnTomarFoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/btn_insertar"
+                    android:onClick="tomarFoto"
+                    android:padding="5dp"
+                    android:text="@string/tomarFoto"
+                    android:textColor="@android:color/white" />
+            </TableRow>
+        </TableLayout>
     </RelativeLayout>
 
 </ScrollView>
