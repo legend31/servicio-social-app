@@ -69,7 +69,8 @@ public class EncargadoConsultarActivity extends Activity implements
 		edtFacultad = (EditText) findViewById(R.id.edtFacultadEncargado);
 		edtEscuela = (EditText) findViewById(R.id.edtEscuelaEncargado);
 
-		image = (ImageView) findViewById(R.id.mainImageEncargado);
+		image = (ImageView) findViewById(R.id.mainimage);
+		image.setVisibility(View.INVISIBLE);
 		
 
 		// spinner
@@ -105,6 +106,8 @@ public class EncargadoConsultarActivity extends Activity implements
 			Toast.makeText(this, "No se ingreso informacion para la busqueda.",
 					Toast.LENGTH_LONG).show();
 			tablaDeDatos.setVisibility(View.INVISIBLE);
+			
+			image.setVisibility(View.INVISIBLE);
 
 			btnAtras.setVisibility(View.INVISIBLE);
 
@@ -122,6 +125,8 @@ public class EncargadoConsultarActivity extends Activity implements
 					Toast.LENGTH_LONG).show();
 			soundPool.play(fracaso, 1, 1, 1, 0, 1);
 			tablaDeDatos.setVisibility(View.INVISIBLE);
+			
+			image.setVisibility(View.INVISIBLE);
 
 			btnAtras.setVisibility(View.INVISIBLE);
 
@@ -158,6 +163,7 @@ public class EncargadoConsultarActivity extends Activity implements
 
 		encargado = datos.get(indicador);
 		tablaDeDatos.setVisibility(View.VISIBLE);
+		image.setVisibility(View.VISIBLE);
 		// btnActualizar.setVisibility(View.VISIBLE);
 		edtIdEncargado.setText(Integer.toString(encargado.getIdEncargado()));
 		// Toast.makeText(this, "Su id es" +encargado.getIdEncargado()

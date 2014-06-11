@@ -56,6 +56,15 @@
             android:padding="5dp"
             android:text="@string/buscar"
             android:textColor="@android:color/white" />
+        
+         <ImageView
+            android:id="@+id/mainimage"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_below="@+id/btnBuscarEncargado"
+            android:padding="10dp"
+            android:src="@drawable/anonimo"
+            />
 
         <TableLayout
             android:id="@+id/TablaDeDatosEncargado"
@@ -63,16 +72,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/linearLayout1"
             android:layout_marginTop="22dp" >
-
-            <TableRow>
-
-                <ImageView
-                    android:id="@+id/mainimage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:padding="10dp"
-                    android:src="@drawable/anonimo" />
-            </TableRow>
 
             <TableRow
                 android:id="@+id/tableRow1"
@@ -218,13 +217,6 @@
                     android:longClickable="false" />
             </TableRow>
         </TableLayout>
-
-        <ImageView
-            android:id="@+id/mainImageEncargado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/TablaDeDatosEncargado"
-            android:layout_centerHorizontal="true" />
 
         <RelativeLayout
             android:layout_width="match_parent"
