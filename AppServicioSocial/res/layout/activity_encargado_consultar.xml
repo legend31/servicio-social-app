@@ -51,11 +51,11 @@
             android:id="@+id/btnBuscarEncargado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="consultarEncargado"
-            android:text="@string/buscar"
             android:background="@drawable/btn_consultar"
-        	android:padding="5dp"
-        	android:textColor="@android:color/white" />
+            android:onClick="consultarEncargado"
+            android:padding="5dp"
+            android:text="@string/buscar"
+            android:textColor="@android:color/white" />
 
         <TableLayout
             android:id="@+id/TablaDeDatosEncargado"
@@ -63,6 +63,16 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/linearLayout1"
             android:layout_marginTop="22dp" >
+
+            <TableRow>
+
+                <ImageView
+                    android:id="@+id/mainimage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:padding="10dp"
+                    android:src="@drawable/anonimo" />
+            </TableRow>
 
             <TableRow
                 android:id="@+id/tableRow1"
@@ -228,11 +238,11 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginRight="22dp"
-                android:onClick="adelante"
-                android:text="@string/adelante"
                 android:background="@drawable/btn_consultar"
-        		android:padding="5dp"
-        		android:textColor="@android:color/white" />
+                android:onClick="adelante"
+                android:padding="5dp"
+                android:text="@string/adelante"
+                android:textColor="@android:color/white" />
 
             <Button
                 android:id="@+id/btnAtras"
@@ -241,11 +251,11 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="24dp"
-                android:onClick="atras"
-                android:text="@string/atras"
                 android:background="@drawable/btn_consultar"
-        		android:padding="5dp"
-        		android:textColor="@android:color/white" />
+                android:onClick="atras"
+                android:padding="5dp"
+                android:text="@string/atras"
+                android:textColor="@android:color/white" />
         </RelativeLayout>
     </LinearLayout>
 

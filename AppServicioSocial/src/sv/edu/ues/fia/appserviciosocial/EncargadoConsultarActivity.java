@@ -40,10 +40,10 @@ public class EncargadoConsultarActivity extends Activity implements
 	EncargadoServicioSocial encargado;
 	ImageView image;
 	int cantidad;
-	//sonidos
-		SoundPool soundPool;
-		int exito;
-		int fracaso;
+	// sonidos
+	SoundPool soundPool;
+	int exito;
+	int fracaso;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +70,7 @@ public class EncargadoConsultarActivity extends Activity implements
 		edtEscuela = (EditText) findViewById(R.id.edtEscuelaEncargado);
 
 		image = (ImageView) findViewById(R.id.mainImageEncargado);
+		
 
 		// spinner
 		Spinner spinner = (Spinner) findViewById(R.id.spinnerEncargado);
@@ -80,12 +81,11 @@ public class EncargadoConsultarActivity extends Activity implements
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
 		spinner.setOnItemSelectedListener(this);
-		
-		//sonidos
-        soundPool = new SoundPool( 2, AudioManager.STREAM_MUSIC , 0);
-        exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);
-        fracaso = soundPool.load(getApplicationContext(), R.raw.sonido2, 0);
 
+		// sonidos
+		soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+		exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);
+		fracaso = soundPool.load(getApplicationContext(), R.raw.sonido2, 0);
 
 	}
 
@@ -136,7 +136,7 @@ public class EncargadoConsultarActivity extends Activity implements
 					Toast.LENGTH_LONG).show();
 			soundPool.play(exito, 1, 1, 1, 0, 1);
 			cantidad = datos.size() - 1;
-	
+
 			indicador = 0;
 			mostrarDatos();
 
@@ -169,6 +169,11 @@ public class EncargadoConsultarActivity extends Activity implements
 		edtEscuela.setText(encargado.getEscuela());
 		String path = encargado.getPath();
 		image.setImageBitmap(BitmapFactory.decodeFile(path));
+		if (path.equalsIgnoreCase("")) {
+			image.setImageResource(R.drawable.anonimo);
+		} else {
+			image.setImageBitmap(BitmapFactory.decodeFile(path));
+		}
 
 		// mostrar los botones de navegacion
 		if (indicador == 0 && cantidad != indicador) {

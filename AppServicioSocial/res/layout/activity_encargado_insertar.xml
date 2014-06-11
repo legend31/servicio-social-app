@@ -20,70 +20,85 @@
             android:id="@+id/titulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:gravity="center"
+            android:layout_centerHorizontal="true"
             android:text="@string/title_activity_encargado_insertar"
             android:textSize="20sp" />
 
-        <EditText
-            android:id="@+id/txtNombreEncargado"
+        <TableLayout
+            android:id="@+id/tablaEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
             android:layout_below="@+id/titulo"
-            android:layout_marginTop="35dp"
-            android:ems="10"
-            android:hint="@string/nombre"
-            android:inputType="textPersonName" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp" >
 
-        <EditText
-            android:id="@+id/txtEmailEncargado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/txtNombreEncargado"
-            android:ems="10"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress" />
+            <TableRow>
 
-        <EditText
-            android:id="@+id/txtTelefonoEncargado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/txtEmailEncargado"
-            android:ems="10"
-            android:hint="@string/telefono"
-            android:inputType="phone" />
+                <ImageView
+                    android:id="@+id/mainimage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    android:paddingBottom="5dp"
+                    android:src="@drawable/anonimo" />
+            </TableRow>
 
-        <EditText
-            android:id="@+id/txtFacultadEncargado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/txtTelefonoEncargado"
-            android:ems="10"
-            android:hint="@string/facultad"
-            android:inputType="text" />
+            <TableRow>
 
-        <EditText
-            android:id="@+id/txtEscuelaEncargado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/txtFacultadEncargado"
-            android:ems="10"
-            android:hint="@string/escuela"
-            android:inputType="text" />
+                <EditText
+                    android:id="@+id/txtNombreEncargado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/nombre"
+                    android:inputType="textPersonName" />
+            </TableRow>
+
+            <TableRow>
+
+                <EditText
+                    android:id="@+id/txtEmailEncargado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress" />
+            </TableRow>
+
+            <TableRow>
+
+                <EditText
+                    android:id="@+id/txtTelefonoEncargado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/telefono"
+                    android:inputType="phone" />
+            </TableRow>
+
+            <TableRow>
+
+                <EditText
+                    android:id="@+id/txtFacultadEncargado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/facultad"
+                    android:inputType="text" />
+            </TableRow>
+
+            <TableRow>
+
+                <EditText
+                    android:id="@+id/txtEscuelaEncargado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/escuela"
+                    android:inputType="text" />
+            </TableRow>
+
+        </TableLayout>
 
         <TableLayout
             android:id="@+id/tablaBotones"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtEscuelaEncargado"
+            android:layout_below="@+id/tablaEdit"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="5dp" >
 
@@ -94,43 +109,35 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="23dp"
-                    android:onClick="limpiarEncargado"
-                    android:text="@string/limpiar"
                     android:background="@drawable/btn_insertar"
-        			android:padding="5dp"
-        			android:textColor="@android:color/white" />
+                    android:onClick="limpiarEncargado"
+                    android:padding="5dp"
+                    android:text="@string/limpiar"
+                    android:textColor="@android:color/white" />
 
                 <Button
                     android:id="@+id/btnGuardarEncargado"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="23dp"
-                    android:onClick="insertarEncargado"
-                    android:text="@string/guardar"
                     android:background="@drawable/btn_insertar"
-        			android:padding="5dp"
-        			android:textColor="@android:color/white"
-        			 />
+                    android:onClick="insertarEncargado"
+                    android:padding="5dp"
+                    android:text="@string/guardar"
+                    android:textColor="@android:color/white" />
 
                 <Button
                     android:id="@+id/btnTomarFoto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="23dp"
-                    android:onClick="tomarFoto"
-                    android:text="@string/tomarFoto"
                     android:background="@drawable/btn_insertar"
-        			android:padding="5dp"
-        			android:textColor="@android:color/white" />
+                    android:onClick="tomarFoto"
+                    android:padding="5dp"
+                    android:text="@string/tomarFoto"
+                    android:textColor="@android:color/white" />
             </TableRow>
         </TableLayout>
-
-        <ImageView
-            android:id="@+id/mainimage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tablaBotones"
-            android:layout_centerHorizontal="true" 
-            android:layout_centerVertical="true"/>
     </RelativeLayout>
-</ScrollView>
+
+</ScrollView>
