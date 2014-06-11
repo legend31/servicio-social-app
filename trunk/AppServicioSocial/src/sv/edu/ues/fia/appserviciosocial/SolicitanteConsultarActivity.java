@@ -34,7 +34,7 @@ public class SolicitanteConsultarActivity extends Activity {
 		txtEmail = (EditText) findViewById(R.id.edit_email);
 		txtInstitucion = (EditText) findViewById(R.id.edit_institucion);
 		txtIdCargo = (EditText) findViewById(R.id.editCargo);
-		image = (ImageView) findViewById(R.id.mainImageSolicitante);
+		image = (ImageView) findViewById(R.id.mainimage);
 		auxiliar = new ControlBD(this);
 		//sonidos
         soundPool = new SoundPool( 2, AudioManager.STREAM_MUSIC , 0);
@@ -98,7 +98,12 @@ public class SolicitanteConsultarActivity extends Activity {
 			txtEmail.setText(solicitante.getCorreo());
 			txtIdCargo.setText(solicitante.getIdCargo());
 			String path = solicitante.getPath();
-			image.setImageBitmap(BitmapFactory.decodeFile(path));
+			
+			if (path.equalsIgnoreCase("")) {
+				image.setImageResource(R.drawable.anonimo);
+			} else
+				image.setImageBitmap(BitmapFactory.decodeFile(path));
+		
 			
 			if (institucion != null)
 				txtInstitucion.setText(institucion.getNombre());
