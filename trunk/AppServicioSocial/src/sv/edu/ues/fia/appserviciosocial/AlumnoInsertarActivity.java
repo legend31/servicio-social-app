@@ -2,6 +2,7 @@ package sv.edu.ues.fia.appserviciosocial;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -36,6 +37,7 @@ public class AlumnoInsertarActivity extends Activity {
 	private EditText txtDui;
 	private EditText txtNit;
 	private EditText txtEmail;
+	private String urlExterno = "http://hv11002pdm115.hostei.com/serviciosweb/insertar_alumno.php";
 
 	SoundPool soundPool;
 	int exito;
@@ -89,6 +91,7 @@ public class AlumnoInsertarActivity extends Activity {
 		String nit = txtNit.getText().toString();
 		String email = txtEmail.getText().toString();
 		String info = "";
+		String url;
 		// Validando
 		if (carnet == null || carnet.trim() == "" || carnet.length() != 7) {
 			info = "Carnet inválido";
@@ -129,6 +132,15 @@ public class AlumnoInsertarActivity extends Activity {
 		String regInsertados = auxiliar.insertar(alumno);
 		auxiliar.cerrar();
 		Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+		
+		//Inserción en el servidor PHP
+		url = urlExterno + "?carnet=" + carnet + "&nombre="
+				+ URLEncoder.encode(nombre) + "&telefono=" + telefono + "&dui=" + dui
+				+ "&nit=" + nit + "&email=" + email;
+		Log.v("la url de php", url);
+		ControladorServicio.insertarObjeto(url, this);
+		//Subida de foto al servidor
+		
 
 		if (regInsertados.length() <= 20) {
 			soundPool.play(exito, 1, 1, 1, 0, 1);

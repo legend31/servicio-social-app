@@ -37,15 +37,22 @@ public class ControladorServicio {
 		HttpClient cliente = new DefaultHttpClient(parametros);
 		HttpGet httpGet = new HttpGet(url);
 		try {
+			Log.v("Prueba", "Antes de HttpResponse");
 			HttpResponse httpRespuesta = cliente.execute(httpGet);
+			Log.v("Prueba", "Despues de HttpResponse");
 			StatusLine estado = httpRespuesta.getStatusLine();
+			Log.v("Prueba", "Despues de StatusLine");
 			int codigoEstado = estado.getStatusCode();
+			Log.v("Prueba", "Despues de codigoEstado");
 			if (codigoEstado == 200) {
+				Log.v("Prueba", "dentro de if codigo = 200");
 				HttpEntity entidad = httpRespuesta.getEntity();
+				Log.v("Prueba", "Despues de entidad");
 				respuesta = EntityUtils.toString(entidad);
+				Log.v("Prueba", "Despues de respuesta");
 			}
 		} catch (Exception e) {
-			Toast.makeText(ctx, "Error en la conexion", Toast.LENGTH_LONG)
+			Toast.makeText(ctx, "Error en la conexion"+e.getMessage(), Toast.LENGTH_LONG)
 					.show();
 			// Desplegando el error en el LogCat
 			Log.v("Error de Conexion", e.toString());
@@ -119,14 +126,14 @@ public class ControladorServicio {
 	}
 
 	// Java
-	public static void insertarAlumno(String url, JSONObject obj, Context ctx) {
+	public static void insertarObjeto(String url, JSONObject obj, Context ctx) {
 		String respuesta = obtenerRespuestaPost(url, obj, ctx);
 		try {
 			if (respuesta.equals("200"))
-				Toast.makeText(ctx, "Insercion Correcta", Toast.LENGTH_LONG)
+				Toast.makeText(ctx, "Insercion Correcta en el servidor", Toast.LENGTH_LONG)
 						.show();
 			else
-				Toast.makeText(ctx, "Error registro duplicado",
+				Toast.makeText(ctx, "Error registro duplicado en el servidor",
 						Toast.LENGTH_LONG).show();
 			Log.v("", respuesta);
 		} catch (Exception e) {
@@ -136,18 +143,19 @@ public class ControladorServicio {
 	}
 
 	// PHP
-	public static void insertarAlumno(String peticion, Context ctx) {
+	public static void insertarObjeto(String peticion, Context ctx) {
 
 		String json = obtenerRespuestaPeticion(peticion, ctx);
 		try {
 			JSONObject resultado = new JSONObject(json);
 			int respuesta = resultado.getInt("resultado");
 			if (respuesta == 1)
-				Toast.makeText(ctx, "Registro ingresado", Toast.LENGTH_LONG)
+				Toast.makeText(ctx, "Registro ingresado en el servidor", Toast.LENGTH_LONG)
 						.show();
 			else
-				Toast.makeText(ctx, "Error registro duplicado",
+				Toast.makeText(ctx, "Error registro duplicado en el servidor",
 						Toast.LENGTH_LONG).show();
+			Log.v("", json);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
