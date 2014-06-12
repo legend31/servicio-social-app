@@ -31,7 +31,20 @@
                     android:paddingBottom="5dp"
                     android:src="@drawable/anonimo" />
             </TableRow>
+			 <TableRow>
 
+                <EditText
+                    android:id="@+id/txtCarnet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/carnet"
+                    android:inputType="textPersonName"
+                    android:maxLength="7" >
+
+                    <requestFocus />
+                </EditText>
+            </TableRow>
             <TableRow>
 
                 <EditText
@@ -91,20 +104,7 @@
                 </EditText>
             </TableRow>
 
-            <TableRow>
-
-                <EditText
-                    android:id="@+id/txtCarnet"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/carnet"
-                    android:inputType="textPersonName"
-                    android:maxLength="7" >
-
-                    <requestFocus />
-                </EditText>
-            </TableRow>
+           
         </TableLayout>
 
         <TableLayout
