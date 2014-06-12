@@ -23,6 +23,16 @@ public class AccesoActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		//Codigo para ganar tiempo en el acceso en las pruebas
+		//**************************************
+		Intent menu = new Intent(this, PantallaInicialActivity.class);
+		menu.putExtra("tipoUsuario", 1);
+		startActivity(menu);
+        overridePendingTransition(R.anim.left_in, R.anim.left_out);
+        finish();
+        //**************************************
+        
 		setContentView(R.layout.activity_acceso);
 		usuario = (EditText) findViewById(R.id.txfUsuario);
 		password = (EditText) findViewById(R.id.txfPassword);
@@ -36,7 +46,7 @@ public class AccesoActivity extends Activity {
 	
 	public void ingresar(View v)
 	{
-		auxiliar.abrir();
+		/*auxiliar.abrir();
 		String tipo = auxiliar.verificarUsuario(usuario.getText().toString(), password.getText().toString());
 		auxiliar.cerrar();
 		if(tipo == null)
@@ -54,7 +64,7 @@ public class AccesoActivity extends Activity {
 			startActivity(menu);
 	        overridePendingTransition(R.anim.left_in, R.anim.left_out);
 	        finish();
-		}
+		}*/
 	}
 
 
