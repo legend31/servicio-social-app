@@ -17,6 +17,7 @@ import android.media.SoundPool;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
@@ -54,6 +55,11 @@ public class AlumnoInsertarActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_alumno_insertar);
+		
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+		.permitAll().build();
+		StrictMode.setThreadPolicy(policy);
+
 		auxiliar = new ControlBD(this);
 		txtCarnet = (EditText) findViewById(R.id.txtCarnet);
 		txtNombre = (EditText) findViewById(R.id.txtNombre);
@@ -83,6 +89,7 @@ public class AlumnoInsertarActivity extends Activity {
 		return true;
 	}
 
+	@SuppressWarnings("deprecation")
 	public void insertarAlumno(View v) {
 		String carnet = txtCarnet.getText().toString();
 		String nombre = txtNombre.getText().toString();
@@ -135,12 +142,12 @@ public class AlumnoInsertarActivity extends Activity {
 		
 		//Inserción en el servidor PHP
 		url = urlExterno + "?carnet=" + carnet + "&nombre="
-				+ URLEncoder.encode(nombre) + "&telefono=" + telefono + "&dui=" + dui
+				+ URLEncoder.encode( nombre) + "&telefono=" + telefono + "&dui=" + dui
 				+ "&nit=" + nit + "&email=" + email;
 		Log.v("la url de php", url);
-		ControladorServicio.insertarObjeto(url, this);
+		ControladorServicio.insertarObjeto(url, AlumnoInsertarActivity.this);
 		//Subida de foto al servidor
-		
+		ControladorServicio.subirImagen(path, this);
 
 		if (regInsertados.length() <= 20) {
 			soundPool.play(exito, 1, 1, 1, 0, 1);
