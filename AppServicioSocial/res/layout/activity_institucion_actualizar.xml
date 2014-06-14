@@ -31,19 +31,6 @@
         android:padding="5dp"
         android:textColor="@android:color/white" />
 
-    <Button
-        android:id="@+id/btnActualizarInstitucion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btnActBuscarInstitucion"
-        android:layout_below="@+id/editActNombreInstitucion"
-        android:layout_marginTop="50dp"
-        android:onClick="actualizarInstitucion"
-        android:text="@string/actualizar"
-        android:background="@drawable/btn_actualizar"
-        android:padding="5dp"
-        android:textColor="@android:color/white" />
-
     <EditText
         android:id="@+id/editActNombreInstitucion"
         android:layout_width="wrap_content"
@@ -66,5 +53,38 @@
         android:ems="10"
         android:hint="@string/nuevoNit" 
         android:inputType="number"/>
+
+    <Button
+        android:id="@+id/btnActualizarInstitucion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnActBuscarInstitucion"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="54dp"
+        android:background="@drawable/btn_actualizar"
+        android:onClick="actualizarInstitucion"
+        android:padding="5dp"
+        android:text="@string/actualizar"
+        android:textColor="@android:color/white" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editNuevoNit"
+        android:layout_below="@+id/editNuevoNit"
+        android:layout_marginTop="14dp"
+        android:ems="10"
+        android:hint="@string/latitud" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/editText1"
+        android:layout_below="@+id/editText1"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="@string/longitud" />
 
 </RelativeLayout>
