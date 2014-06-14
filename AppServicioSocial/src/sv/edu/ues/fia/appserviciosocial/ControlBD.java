@@ -24,7 +24,7 @@ public class ControlBD {
 	private static final String[] camposEscuela = new String[] { "idEscuela",
 			"idEncargado", "nombre", "facultad" };
 	private static final String[] camposInstitucion = new String[] {
-			"idInstitucion", "nombre", "nit" };
+			"idInstitucion", "nombre", "nit","latitud","longitud" };
 	private static final String[] camposProyecto = new String[] { "idProyecto",
 			"idSolicitante", "idTipoProyecto", "idEncargado", "nombre" };
 	private static final String[] camposSolicitante = new String[] {
@@ -74,7 +74,7 @@ public class ControlBD {
 				db.execSQL("create table ENCARGADOSERVICIOSOCIAL ( IDENCARGADO INTEGER not null primary key autoincrement, NOMBRE VARCHAR(100) not null,"
 						+ " EMAIL VARCHAR(50),TELEFONO VARCHAR(8) not null, FACULTAD VARCHAR(100),ESCUELA CHAR(100), PATH VARCHAR(100));");
 				
-				db.execSQL("create table INSTITUCION ( IDINSTITUCION INTEGER not null primary key autoincrement, NOMBRE VARCHAR(100) not null, NIT VARCHAR(17) not null);");
+				db.execSQL("create table INSTITUCION ( IDINSTITUCION INTEGER not null primary key autoincrement, NOMBRE VARCHAR(100) not null, NIT VARCHAR(17) not null, LATITUD VARCHAR(15) not null,LONGITUD VARCHAR(17) not null );");
 				
 				db.execSQL("create table PROYECTO ( IDPROYECTO INTEGER not null primary key autoincrement, IDSOLICITANTE INTEGER not null, IDTIPOPROYECTO INTEGER "
 						+ "not null, IDENCARGADO INTEGER not null, NOMBRE VARCHAR(100) not null, constraint FK_PROYECTO_ADMINISTR_ENCARGAD foreign key "
@@ -174,16 +174,16 @@ public class ControlBD {
 				
 				
 				//inserciones institucion
-				db.execSQL("insert into institucion values(null, 'Institución 1', '06142506921232');");
-				db.execSQL("insert into institucion values(null, 'Institución 2', '02142509871232');");
-				db.execSQL("insert into institucion values(null, 'Institución 3', '06172506924567');");
+				db.execSQL("insert into institucion values(null, 'Institución 1', '06142506921232','13.7033565','-89.2224664');");
+				db.execSQL("insert into institucion values(null, 'Institución 2', '02142509871232','13.7033565','-89.2224664');");
+				db.execSQL("insert into institucion values(null, 'Institución 3', '06172506924567','13.7033565','-89.2224664');");
 				
-				db.execSQL("insert into institucion values(null, 'Institución 4', '06172092344567');");
-				db.execSQL("insert into institucion values(null, 'Institución 5', '06179038924567');");
-				db.execSQL("insert into institucion values(null, 'Institución 6', '06172506920934');");
-				db.execSQL("insert into institucion values(null, 'Institución 7', '06172509284567');");
-				db.execSQL("insert into institucion values(null, 'Institución 8', '06172590238941');");
-				db.execSQL("insert into institucion values(null, 'Institución 9', '06172509034567');");
+				db.execSQL("insert into institucion values(null, 'Institución 4', '06172092344567','13.7033565','-89.2224664');");
+				db.execSQL("insert into institucion values(null, 'Institución 5', '06179038924567','13.7033565','-89.2224664');");
+				db.execSQL("insert into institucion values(null, 'Institución 6', '06172506920934','13.7033565','-89.2224664');");
+				db.execSQL("insert into institucion values(null, 'Institución 7', '06172509284567','13.7033565','-89.2224664');");
+				db.execSQL("insert into institucion values(null, 'Institución 8', '06172590238941','13.7033565','-89.2224664');");
+				db.execSQL("insert into institucion values(null, 'Institución 9', '06172509034567','13.7033565','-89.2224664');");
 				
 				
 				//inserciones cargo
