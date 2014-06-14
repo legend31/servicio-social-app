@@ -12,6 +12,7 @@ import android.media.MediaScannerConnection.MediaScannerConnectionClient;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.AudioManager;
 import android.media.SoundPool;
@@ -168,20 +169,20 @@ public class AlumnoInsertarActivity extends Activity {
 
 	public void actualizarServidor(View v) {
 		auxiliar.abrir();
+		listaAlumnos.clear();
 		String regInsertados = auxiliar.obtenerFechaActualizacion("alumno");
 		Log.v("fecha de SQLite", regInsertados);
 		String url = urlExterno + "?fecha=" + regInsertados;
 
-		String alumnosExternos = ControladorServicio.obtenerRespuestaPeticion(
-				url, this);
+		String alumnosExternos = ControladorServicio.obtenerRespuestaPeticion(url, this);
 		try {
-			listaAlumnos.addAll(ControladorServicio.obtenerAlumno(
-					alumnosExternos, this));
+			listaAlumnos.addAll(ControladorServicio.obtenerAlumno(alumnosExternos, this));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		for(int i=0; i < listaAlumnos.size();i++){
 			Log.v("guardar",auxiliar.insertar(listaAlumnos.get(i)));
+			ControladorServicio.descargarImagen(listaAlumnos.get(i).getPath(), this);
 		}
 		auxiliar.cerrar();
 	}
@@ -274,7 +275,6 @@ public class AlumnoInsertarActivity extends Activity {
 					}
 				};
 			} else
-				Toast.makeText(getApplicationContext(), "fotografia no tomada",
-						Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "fotografia no tomada",Toast.LENGTH_SHORT).show();
 	}
 }
