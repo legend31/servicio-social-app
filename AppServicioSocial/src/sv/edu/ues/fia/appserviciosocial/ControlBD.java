@@ -435,7 +435,8 @@ public class ControlBD {
 		valoresInstitucion.putNull("idinstitucion");
 		valoresInstitucion.put("nombre", institucion.getNombre());
 		valoresInstitucion.put("nit", institucion.getNit());
-		
+		valoresInstitucion.put("latitud", institucion.getLatitud());
+		valoresInstitucion.put("longitud", institucion.getLongitud());
 		//if (contador == -1 || contador == 0) {
 		if ( institucionVerificando != null )
 			mensaje = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
@@ -617,7 +618,9 @@ public class ControlBD {
 		String[] nit = { institucion.getNitAnterior() };
 		ContentValues cv = new ContentValues();
 		cv.put("nombre", institucion.getNombre());		
-		cv.put("nit", institucion.getNit());		
+		cv.put("nit", institucion.getNit());
+		cv.put("latitud", institucion.getLatitud());
+		cv.put("longitud",institucion.getLongitud());
 		db.update("institucion", cv, "nit = ?", nit);
 		return "Registro Actualizado Correctamente";
 	}
