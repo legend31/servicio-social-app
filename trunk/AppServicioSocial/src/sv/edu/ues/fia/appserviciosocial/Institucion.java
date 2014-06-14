@@ -4,7 +4,9 @@ public class Institucion {
 	private String idInstitucion,
 				   nombre,
 				   nit,
-				   nitAnterior;	
+				   nitAnterior,
+				   latitud,
+				   longitud;	
 
 	public Institucion(String idInstitucion,String nombre, String nit) {
 		this(nombre,nit);
@@ -52,8 +54,18 @@ public class Institucion {
 		this.nit = nit;
 	}
 
-
+public String getLatitud(){
+	return latitud;
+}
 	
-	
+public void setLatitud(String valor){
+	this.latitud=valor;
+}
+public String getLongitud(){
+	return longitud;
+}
+public void setLongitud(String valor){
+	this.longitud=valor;
+}
 
 }
