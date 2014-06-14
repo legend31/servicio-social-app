@@ -167,6 +167,8 @@
     <string name="imagen">imagen</string>
     <string name="tomarFoto">Tomar Foto</string>
     <string name="fotografia">Fotografia del Alumno</string>
+    <string name="latitud">Latitud</string>
+    <string name="longitud">Longitud</string>
     
 
 </resources>
