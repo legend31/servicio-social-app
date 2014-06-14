@@ -35,14 +35,34 @@
         android:id="@+id/btnGuardar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editNitInstitucion"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="34dp"
-        android:text="@string/guardar"
-        android:onClick="insertarInstitucion"
+        android:layout_marginBottom="90dp"
         android:background="@drawable/btn_insertar"
+        android:onClick="insertarInstitucion"
         android:padding="5dp"
+        android:text="@string/guardar"
         android:textColor="@android:color/white" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editNitInstitucion"
+        android:layout_below="@+id/editNitInstitucion"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="@string/latitud" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText1"
+        android:layout_below="@+id/editText1"
+        android:layout_marginTop="38dp"
+        android:ems="10"
+        android:hint="@string/longitud" />
 
 </RelativeLayout>
 
