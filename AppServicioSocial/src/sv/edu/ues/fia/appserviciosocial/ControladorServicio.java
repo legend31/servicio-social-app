@@ -1,7 +1,10 @@
 package sv.edu.ues.fia.appserviciosocial;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.http.HttpEntity;
@@ -27,7 +30,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -111,12 +117,13 @@ public class ControladorServicio {
 				JSONObject obj = alumnosJSON.getJSONObject(i);
 
 				Alumno alumno = new Alumno();
-				alumno.setCarnet(obj.getString("carnet"));
-				alumno.setNombre(obj.getString("nombre"));
-				alumno.setTelefono(obj.getString("telefono"));
-				alumno.setDui(obj.getString("dui"));
-				alumno.setNit(obj.getString("nit"));
-				alumno.setEmail(obj.getString("email"));
+				alumno.setCarnet(obj.getString("CARNET"));
+				alumno.setNombre(obj.getString("NOMBRE"));
+				alumno.setTelefono(obj.getString("TELEFONO"));
+				alumno.setDui(obj.getString("DUI"));
+				alumno.setNit(obj.getString("NIT"));
+				alumno.setEmail(obj.getString("EMAIL"));
+				alumno.setPath(obj.getString("PATH"));
 				listaAlumnos.add(alumno);
 			}
 			return listaAlumnos;
@@ -173,8 +180,7 @@ public class ControladorServicio {
 			httpclient.getParams().setParameter(
 					CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
 
-			HttpPost httppost = new HttpPost(
-					"http://hv11002pdm115.hostei.com/serviciosweb/upload.php");
+			HttpPost httppost = new HttpPost("http://hv11002pdm115.hostei.com/serviciosweb/upload.php");
 			File file = new File(archivo);
 
 			MultipartEntity multipartEntity = new MultipartEntity(
@@ -191,6 +197,24 @@ public class ControladorServicio {
 
 		Toast.makeText(ctx, result, Toast.LENGTH_SHORT).show();
 	}
+	
+	public static void descargarImagen(String nombreImagen, Context ctx) {
+		Bitmap loadedImage=null;
+        try {
+            URL imageUrl = new URL("http://hv11002pdm115.hostei.com/serviciosweb/imagenes/"  + nombreImagen);
+            HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
+            conn.connect();
+            loadedImage = BitmapFactory.decodeStream(conn.getInputStream());
+            File file = new File(Environment.getExternalStorageDirectory(), nombreImagen);
+            FileOutputStream fOut = new FileOutputStream(file);
+            loadedImage.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
+            fOut.flush();
+            fOut.close();
+        } catch (IOException e) {
+            Toast.makeText(ctx, "Error al cargar la imagen: "+e.getMessage(), Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
+    }
 }
 
 @SuppressWarnings("rawtypes")
