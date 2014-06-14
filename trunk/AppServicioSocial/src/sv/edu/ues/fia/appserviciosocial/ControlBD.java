@@ -99,6 +99,8 @@ public class ControlBD {
 				
 				db.execSQL("create table totalproyectos (id INTEGER not null primary key autoincrement, numero INTERGER not null);");
 				
+				db.execSQL("create table actualizaciones (tabla VARCHAR(40) not null, fecha DATE not null )");
+				
 				// triggers
 				db.execSQL("CREATE TRIGGER fk_solicitante_cargo BEFORE INSERT ON solicitante FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT idcargo FROM cargo"
 						+ " WHERE idcargo = NEW.idcargo) IS NULL) THEN RAISE(ABORT, 'No existe cargo') END; END;");
@@ -274,6 +276,10 @@ public class ControlBD {
 				db.execSQL("insert into bitacora values(null, 2, 'FG12098', 1, date('2014-07-02'), 'Diseñando cosas');");
 				db.execSQL("insert into bitacora values(null, 2, 'MJ10458', 3, date('2013-11-18'), 'Presentacion de resultados');");
 				db.execSQL("insert into bitacora values(null, 3, 'MJ10458', 3, date('2013-11-20'), 'Avance literal');");
+				
+				//inserciones actualizaciones
+				db.execSQL("insert into actualizaciones values('alumno', date('2013-11-20'))");
+				db.execSQL("insert into actualizaciones values('asignacionproyecto', date('2013-11-20'))");
 				
 				
 				//PARA EL LOGIN , NO TOCAR
@@ -1247,5 +1253,17 @@ public class ControlBD {
 			return false;
 		}
 	}// fin verificacion integridad
+
+	public String obtenerFechaActualizacion(String tabla) {
+		// TODO Auto-generated method stub
+		String[] valor = { tabla };
+		String[] campo = {"fecha"};
+		Cursor cursor = db.query("actualizaciones", campo, "tabla = ?", valor, null, null, null);
+		if (cursor.moveToFirst()) {
+			return cursor.getString(0);
+		} else {
+			return null;
+		}
+	}
 
 }// fin ControlDB

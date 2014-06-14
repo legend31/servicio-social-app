@@ -6,6 +6,7 @@ import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.StringTokenizer;
 import android.media.MediaScannerConnection.MediaScannerConnectionClient;
 import android.annotation.SuppressLint;
@@ -38,7 +39,9 @@ public class AlumnoInsertarActivity extends Activity {
 	private EditText txtDui;
 	private EditText txtNit;
 	private EditText txtEmail;
+	private String path;
 	private String urlExterno = "http://hv11002pdm115.hostei.com/serviciosweb/insertar_alumno.php";
+	static List<Alumno> listaAlumnos;
 
 	SoundPool soundPool;
 	int exito;
@@ -49,15 +52,15 @@ public class AlumnoInsertarActivity extends Activity {
 	private Uri file;
 	private ImageView image;
 	private File photo;
-	private String path;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_alumno_insertar);
-		
+
+		// Código para permitir la conexión a internet en el mismo hilo
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-		.permitAll().build();
+				.permitAll().build();
 		StrictMode.setThreadPolicy(policy);
 
 		auxiliar = new ControlBD(this);
@@ -139,15 +142,6 @@ public class AlumnoInsertarActivity extends Activity {
 		String regInsertados = auxiliar.insertar(alumno);
 		auxiliar.cerrar();
 		Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
-		
-		//Inserción en el servidor PHP
-		url = urlExterno + "?carnet=" + carnet + "&nombre="
-				+ URLEncoder.encode( nombre) + "&telefono=" + telefono + "&dui=" + dui
-				+ "&nit=" + nit + "&email=" + email;
-		Log.v("la url de php", url);
-		ControladorServicio.insertarObjeto(url, AlumnoInsertarActivity.this);
-		//Subida de foto al servidor
-		ControladorServicio.subirImagen(path, this);
 
 		if (regInsertados.length() <= 20) {
 			soundPool.play(exito, 1, 1, 1, 0, 1);
@@ -155,6 +149,41 @@ public class AlumnoInsertarActivity extends Activity {
 			soundPool.play(fracaso, 1, 1, 1, 0, 1);
 		}
 
+	}
+
+	public void insertarServidor(View v) {
+		// Aqui se deben buscar todos los registros que tengan enviado=false
+		// y se enviaran al servidor y se pondrán enviado=true
+
+		// Inserción en el servidor PHP
+		/*
+		 * String url = urlExterno + "?carnet=" + carnet + "&nombre=" +
+		 * URLEncoder.encode( nombre) + "&telefono=" + telefono + "&dui=" + dui
+		 * + "&nit=" + nit + "&email=" + email; Log.v("la url de php", url);
+		 * ControladorServicio.insertarObjeto(url, AlumnoInsertarActivity.this);
+		 * //Subida de foto al servidor ControladorServicio.subirImagen(path,
+		 * this);
+		 */
+	}
+
+	public void actualizarServidor(View v) {
+		auxiliar.abrir();
+		String regInsertados = auxiliar.obtenerFechaActualizacion("alumno");
+		Log.v("fecha de SQLite", regInsertados);
+		String url = urlExterno + "?fecha=" + regInsertados;
+
+		String alumnosExternos = ControladorServicio.obtenerRespuestaPeticion(
+				url, this);
+		try {
+			listaAlumnos.addAll(ControladorServicio.obtenerAlumno(
+					alumnosExternos, this));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		for(int i=0; i < listaAlumnos.size();i++){
+			Log.v("guardar",auxiliar.insertar(listaAlumnos.get(i)));
+		}
+		auxiliar.cerrar();
 	}
 
 	public void Scan(View v) {
@@ -185,9 +214,10 @@ public class AlumnoInsertarActivity extends Activity {
 				int i = 0;
 				while (tokens.hasMoreTokens()) {
 					String elemento = tokens.nextToken();
-					if(i == 0 && !elemento.equals("QRAlumnoID"))
-					{
-						Toast.makeText(this,"El código QR no corresponde a la funcionalidad de esta aplicación",
+					if (i == 0 && !elemento.equals("QRAlumnoID")) {
+						Toast.makeText(
+								this,
+								"El código QR no corresponde a la funcionalidad de esta aplicación",
 								Toast.LENGTH_SHORT).show();
 						return;
 					}
@@ -219,28 +249,31 @@ public class AlumnoInsertarActivity extends Activity {
 		}
 
 		if (requestCode == TAKE_PICTURE)
-			if (resultCode == RESULT_OK)
-			{
-				image.setImageBitmap(BitmapFactory.decodeFile(photo.getAbsolutePath()));
-				//esta direccion es la que se guarda en la BD
+			if (resultCode == RESULT_OK) {
+				image.setImageBitmap(BitmapFactory.decodeFile(photo
+						.getAbsolutePath()));
+				// esta direccion es la que se guarda en la BD
 				path = photo.getAbsolutePath();
-				
-				
-				//esta parte es para guardar la imagen en la galeria, pero 
-				//creo q no funciona REVISAR MAS TARDE
+
+				// esta parte es para guardar la imagen en la galeria, pero
+				// creo q no funciona REVISAR MAS TARDE
 				new MediaScannerConnectionClient() {
-					private MediaScannerConnection msc = null; {
-						msc = new MediaScannerConnection(getApplicationContext(), this); msc.connect();
+					private MediaScannerConnection msc = null;
+					{
+						msc = new MediaScannerConnection(
+								getApplicationContext(), this);
+						msc.connect();
 					}
-					public void onMediaScannerConnected() { 
+
+					public void onMediaScannerConnected() {
 						msc.scanFile(name, null);
 					}
-					public void onScanCompleted(String path, Uri uri) { 
+
+					public void onScanCompleted(String path, Uri uri) {
 						msc.disconnect();
-					} 
+					}
 				};
-			}
-			else
+			} else
 				Toast.makeText(getApplicationContext(), "fotografia no tomada",
 						Toast.LENGTH_SHORT).show();
 	}

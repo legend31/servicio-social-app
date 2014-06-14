@@ -31,9 +31,9 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
-public class ControladorServicio{
+public class ControladorServicio {
 
-	//Usando en PHP
+	// Usando en PHP
 	public static String obtenerRespuestaPeticion(String url, Context ctx) {
 
 		String respuesta = " ";
@@ -58,12 +58,12 @@ public class ControladorServicio{
 			Toast.makeText(ctx, "Error en la conexion", Toast.LENGTH_LONG)
 					.show();
 			// Desplegando el error en el LogCat
-			Log.v("Error de Conexion", e.toString());
+			Log.v("Error de Conexión", e.toString());
 		}
 		return respuesta;
 	}
 
-	//Usado en Java
+	// Usado en Java
 	public static String obtenerRespuestaPost(String url, JSONObject obj,
 			Context ctx) {
 		String respuesta = " ";
@@ -133,8 +133,8 @@ public class ControladorServicio{
 		String respuesta = obtenerRespuestaPost(url, obj, ctx);
 		try {
 			if (respuesta.equals("200"))
-				Toast.makeText(ctx, "Insercion Correcta en el servidor", Toast.LENGTH_LONG)
-						.show();
+				Toast.makeText(ctx, "Inserción Correcta en el servidor",
+						Toast.LENGTH_LONG).show();
 			else
 				Toast.makeText(ctx, "Error registro duplicado en el servidor",
 						Toast.LENGTH_LONG).show();
@@ -153,8 +153,8 @@ public class ControladorServicio{
 			JSONObject resultado = new JSONObject(json);
 			int respuesta = resultado.getInt("resultado");
 			if (respuesta == 1)
-				Toast.makeText(ctx, "Registro ingresado en el servidor", Toast.LENGTH_LONG)
-						.show();
+				Toast.makeText(ctx, "Registro ingresado en el servidor",
+						Toast.LENGTH_LONG).show();
 			else
 				Toast.makeText(ctx, "Error registro duplicado en el servidor",
 						Toast.LENGTH_LONG).show();
@@ -163,29 +163,32 @@ public class ControladorServicio{
 			e.printStackTrace();
 		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public static void subirImagen(String archivo, Context ctx)
-	{
+	public static void subirImagen(String archivo, Context ctx) {
 		String result = null;
-    	try {
+		try {
 
-        	HttpClient httpclient = new DefaultHttpClient();
-            httpclient.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
+			HttpClient httpclient = new DefaultHttpClient();
+			httpclient.getParams().setParameter(
+					CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
 
-            HttpPost httppost = new HttpPost("http://hv11002pdm115.hostei.com/serviciosweb/upload.php");
-            File file = new File(archivo);
-            
-            MultipartEntity multipartEntity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);  
-            multipartEntity.addPart("archivo", new FileBody(file));
+			HttpPost httppost = new HttpPost(
+					"http://hv11002pdm115.hostei.com/serviciosweb/upload.php");
+			File file = new File(archivo);
 
-            httppost.setEntity(multipartEntity);
-            result = httpclient.execute(httppost, new FileUploadResponseHandler());
-        	
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-		
+			MultipartEntity multipartEntity = new MultipartEntity(
+					HttpMultipartMode.BROWSER_COMPATIBLE);
+			multipartEntity.addPart("archivo", new FileBody(file));
+
+			httppost.setEntity(multipartEntity);
+			result = httpclient.execute(httppost,
+					new FileUploadResponseHandler());
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		Toast.makeText(ctx, result, Toast.LENGTH_SHORT).show();
 	}
 }
@@ -193,15 +196,15 @@ public class ControladorServicio{
 @SuppressWarnings("rawtypes")
 class FileUploadResponseHandler implements ResponseHandler {
 
-    @Override
-    public Object handleResponse(HttpResponse response)
-            throws ClientProtocolException, IOException {
+	@Override
+	public Object handleResponse(HttpResponse response)
+			throws ClientProtocolException, IOException {
 
-        HttpEntity r_entity = response.getEntity();
-        String responseString = EntityUtils.toString(r_entity);
-        Log.d("UPLOAD", responseString);
+		HttpEntity r_entity = response.getEntity();
+		String responseString = EntityUtils.toString(r_entity);
+		Log.d("UPLOAD", responseString);
 
-        return responseString;
-    }
+		return responseString;
+	}
 
 }
