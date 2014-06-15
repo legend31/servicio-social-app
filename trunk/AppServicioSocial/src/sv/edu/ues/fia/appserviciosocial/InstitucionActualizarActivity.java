@@ -1,6 +1,10 @@
 package sv.edu.ues.fia.appserviciosocial;
 
 import android.app.Activity;
+import android.content.Context;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
@@ -14,14 +18,15 @@ import android.widget.Toast;
 public class InstitucionActualizarActivity extends Activity {
 	
 	private ControlBD auxiliar;
-	private EditText txtNit,txtNombre, txtNuevoNit;
+	private EditText txtNit,txtNombre, txtNuevoNit, editText1,
+	 editText2;
 	private Button btnActulizar;
 	//sonidos
 		SoundPool soundPool;
 		int exito;
 		int fracaso;
 		 
-	
+		LocationManager locationManager;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,12 +37,45 @@ public class InstitucionActualizarActivity extends Activity {
 		txtNuevoNit= (EditText) findViewById(R.id.editNuevoNit);
 		btnActulizar = (Button) findViewById(R.id.btnActualizarInstitucion);
 		btnActulizar.setEnabled(false);
-
+		editText1=(EditText) findViewById(R.id.editText1);
+		editText2=(EditText) findViewById(R.id.editText2);
 		//sonidos
 	         soundPool = new SoundPool( 2, AudioManager.STREAM_MUSIC , 0);
 	         exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);
 	         fracaso = soundPool.load(getApplicationContext(), R.raw.sonido2, 0);
+	       //obtenerDir.setOnClickListener(onClickDireccion);
+	         locationManager = (LocationManager)
+	         this.getSystemService(Context.LOCATION_SERVICE);
+	         }
+	         LocationListener locationListener = new LocationListener() {
+	         public void onLocationChanged(Location location) {
+	         // TODO Auto-generated method stub
+	         	editText1.setText(String.valueOf(location.getLatitude()));
+	         	editText2.setText(String.valueOf(location.getLongitude()));
 
+	         }
+	         public void onProviderDisabled(String provider) {
+	         // TODO Auto-generated method stub
+	         }
+	         public void onProviderEnabled(String provider) {
+	         // TODO Auto-generated method stub
+	         }
+	         public void onStatusChanged(String provider, int status, Bundle extras) {
+	         // TODO Auto-generated method stub
+	         }
+	         };
+	         @Override
+	         public void onPause() {
+	         super.onPause();
+	         locationManager.removeUpdates(locationListener);
+	         }
+	         @Override
+	         public void onResume() {
+	         super.onResume();
+	         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0,
+	         0, locationListener);
+	         locationManager.requestLocationUpdates(
+	         LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
 	}
 
 	@Override
@@ -94,23 +132,26 @@ public class InstitucionActualizarActivity extends Activity {
 		String nombre = txtNombre.getText().toString();
 		String nuevoNit = txtNuevoNit.getText().toString();
 		String actualNit = txtNit.getText().toString();
-		
+		String latitud = editText1.getText().toString();
+		String longitud =editText2.getText().toString();
 		if ( nombre.matches("")){
 			Toast.makeText(this, "Nombre no válido",
 					Toast.LENGTH_LONG).show();			
 		}else							
 			if ( nuevoNit.matches("")){						
-				guardar(nombre, actualNit,actualNit);
+				guardar(nombre, actualNit,actualNit,latitud,longitud);
 			}else				
 				if(nuevoNit.length() != 14)
 					Toast.makeText(this, "Nuevo NIT no válido",
 							Toast.LENGTH_LONG).show();
 				else
-					guardar(nombre,nuevoNit,actualNit);
+					guardar(nombre,nuevoNit,actualNit,latitud,longitud);
 	}
 	
-	private void guardar(String nombre, String nuevoNit,String actualNit){
+	private void guardar(String nombre, String nuevoNit,String actualNit, String latitud, String longitud){
 		Institucion institucion = new Institucion( nombre, nuevoNit);
+		institucion.setLatitud(latitud);
+		institucion.setLongitud(longitud);
 		institucion.setNitAnterior(actualNit);
 		auxiliar.abrir();
 		auxiliar.actualizar(institucion);
