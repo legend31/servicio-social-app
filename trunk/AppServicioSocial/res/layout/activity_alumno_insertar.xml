@@ -164,8 +164,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tablaBotones"
             android:layout_centerHorizontal="true"
-            android:text="ActualizarServidor"
-            android:onClick="actualizarServidor" />
+            android:text="Insertar a Servidor"
+            android:onClick="insertarServidor" />
 
     </RelativeLayout>
 

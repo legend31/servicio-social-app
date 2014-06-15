@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -155,36 +156,30 @@ public class AlumnoInsertarActivity extends Activity {
 	public void insertarServidor(View v) {
 		// Aqui se deben buscar todos los registros que tengan enviado=false
 		// y se enviaran al servidor y se pondrán enviado=true
+		ArrayList<Alumno> alumnosAEnviar = auxiliar.consultarAlumnoNoEnviado();
+		String carnet = "", nombre = "", telefono = "", dui = "", nit = "", email = "", path = "";
+		if (alumnosAEnviar != null) {
+			for (int i = 0; i < alumnosAEnviar.size(); i++) {
+				carnet = alumnosAEnviar.get(i).getCarnet();
+				nombre = alumnosAEnviar.get(i).getNombre();
+				telefono = alumnosAEnviar.get(i).getTelefono();
+				dui = alumnosAEnviar.get(i).getCarnet();
+				nit = alumnosAEnviar.get(i).getCarnet();
+				email = alumnosAEnviar.get(i).getCarnet();
+				path = alumnosAEnviar.get(i).getCarnet();
+				// Inserción en el servidor PHP
 
-		// Inserción en el servidor PHP
-		/*
-		 * String url = urlExterno + "?carnet=" + carnet + "&nombre=" +
-		 * URLEncoder.encode( nombre) + "&telefono=" + telefono + "&dui=" + dui
-		 * + "&nit=" + nit + "&email=" + email; Log.v("la url de php", url);
-		 * ControladorServicio.insertarObjeto(url, AlumnoInsertarActivity.this);
-		 * //Subida de foto al servidor ControladorServicio.subirImagen(path,
-		 * this);
-		 */
-	}
-
-	public void actualizarServidor(View v) {
-		auxiliar.abrir();
-		listaAlumnos.clear();
-		String regInsertados = auxiliar.obtenerFechaActualizacion("alumno");
-		Log.v("fecha de SQLite", regInsertados);
-		String url = urlExterno + "?fecha=" + regInsertados;
-
-		String alumnosExternos = ControladorServicio.obtenerRespuestaPeticion(url, this);
-		try {
-			listaAlumnos.addAll(ControladorServicio.obtenerAlumno(alumnosExternos, this));
-		} catch (Exception e) {
-			e.printStackTrace();
+				String url = urlExterno + "?carnet=" + carnet + "&nombre="
+						+ URLEncoder.encode(nombre) + "&telefono=" + telefono
+						+ "&dui=" + dui + "&nit=" + nit + "&email=" + email;
+				Log.v("la url de php", url);
+				ControladorServicio.insertarObjeto(url, this);
+				// Subida de foto al servidor
+				if(!path.equals(""))
+				ControladorServicio.subirImagen(path, this);
+			}
 		}
-		for(int i=0; i < listaAlumnos.size();i++){
-			Log.v("guardar",auxiliar.insertar(listaAlumnos.get(i)));
-			ControladorServicio.descargarImagen(listaAlumnos.get(i).getPath(), this);
-		}
-		auxiliar.cerrar();
+
 	}
 
 	public void Scan(View v) {
@@ -275,6 +270,7 @@ public class AlumnoInsertarActivity extends Activity {
 					}
 				};
 			} else
-				Toast.makeText(getApplicationContext(), "fotografia no tomada",Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "fotografia no tomada",
+						Toast.LENGTH_SHORT).show();
 	}
 }
