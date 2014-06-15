@@ -1,6 +1,9 @@
 package sv.edu.ues.fia.appserviciosocial;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -61,7 +64,7 @@ public class ControlBD {
 				// lo del script de powerdesigner
 				
 				db.execSQL("create table ALUMNO (CARNET VARCHAR(7) not null primary key, NOMBRE VARCHAR(100) not null, "
-						+ "TELEFONO VARCHAR(8) not null, DUI VARCHAR(10) not null, NIT VARCHAR(17) not null, EMAIL VARCHAR(50), PATH VARCHAR(100));");
+						+ "TELEFONO VARCHAR(8) not null, DUI VARCHAR(10) not null, NIT VARCHAR(17) not null, EMAIL VARCHAR(50), PATH VARCHAR(100), ENVIADO BOOLEAN NOT NULL);");
 				
 				db.execSQL("create table BITACORA ( ID INTEGER not null primary key autoincrement, IDTIPOTRABAJO INTEGER not null, CARNET VARCHAR(7) "
 						+ "not null, IDPROYECTO INTEGER not null, FECHA DATE not null, DESCRIPCION VARCHAR(250) not null, "
@@ -154,22 +157,22 @@ public class ControlBD {
 				db.execSQL("insert into alumno values('BC03028', 'Ricardo Bernal', '23902783', '033109383', '08120507901931', 'ricbernal@yahoo.es','path15');");
 				*/
 				
-				db.execSQL("insert into alumno values('FG12098', 'Pedro Fuentes',   '23456781', '033206621', '06142307906731', 'pedro@yahoo.es','');");
-				db.execSQL("insert into alumno values('MJ10458', 'Luis Martinez',   '22378781', '033673420', '06132307901231', 'luis@yahoo.com','');");
-				db.execSQL("insert into alumno values('QS11457', 'Juan Quevedo',    '23456896', '033209871', '09232307904531', 'juan@gmail.es','');");
-				db.execSQL("insert into alumno values('SA09027', 'Ricardo Sanchez', '23451231', '033207823', '08122307901931', 'ricardo@hotmail.es','');");
+				db.execSQL("insert into alumno values('FG12098', 'Pedro Fuentes',   '23456781', '033206621', '06142307906731', 'pedro@yahoo.es','','false');");
+				db.execSQL("insert into alumno values('MJ10458', 'Luis Martinez',   '22378781', '033673420', '06132307901231', 'luis@yahoo.com','','false');");
+				db.execSQL("insert into alumno values('QS11457', 'Juan Quevedo',    '23456896', '033209871', '09232307904531', 'juan@gmail.es','','false');");
+				db.execSQL("insert into alumno values('SA09027', 'Ricardo Sanchez', '23451231', '033207823', '08122307901931', 'ricardo@hotmail.es','','false');");
 				
-				db.execSQL("insert into alumno values('PP08002', 'Ramon Peraza', '23478392', '033902384', '08122208901931', 'ramon@hotmail.es','');");
-				db.execSQL("insert into alumno values('DM09017', 'Juan Dominguez', '23423431', '03902833', '06143112921931', 'juan@hotmail.es','');");
-				db.execSQL("insert into alumno values('LO07027', 'Esteban Letona', '23456731', '031893423', '08122707906731', 'esteban@hotmail.es','');");
-				db.execSQL("insert into alumno values('ME06007', 'Pedro Mendoza', '67851231', '039014843', '06142307901931', 'mendoza@yahoo.com','');");
-				db.execSQL("insert into alumno values('SA09127', 'Arturo Solis', '78231231', '033902323', '08122308901931', 'arturo23@hotmail.com','');");
-				db.execSQL("insert into alumno values('TA10067', 'Mario Torres', '28941231', '033904823', '06142304901931', 'mario@hotmail.es','');");
-				db.execSQL("insert into alumno values('SL04002', 'Laura Silva', '23491231', '019307823', '08122307881931', 'laurasilva@gmail.com','');");
-				db.execSQL("insert into alumno values('SB00001', 'Veronica Sandoval', '23490341', '030948823', '08122207901931', 'verosandoval@hotmail.com','');");
-				db.execSQL("insert into alumno values('NA09080', 'Ligia Nuñez', '23569131', '039048323', '06143107901931', 'ligianz@hotmail.es','');");
-				db.execSQL("insert into alumno values('FE07022', 'Francisco Flores', '23902358', '032908323', '08122227901931', 'paquitoflores@hotmail.com','');");
-				db.execSQL("insert into alumno values('BC03028', 'Ricardo Bernal', '23902783', '033109383', '08120507901931', 'ricbernal@yahoo.es','');");
+				db.execSQL("insert into alumno values('PP08002', 'Ramon Peraza', '23478392', '033902384', '08122208901931', 'ramon@hotmail.es','','false');");
+				db.execSQL("insert into alumno values('DM09017', 'Juan Dominguez', '23423431', '03902833', '06143112921931', 'juan@hotmail.es','','false');");
+				db.execSQL("insert into alumno values('LO07027', 'Esteban Letona', '23456731', '031893423', '08122707906731', 'esteban@hotmail.es','','false');");
+				db.execSQL("insert into alumno values('ME06007', 'Pedro Mendoza', '67851231', '039014843', '06142307901931', 'mendoza@yahoo.com','','false');");
+				db.execSQL("insert into alumno values('SA09127', 'Arturo Solis', '78231231', '033902323', '08122308901931', 'arturo23@hotmail.com','','false');");
+				db.execSQL("insert into alumno values('TA10067', 'Mario Torres', '28941231', '033904823', '06142304901931', 'mario@hotmail.es','','false');");
+				db.execSQL("insert into alumno values('SL04002', 'Laura Silva', '23491231', '019307823', '08122307881931', 'laurasilva@gmail.com','','false');");
+				db.execSQL("insert into alumno values('SB00001', 'Veronica Sandoval', '23490341', '030948823', '08122207901931', 'verosandoval@hotmail.com','','false');");
+				db.execSQL("insert into alumno values('NA09080', 'Ligia Nuñez', '23569131', '039048323', '06143107901931', 'ligianz@hotmail.es','','false');");
+				db.execSQL("insert into alumno values('FE07022', 'Francisco Flores', '23902358', '032908323', '08122227901931', 'paquitoflores@hotmail.com','','false');");
+				db.execSQL("insert into alumno values('BC03028', 'Ricardo Bernal', '23902783', '033109383', '08120507901931', 'ricbernal@yahoo.es','','false');");
 				
 				
 				
@@ -328,6 +331,7 @@ public class ControlBD {
 		valoresAlumno.put("nit", alumno.getNit());
 		valoresAlumno.put("email", alumno.getEmail());
 		valoresAlumno.put("path",alumno.getPath());
+		valoresAlumno.put("enviado", alumno.getEnviado());
 		contador = db.insert("alumno", null, valoresAlumno);
 
 		if (contador == -1 || contador == 0) {
@@ -843,13 +847,13 @@ public class ControlBD {
 			alumno.setDui(cursor.getString(3));
 			alumno.setNit(cursor.getString(4));
 			alumno.setEmail(cursor.getString(5));
-			//MODIFICACION
 			alumno.setPath(cursor.getString(6));
 			return alumno;
 		} else {
 			return null;
 		}
 	}
+	
 
 	public ArrayList<AsignacionProyecto> consultarAsignacionProyecto(String parametro,int tipo) {
 		ArrayList<AsignacionProyecto> asignaciones = new ArrayList<AsignacionProyecto>();
@@ -1156,6 +1160,34 @@ public class ControlBD {
 		}
 	}
 	
+	
+	//Consultas de registros no enviados al servidor
+	public ArrayList<Alumno> consultarAlumnoNoEnviado()
+	{
+		ArrayList<Alumno> alumnosNoEnviados = new ArrayList<Alumno>();
+		String [] valor = {"false"};
+		Cursor cursor;
+		cursor = db.query("alumno", camposAlumno,"enviado = ?", valor, null, null, null);
+		if (cursor.moveToFirst()) {
+			do{
+				Alumno alumno = new Alumno();
+				alumno.setCarnet(cursor.getString(0));
+				alumno.setNombre(cursor.getString(1));
+				alumno.setTelefono(cursor.getString(2));
+				alumno.setDui(cursor.getString(3));
+				alumno.setNit(cursor.getString(4));
+				alumno.setEmail(cursor.getString(5));
+				alumno.setPath(cursor.getString(6));
+				alumnosNoEnviados.add(alumno);
+			}while(cursor.moveToNext() );
+			return alumnosNoEnviados;
+		} else {
+			return null;
+		}
+	}
+
+	
+	
 	public String verificarUsuario(String usuario, String password)
 	{
 		String[] id = { usuario, password };
@@ -1266,6 +1298,30 @@ public class ControlBD {
 			return cursor.getString(0);
 		} else {
 			return null;
+		}
+	}
+
+	public void establecerFechaActualizacion(String tabla) {
+		// TODO Auto-generated method stub
+		int contador=0;
+		String mensaje="";
+		String[] valor = { tabla };
+		Date fecha = new Date();
+        fecha = Calendar.getInstance().getTime();
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-mm-dd");
+        String actualizado = formato.format(fecha);
+        ContentValues valores = new ContentValues();	
+        valores.put("fecha",actualizado);
+         try{
+			contador = db.update("actualizaciones", valores,"tabla = ?",valor);
+			}catch(Exception integridad)
+			{
+				String ex = integridad.getMessage();
+			}
+		if (contador == -1 || contador == 0) {
+			mensaje = "Error al modificar el registro";
+		} else {
+			mensaje = "Registro modificado";
 		}
 	}
 

@@ -1,10 +1,14 @@
 package sv.edu.ues.fia.appserviciosocial;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.graphics.BitmapFactory;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -25,11 +29,20 @@ public class AlumnoConsultarActivity extends Activity {
 	SoundPool soundPool;
 	int exito;
 	int fracaso;
+	
+	private String urlExterno = "http://hv11002pdm115.hostei.com/serviciosweb/consultar_alumno.php";
+	static List<Alumno> listaAlumnos;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_alumno_consultar);
+		
+		// Código para permitir la conexión a internet en el mismo hilo
+				StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+						.permitAll().build();
+				StrictMode.setThreadPolicy(policy);
+
 		auxiliar = new ControlBD(this);
 		txtCarnet = (EditText) findViewById(R.id.txtCarnet);
 		gdvTabla = (GridView) findViewById(R.id.gdvTabla);
@@ -102,4 +115,29 @@ public class AlumnoConsultarActivity extends Activity {
 
 	}
 
+	
+	public void actualizarServidor(View v) {
+		auxiliar.abrir();
+		if(listaAlumnos != null)
+		listaAlumnos.clear();
+		String ultimaFecha = auxiliar.obtenerFechaActualizacion("alumno");
+		Log.v("fecha de SQLite", ultimaFecha);
+		String url = urlExterno + "?fecha=" + ultimaFecha;
+		Log.v("URL", url);
+		String alumnosExternos = ControladorServicio.obtenerRespuestaPeticion(url, this);
+		Log.v("JSON", alumnosExternos);
+		try {
+			listaAlumnos = ControladorServicio.obtenerAlumno(alumnosExternos, this);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		for(int i=0; i < listaAlumnos.size();i++){
+			listaAlumnos.get(i).setEnviado("true");
+			Log.v("guardar",auxiliar.insertar(listaAlumnos.get(i)));
+			ControladorServicio.descargarImagen(listaAlumnos.get(i).getPath(), this);
+		}
+		//Guardar la nueva fecha de actualización
+		auxiliar.establecerFechaActualizacion("alumno");
+		auxiliar.cerrar();
+	}
 }

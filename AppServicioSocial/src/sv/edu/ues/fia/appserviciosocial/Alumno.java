@@ -9,6 +9,7 @@ public class Alumno {
 	private String nit;
 	private String email;
 	private String path;
+	private String enviado;
 
 	public String getCarnet() {
 		return carnet;
@@ -64,6 +65,14 @@ public class Alumno {
 
 	public void setPath(String path) {
 		this.path = path;
+	}
+
+	public String getEnviado() {
+		return enviado;
+	}
+
+	public void setEnviado(String enviado) {
+		this.enviado = enviado;
 	}
 
 }
