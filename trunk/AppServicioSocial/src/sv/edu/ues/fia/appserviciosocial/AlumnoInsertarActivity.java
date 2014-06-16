@@ -157,30 +157,38 @@ public class AlumnoInsertarActivity extends Activity {
 	public void insertarServidor(View v) {
 		// Aqui se deben buscar todos los registros que tengan enviado=false
 		// y se enviaran al servidor y se pondrán enviado=true
+		auxiliar.abrir();
 		ArrayList<Alumno> alumnosAEnviar = auxiliar.consultarAlumnoNoEnviado();
+		
 		String carnet = "", nombre = "", telefono = "", dui = "", nit = "", email = "", path = "";
+		Date fecha = new Date();
+        fecha = Calendar.getInstance().getTime();
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        String actualizado = formato.format(fecha);
 		if (alumnosAEnviar != null) {
 			for (int i = 0; i < alumnosAEnviar.size(); i++) {
 				carnet = alumnosAEnviar.get(i).getCarnet();
 				nombre = alumnosAEnviar.get(i).getNombre();
 				telefono = alumnosAEnviar.get(i).getTelefono();
-				dui = alumnosAEnviar.get(i).getCarnet();
-				nit = alumnosAEnviar.get(i).getCarnet();
-				email = alumnosAEnviar.get(i).getCarnet();
-				path = alumnosAEnviar.get(i).getCarnet();
+				dui = alumnosAEnviar.get(i).getDui();
+				nit = alumnosAEnviar.get(i).getNit();
+				email = alumnosAEnviar.get(i).getEmail();
+				path = alumnosAEnviar.get(i).getPath();
 				// Inserción en el servidor PHP
-//la ruta que decis que queda es "/sdcard/foto.jpg" ?
 				String url = urlExterno + "?carnet=" + carnet + "&nombre="
-						+ URLEncoder.encode(nombre) + "&telefono=" + telefono
-						+ "&dui=" + dui + "&nit=" + nit + "&email=" + email;
+						+ URLEncoder.encode(nombre) + "&telefono=" + telefono+ "&dui=" + dui + "&nit=" 
+						+ nit + "&email=" + email  + "&fechaact=" +URLEncoder.encode(actualizado)+ "&path=" + URLEncoder.encode(path);
 				Log.v("la url de php", url);
 				ControladorServicio.insertarObjeto(url, this);
 				// Subida de foto al servidor
 				if(!path.equals(""))
-				ControladorServicio.subirImagen(path, this);
+				{
+					ControladorServicio.subirImagen(path, this);
+				}
+				auxiliar.establecerAlumnoEnviado(carnet);
 			}
 		}
-
+		auxiliar.cerrar();
 	}
 
 	public void Scan(View v) {

@@ -189,8 +189,7 @@ public class ControladorServicio {
 			multipartEntity.addPart("archivo", new FileBody(file));
 
 			httppost.setEntity(multipartEntity);
-			result = httpclient.execute(httppost,
-					new FileUploadResponseHandler());
+			result = httpclient.execute(httppost,new FileUploadResponseHandler());
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -212,6 +211,7 @@ public class ControladorServicio {
 			BitmapFactory.decodeStream(conn.getInputStream(), null, o);
 			final int height = o.outHeight;
 		    final int width = o.outWidth;
+		    Log.v("Medidas", "Height "+height+", Width "+width);
 		    int inSampleSize = 1;
 		    int reqHeight=600;
 		    int reqWidth =600;
@@ -229,17 +229,23 @@ public class ControladorServicio {
 			            inSampleSize *= 2;
 			        }
 			    }
+			 Log.v("In sample size", ""+inSampleSize);
+			 conn.disconnect();
+			 conn = (HttpURLConnection) imageUrl.openConnection();
+			 conn.connect();
 			 // Decode with inSampleSize
 			BitmapFactory.Options o2 = new BitmapFactory.Options();
-			o2.inSampleSize = 1; //inSampleSize;
+			o2.inSampleSize = inSampleSize;
 			loadedImage = BitmapFactory.decodeStream(conn.getInputStream(),null, o2);
+			if(loadedImage == null)
+				Log.v("NULOS", "la imagen esta nula");
 			File file = new File(Environment.getExternalStorageDirectory(),nombreImagen);
 			FileOutputStream fOut = new FileOutputStream(file);
 			loadedImage.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
 			fOut.flush();
 			fOut.close();
 			fOut = null;
-			//loadedImage.recycle();
+			loadedImage.recycle();
 			loadedImage = null;
 		} catch (IOException e) {
 			Toast.makeText(ctx, "Error al cargar la imagen: " + e.getMessage(),
