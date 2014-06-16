@@ -1,12 +1,15 @@
 package sv.edu.ues.fia.appserviciosocial;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.Activity;
 import android.graphics.BitmapFactory;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -44,6 +47,10 @@ public class EncargadoConsultarActivity extends Activity implements
 	SoundPool soundPool;
 	int exito;
 	int fracaso;
+	
+	//servicios
+	private String urlExterno = "http://hv11002pdm115.hostei.com/serviciosweb/consultar_alumno.php";
+	static List<EncargadoServicioSocial> listaEncargados;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +94,13 @@ public class EncargadoConsultarActivity extends Activity implements
 		soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
 		exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);
 		fracaso = soundPool.load(getApplicationContext(), R.raw.sonido2, 0);
+		
+		
+		//servicio
+		// Código para permitir la conexión a internet en el mismo hilo
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+				.permitAll().build();
+		StrictMode.setThreadPolicy(policy);
 
 	}
 
@@ -207,6 +221,39 @@ public class EncargadoConsultarActivity extends Activity implements
 
 	public void onNothingSelected(AdapterView<?> arg0) {
 
+	}
+	
+	
+	public void actualizarServidorEncargado(View v) {
+		base.abrir();
+		if(listaEncargados != null)
+			listaEncargados.clear();
+		String ultimaFecha = base.obtenerFechaActualizacion("encargadoserviciosocial");
+		Log.v("fecha de SQLite", ultimaFecha);
+		String url = urlExterno + "?fecha=" + ultimaFecha;
+		Log.v("URL", url);
+		String encargadosExternos = ControladorServicio.obtenerRespuestaPeticion(url, this);
+		Log.v("JSON", encargadosExternos);
+		try {
+			listaEncargados = ControladorServicio.obtenerEncargado(encargadosExternos, this);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		for(int i=0; i < listaEncargados.size();i++){
+			if(!listaEncargados.get(i).getPath().equals(""))
+			{
+				ControladorServicio.descargarImagen(listaEncargados.get(i).getPath(), this);
+				listaEncargados.get(i).setPath("/storage/sdcard/" + listaEncargados.get(i).getPath());
+			}
+			listaEncargados.get(i).setEnviado("true");
+			String respuesta = base.insertar(listaEncargados.get(i));
+			Log.v("guardar",respuesta);
+			Toast.makeText(this, respuesta, Toast.LENGTH_SHORT).show();
+			
+		}
+		//Guardar la nueva fecha de actualización
+		base.establecerFechaActualizacion("encargadoserviciosocial");
+		base.cerrar();
 	}
 
 }

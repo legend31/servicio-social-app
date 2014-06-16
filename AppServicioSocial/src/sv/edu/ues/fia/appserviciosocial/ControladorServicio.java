@@ -134,6 +134,36 @@ public class ControladorServicio {
 		}
 
 	}
+	
+	
+	public static List<EncargadoServicioSocial> obtenerEncargado(String json, Context ctx) {
+
+		List<EncargadoServicioSocial> listaEncargados = new ArrayList<EncargadoServicioSocial>();
+
+		try {
+			JSONArray encargadosJSON = new JSONArray(json);
+			for (int i = 0; i < encargadosJSON.length(); i++) {
+
+				JSONObject obj = encargadosJSON.getJSONObject(i);
+
+				EncargadoServicioSocial encargado = new EncargadoServicioSocial();
+				encargado.setIdEncargado(obj.getInt("IDENCARGADO"));
+				encargado.setNombre(obj.getString("NOMBRE"));
+				encargado.setEmail(obj.getString("EMAIL"));
+				encargado.setTelefono(obj.getString("TELEFONO"));
+				encargado.setFacultad(obj.getString("FACULTAD"));
+				encargado.setEscuela(obj.getString("ESCUELA"));
+				encargado.setPath(obj.getString("PATH"));
+				listaEncargados.add(encargado);
+			}
+			return listaEncargados;
+		} catch (Exception e) {
+			Toast.makeText(ctx, "Error en parseo de JSON", Toast.LENGTH_LONG)
+					.show();
+			return null;
+		}
+
+	}
 
 	// Java
 	public static void insertarObjeto(String url, JSONObject obj, Context ctx) {

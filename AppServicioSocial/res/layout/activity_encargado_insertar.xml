@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <RelativeLayout
-        android:id="@+id/RelativeLayout1"
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
@@ -20,7 +20,6 @@
             android:id="@+id/titulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:text="@string/title_activity_encargado_insertar"
             android:textSize="20sp" />
 
@@ -28,8 +27,6 @@
             android:id="@+id/tablaEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/titulo"
-            android:layout_centerHorizontal="true"
             android:layout_marginBottom="5dp" >
 
             <TableRow>
@@ -91,15 +88,12 @@
                     android:hint="@string/escuela"
                     android:inputType="text" />
             </TableRow>
-
         </TableLayout>
 
         <TableLayout
             android:id="@+id/tablaBotones"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tablaEdit"
-            android:layout_centerHorizontal="true"
             android:layout_marginBottom="5dp" >
 
             <TableRow>
@@ -138,6 +132,16 @@
                     android:textColor="@android:color/white" />
             </TableRow>
         </TableLayout>
-    </RelativeLayout>
+
+        <Button
+            android:id="@+id/insertarSerEncargado"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.05"
+            android:background="@drawable/btn_insertar"
+            android:onClick="insertarServidorEncargado"
+            android:text="Insertar a Servidor"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
 
 </ScrollView>
