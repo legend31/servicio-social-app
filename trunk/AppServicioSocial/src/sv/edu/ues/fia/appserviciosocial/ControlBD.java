@@ -281,7 +281,7 @@ public class ControlBD {
 				db.execSQL("insert into bitacora values(null, 3, 'MJ10458', 3, date('2013-11-20'), 'Avance literal');");
 				
 				//inserciones actualizaciones
-				db.execSQL("insert into actualizaciones values('alumno', date('2013-11-20'))");
+				db.execSQL("insert into actualizaciones values('alumno', date('2014-07-10'))");
 				db.execSQL("insert into actualizaciones values('asignacionproyecto', date('2013-11-20'))");
 				
 				

@@ -140,6 +140,7 @@ public class AlumnoInsertarActivity extends Activity {
 		alumno.setNit(nit);
 		alumno.setEmail(email);
 		alumno.setPath(path);
+		alumno.setEnviado("false");
 		auxiliar.abrir();
 		String regInsertados = auxiliar.insertar(alumno);
 		auxiliar.cerrar();
@@ -168,7 +169,7 @@ public class AlumnoInsertarActivity extends Activity {
 				email = alumnosAEnviar.get(i).getCarnet();
 				path = alumnosAEnviar.get(i).getCarnet();
 				// Inserción en el servidor PHP
-
+//la ruta que decis que queda es "/sdcard/foto.jpg" ?
 				String url = urlExterno + "?carnet=" + carnet + "&nombre="
 						+ URLEncoder.encode(nombre) + "&telefono=" + telefono
 						+ "&dui=" + dui + "&nit=" + nit + "&email=" + email;

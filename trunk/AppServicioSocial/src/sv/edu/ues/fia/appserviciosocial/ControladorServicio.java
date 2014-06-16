@@ -180,7 +180,8 @@ public class ControladorServicio {
 			httpclient.getParams().setParameter(
 					CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
 
-			HttpPost httppost = new HttpPost("http://hv11002pdm115.hostei.com/serviciosweb/upload.php");
+			HttpPost httppost = new HttpPost(
+					"http://hv11002pdm115.hostei.com/serviciosweb/upload.php");
 			File file = new File(archivo);
 
 			MultipartEntity multipartEntity = new MultipartEntity(
@@ -197,24 +198,55 @@ public class ControladorServicio {
 
 		Toast.makeText(ctx, result, Toast.LENGTH_SHORT).show();
 	}
-	
+
 	public static void descargarImagen(String nombreImagen, Context ctx) {
-		Bitmap loadedImage=null;
-        try {
-            URL imageUrl = new URL("http://hv11002pdm115.hostei.com/serviciosweb/imagenes/"  + nombreImagen);
-            HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
-            conn.connect();
-            loadedImage = BitmapFactory.decodeStream(conn.getInputStream());
-            File file = new File(Environment.getExternalStorageDirectory(), nombreImagen);
-            FileOutputStream fOut = new FileOutputStream(file);
-            loadedImage.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
-            fOut.flush();
-            fOut.close();
-        } catch (IOException e) {
-            Toast.makeText(ctx, "Error al cargar la imagen: "+e.getMessage(), Toast.LENGTH_LONG).show();
-            e.printStackTrace();
-        }
-    }
+		Bitmap loadedImage = null;
+		try {
+			URL imageUrl = new URL("http://hv11002pdm115.hostei.com/serviciosweb/imagenes/"+ nombreImagen);
+			HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
+			conn.connect();
+
+			// Decode image size
+			BitmapFactory.Options o = new BitmapFactory.Options();
+			o.inJustDecodeBounds = true;
+			BitmapFactory.decodeStream(conn.getInputStream(), null, o);
+			final int height = o.outHeight;
+		    final int width = o.outWidth;
+		    int inSampleSize = 1;
+		    int reqHeight=600;
+		    int reqWidth =600;
+			//Codigo de pagina de Android
+			 // Raw height and width of image
+			 if (height > reqHeight || width > reqWidth) {
+
+			        final int halfHeight = height / 2;
+			        final int halfWidth = width / 2;
+
+			        // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+			        // height and width larger than the requested height and width.
+			        while ((halfHeight / inSampleSize) > reqHeight && (halfWidth / inSampleSize) > reqWidth) 
+			        {
+			            inSampleSize *= 2;
+			        }
+			    }
+			 // Decode with inSampleSize
+			BitmapFactory.Options o2 = new BitmapFactory.Options();
+			o2.inSampleSize = 1; //inSampleSize;
+			loadedImage = BitmapFactory.decodeStream(conn.getInputStream(),null, o2);
+			File file = new File(Environment.getExternalStorageDirectory(),nombreImagen);
+			FileOutputStream fOut = new FileOutputStream(file);
+			loadedImage.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
+			fOut.flush();
+			fOut.close();
+			fOut = null;
+			//loadedImage.recycle();
+			loadedImage = null;
+		} catch (IOException e) {
+			Toast.makeText(ctx, "Error al cargar la imagen: " + e.getMessage(),
+					Toast.LENGTH_LONG).show();
+			e.printStackTrace();
+		}
+	}
 }
 
 @SuppressWarnings("rawtypes")
