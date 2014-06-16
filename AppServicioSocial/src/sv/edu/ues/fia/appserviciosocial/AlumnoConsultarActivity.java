@@ -132,9 +132,14 @@ public class AlumnoConsultarActivity extends Activity {
 			e.printStackTrace();
 		}
 		for(int i=0; i < listaAlumnos.size();i++){
+			if(!listaAlumnos.get(i).getPath().equals(""))
+			{
+				ControladorServicio.descargarImagen(listaAlumnos.get(i).getPath(), this);
+				listaAlumnos.get(i).setPath("/storage/sdcard/" + listaAlumnos.get(i).getPath());
+			}
 			listaAlumnos.get(i).setEnviado("true");
 			Log.v("guardar",auxiliar.insertar(listaAlumnos.get(i)));
-			ControladorServicio.descargarImagen(listaAlumnos.get(i).getPath(), this);
+			
 		}
 		//Guardar la nueva fecha de actualización
 		auxiliar.establecerFechaActualizacion("alumno");
