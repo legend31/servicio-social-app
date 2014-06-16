@@ -281,7 +281,7 @@ public class ControlBD {
 				db.execSQL("insert into bitacora values(null, 3, 'MJ10458', 3, date('2013-11-20'), 'Avance literal');");
 				
 				//inserciones actualizaciones
-				db.execSQL("insert into actualizaciones values('alumno', date('2014-07-10'))");
+				db.execSQL("insert into actualizaciones values('alumno', date('2013-07-10'))");
 				db.execSQL("insert into actualizaciones values('asignacionproyecto', date('2013-11-20'))");
 				
 				
@@ -1308,7 +1308,7 @@ public class ControlBD {
 		String[] valor = { tabla };
 		Date fecha = new Date();
         fecha = Calendar.getInstance().getTime();
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         String actualizado = formato.format(fecha);
         ContentValues valores = new ContentValues();	
         valores.put("fecha",actualizado);
@@ -1317,6 +1317,26 @@ public class ControlBD {
 			}catch(Exception integridad)
 			{
 				String ex = integridad.getMessage();
+			}
+		if (contador == -1 || contador == 0) {
+			mensaje = "Error al modificar el registro";
+		} else {
+			mensaje = "Registro modificado";
+		}
+	}
+
+	public void establecerAlumnoEnviado(String carnet) {
+		// TODO Auto-generated method stub
+		int contador=0;
+		String mensaje="";
+		String[] valor = { carnet };
+		ContentValues valores = new ContentValues();	
+        valores.put("enviado","true");
+         try{
+			contador = db.update("alumno", valores,"carnet = ?",valor);
+			}catch(Exception integridad)
+			{
+				Log.v("enviado", integridad.getMessage());
 			}
 		if (contador == -1 || contador == 0) {
 			mensaje = "Error al modificar el registro";

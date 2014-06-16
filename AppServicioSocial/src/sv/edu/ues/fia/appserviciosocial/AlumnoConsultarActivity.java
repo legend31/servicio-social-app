@@ -138,7 +138,9 @@ public class AlumnoConsultarActivity extends Activity {
 				listaAlumnos.get(i).setPath("/storage/sdcard/" + listaAlumnos.get(i).getPath());
 			}
 			listaAlumnos.get(i).setEnviado("true");
-			Log.v("guardar",auxiliar.insertar(listaAlumnos.get(i)));
+			String respuesta = auxiliar.insertar(listaAlumnos.get(i));
+			Log.v("guardar",respuesta);
+			Toast.makeText(this, respuesta, Toast.LENGTH_SHORT).show();
 			
 		}
 		//Guardar la nueva fecha de actualización
