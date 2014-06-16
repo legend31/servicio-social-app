@@ -75,7 +75,7 @@ public class ControlBD {
 				db.execSQL("create table CARGO ( IDCARGO INTEGER not null primary key autoincrement,NOMBRE VARCHAR(100),DESCRIPCION VARCHAR(250) );");
 				
 				db.execSQL("create table ENCARGADOSERVICIOSOCIAL ( IDENCARGADO INTEGER not null primary key autoincrement, NOMBRE VARCHAR(100) not null,"
-						+ " EMAIL VARCHAR(50),TELEFONO VARCHAR(8) not null, FACULTAD VARCHAR(100),ESCUELA CHAR(100), PATH VARCHAR(100));");
+						+ " EMAIL VARCHAR(50),TELEFONO VARCHAR(8) not null, FACULTAD VARCHAR(100),ESCUELA CHAR(100), PATH VARCHAR(100), ENVIADO BOOLEAN NOT NULL);");//agregado boleano
 				
 				db.execSQL("create table INSTITUCION ( IDINSTITUCION INTEGER not null primary key autoincrement, NOMBRE VARCHAR(100) not null, NIT VARCHAR(17) not null, LATITUD VARCHAR(15) not null,LONGITUD VARCHAR(17) not null );");
 				
@@ -234,16 +234,16 @@ public class ControlBD {
 				
 				
 				//inserciones encargado
-				db.execSQL("insert into encargadoserviciosocial values(null, 'Esteban Gonzalez', 'gonzalez@ues.edu.sv', '23458512', 'Economía', 'Economía','');");
-				db.execSQL("insert into encargadoserviciosocial values(null, 'Sebastian Dominguez', 'dominguezez@ues.edu.sv', '23453421', 'Medicina', 'Medicina','');");
-				db.execSQL("insert into encargadoserviciosocial values(null, 'Kevin Funes', 'funes@ues.edu.sv', '23454100', 'Agronomía', 'Veterinaria','');");
-				db.execSQL("insert into encargadoserviciosocial values(null, 'Julio Campos', 'campos@ues.edu.sv', '23450074', 'Ingenieria y arquitectura', 'Ingenieria Industrial','');");
+				db.execSQL("insert into encargadoserviciosocial values(null, 'Esteban Gonzalez', 'gonzalez@ues.edu.sv', '23458512', 'Economía', 'Economía','','false');");//estado sin enviar
+				db.execSQL("insert into encargadoserviciosocial values(null, 'Sebastian Dominguez', 'dominguezez@ues.edu.sv', '23453421', 'Medicina', 'Medicina','','false');");
+				db.execSQL("insert into encargadoserviciosocial values(null, 'Kevin Funes', 'funes@ues.edu.sv', '23454100', 'Agronomía', 'Veterinaria','','false');");
+				db.execSQL("insert into encargadoserviciosocial values(null, 'Julio Campos', 'campos@ues.edu.sv', '23450074', 'Ingenieria y arquitectura', 'Ingenieria Industrial','','false');");
 				
-				db.execSQL("insert into encargadoserviciosocial values(null, 'Mauricio Funes', 'funes@ues.edu.sv', '23450912', 'Humanidades', 'Psicologia','');");
-				db.execSQL("insert into encargadoserviciosocial values(null, 'Franco Perez', 'perez@ues.edu.sv', '23409562', 'Odontologia', 'odontologia','');");
-				db.execSQL("insert into encargadoserviciosocial values(null, 'Carlos Martinez', 'martinez@ues.edu.sv', '29802342', 'Jurisprudencia', 'Derecho','');");
-				db.execSQL("insert into encargadoserviciosocial values(null, 'Angelica Nuila', 'nuila@ues.edu.sv', '23093482', 'Ingenieria y arquitectura', 'Sistemas Informaticos','');");
-				db.execSQL("insert into encargadoserviciosocial values(null, 'Pedro Marmol', 'marmol@ues.edu.sv', '28938512', 'Quimica y Farmacia', 'Quimica','');");
+				db.execSQL("insert into encargadoserviciosocial values(null, 'Mauricio Funes', 'funes@ues.edu.sv', '23450912', 'Humanidades', 'Psicologia','','false');");
+				db.execSQL("insert into encargadoserviciosocial values(null, 'Franco Perez', 'perez@ues.edu.sv', '23409562', 'Odontologia', 'odontologia','','false');");
+				db.execSQL("insert into encargadoserviciosocial values(null, 'Carlos Martinez', 'martinez@ues.edu.sv', '29802342', 'Jurisprudencia', 'Derecho','','false');");
+				db.execSQL("insert into encargadoserviciosocial values(null, 'Angelica Nuila', 'nuila@ues.edu.sv', '23093482', 'Ingenieria y arquitectura', 'Sistemas Informaticos','','false');");
+				db.execSQL("insert into encargadoserviciosocial values(null, 'Pedro Marmol', 'marmol@ues.edu.sv', '28938512', 'Quimica y Farmacia', 'Quimica','','false');");
 				
 				//inserciones proyecto
 				db.execSQL("insert into proyecto values(null, 2, 2, 3, 'Cuidado de perrros');");
@@ -1186,6 +1186,29 @@ public class ControlBD {
 		}
 	}
 
+	public ArrayList<EncargadoServicioSocial> consultarEncargadoNoEnviado()
+	{
+		ArrayList<EncargadoServicioSocial> encargadosNoEnviados = new ArrayList<EncargadoServicioSocial>();
+		String [] valor = {"false"};
+		Cursor cursor;
+		cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial,"enviado = ?", valor, null, null, null);
+		if (cursor.moveToFirst()) {
+			do{
+				EncargadoServicioSocial encargado=new EncargadoServicioSocial();
+				encargado.setIdEncargado(cursor.getInt(0));
+				encargado.setNombre(cursor.getString(1));
+				encargado.setEmail(cursor.getString(2));
+				encargado.setTelefono(cursor.getString(3));
+				encargado.setFacultad(cursor.getString(4));
+				encargado.setEscuela(cursor.getString(5));
+				encargado.setPath(cursor.getString(6));
+				encargadosNoEnviados.add(encargado);
+			}while(cursor.moveToNext() );
+			return encargadosNoEnviados;
+		} else {
+			return null;
+		}
+	}
 	
 	
 	public String verificarUsuario(String usuario, String password)
@@ -1334,6 +1357,27 @@ public class ControlBD {
         valores.put("enviado","true");
          try{
 			contador = db.update("alumno", valores,"carnet = ?",valor);
+			}catch(Exception integridad)
+			{
+				Log.v("enviado", integridad.getMessage());
+			}
+		if (contador == -1 || contador == 0) {
+			mensaje = "Error al modificar el registro";
+		} else {
+			mensaje = "Registro modificado";
+		}
+	}
+	
+	
+	public void establecerEncargadoEnviado(int id) {
+		// TODO Auto-generated method stub
+		int contador=0;
+		String mensaje="";
+		String[] valor = { Integer.toString(id)};
+		ContentValues valores = new ContentValues();	
+        valores.put("enviado","true");
+         try{
+			contador = db.update("encargadoserviciosocial", valores,"idencargado = ?",valor);
 			}catch(Exception integridad)
 			{
 				Log.v("enviado", integridad.getMessage());

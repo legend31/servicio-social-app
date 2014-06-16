@@ -1,7 +1,12 @@
 package sv.edu.ues.fia.appserviciosocial;
 
 import java.io.File;
+import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 import java.util.StringTokenizer;
 
 import android.app.Activity;
@@ -14,7 +19,9 @@ import android.media.MediaScannerConnection.MediaScannerConnectionClient;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -41,6 +48,10 @@ public class EncargadoInsertarActivity extends Activity {
 	private ImageView image;
 	private File photo;
 	private String path;
+	
+	//servicio
+	private String urlExterno = "http://hv11002pdm115.hostei.com/serviciosweb/insertar_alumno.php";
+	static List<EncargadoServicioSocial> listaEncargados;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +74,12 @@ public class EncargadoInsertarActivity extends Activity {
 
 		// imagenes
 		image = (ImageView) findViewById(R.id.mainimage);
+		
+		//servicio
+		// Código para permitir la conexión a internet en el mismo hilo
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+				.permitAll().build();
+		StrictMode.setThreadPolicy(policy);
 
 	}
 
@@ -76,11 +93,11 @@ public class EncargadoInsertarActivity extends Activity {
 		String error = "";
 
 		if (escuela == null || escuela.trim() == "") {
-			error = "Escuela Ingresado";
+			error = "Escuela no Ingresada";
 		}
 
 		if (facultad == null || facultad.trim() == "") {
-			error = "Facultad Ingresado";
+			error = "Facultad no Ingresada";
 		}
 
 		if (telefono == null || telefono.trim() == "" || telefono.length() != 8) {
@@ -184,4 +201,49 @@ public class EncargadoInsertarActivity extends Activity {
 						Toast.LENGTH_SHORT).show();
 	}
 
+	
+	
+	//Servicio
+	public void insertarServidorEncargado(View v) {
+		// Aqui se deben buscar todos los registros que tengan enviado=false
+		// y se enviaran al servidor y se pondrán enviado=true
+		base.abrir();
+		ArrayList<EncargadoServicioSocial> encargadoAEnviar = base.consultarEncargadoNoEnviado();
+		
+		String  nombre = "", email = "", telefono = "" ,facultad = "", escuela = "", path = "";
+		int id;
+		Date fecha = new Date();
+        fecha = Calendar.getInstance().getTime();
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        String actualizado = formato.format(fecha);
+		if (encargadoAEnviar != null) {
+			for (int i = 0; i <  encargadoAEnviar.size(); i++) {
+				id=encargadoAEnviar.get(i).getIdEncargado();
+				nombre =  encargadoAEnviar.get(i).getNombre();
+				email =  encargadoAEnviar.get(i).getEmail();
+				telefono =  encargadoAEnviar.get(i).getTelefono();
+				facultad =  encargadoAEnviar.get(i).getFacultad();
+				escuela =   encargadoAEnviar.get(i).getEscuela();
+				path =  encargadoAEnviar.get(i).getPath();
+				// Inserción en el servidor PHP
+				String url = urlExterno + "?id=" + id + "&nombre="
+						+ URLEncoder.encode(nombre) + "&email=" + email  +"&telefono=" + telefono+ "&facultad=" + facultad + "&escuela=" 
+						+ escuela +  "&fechaact=" +URLEncoder.encode(actualizado)+ "&path=" + URLEncoder.encode(path);
+				Log.v("la url de php", url);
+				ControladorServicio.insertarObjeto(url, this);
+				// Subida de foto al servidor
+				if(!path.equals(""))
+				{
+					ControladorServicio.subirImagen(path, this);
+				}
+				
+				base.establecerEncargadoEnviado(id);
+			}
+		}
+		base.cerrar();
+	}
+	
+	
+	
+	
 }

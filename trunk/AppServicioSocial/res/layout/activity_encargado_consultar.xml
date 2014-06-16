@@ -56,15 +56,14 @@
             android:padding="5dp"
             android:text="@string/buscar"
             android:textColor="@android:color/white" />
-        
-         <ImageView
+
+        <ImageView
             android:id="@+id/mainimage"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:layout_below="@+id/btnBuscarEncargado"
             android:padding="10dp"
-            android:src="@drawable/anonimo"
-            />
+            android:src="@drawable/anonimo" />
 
         <TableLayout
             android:id="@+id/TablaDeDatosEncargado"
@@ -249,6 +248,18 @@
                 android:text="@string/atras"
                 android:textColor="@android:color/white" />
         </RelativeLayout>
+
+        <Button
+            android:id="@+id/servidorEncargado"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.05"
+            android:background="@drawable/btn_consultar"
+            android:onClick="actualizarServidorEncargado"
+            android:text="Actualizar del servidor"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="5dp" />
+
     </LinearLayout>
 
 </ScrollView>

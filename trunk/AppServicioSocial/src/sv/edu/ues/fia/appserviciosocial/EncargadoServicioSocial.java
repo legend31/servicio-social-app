@@ -11,8 +11,17 @@ public class EncargadoServicioSocial {
      private String facultad;
      private String escuela;
      private String path;
+     private String enviado;
      
 	
+
+	public String getEnviado() {
+		return enviado;
+	}
+
+	public void setEnviado(String enviado) {
+		this.enviado = enviado;
+	}
 
 	public int getIdEncargado() {
 		return idEncargado;
