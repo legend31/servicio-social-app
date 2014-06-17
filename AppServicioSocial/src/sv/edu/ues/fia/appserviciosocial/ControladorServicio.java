@@ -83,6 +83,7 @@ public class ControladorServicio {
 			httpPost.setHeader("content-type", "application/json");
 
 			StringEntity nuevaEntidad = new StringEntity(obj.toString());
+			Log.v("JSON", obj.toString());
 			httpPost.setEntity(nuevaEntidad);
 			Log.v("Peticion", url);
 			Log.v("POST", httpPost.toString());
@@ -117,17 +118,18 @@ public class ControladorServicio {
 				JSONObject obj = alumnosJSON.getJSONObject(i);
 
 				Alumno alumno = new Alumno();
-				alumno.setCarnet(obj.getString("CARNET"));
-				alumno.setNombre(obj.getString("NOMBRE"));
-				alumno.setTelefono(obj.getString("TELEFONO"));
-				alumno.setDui(obj.getString("DUI"));
-				alumno.setNit(obj.getString("NIT"));
-				alumno.setEmail(obj.getString("EMAIL"));
-				alumno.setPath(obj.getString("PATH"));
+				alumno.setCarnet(obj.getString("carnet"));
+				alumno.setNombre(obj.getString("nombre"));
+				alumno.setTelefono(obj.getString("telefono"));
+				alumno.setDui(obj.getString("dui"));
+				alumno.setNit(obj.getString("nit"));
+				alumno.setEmail(obj.getString("email"));
+				alumno.setPath(obj.getString("path"));
 				listaAlumnos.add(alumno);
 			}
 			return listaAlumnos;
 		} catch (Exception e) {
+			Log.v("Error--", "Error de parseo");
 			Toast.makeText(ctx, "Error en parseo de JSON", Toast.LENGTH_LONG)
 					.show();
 			return null;
