@@ -31,6 +31,7 @@ public class AlumnoConsultarActivity extends Activity {
 	int fracaso;
 	
 	private String urlExterno = "http://hv11002pdm115.hostei.com/serviciosweb/consultar_alumno.php";
+	private String urlLocal = "http://10.0.2.2:8080/AppServicioSocial/webresources/sv.edu.ues.fia.appserviciosocial.entidad.alumno/by";
 	static List<Alumno> listaAlumnos;
 
 	@Override
@@ -137,6 +138,40 @@ public class AlumnoConsultarActivity extends Activity {
 				ControladorServicio.descargarImagen(listaAlumnos.get(i).getPath(), this);
 				listaAlumnos.get(i).setPath("/storage/sdcard/" + listaAlumnos.get(i).getPath());
 			}
+			listaAlumnos.get(i).setEnviado("true");
+			String respuesta = auxiliar.insertar(listaAlumnos.get(i));
+			Log.v("guardar",respuesta);
+			Toast.makeText(this, respuesta, Toast.LENGTH_SHORT).show();
+			
+		}
+		//Guardar la nueva fecha de actualización
+		auxiliar.establecerFechaActualizacion("alumno");
+		auxiliar.cerrar();
+	}
+	
+	public void actualizarServidorJava(View v)
+	{
+		auxiliar.abrir();
+		if(listaAlumnos != null)
+		listaAlumnos.clear();
+		String ultimaFecha = auxiliar.obtenerFechaActualizacion("alumno");
+		Log.v("fecha de SQLite", ultimaFecha);
+		String url = urlLocal + "?fecha=" + ultimaFecha;
+		Log.v("URL", url);
+		String alumnosExternos = ControladorServicio.obtenerRespuestaPeticion(url, this);
+		Log.v("JSON", alumnosExternos);
+		try {
+			listaAlumnos = ControladorServicio.obtenerAlumno(alumnosExternos, this);
+			Log.v("listaAlumnos", listaAlumnos+"");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		for(int i=0; i < listaAlumnos.size();i++){
+			/*if(!listaAlumnos.get(i).getPath().equals(""))
+			{
+				ControladorServicio.descargarImagen(listaAlumnos.get(i).getPath(), this);
+				listaAlumnos.get(i).setPath("/storage/sdcard/" + listaAlumnos.get(i).getPath());
+			}*/
 			listaAlumnos.get(i).setEnviado("true");
 			String respuesta = auxiliar.insertar(listaAlumnos.get(i));
 			Log.v("guardar",respuesta);

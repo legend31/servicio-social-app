@@ -9,6 +9,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
+
+import org.json.JSONObject;
+
 import android.media.MediaScannerConnection.MediaScannerConnectionClient;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -43,6 +46,7 @@ public class AlumnoInsertarActivity extends Activity {
 	private EditText txtEmail;
 	private String path;
 	private String urlExterno = "http://hv11002pdm115.hostei.com/serviciosweb/insertar_alumno.php";
+	private String urlLocal = "http://10.0.2.2:8080/AppServicioSocial/webresources/sv.edu.ues.fia.appserviciosocial.entidad.alumno/";
 	static List<Alumno> listaAlumnos;
 
 	SoundPool soundPool;
@@ -191,6 +195,54 @@ public class AlumnoInsertarActivity extends Activity {
 		auxiliar.cerrar();
 	}
 
+	
+	public void insertarServidorJava(View v) {
+		// Aqui se deben buscar todos los registros que tengan enviado=false
+		// y se enviaran al servidor y se pondrán enviado=true
+		auxiliar.abrir();
+		ArrayList<Alumno> alumnosAEnviar = auxiliar.consultarAlumnoNoEnviado();
+		
+		String carnet = "", nombre = "", telefono = "", dui = "", nit = "", email = "", path = "";
+		Date fecha = new Date();
+        fecha = Calendar.getInstance().getTime();
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        String actualizado = formato.format(fecha);
+		if (alumnosAEnviar != null) {
+			for (int i = 0; i < alumnosAEnviar.size(); i++) {
+				carnet = alumnosAEnviar.get(i).getCarnet();
+				nombre = alumnosAEnviar.get(i).getNombre();
+				telefono = alumnosAEnviar.get(i).getTelefono();
+				dui = alumnosAEnviar.get(i).getDui();
+				nit = alumnosAEnviar.get(i).getNit();
+				email = alumnosAEnviar.get(i).getEmail();
+				path = alumnosAEnviar.get(i).getPath();
+				//Inserción en el servidor Glassfish
+				
+				JSONObject alumno = new JSONObject();
+				try{
+					alumno.put("carnet", carnet);
+					alumno.put("nombre", nombre);
+					alumno.put("telefono", telefono);
+					alumno.put("dui", dui);
+					alumno.put("nit", nit);
+					alumno.put("email", email);
+					alumno.put("path", path);
+					alumno.put("fechaact", actualizado);
+					ControladorServicio.insertarObjeto(urlLocal, alumno, this);
+					auxiliar.establecerAlumnoEnviado(carnet);
+				}catch(Exception e){
+					Toast.makeText(this, "Error en los datos", Toast.LENGTH_LONG).show();
+				}
+				// Subida de foto al servidor
+				/*if(!path.equals(""))
+				{
+					ControladorServicio.subirImagen(path, this);
+				}*/
+			}
+		}
+		auxiliar.cerrar();
+	}
+	
 	public void Scan(View v) {
 		Intent intent = new Intent("com.google.zxing.client.android.SCAN");
 		startActivityForResult(intent, 0);
