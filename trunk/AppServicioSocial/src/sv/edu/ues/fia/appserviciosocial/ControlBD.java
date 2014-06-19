@@ -298,7 +298,7 @@ public class ControlBD {
 				// inserciones actualizaciones
 				db.execSQL("insert into actualizaciones values('alumno', date('2013-07-10'))");
 				db.execSQL("insert into actualizaciones values('asignacionproyecto', date('2013-11-20'))");
-				db.execSQL("insert into actualizaciones values('encargadoserviciosocial', date('2013-11-20'))");
+				db.execSQL("insert into actualizaciones values('encargado', date('2013-09-20'))");
 
 				// PARA EL LOGIN , NO TOCAR
 				db.execSQL("insert into usuarios values(null, 'admin', 'admin', 1);");
@@ -403,6 +403,7 @@ public class ControlBD {
 	public String insertar(EncargadoServicioSocial encargado) {
 		String mensaje = "";
 		long contador = 0;
+		if (verificarIntegridad(encargado, 6) != true) {
 		ContentValues valoresEncargado = new ContentValues();
 		valoresEncargado.putNull("idencargado");
 		valoresEncargado.put("nombre", encargado.getNombre());
@@ -414,6 +415,7 @@ public class ControlBD {
 		valoresEncargado.put("enviado", encargado.getEnviado());
 
 		contador = db.insert("encargadoserviciosocial", null, valoresEncargado);
+		}
 		if (contador == -1 || contador == 0) {
 			mensaje = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
 		} else {
@@ -1359,6 +1361,19 @@ public class ControlBD {
 			} else
 				return false;
 		}
+		
+		
+		case 6: {// ve si existe un tipoProyecto con el mismo nombre
+			EncargadoServicioSocial encargado = (EncargadoServicioSocial) dato;
+			Cursor cursor = db.query("encargadoserviciosocial", camposEncargadoServicioSocial,
+					"idencargado='" + encargado.getIdEncargado() + "'", null, null,
+					null, null);
+			if (cursor.moveToFirst()) {
+				return true;
+			} else
+				return false;
+		}
+		
 
 		default:
 			return false;

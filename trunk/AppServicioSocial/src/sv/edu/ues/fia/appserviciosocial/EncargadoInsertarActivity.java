@@ -233,7 +233,7 @@ public class EncargadoInsertarActivity extends Activity {
 				
 				
 				
-				Toast.makeText(this,idencargado + nombre + email + telefono + facultad + escuela + path , Toast.LENGTH_SHORT).show();
+				//Toast.makeText(this,idencargado + nombre + email + telefono + facultad + escuela + path , Toast.LENGTH_SHORT).show();
 				// Inserción en el servidor PHP
 			
 				String url = urlExterno + "?idencargado=" + idencargado + "&nombre="
