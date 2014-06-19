@@ -165,7 +165,10 @@
             android:layout_below="@+id/tablaBotones"
             android:layout_centerHorizontal="true"
             android:text="Insertar a Servidor"
-            android:onClick="insertarServidor" />
+            android:onClick="insertarServidor"
+            android:background="@drawable/btn_insertar"
+            android:textColor="@android:color/white"
+            android:padding="5dp" />
 
         <Button
             android:id="@+id/button2"
@@ -174,7 +177,10 @@
             android:layout_below="@+id/button1"
             android:layout_centerHorizontal="true"
             android:text="Insertar Java"
-            android:onClick="insertarServidorJava" />
+            android:onClick="insertarServidorJava"
+            android:background="@drawable/btn_insertar"
+            android:textColor="@android:color/white"
+            android:padding="5dp" />
 
     </RelativeLayout>
 

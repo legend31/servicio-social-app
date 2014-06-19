@@ -205,10 +205,10 @@ public class AlumnoInsertarActivity extends Activity {
 		String carnet = "", nombre = "", telefono = "", dui = "", nit = "", email = "", path = "";
 		Date fecha = new Date();
         fecha = Calendar.getInstance().getTime();
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat formato =  new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
         String actualizado = formato.format(fecha);
 		if (alumnosAEnviar != null) {
-			for (int i = 0; i < alumnosAEnviar.size(); i++) {
+			for (int i = 0; i < alumnosAEnviar.size(); i++) {//25193645
 				carnet = alumnosAEnviar.get(i).getCarnet();
 				nombre = alumnosAEnviar.get(i).getNombre();
 				telefono = alumnosAEnviar.get(i).getTelefono();
@@ -216,6 +216,8 @@ public class AlumnoInsertarActivity extends Activity {
 				nit = alumnosAEnviar.get(i).getNit();
 				email = alumnosAEnviar.get(i).getEmail();
 				path = alumnosAEnviar.get(i).getPath();
+				if(path.equals(""))
+					path = " ";
 				//Inserción en el servidor Glassfish
 				
 				JSONObject alumno = new JSONObject();
@@ -228,16 +230,12 @@ public class AlumnoInsertarActivity extends Activity {
 					alumno.put("email", email);
 					alumno.put("path", path);
 					alumno.put("fechaact", actualizado);
-					ControladorServicio.insertarObjeto(urlLocal, alumno, this);
+					try{ControladorServicio.insertarObjeto(urlLocal, alumno, this);}
+					catch(Exception e){return;}
 					auxiliar.establecerAlumnoEnviado(carnet);
 				}catch(Exception e){
 					Toast.makeText(this, "Error en los datos", Toast.LENGTH_LONG).show();
 				}
-				// Subida de foto al servidor
-				/*if(!path.equals(""))
-				{
-					ControladorServicio.subirImagen(path, this);
-				}*/
 			}
 		}
 		auxiliar.cerrar();
