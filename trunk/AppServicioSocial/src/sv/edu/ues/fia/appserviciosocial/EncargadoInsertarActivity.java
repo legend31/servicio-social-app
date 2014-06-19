@@ -9,6 +9,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
 
+
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
@@ -27,6 +29,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+@SuppressLint("SimpleDateFormat")
 public class EncargadoInsertarActivity extends Activity {
 
 	ControlBD base;
@@ -47,10 +50,10 @@ public class EncargadoInsertarActivity extends Activity {
 	private Uri file;
 	private ImageView image;
 	private File photo;
-	private String path;
+	private String path="";
 	
 	//servicio
-	private String urlExterno = "http://hv11002pdm115.hostei.com/serviciosweb/insertar_alumno.php";
+	private String urlExterno = "http://hv11002pdm115.hostei.com/serviciosweb/insertar_encargado.php";
 	static List<EncargadoServicioSocial> listaEncargados;
 
 	@Override
@@ -59,8 +62,11 @@ public class EncargadoInsertarActivity extends Activity {
 		setContentView(R.layout.activity_encargado_insertar);
 
 		base = new ControlBD(this);
-		// txtIdEncargado = (EditText)
-		// findViewById(R.id.txtIdEncargadoEncargado);
+		//servicio
+		// Código para permitir la conexión a internet en el mismo hilo
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+		StrictMode.setThreadPolicy(policy);
+
 		txtNombre = (EditText) findViewById(R.id.txtNombreEncargado);
 		txtEmail = (EditText) findViewById(R.id.txtEmailEncargado);
 		txtTelefono = (EditText) findViewById(R.id.txtTelefonoEncargado);
@@ -75,12 +81,7 @@ public class EncargadoInsertarActivity extends Activity {
 		// imagenes
 		image = (ImageView) findViewById(R.id.mainimage);
 		
-		//servicio
-		// Código para permitir la conexión a internet en el mismo hilo
-		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-				.permitAll().build();
-		StrictMode.setThreadPolicy(policy);
-
+	
 	}
 
 	public void insertarEncargado(View v) {
@@ -132,6 +133,7 @@ public class EncargadoInsertarActivity extends Activity {
 		encargado.setFacultad(facultad);
 		encargado.setEscuela(escuela);
 		encargado.setPath(path);
+		encargado.setEnviado("false");
 
 		base.abrir();
 		String regInsertados = base.insertar(encargado);
@@ -204,43 +206,57 @@ public class EncargadoInsertarActivity extends Activity {
 	
 	
 	//Servicio
-	public void insertarServidorEncargado(View v) {
-		// Aqui se deben buscar todos los registros que tengan enviado=false
-		// y se enviaran al servidor y se pondrán enviado=true
+	public void insertarServidorEncargado (View v) {
+		
+	
+		
 		base.abrir();
 		ArrayList<EncargadoServicioSocial> encargadoAEnviar = base.consultarEncargadoNoEnviado();
 		
+		
 		String  nombre = "", email = "", telefono = "" ,facultad = "", escuela = "", path = "";
-		int id;
+		int idencargado;
 		Date fecha = new Date();
         fecha = Calendar.getInstance().getTime();
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         String actualizado = formato.format(fecha);
-		if (encargadoAEnviar != null) {
+        
+        if (encargadoAEnviar != null) {
 			for (int i = 0; i <  encargadoAEnviar.size(); i++) {
-				id=encargadoAEnviar.get(i).getIdEncargado();
+				idencargado=encargadoAEnviar.get(i).getIdEncargado();
 				nombre =  encargadoAEnviar.get(i).getNombre();
 				email =  encargadoAEnviar.get(i).getEmail();
 				telefono =  encargadoAEnviar.get(i).getTelefono();
 				facultad =  encargadoAEnviar.get(i).getFacultad();
 				escuela =   encargadoAEnviar.get(i).getEscuela();
 				path =  encargadoAEnviar.get(i).getPath();
+				
+				
+				
+				Toast.makeText(this,idencargado + nombre + email + telefono + facultad + escuela + path , Toast.LENGTH_SHORT).show();
 				// Inserción en el servidor PHP
-				String url = urlExterno + "?id=" + id + "&nombre="
-						+ URLEncoder.encode(nombre) + "&email=" + email  +"&telefono=" + telefono+ "&facultad=" + facultad + "&escuela=" 
-						+ escuela +  "&fechaact=" +URLEncoder.encode(actualizado)+ "&path=" + URLEncoder.encode(path);
+			
+				String url = urlExterno + "?idencargado=" + idencargado + "&nombre="
+						+ URLEncoder.encode(nombre) + "&email=" + email  +"&telefono=" + telefono + "&facultad=" + facultad + "&escuela=" 
+						+ escuela + "&fechaact=" +URLEncoder.encode(actualizado)+ "&path=" + URLEncoder.encode(path);
+				 
+				
+				
+				
 				Log.v("la url de php", url);
 				ControladorServicio.insertarObjeto(url, this);
 				// Subida de foto al servidor
+				
 				if(!path.equals(""))
 				{
 					ControladorServicio.subirImagen(path, this);
 				}
 				
-				base.establecerEncargadoEnviado(id);
+				base.establecerEncargadoEnviado(idencargado);
 			}
 		}
 		base.cerrar();
+		
 	}
 	
 	
