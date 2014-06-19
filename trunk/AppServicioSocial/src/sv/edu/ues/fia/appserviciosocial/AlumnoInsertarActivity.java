@@ -44,7 +44,7 @@ public class AlumnoInsertarActivity extends Activity {
 	private EditText txtDui;
 	private EditText txtNit;
 	private EditText txtEmail;
-	private String path;
+	private String path="";
 	private String urlExterno = "http://hv11002pdm115.hostei.com/serviciosweb/insertar_alumno.php";
 	private String urlLocal = "http://10.0.2.2:8080/AppServicioSocial/webresources/sv.edu.ues.fia.appserviciosocial.entidad.alumno/";
 	static List<Alumno> listaAlumnos;
