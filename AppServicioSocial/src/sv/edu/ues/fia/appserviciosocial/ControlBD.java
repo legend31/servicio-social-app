@@ -28,13 +28,21 @@ public class ControlBD {
 			"idEncargado", "nombre", "facultad" };
 	private static final String[] camposInstitucion = new String[] {
 			"idInstitucion", "nombre", "nit", "latitud", "longitud" };
+	
+	//private static final String[] camposProyecto = new String[] { "idProyecto",
+	//"idSolicitante", "idTipoProyecto", "idEncargado", "nombre"};
+	
 	private static final String[] camposProyecto = new String[] { "idProyecto",
-			"idSolicitante", "idTipoProyecto", "idEncargado", "nombre" };
+			"idSolicitante", "idTipoProyecto", "idEncargado", "nombre","enviado" };
 	private static final String[] camposSolicitante = new String[] {
 			"idSolicitante", "idInstitucion", "idCargo", "nombre", "telefono",
 			"correo_electronico", "path" };
+	
+	//private static final String[] camposTipoProyecto = new String[] {
+	//"idTipoProyecto", "nombre"};
+	
 	private static final String[] camposTipoProyecto = new String[] {
-			"idTipoProyecto", "nombre" };
+			"idTipoProyecto", "nombre","enviado" };
 	private static final String[] camposTipoTrabajo = new String[] {
 			"idTipoTrabajo", "nombre", "valor" };
 	private static final String[] camposCargo = new String[] { "idCargo",
@@ -512,6 +520,7 @@ public class ControlBD {
 			ContentValues content = new ContentValues();
 			content.putNull("idtipoproyecto");
 			content.put("nombre", tipoProyecto.getNombre());
+			content.put("enviado", tipoProyecto.getEnviado());
 			contador = db.insert("tipoproyecto", null, content);
 		}
 		if (contador == -1 || contador == 0) {
@@ -1205,6 +1214,25 @@ public class ControlBD {
 		} else {
 			return null;
 		}
+	}
+	
+	public ArrayList<TipoProyecto> consultarTipoProyectoNoEnviado() {
+		ArrayList<TipoProyecto> tipoProyectosNoEnviados = new ArrayList<TipoProyecto>();
+		String[] valor = { "false" };
+		Cursor cursor;
+		cursor = db.query("tipoproyecto", camposTipoProyecto, "enviado = ?", valor,
+				null, null, null);
+		if (cursor.moveToFirst()) {
+			do {
+				TipoProyecto tipoProyecto = new TipoProyecto();
+				tipoProyecto.setIdTipoProyecto(cursor.getInt(0));
+				tipoProyecto.setNombre(cursor.getString(1));				
+				tipoProyectosNoEnviados.add(tipoProyecto);
+			} while (cursor.moveToNext());
+			return tipoProyectosNoEnviados;
+		} else {
+			return null;
+		}
 
 	}
 
@@ -1413,7 +1441,7 @@ public class ControlBD {
 			mensaje = "Registro modificado";
 		}
 	}
-	
+
 	public void establecerProyectoEnviado(String idProyecto) {
 		// TODO Auto-generated method stub
 		int contador = 0;
@@ -1423,6 +1451,25 @@ public class ControlBD {
 		valores.put("enviado", "true");
 		try {
 			contador = db.update("proyecto", valores, "idproyecto = ?", valor);
+		} catch (Exception integridad) {
+			Log.v("enviado", integridad.getMessage());
+		}
+		if (contador == -1 || contador == 0) {
+			mensaje = "Error al modificar el registro";
+		} else {
+			mensaje = "Registro modificado";
+		}
+	}
+	
+	public void establecerTipoProyectoEnviado(String idTipoProyecto) {
+		// TODO Auto-generated method stub
+		int contador = 0;
+		String mensaje = "";
+		String[] valor = { idTipoProyecto };
+		ContentValues valores = new ContentValues();
+		valores.put("enviado", "true");
+		try {
+			contador = db.update("tipoproyecto", valores, "idtipoproyecto = ?", valor);
 		} catch (Exception integridad) {
 			Log.v("enviado", integridad.getMessage());
 		}
