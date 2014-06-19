@@ -29,20 +29,17 @@ public class ControlBD {
 	private static final String[] camposInstitucion = new String[] {
 			"idInstitucion", "nombre", "nit", "latitud", "longitud" };
 	
-	//private static final String[] camposProyecto = new String[] { "idProyecto",
-	//"idSolicitante", "idTipoProyecto", "idEncargado", "nombre"};
-	
 	private static final String[] camposProyecto = new String[] { "idProyecto",
-			"idSolicitante", "idTipoProyecto", "idEncargado", "nombre","enviado" };
+	"idSolicitante", "idTipoProyecto", "idEncargado", "nombre"};
+	
+	
 	private static final String[] camposSolicitante = new String[] {
 			"idSolicitante", "idInstitucion", "idCargo", "nombre", "telefono",
 			"correo_electronico", "path" };
 	
-	//private static final String[] camposTipoProyecto = new String[] {
-	//"idTipoProyecto", "nombre"};
-	
 	private static final String[] camposTipoProyecto = new String[] {
-			"idTipoProyecto", "nombre","enviado" };
+	"idTipoProyecto", "nombre"};
+	
 	private static final String[] camposTipoTrabajo = new String[] {
 			"idTipoTrabajo", "nombre", "valor" };
 	private static final String[] camposCargo = new String[] { "idCargo",
