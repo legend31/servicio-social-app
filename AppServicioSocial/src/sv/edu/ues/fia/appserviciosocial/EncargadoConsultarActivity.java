@@ -231,21 +231,15 @@ public class EncargadoConsultarActivity extends Activity implements
 		base.abrir();
 		if(listaEncargados != null)
 			listaEncargados.clear();
-	String ultimaFecha = base.obtenerFechaActualizacion("encargadoserviciosocial");
+		String ultimaFecha= base.obtenerFechaActualizacion("encargado");
 		Log.v("fecha de SQLite", ultimaFecha);
-		//String url = urlExterno + "?fecha=" + ultimaFecha;
-		//Log.v("URL", url);
-		
-		Toast.makeText(this, "HOla" , Toast.LENGTH_SHORT).show();
-		return;
+		String url = urlExterno + "?fecha=" + ultimaFecha;
+		Log.v("URL", url);
 
 		
-		
-		/*
 		String encargadosExternos = ControladorServicio.obtenerRespuestaPeticion(url, this);
 		Log.v("JSON", encargadosExternos);
-		
-		
+
 	
 		try {
 			listaEncargados = ControladorServicio.obtenerEncargado(encargadosExternos, this);
@@ -265,9 +259,9 @@ public class EncargadoConsultarActivity extends Activity implements
 			
 		}
 		//Guardar la nueva fecha de actualización
-		base.establecerFechaActualizacion("encargadoserviciosocial");
+		base.establecerFechaActualizacion("encargado");
 		base.cerrar();
-		*/
+		
 	}
 
 }
