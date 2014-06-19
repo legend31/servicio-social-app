@@ -169,6 +169,7 @@
     <string name="fotografia">Fotografia del Alumno</string>
     <string name="latitud">Latitud</string>
     <string name="longitud">Longitud</string>
+    <string name="insertarServidor">Insertar a Servidor</string>
     
 
 </resources>

@@ -4,6 +4,7 @@ public class TipoProyecto {
 	
 	int idTipoProyecto;
 	String nombre;
+	private String enviado;
 	
 	public TipoProyecto(int idTipoProyecto, String nombre) {
 		this.idTipoProyecto = idTipoProyecto;
@@ -27,5 +28,14 @@ public class TipoProyecto {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
+	public String getEnviado() {
+		return enviado;
+	}
+
+	public void setEnviado(String enviado) {
+		this.enviado = enviado;
+	}
+	
 	
 }
