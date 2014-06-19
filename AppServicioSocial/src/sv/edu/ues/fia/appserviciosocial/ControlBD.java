@@ -266,10 +266,10 @@ public class ControlBD {
 				db.execSQL("insert into proyecto values(null, 2, 1, 1, 'Consultoria contable','false');");
 				db.execSQL("insert into proyecto values(null, 1, 3, 4, 'Revision de maquila','false');");
 
-				db.execSQL("insert into proyecto values(null, 7, 3, 5, 'Diseño de un pagina web');");
-				db.execSQL("insert into proyecto values(null, 4, 2, 3, 'Analisis de procesos');");
-				db.execSQL("insert into proyecto values(null, 6, 1, 4, 'Refuerzo a niños con problemas de aprendizaje ');");
-				db.execSQL("insert into proyecto values(null, 7, 2, 3, 'Automatizacion de inventarios');");
+				db.execSQL("insert into proyecto values(null, 7, 3, 5, 'Diseño de un pagina web','false');");
+				db.execSQL("insert into proyecto values(null, 4, 2, 3, 'Analisis de procesos','false');");
+				db.execSQL("insert into proyecto values(null, 6, 1, 4, 'Refuerzo a niños con problemas de aprendizaje ','false');");
+				db.execSQL("insert into proyecto values(null, 7, 2, 3, 'Automatizacion de inventarios','false');");
 
 				// inserciones asignacion de proyecto
 				db.execSQL("insert into asignacionproyecto values ('FG12098', 1, date('2014-06-29'));");
@@ -1390,8 +1390,7 @@ public class ControlBD {
 		ContentValues valores = new ContentValues();
 		valores.put("fecha", actualizado);
 		try {
-			contador = db
-					.update("actualizaciones", valores, "tabla = ?", valor);
+			contador = db.update("actualizaciones", valores, "tabla = ?", valor);
 		} catch (Exception integridad) {
 			String ex = integridad.getMessage();
 		}
