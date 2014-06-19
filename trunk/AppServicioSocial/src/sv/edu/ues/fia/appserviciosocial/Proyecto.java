@@ -9,6 +9,7 @@ public class Proyecto {
 	int idEncargado;
 	String nombre;
 	int numeroProyectos;
+	private String enviado;
 	
 	Proyecto(int idProyecto, int idSolicitante, int idTipoProyecto, int idEncargado, String nombre)
 	{
@@ -66,6 +67,14 @@ public class Proyecto {
 	
 	public int getNumeroProyectos(){
 		return numeroProyectos;
+	}
+
+	public String getEnviado() {
+		return enviado;
+	}
+
+	public void setEnviado(String enviado) {
+		this.enviado = enviado;
 	}
 	
 	
