@@ -298,6 +298,7 @@ public class ControlBD {
 				// inserciones actualizaciones
 				db.execSQL("insert into actualizaciones values('alumno', date('2013-07-10'))");
 				db.execSQL("insert into actualizaciones values('asignacionproyecto', date('2013-11-20'))");
+				db.execSQL("insert into actualizaciones values('encargadoserviciosocial', date('2013-11-20'))");
 
 				// PARA EL LOGIN , NO TOCAR
 				db.execSQL("insert into usuarios values(null, 'admin', 'admin', 1);");
@@ -410,6 +411,7 @@ public class ControlBD {
 		valoresEncargado.put("facultad", encargado.getFacultad());
 		valoresEncargado.put("escuela", encargado.getEscuela());
 		valoresEncargado.put("path", encargado.getPath());
+		valoresEncargado.put("enviado", encargado.getEnviado());
 
 		contador = db.insert("encargadoserviciosocial", null, valoresEncargado);
 		if (contador == -1 || contador == 0) {

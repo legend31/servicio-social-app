@@ -49,7 +49,7 @@ public class EncargadoConsultarActivity extends Activity implements
 	int fracaso;
 	
 	//servicios
-	private String urlExterno = "http://hv11002pdm115.hostei.com/serviciosweb/consultar_alumno.php";
+	private String urlExterno = "http://hv11002pdm115.hostei.com/serviciosweb/consultar_encargado.php";
 	static List<EncargadoServicioSocial> listaEncargados;
 
 	@Override
@@ -225,15 +225,28 @@ public class EncargadoConsultarActivity extends Activity implements
 	
 	
 	public void actualizarServidorEncargado(View v) {
+		
+	
+		
 		base.abrir();
 		if(listaEncargados != null)
 			listaEncargados.clear();
-		String ultimaFecha = base.obtenerFechaActualizacion("encargadoserviciosocial");
+	String ultimaFecha = base.obtenerFechaActualizacion("encargadoserviciosocial");
 		Log.v("fecha de SQLite", ultimaFecha);
-		String url = urlExterno + "?fecha=" + ultimaFecha;
-		Log.v("URL", url);
+		//String url = urlExterno + "?fecha=" + ultimaFecha;
+		//Log.v("URL", url);
+		
+		Toast.makeText(this, "HOla" , Toast.LENGTH_SHORT).show();
+		return;
+
+		
+		
+		/*
 		String encargadosExternos = ControladorServicio.obtenerRespuestaPeticion(url, this);
 		Log.v("JSON", encargadosExternos);
+		
+		
+	
 		try {
 			listaEncargados = ControladorServicio.obtenerEncargado(encargadosExternos, this);
 		} catch (Exception e) {
@@ -254,6 +267,7 @@ public class EncargadoConsultarActivity extends Activity implements
 		//Guardar la nueva fecha de actualización
 		base.establecerFechaActualizacion("encargadoserviciosocial");
 		base.cerrar();
+		*/
 	}
 
 }
