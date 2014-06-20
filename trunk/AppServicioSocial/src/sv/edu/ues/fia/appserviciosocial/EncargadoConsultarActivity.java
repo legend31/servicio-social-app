@@ -53,7 +53,7 @@ public class EncargadoConsultarActivity extends Activity implements
 	static List<EncargadoServicioSocial> listaEncargados;
 	
 	//java servicio
-	private String urlLocal = "http://10.0.2.2:8080/AppServicioSocial/webresources/sv.edu.ues.fia.appserviciosocial.entidad.encargadoserviciosocial/by";
+	private String urlLocal = "http://168.243.8.13:8080/AppServicioSocial/webresources/sv.edu.ues.fia.appserviciosocial.entidad.encargadoserviciosocial/by";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
