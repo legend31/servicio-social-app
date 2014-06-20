@@ -272,5 +272,7 @@
             android:label="@string/title_activity_pantalla_inicial" >
         </activity>
     </application>
-
+<!--Permisos para imprimir-->
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    
 </manifest>
