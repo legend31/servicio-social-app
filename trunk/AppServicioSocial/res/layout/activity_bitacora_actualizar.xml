@@ -12,60 +12,39 @@
         android:id="@+id/botonBuscar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="16dp"
-        android:text="@string/buscar" 
-        android:onClick="modificarBitacora"
+        android:layout_alignRight="@+id/editText1"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
         android:background="@drawable/btn_actualizar"
+        android:onClick="modificarBitacora"
         android:padding="5dp"
-        android:textColor="@android:color/white"/>
+        android:text="@string/buscar"
+        android:textColor="@android:color/white" />
 
     <EditText
         android:id="@+id/txtIdBitacora"
-        android:layout_width="wrap_content"
+        android:layout_width="175dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/botonBuscar"
-        android:layout_alignLeft="@+id/editText1"
         android:layout_toLeftOf="@+id/botonBuscar"
+        android:layout_weight="1"
         android:ems="10"
         android:hint="@string/idBitacora"
-        android:inputType="number" />
-
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/botonBuscar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
-        android:ems="10"
-        android:hint="@string/carnet" >
+        android:inputType="number" >
 
         <requestFocus />
     </EditText>
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/editText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/editText3"
-        android:layout_marginTop="20dp"
+        android:layout_alignLeft="@+id/editText4"
+        android:layout_below="@+id/botonBuscar"
+        android:layout_marginTop="18dp"
         android:ems="10"
-        android:hint="@string/fecha"
-        android:inputType="date" />
-
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/editText4"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:hint="@string/descripcion"
-        android:inputType="textMultiLine" />
+        android:hint="@string/carnet" />
 
     <EditText
         android:id="@+id/editText2"
@@ -73,7 +52,6 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editText1"
         android:layout_below="@+id/editText1"
-        android:layout_marginTop="15dp"
         android:ems="10"
         android:hint="@string/idProyecto"
         android:inputType="number" />
@@ -83,9 +61,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editText2"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/editText2"
         android:ems="10"
         android:hint="@string/idTipoTrabajo"
         android:inputType="number" />
+
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText5"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:hint="@string/fecha"
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText4"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="@string/descripcion"
+        android:inputType="textMultiLine" />
 
 </RelativeLayout>

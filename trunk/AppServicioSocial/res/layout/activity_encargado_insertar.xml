@@ -118,7 +118,9 @@
                     android:onClick="insertarEncargado"
                     android:padding="5dp"
                     android:text="@string/guardar"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
 
                 <Button
                     android:id="@+id/btnTomarFoto"

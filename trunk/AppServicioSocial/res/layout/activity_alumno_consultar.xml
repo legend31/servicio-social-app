@@ -84,7 +84,7 @@
             android:layout_centerHorizontal="true"
             android:text="Actualizar del servidor"
             android:onClick="actualizarServidor"
-            android:background="@drawable/btn_insertar"
+            android:background="@drawable/btn_consultar"
             android:textColor="@android:color/white"
             android:padding="5dp" />
 
@@ -96,7 +96,7 @@
             android:layout_centerHorizontal="true"
             android:text="Actualizar Java"
             android:onClick="actualizarServidorJava"
-            android:background="@drawable/btn_insertar"
+            android:background="@drawable/btn_consultar"
             android:textColor="@android:color/white"
             android:padding="5dp"
             android:layout_margin="5dp" />
@@ -108,7 +108,7 @@
             android:layout_below="@+id/button2"
             android:layout_centerHorizontal="true"
             android:layout_margin="5dp"
-            android:background="@drawable/btn_insertar"
+            android:background="@drawable/btn_consultar"
             android:onClick="print"
             android:padding="5dp"
             android:text="@string/printAlumnos"
