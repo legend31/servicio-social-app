@@ -1217,25 +1217,7 @@ public class ControlBD {
 		}
 	}
 	
-	public ArrayList<TipoProyecto> consultarTipoProyectoNoEnviado() {
-		ArrayList<TipoProyecto> tipoProyectosNoEnviados = new ArrayList<TipoProyecto>();
-		String[] valor = { "false" };
-		Cursor cursor;
-		cursor = db.query("tipoproyecto", camposTipoProyecto, "enviado = ?", valor,
-				null, null, null);
-		if (cursor.moveToFirst()) {
-			do {
-				TipoProyecto tipoProyecto = new TipoProyecto();
-				tipoProyecto.setIdTipoProyecto(cursor.getInt(0));
-				tipoProyecto.setNombre(cursor.getString(1));				
-				tipoProyectosNoEnviados.add(tipoProyecto);
-			} while (cursor.moveToNext());
-			return tipoProyectosNoEnviados;
-		} else {
-			return null;
-		}
 
-	}
 
 	public ArrayList<EncargadoServicioSocial> consultarEncargadoNoEnviado() {
 		ArrayList<EncargadoServicioSocial> encargadosNoEnviados = new ArrayList<EncargadoServicioSocial>();
@@ -1472,6 +1454,26 @@ public class ControlBD {
 		} else {
 			mensaje = "Registro modificado";
 		}
+	}
+
+	public ArrayList<TipoProyecto> consultarTipoProyectoNoEnviado() {
+		ArrayList<TipoProyecto> tipoProyectosNoEnviados = new ArrayList<TipoProyecto>();
+		String[] valor = { "false" };
+		Cursor cursor;
+		cursor = db.query("tipoproyecto", camposTipoProyecto, "enviado = ?", valor,
+				null, null, null);
+		if (cursor.moveToFirst()) {
+			do {
+				TipoProyecto tipoProyecto = new TipoProyecto();
+				tipoProyecto.setIdTipoProyecto(cursor.getInt(0));
+				tipoProyecto.setNombre(cursor.getString(1));				
+				tipoProyectosNoEnviados.add(tipoProyecto);
+			} while (cursor.moveToNext());
+			return tipoProyectosNoEnviados;
+		} else {
+			return null;
+		}
+
 	}
 	
 	public void establecerTipoProyectoEnviado(String idTipoProyecto) {
