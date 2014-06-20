@@ -51,6 +51,9 @@ public class EncargadoConsultarActivity extends Activity implements
 	//servicios
 	private String urlExterno = "http://hv11002pdm115.hostei.com/serviciosweb/consultar_encargado.php";
 	static List<EncargadoServicioSocial> listaEncargados;
+	
+	//java servicio
+	private String urlLocal = "http://10.0.2.2:8080/AppServicioSocial/webresources/sv.edu.ues.fia.appserviciosocial.entidad.encargadoserviciosocial/by";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -263,5 +266,42 @@ public class EncargadoConsultarActivity extends Activity implements
 		base.cerrar();
 		
 	}
+	
+	//servicio java
+	
+	public void actualizarServidorJavaEncargado(View v)
+	{
+		base.abrir();
+		if(listaEncargados != null)
+		listaEncargados.clear();
+		String ultimaFecha = base.obtenerFechaActualizacion("encargado");
+		Log.v("fecha de SQLite", ultimaFecha);
+		String url = urlLocal + "?fecha=" + ultimaFecha;
+		Log.v("URL", url);
+		String encargadosExternos = ControladorServicio.obtenerRespuestaPeticion(url, this);
+		Log.v("JSON", encargadosExternos);
+		try {
+			listaEncargados = ControladorServicio.obtenerEncargado(encargadosExternos, this);
+			Log.v("listaAlumnos", listaEncargados+"");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		for(int i=0; i < listaEncargados.size();i++){
+			/*if(!listaAlumnos.get(i).getPath().equals(""))
+			{
+				ControladorServicio.descargarImagen(listaAlumnos.get(i).getPath(), this);
+				listaAlumnos.get(i).setPath("/storage/sdcard/" + listaAlumnos.get(i).getPath());
+			}*/
+			listaEncargados.get(i).setEnviado("true");
+			String respuesta = base.insertar(listaEncargados.get(i));
+			Log.v("guardar",respuesta);
+			Toast.makeText(this, respuesta, Toast.LENGTH_SHORT).show();
+			
+		}
+		//Guardar la nueva fecha de actualización
+		base.establecerFechaActualizacion("encargado");
+		base.cerrar();
+	}
+	
 
 }

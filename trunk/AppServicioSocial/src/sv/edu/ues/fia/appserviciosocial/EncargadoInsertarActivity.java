@@ -9,6 +9,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import org.json.JSONObject;
+
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -56,6 +58,10 @@ public class EncargadoInsertarActivity extends Activity {
 	private String urlExterno = "http://hv11002pdm115.hostei.com/serviciosweb/insertar_encargado.php";
 	static List<EncargadoServicioSocial> listaEncargados;
 
+	
+	//java
+	private String urlLocal = "http://10.0.2.2:8080/AppServicioSocial/webresources/sv.edu.ues.fia.appserviciosocial.entidad.encargadoserviciosocial/";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -257,6 +263,60 @@ public class EncargadoInsertarActivity extends Activity {
 		}
 		base.cerrar();
 		
+	}
+	
+	
+	
+	
+	
+	
+	public void insertarServidorJavaEncargado(View v) {
+		
+		base.abrir();
+		ArrayList<EncargadoServicioSocial> encargadoAEnviar = base.consultarEncargadoNoEnviado();
+		
+		
+		String  nombre = "", email = "", telefono = "" ,facultad = "", escuela = "", path = "";
+		int idencargado;
+		Date fecha = new Date();
+        fecha = Calendar.getInstance().getTime();
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        String actualizado = formato.format(fecha);
+        
+        if (encargadoAEnviar != null) {
+			for (int i = 0; i <  encargadoAEnviar.size(); i++) {
+				idencargado=encargadoAEnviar.get(i).getIdEncargado();
+				nombre =  encargadoAEnviar.get(i).getNombre();
+				email =  encargadoAEnviar.get(i).getEmail();
+				telefono =  encargadoAEnviar.get(i).getTelefono();
+				facultad =  encargadoAEnviar.get(i).getFacultad();
+				escuela =   encargadoAEnviar.get(i).getEscuela();
+				path =  encargadoAEnviar.get(i).getPath();
+				
+				if(path.equals(""))
+					path = " ";
+				
+				//Inserción en el servidor Glassfish
+				
+				JSONObject encargado = new JSONObject();
+				try{
+					encargado.put("idencargado", idencargado);
+					encargado.put("nombre", nombre);
+					encargado.put("telefono", telefono);
+					encargado.put("facultad", facultad);
+					encargado.put("escuela", escuela);
+					encargado.put("email", email);
+					encargado.put("path", path);
+					encargado.put("fechaact", actualizado);
+					try{ControladorServicio.insertarObjeto(urlLocal, encargado, this);}
+					catch(Exception e){return;}
+					base.establecerEncargadoEnviado(idencargado);
+				}catch(Exception e){
+					Toast.makeText(this, "Error en los datos", Toast.LENGTH_LONG).show();
+				}
+			}
+		}
+		base.cerrar();
 	}
 	
 	
