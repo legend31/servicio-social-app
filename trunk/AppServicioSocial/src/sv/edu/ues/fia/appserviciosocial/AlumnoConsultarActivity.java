@@ -55,8 +55,7 @@ public class AlumnoConsultarActivity extends Activity {
 		soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
 		exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);
 		fracaso = soundPool.load(getApplicationContext(), R.raw.sonido2, 0);
-		Printer p = new Printer(this);
-		p.printDocument();
+		
 	}
 
 	@Override
@@ -182,5 +181,9 @@ public class AlumnoConsultarActivity extends Activity {
 		//Guardar la nueva fecha de actualización
 		auxiliar.establecerFechaActualizacion("alumno");
 		auxiliar.cerrar();
+	}
+	public void print(View v){
+		Printer p = new Printer(this);
+		p.printDocument();
 	}
 }
