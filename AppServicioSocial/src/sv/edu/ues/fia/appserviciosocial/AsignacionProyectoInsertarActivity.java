@@ -104,6 +104,7 @@ public class AsignacionProyectoInsertarActivity extends Activity {
 		// Avisando errores
 		if (info != "") {
 			Toast.makeText(this, info, Toast.LENGTH_SHORT).show();
+			soundPool.play(fracaso, 1, 1, 1, 0, 1);
 			return;
 		}
 		// Creando inserción

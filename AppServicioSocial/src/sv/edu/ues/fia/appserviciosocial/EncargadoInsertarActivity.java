@@ -101,24 +101,29 @@ public class EncargadoInsertarActivity extends Activity {
 
 		if (escuela == null || escuela.trim() == "") {
 			error = "Escuela no Ingresada";
+			soundPool.play(fracaso, 1, 1, 1, 0, 1);
 		}
 
 		if (facultad == null || facultad.trim() == "") {
 			error = "Facultad no Ingresada";
+			
 		}
 
 		if (telefono == null || telefono.trim() == "" || telefono.length() != 8) {
 			error = "Teléfono inválido";
+			
 		}
 		if (email == null
 				|| email.trim() == ""
 				|| !android.util.Patterns.EMAIL_ADDRESS.matcher(email)
 						.matches()) {
 			error = "E-mail inválido";
+			
 		}
 
 		if (nombre == null || nombre.trim() == "") {
 			error = "Nombre no Ingresado";
+			
 		}
 		// if(txtIdEncargado.getText().toString()==null
 		// ||txtIdEncargado.getText().toString().trim()=="")
@@ -128,6 +133,7 @@ public class EncargadoInsertarActivity extends Activity {
 		// Avisando errores
 		if (error != "") {
 			Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+			soundPool.play(fracaso, 1, 1, 1, 0, 1);
 			return;
 		}
 		// Creando inserción
@@ -207,6 +213,7 @@ public class EncargadoInsertarActivity extends Activity {
 			} else
 				Toast.makeText(getApplicationContext(), "fotografia no tomada",
 						Toast.LENGTH_SHORT).show();
+		soundPool.play(fracaso, 1, 1, 1, 0, 1);
 	}
 
 	
@@ -313,6 +320,7 @@ public class EncargadoInsertarActivity extends Activity {
 					base.establecerEncargadoEnviado(idencargado);
 				}catch(Exception e){
 					Toast.makeText(this, "Error en los datos", Toast.LENGTH_LONG).show();
+					soundPool.play(fracaso, 1, 1, 1, 0, 1);
 				}
 			}
 		}

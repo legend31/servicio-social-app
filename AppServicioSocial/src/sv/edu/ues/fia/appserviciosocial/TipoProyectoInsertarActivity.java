@@ -66,6 +66,7 @@ public class TipoProyectoInsertarActivity extends Activity {
 		if (mensaje != "") {
 			Toast.makeText(this, "Nombre Invalido. Intente de nuevo",
 					Toast.LENGTH_SHORT).show();
+			soundPool.play(fracaso, 1, 1, 1, 0, 1);
 			return;
 		}
 		TipoProyecto tipoProyecto = new TipoProyecto();
