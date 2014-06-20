@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.media.AudioManager;
 import android.media.SoundPool;
@@ -23,6 +25,7 @@ public class TipoProyectoInsertarActivity extends Activity {
 	EditText txtNombreTipoProyecto;
 	String mensaje;
 	String urlExterno = "http://hv11002pdm115.hostei.com/serviciosweb/insertar_tipo_proyecto.php";
+	String urlLocal = "http://10.0.2.2:8080/AppServicioSocial/webresources/sv.edu.ues.fia.appserviciosocial.entidad.tipoproyecto/";
 
 	// sonidos
 	SoundPool soundPool;
@@ -119,6 +122,42 @@ public class TipoProyectoInsertarActivity extends Activity {
 				ControladorServicio.insertarObjeto(url, this);
 
 				helper.establecerTipoProyectoEnviado(String.valueOf(idTipoProyecto));
+			}
+		}
+		helper.cerrar();
+	}
+	
+	public void insertarServidorJava(View v) {
+		// Aqui se deben buscar todos los registros que tengan enviado=false
+		// y se enviaran al servidor y se pondrán enviado=true
+		helper.abrir();
+		ArrayList<TipoProyecto> tipoProeyctosAEnviar = helper.consultarTipoProyectoNoEnviado();
+		
+		int idTipoProyecto;
+		String nombre = "";
+		Date fecha = new Date();
+        fecha = Calendar.getInstance().getTime();
+        SimpleDateFormat formato =  new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
+        String actualizado = formato.format(fecha);
+		if (tipoProeyctosAEnviar != null) {
+			for (int i = 0; i < tipoProeyctosAEnviar.size(); i++) {//25193645
+				idTipoProyecto = tipoProeyctosAEnviar.get(i).getIdTipoProyecto();
+				nombre = tipoProeyctosAEnviar.get(i).getNombre();
+				
+				//Inserción en el servidor Glassfish
+				
+				JSONObject tipoProyecto = new JSONObject();
+				try{
+					tipoProyecto.put("idtipoproyecto", idTipoProyecto);
+					tipoProyecto.put("nombre", nombre);
+					tipoProyecto.put("fechaact", actualizado);
+					try{ControladorServicio.insertarObjeto(urlLocal, tipoProyecto, this);}
+					catch(Exception e){return;}
+					helper.establecerTipoProyectoEnviado(String.valueOf(idTipoProyecto));
+				}catch(Exception e){
+					Toast.makeText(this, "Error en los datos", Toast.LENGTH_LONG).show();
+					soundPool.play(fracaso, 1, 1, 1, 0, 1);
+				}
 			}
 		}
 		helper.cerrar();
