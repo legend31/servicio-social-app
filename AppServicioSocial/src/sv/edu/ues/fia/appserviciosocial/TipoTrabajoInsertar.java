@@ -61,6 +61,7 @@ public class TipoTrabajoInsertar extends Activity {
 		if(info.length()!=0)
 		{
 			Toast.makeText(this, info, Toast.LENGTH_SHORT).show();
+			soundPool.play(fracaso, 1, 1, 1, 0, 1);
 			return;
 		}
 		info="Datos validados";
