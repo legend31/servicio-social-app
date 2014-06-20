@@ -168,7 +168,8 @@
             android:onClick="insertarServidor"
             android:background="@drawable/btn_insertar"
             android:textColor="@android:color/white"
-            android:padding="5dp" />
+            android:padding="5dp"
+            android:layout_margin="2dp" />
 
         <Button
             android:id="@+id/button2"
@@ -180,7 +181,8 @@
             android:onClick="insertarServidorJava"
             android:background="@drawable/btn_insertar"
             android:textColor="@android:color/white"
-            android:padding="5dp" />
+            android:padding="5dp"
+            android:layout_margin="2dp" />
 
     </RelativeLayout>
 
