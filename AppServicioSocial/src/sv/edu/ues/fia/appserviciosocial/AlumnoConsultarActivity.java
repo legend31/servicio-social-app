@@ -31,7 +31,7 @@ public class AlumnoConsultarActivity extends Activity {
 	int fracaso;
 	
 	private String urlExterno = "http://hv11002pdm115.hostei.com/serviciosweb/consultar_alumno.php";
-	private String urlLocal = "http://10.0.2.2:8080/AppServicioSocial/webresources/sv.edu.ues.fia.appserviciosocial.entidad.alumno/by";
+	private String urlLocal = "http://168.243.8.13:8080/AppServicioSocial/webresources/sv.edu.ues.fia.appserviciosocial.entidad.alumno/by";
 	static List<Alumno> listaAlumnos;
 
 	@Override
