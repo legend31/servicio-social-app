@@ -38,7 +38,7 @@ public class InstitucionInsertarActivity extends Activity {
 		txtNombreInstitucion = (EditText) findViewById(R.id.editNombreInstitucion);
 		txtNitInstitucion = (EditText) findViewById(R.id.editNitInstitucion);
 		editText1=(EditText) findViewById(R.id.editText1);
-		editText2=(EditText) findViewById(R.id.editText2);
+		editText2=(EditText) findViewById(R.id.edtNombrett);
 		//sonidos
         soundPool = new SoundPool( 2, AudioManager.STREAM_MUSIC , 0);
         exito = soundPool.load(getApplicationContext(), R.raw.sonido, 0);

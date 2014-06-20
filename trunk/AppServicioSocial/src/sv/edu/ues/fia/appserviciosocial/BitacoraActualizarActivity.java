@@ -33,7 +33,7 @@ public class BitacoraActualizarActivity extends Activity {
 		txtIdBitacora = (EditText) findViewById(R.id.txtIdBitacora);		
 		botonBuscar = (Button) findViewById(R.id.botonBuscar);
 		editText1= (EditText) findViewById(R.id.editText1);
-		editText2= (EditText) findViewById(R.id.editText2);
+		editText2= (EditText) findViewById(R.id.edtNombrett);
 		editText3= (EditText) findViewById(R.id.editText3);
 		editText4= (EditText) findViewById(R.id.editText4);
 		editText5= (EditText) findViewById(R.id.editText5);

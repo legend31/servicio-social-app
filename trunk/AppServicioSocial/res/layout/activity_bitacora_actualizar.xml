@@ -37,44 +37,14 @@
     </EditText>
 
     <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText4"
-        android:layout_below="@+id/botonBuscar"
-        android:layout_marginTop="18dp"
-        android:ems="10"
-        android:hint="@string/carnet" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText1"
-        android:layout_below="@+id/editText1"
-        android:ems="10"
-        android:hint="@string/idProyecto"
-        android:inputType="number" />
-
-    <EditText
         android:id="@+id/editText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText2"
-        android:layout_below="@+id/editText2"
+        android:layout_alignLeft="@+id/edtNombrett"
+        android:layout_below="@+id/edtNombrett"
         android:ems="10"
         android:hint="@string/idTipoTrabajo"
         android:inputType="number" />
-
-    <EditText
-        android:id="@+id/editText4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText5"
-        android:layout_centerVertical="true"
-        android:ems="10"
-        android:hint="@string/fecha"
-        android:inputType="date" />
 
     <EditText
         android:id="@+id/editText5"
@@ -85,5 +55,36 @@
         android:ems="10"
         android:hint="@string/descripcion"
         android:inputType="textMultiLine" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText4"
+        android:layout_below="@+id/botonBuscar"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:hint="@string/carnet"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/edtNombrett"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText1"
+        android:layout_below="@+id/editText1"
+        android:ems="10"
+        android:hint="@string/idProyecto"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText5"
+        android:layout_below="@+id/editText3"
+        android:ems="10"
+        android:hint="@string/fecha"
+        android:inputType="date" />
 
 </RelativeLayout>
