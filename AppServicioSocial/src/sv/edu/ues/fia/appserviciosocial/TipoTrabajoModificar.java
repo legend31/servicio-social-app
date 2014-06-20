@@ -29,7 +29,7 @@ public class TipoTrabajoModificar extends Activity {
 		//Relacionar variables globales con los controles del layout	
 		auxiliar = new ControlBD(this);	//constructor de la conexion bd
 		editText1=(EditText) findViewById(R.id.editText1);
-		editText2=(EditText) findViewById(R.id.editText2);
+		editText2=(EditText) findViewById(R.id.edtNombrett);
 		editText3=(EditText) findViewById(R.id.editText3);
 		button1=(Button) findViewById(R.id.btnQR);
 		button1.setVisibility(View.INVISIBLE);

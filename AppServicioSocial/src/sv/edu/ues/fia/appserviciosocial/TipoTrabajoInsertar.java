@@ -26,7 +26,7 @@ public class TipoTrabajoInsertar extends Activity {
 		setContentView(R.layout.activity_tipo_trabajo_insertar);
 		//Relacionar variables globales con los controles del layout	
 		auxiliar = new ControlBD(this);			
-		editText2=(EditText) findViewById(R.id.editText2);
+		editText2=(EditText) findViewById(R.id.edtNombrett);
 		editText3=(EditText) findViewById(R.id.editText3);
 		//sonidos
         soundPool = new SoundPool( 2, AudioManager.STREAM_MUSIC , 0);
