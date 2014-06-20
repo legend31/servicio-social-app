@@ -1492,5 +1492,23 @@ public class ControlBD {
 			mensaje = "Registro modificado";
 		}
 	}
-
+	public Alumno[] getAlumnos(){
+		Alumno [] alumnos = null ;
+		Cursor cursor = db.rawQuery("select carnet from alumno",null);
+		int count = cursor.getCount();
+		int i = 0;
+		if ( count > 0 && cursor.moveToFirst()){
+			alumnos = new Alumno[count];			
+			do{
+				alumnos[i++] = consultarAlumno(cursor.getString(0));
+				/*setCarnet(cursor.getString(0));
+				alumnos[i++].setNombre(cursor.getString(1));
+				alumnos[i++].setTelefono(cursor.getString(2));
+				alumnos[i++].setDui(cursor.getString(3));
+				alumnos[i++].setNit(cursor.getString(4));
+				*/
+			}while( cursor.moveToNext());
+		}
+		return alumnos;
+	}
 }// fin ControlDB
