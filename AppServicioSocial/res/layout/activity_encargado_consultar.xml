@@ -259,6 +259,17 @@
             android:text="Actualizar del servidor"
             android:textColor="@android:color/white"
             android:layout_marginTop="5dp" />
+        
+         <Button
+            android:id="@+id/servidorEncargadojava"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.05"
+            android:background="@drawable/btn_consultar"
+            android:onClick="actualizarServidorJavaEncargado"
+            android:text="Actualizar del servidor Java"
+            android:textColor="@android:color/white" 
+            android:layout_marginTop="5dp" />
 
     </LinearLayout>
 
