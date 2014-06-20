@@ -80,9 +80,11 @@ public class SolicitanteInsertarActivity extends Activity {
 						auxiliar.abrir();
 						Institucion institucion = auxiliar
 								.consultarInstitucion(nitInstitucion);
-						if (institucion == null)
+						if (institucion == null){
 							Toast.makeText(this, "Institución no existe",
 									Toast.LENGTH_LONG).show();
+						soundPool.play(fracaso, 1, 1, 1, 0, 1);
+						}
 						else {
 							String idInstitucion = institucion
 									.getIdInstitucion();
@@ -92,9 +94,10 @@ public class SolicitanteInsertarActivity extends Activity {
 								Cargo cargo = datos.get(0);
 								idCargo = Integer.toString(cargo.getIdCargo());
 
-								if (idCargo == null)
+								if (idCargo == null){
 									Toast.makeText(this, "ID cargo no existe",
 											Toast.LENGTH_LONG).show();
+								soundPool.play(fracaso, 1, 1, 1, 0, 1);}
 								else {
 									Solicitante solicitante = new Solicitante(
 											idInstitucion, idCargo, nombre,

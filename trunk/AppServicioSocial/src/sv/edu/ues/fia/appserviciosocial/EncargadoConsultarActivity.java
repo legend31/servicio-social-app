@@ -259,6 +259,7 @@ public class EncargadoConsultarActivity extends Activity implements
 			String respuesta = base.insertar(listaEncargados.get(i));
 			Log.v("guardar",respuesta);
 			Toast.makeText(this, respuesta, Toast.LENGTH_SHORT).show();
+			soundPool.play(exito, 1, 1, 1, 0, 1);
 			
 		}
 		//Guardar la nueva fecha de actualización
@@ -296,6 +297,7 @@ public class EncargadoConsultarActivity extends Activity implements
 			String respuesta = base.insertar(listaEncargados.get(i));
 			Log.v("guardar",respuesta);
 			Toast.makeText(this, respuesta, Toast.LENGTH_SHORT).show();
+			soundPool.play(exito, 1, 1, 1, 0, 1);
 			
 		}
 		//Guardar la nueva fecha de actualización

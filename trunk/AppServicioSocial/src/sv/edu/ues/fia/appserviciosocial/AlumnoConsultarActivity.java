@@ -71,6 +71,7 @@ public class AlumnoConsultarActivity extends Activity {
 		// Validando
 		if (carnet == null || carnet.trim() == "" | carnet.length() != 7) {
 			Toast.makeText(this, "Carnet inválido", Toast.LENGTH_LONG).show();
+			soundPool.play(fracaso, 1, 1, 1, 0, 1);
 			return;
 
 		}
@@ -142,7 +143,7 @@ public class AlumnoConsultarActivity extends Activity {
 			String respuesta = auxiliar.insertar(listaAlumnos.get(i));
 			Log.v("guardar",respuesta);
 			Toast.makeText(this, respuesta, Toast.LENGTH_SHORT).show();
-			
+			soundPool.play(exito, 1, 1, 1, 0, 1);
 		}
 		//Guardar la nueva fecha de actualización
 		auxiliar.establecerFechaActualizacion("alumno");
@@ -176,7 +177,7 @@ public class AlumnoConsultarActivity extends Activity {
 			String respuesta = auxiliar.insertar(listaAlumnos.get(i));
 			Log.v("guardar",respuesta);
 			Toast.makeText(this, respuesta, Toast.LENGTH_SHORT).show();
-			
+			soundPool.play(exito, 1, 1, 1, 0, 1);
 		}
 		//Guardar la nueva fecha de actualización
 		auxiliar.establecerFechaActualizacion("alumno");

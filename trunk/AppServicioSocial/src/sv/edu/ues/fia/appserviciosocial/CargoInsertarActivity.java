@@ -65,6 +65,7 @@ public class CargoInsertarActivity extends Activity {
             if(error != "")
             {
                     Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+                    soundPool.play(fracaso, 1, 1, 1, 0, 1);
                     return;
             }
             //Creando inserción

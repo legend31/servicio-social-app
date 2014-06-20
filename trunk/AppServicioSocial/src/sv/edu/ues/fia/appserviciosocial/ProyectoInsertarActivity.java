@@ -76,10 +76,12 @@ public class ProyectoInsertarActivity extends Activity {
 
 		if (name == null || name.equalsIgnoreCase("")) {
 			info = "Nombre del Proyecto inválido";
+			
 		}
 
 		if (info != "") {
 			Toast.makeText(this, info, Toast.LENGTH_SHORT).show();
+			soundPool.play(fracaso, 1, 1, 1, 0, 1);
 			return;
 		}
 

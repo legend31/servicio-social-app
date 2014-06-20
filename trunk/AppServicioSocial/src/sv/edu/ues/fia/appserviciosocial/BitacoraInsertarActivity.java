@@ -81,6 +81,7 @@ public void insertarBitacora(View v){
 	if(info != "")
 	{
 		Toast.makeText(this, info, Toast.LENGTH_SHORT).show();
+		soundPool.play(fracaso, 1, 1, 1, 0, 1);
 		return;
 	}
 	//Realizar la insercion en la base de datos

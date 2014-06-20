@@ -111,28 +111,35 @@ public class AlumnoInsertarActivity extends Activity {
 		// Validando
 		if (carnet == null || carnet.trim() == "" || carnet.length() != 7) {
 			info = "Carnet inválido";
+			
 		}
 		if (nombre == null || nombre.trim() == "") {
 			info = "Nombre inválido";
+			
 		}
 		if (telefono == null || telefono.trim() == "" || telefono.length() != 8) {
 			info = "Teléfono inválido";
+			
 		}
 		if (dui == null || dui.trim() == "" || dui.length() != 9) {
 			info = "DUI inválido";
+			
 		}
 		if (nit == null || nit.trim() == "" || nit.length() != 14) {
 			info = "NIT inválido";
+			
 		}
 		if (email == null
 				|| email.trim() == ""
 				|| !android.util.Patterns.EMAIL_ADDRESS.matcher(email)
 						.matches()) {
 			info = "E-mail inválido";
+			
 		}
 		// Avisando errores
 		if (info != "") {
 			Toast.makeText(this, info, Toast.LENGTH_SHORT).show();
+			soundPool.play(fracaso, 1, 1, 1, 0, 1);
 			return;
 		}
 		// Creando inserción
@@ -235,6 +242,7 @@ public class AlumnoInsertarActivity extends Activity {
 					auxiliar.establecerAlumnoEnviado(carnet);
 				}catch(Exception e){
 					Toast.makeText(this, "Error en los datos", Toast.LENGTH_LONG).show();
+					soundPool.play(fracaso, 1, 1, 1, 0, 1);
 				}
 			}
 		}
@@ -274,6 +282,7 @@ public class AlumnoInsertarActivity extends Activity {
 								this,
 								"El código QR no corresponde a la funcionalidad de esta aplicación",
 								Toast.LENGTH_SHORT).show();
+						soundPool.play(fracaso, 1, 1, 1, 0, 1);
 						return;
 					}
 					if (i == 2) {
@@ -300,6 +309,7 @@ public class AlumnoInsertarActivity extends Activity {
 				// Si se cancelo la captura.
 				Toast.makeText(this, "Se canceló la captura del código QR",
 						Toast.LENGTH_SHORT).show();
+				soundPool.play(fracaso, 1, 1, 1, 0, 1);
 			}
 		}
 
@@ -331,5 +341,6 @@ public class AlumnoInsertarActivity extends Activity {
 			} else
 				Toast.makeText(getApplicationContext(), "fotografia no tomada",
 						Toast.LENGTH_SHORT).show();
+		soundPool.play(fracaso, 1, 1, 1, 0, 1);
 	}
 }
