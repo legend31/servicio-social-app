@@ -21,11 +21,11 @@ import android.widget.Toast;
 
 public class TipoProyectoInsertarActivity extends Activity {
 	ControlBD helper;
-	EditText txtTipoProyecto;
-	EditText txtNombreTipoProyecto;
-	String mensaje;
-	String urlExterno = "http://hv11002pdm115.hostei.com/serviciosweb/insertar_tipo_proyecto.php";
-	String urlLocal = "http://10.0.2.2:8080/AppServicioSocial/webresources/sv.edu.ues.fia.appserviciosocial.entidad.tipoproyecto/";
+	private EditText txtTipoProyecto;
+	private EditText txtNombreTipoProyecto;
+	private String mensaje;
+	private String urlExterno = "http://hv11002pdm115.hostei.com/serviciosweb/insertar_tipo_proyecto.php";
+	private String urlLocal = "http://168.243.8.13:8080/AppServicioSocial/webresources/sv.edu.ues.fia.appserviciosocial.entidad.tipoproyecto/";
 
 	// sonidos
 	SoundPool soundPool;
