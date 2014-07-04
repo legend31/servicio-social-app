@@ -26,6 +26,7 @@ public class TipoProyectoInsertarActivity extends Activity {
 	private String mensaje;
 	private String urlExterno = "http://hv11002pdm115.hostei.com/serviciosweb/insertar_tipo_proyecto.php";
 	private String urlLocal = "http://168.243.8.13:8080/AppServicioSocial/webresources/sv.edu.ues.fia.appserviciosocial.entidad.tipoproyecto/";
+	
 
 	// sonidos
 	SoundPool soundPool;
