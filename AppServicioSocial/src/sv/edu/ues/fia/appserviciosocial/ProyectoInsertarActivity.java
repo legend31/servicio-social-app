@@ -34,8 +34,8 @@ public class ProyectoInsertarActivity extends Activity {
 	SoundPool soundPool;
 	int exito;
 	int fracaso;
-	private String urlExterno = "http://hv11002pdm115.hostei.com/serviciosweb/insertar_proyecto.php";
-	String urlLocal = "http://10.0.2.2:8080/AppServicioSocial/webresources/sv.edu.ues.fia.appserviciosocial.entidad.tipoproyecto/";
+	private String urlExterno = "http://hv11002pdm115.hostei.com/serviciosweb/insertar_alumno.php";
+	private String urlLocal = "http://168.243.8.13:8080/AppServicioSocial/webresources/sv.edu.ues.fia.appserviciosocial.entidad.proyecto/";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -188,7 +188,7 @@ public class ProyectoInsertarActivity extends Activity {
 				
 				JSONObject proyecto = new JSONObject();
 				try{
-					proyecto.put("idpoproyecto", idProyecto);
+					proyecto.put("idproyecto", idProyecto);
 					proyecto.put("idsolicitante", idSolicitante);
 					proyecto.put("idtipoproyecto", idTipoProyecto);
 					proyecto.put("idencargado", idEncargado);
