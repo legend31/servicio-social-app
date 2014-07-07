@@ -124,11 +124,9 @@ public class ControlBD {
 						+ " tipoproyecto WHERE idtipoproyecto = NEW.idtipoproyecto) IS NULL) THEN RAISE(ABORT, 'No existe tipo de proyecto') END; END;");
 
 				db.execSQL("CREATE TRIGGER update_numeroproyecto1 AFTER INSERT ON proyecto BEGIN UPDATE totalproyectos SET "
-						+ "numero=numero+1; END;");
+					+ "numero=numero+1; END;");
 				db.execSQL("CREATE TRIGGER update_numeroproyecto2 AFTER DELETE ON proyecto BEGIN UPDATE totalproyectos SET "
 						+ "numero=numero-1; END;");
-				// triggers tipoProyecto
-				// db.execSQL("CREATE TRIGGER TipoProyectoELiminar BEFORE DELETE ON TIPOPROYECTO FOR EACH ROW BEGIN DELETE FROM PROYECTO WHERE IDTIPOPROYECTO=OLD.IDTIPOPROYECTO; END");
 
 				// triggers para asignacionProyecto
 				db.execSQL("CREATE TRIGGER fk_asignacionproyecto_proyecto BEFORE INSERT ON asignacionproyecto FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT "
@@ -142,43 +140,9 @@ public class ControlBD {
 				db.execSQL("CREATE TRIGGER fk_bitacora_alumno BEFORE INSERT ON bitacora FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT carnet FROM alumno "
 						+ "WHERE carnet = NEW.carnet) IS NULL) THEN RAISE(ABORT, 'No existe alumno') END; END;");
 
-				// inserciones alumno
-				/*
-				 * db.execSQL(
-				 * "insert into alumno values('FG12098', 'Pedro Fuentes',   '23456781', '033206621', '06142307906731', 'pedro@yahoo.es','path1');"
-				 * ); db.execSQL(
-				 * "insert into alumno values('MJ10458', 'Luis Martinez',   '22378781', '033673420', '06132307901231', 'luis@yahoo.com','path2');"
-				 * ); db.execSQL(
-				 * "insert into alumno values('QS11457', 'Juan Quevedo',    '23456896', '033209871', '09232307904531', 'juan@gmail.es','path3');"
-				 * ); db.execSQL(
-				 * "insert into alumno values('SA09027', 'Ricardo Sanchez', '23451231', '033207823', '08122307901931', 'ricardo@hotmail.es','path4');"
-				 * );
-				 * 
-				 * db.execSQL(
-				 * "insert into alumno values('PP08002', 'Ramon Peraza', '23478392', '033902384', '08122208901931', 'ramon@hotmail.es','path5');"
-				 * ); db.execSQL(
-				 * "insert into alumno values('DM09017', 'Juan Dominguez', '23423431', '03902833', '06143112921931', 'juan@hotmail.es','path6');"
-				 * ); db.execSQL(
-				 * "insert into alumno values('LO07027', 'Esteban Letona', '23456731', '031893423', '08122707906731', 'esteban@hotmail.es','path7');"
-				 * ); db.execSQL(
-				 * "insert into alumno values('ME06007', 'Pedro Mendoza', '67851231', '039014843', '06142307901931', 'mendoza@yahoo.com','path8');"
-				 * ); db.execSQL(
-				 * "insert into alumno values('SA09127', 'Arturo Solis', '78231231', '033902323', '08122308901931', 'arturo23@hotmail.com','path9');"
-				 * ); db.execSQL(
-				 * "insert into alumno values('TA10067', 'Mario Torres', '28941231', '033904823', '06142304901931', 'mario@hotmail.es','path10');"
-				 * ); db.execSQL(
-				 * "insert into alumno values('SL04002', 'Laura Silva', '23491231', '019307823', '08122307881931', 'laurasilva@gmail.com','path11');"
-				 * ); db.execSQL(
-				 * "insert into alumno values('SB00001', 'Veronica Sandoval', '23490341', '030948823', '08122207901931', 'verosandoval@hotmail.com','path12');"
-				 * ); db.execSQL(
-				 * "insert into alumno values('NA09080', 'Ligia Nuñez', '23569131', '039048323', '06143107901931', 'ligianz@hotmail.es','path13');"
-				 * ); db.execSQL(
-				 * "insert into alumno values('FE07022', 'Francisco Flores', '23902358', '032908323', '08122227901931', 'paquitoflores@hotmail.com','path14');"
-				 * ); db.execSQL(
-				 * "insert into alumno values('BC03028', 'Ricardo Bernal', '23902783', '033109383', '08120507901931', 'ricbernal@yahoo.es','path15');"
-				 * );
-				 */
-
+				
+				db.execSQL("insert into totalproyectos values(null,0);");
+				
 				db.execSQL("insert into alumno values('FG12098', 'Pedro Fuentes',   '23456781', '033206621', '06142307906731', 'pedro@yahoo.es','','false');");
 				db.execSQL("insert into alumno values('MJ10458', 'Luis Martinez',   '22378781', '033673420', '06132307901231', 'luis@yahoo.com','','false');");
 				db.execSQL("insert into alumno values('QS11457', 'Juan Quevedo',    '23456896', '033209871', '09232307904531', 'juan@gmail.es','','false');");
@@ -1086,7 +1050,7 @@ public class ControlBD {
 		Cursor cursor2 = db.query("totalproyectos", campos, null, null, null,
 				null, null);
 
-		// db.query("proyecto",camposProyecto,id+" LIKE '%"+nombreProyecto+"%'",null,null,null,null,null);
+
 		if (cursor.moveToFirst() && cursor2.moveToFirst()) {
 			Proyecto proyecto = new Proyecto();
 			proyecto.setIdProyecto(cursor.getInt(0));
