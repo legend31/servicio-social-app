@@ -34,7 +34,7 @@ public class ProyectoInsertarActivity extends Activity {
 	SoundPool soundPool;
 	int exito;
 	int fracaso;
-	private String urlExterno = "http://hv11002pdm115.hostei.com/serviciosweb/insertar_alumno.php";
+	private String urlExterno = "http://hv11002pdm115.hostei.com/serviciosweb/insertar_proyecto.php";
 	private String urlLocal ="http://168.243.8.13:8080/AppServicioSocial/webresources/sv.edu.ues.fia.appserviciosocial.entidad.proyecto/";
 
 
