@@ -60,8 +60,10 @@ public class EncargadoInsertarActivity extends Activity {
 
 	
 	//java
+
 	//private String urlLocal = "http://168.243.8.13:8080/AppServicioSocial/webresources/sv.edu.ues.fia.appserviciosocial.entidad.encargadoserviciosocial/";
 	private String urlLocal = "http://10.0.2.2:8080/AppServicioSocial/webresources/sv.edu.ues.fia.appserviciosocial.entidad.encargadoserviciosocial/";
+
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
