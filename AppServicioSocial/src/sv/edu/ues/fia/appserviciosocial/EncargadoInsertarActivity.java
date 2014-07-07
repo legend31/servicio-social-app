@@ -287,7 +287,7 @@ public class EncargadoInsertarActivity extends Activity {
 		int idencargado;
 		Date fecha = new Date();
         fecha = Calendar.getInstance().getTime();
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
         String actualizado = formato.format(fecha);
         
         if (encargadoAEnviar != null) {
